@@ -11,17 +11,22 @@ datasource db {
   relationMode = "prisma"
 }
 
-model Pharmacist {
+model Admin {
   id Int @id @default(autoincrement())
   name String
   password String
-  mercantil String
-  instalationPermission String
-  operatingPermit String
-  rif String
-  sicm String
   cedula String
-  pharmacistDegree String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Car {
+  id Int @id @default(autoincrement())
+  brand String
+  model String
+  year Int
+  color String
+  price Int
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }

@@ -5,11 +5,8 @@
     "name": "cara",
     "model": 2016,
     "kilometers": 429039,
-    "price": 20000000,
-    "images": [
-      "https://firebasestorage.googleapis.com/v0/b/adminpanelphotos.appspot.com/o/images%2Fcars%2F22595_191842443-imagen-de-fondo-de-la-ilustraci%C3%B3n-del-arte-conceptual-de-la-destrucci%C3%B3n-de-los-planetas.jpg?alt=media&token=6bc1d484-4002-480a-aa39-5728aff43939"
-    ],
-    "preview": "https://firebasestorage.googleapis.com/v0/b/adminpanelphotos.appspot.com/o/images%2Fcars%2F22595_191842443-imagen-de-fondo-de-la-ilustraci%C3%B3n-del-arte-conceptual-de-la-destrucci%C3%B3n-de-los-planetas.jpg?alt=media&token=6bc1d484-4002-480a-aa39-5728aff43939",
+    "price": 20000000,    
+    "image": "https://firebasestorage.googleapis.com/v0/b/adminpanelphotos.appspot.com/o/images%2Fcars%2F22595_191842443-imagen-de-fondo-de-la-ilustraci%C3%B3n-del-arte-conceptual-de-la-destrucci%C3%B3n-de-los-planetas.jpg?alt=media&token=6bc1d484-4002-480a-aa39-5728aff43939",
     "description": "",
     "createdAt": "2023-08-17T13:47:01.057Z",
     "updatedAt": "2023-08-17T13:47:01.057Z"
@@ -20,11 +17,8 @@
     "name": "Clio",
     "model": 2015,
     "kilometers": 35000,
-    "price": 20000000,
-    "images": [
-      "https://firebasestorage.googleapis.com/v0/b/adminpanelphotos.appspot.com/o/images%2Fcars%2F88749_photo-1546614042-7df3c24c9e5d.avif?alt=media&token=fca2a22c-256f-45d5-9a78-d108a67a0476"
-    ],
-    "preview": "https://firebasestorage.googleapis.com/v0/b/adminpanelphotos.appspot.com/o/images%2Fcars%2F88749_photo-1546614042-7df3c24c9e5d.avif?alt=media&token=fca2a22c-256f-45d5-9a78-d108a67a0476",
+    "price": 20000000,    
+    "image": "https://firebasestorage.googleapis.com/v0/b/adminpanelphotos.appspot.com/o/images%2Fcars%2F88749_photo-1546614042-7df3c24c9e5d.avif?alt=media&token=fca2a22c-256f-45d5-9a78-d108a67a0476",
     "description": "",
     "createdAt": "2023-06-14T13:10:35.995Z",
     "updatedAt": "2023-06-14T13:27:40.513Z"
@@ -35,11 +29,8 @@
     "name": "Corola",
     "model": 2021,
     "kilometers": 100000,
-    "price": 100000,
-    "images": [
-      "https://firebasestorage.googleapis.com/v0/b/adminpanelphotos.appspot.com/o/images%2Fcars%2F62786_photo-1618353482480-61ca5a9a7879.avif?alt=media&token=bbddbd4a-9c33-4d7e-b157-7f03ab85d1d6"
-    ],
-    "preview": "https://firebasestorage.googleapis.com/v0/b/adminpanelphotos.appspot.com/o/images%2Fcars%2F62786_photo-1618353482480-61ca5a9a7879.avif?alt=media&token=bbddbd4a-9c33-4d7e-b157-7f03ab85d1d6",
+    "price": 100000,    
+    "image": "https://firebasestorage.googleapis.com/v0/b/adminpanelphotos.appspot.com/o/images%2Fcars%2F62786_photo-1618353482480-61ca5a9a7879.avif?alt=media&token=bbddbd4a-9c33-4d7e-b157-7f03ab85d1d6",
     "description": "",
     "createdAt": "2023-06-14T12:52:42.889Z",
     "updatedAt": "2023-06-14T12:52:42.889Z"

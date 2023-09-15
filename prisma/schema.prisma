@@ -25,8 +25,11 @@ model Car {
   brand String
   model String
   year Int
+  description String? @default("")
+  kilometers Int
+  image String @db.LongText
   color String
   price Int
   createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  updatedAt DateTime @updatedAt  
 }

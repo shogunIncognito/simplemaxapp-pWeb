@@ -5,8 +5,6 @@ export function middleware (request) {
   const path = request.nextUrl.pathname
   const redirect = path => NextResponse.redirect(new URL(path, request.url))
 
-  console.log({ token })
-
   if (!token && path === '/login') return NextResponse.next()
   if (token && path === '/login') return redirect('/panel')
   if (!token && path === '/panel') return redirect('/login')

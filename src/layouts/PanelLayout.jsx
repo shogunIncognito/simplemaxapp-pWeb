@@ -1,11 +1,13 @@
-import sideImage from '@/assets/maxautosicon.png'
+import sideImage from '@/assets/maxautoslogoblanco.png'
 import { deleteCookie, getCookie } from 'cookies-next'
 import Image from 'next/image'
-import { useRouter } from 'next/navigation'
+import Link from 'next/link'
+import { usePathname, useRouter } from 'next/navigation'
 import { useEffect } from 'react'
 
 export default function PanelLayout ({ children }) {
   const router = useRouter()
+  const path = usePathname()
 
   useEffect(() => {
     const token = getCookie('token')
@@ -16,18 +18,18 @@ export default function PanelLayout ({ children }) {
   }, [])
 
   return (
-    <main className='flex'>
-      <aside className='w-1/3'>
-        <Image src={sideImage} width={150} height={150} alt='sideimage' className='object-cover' />
-        <nav>
-          <ul>
-            <li><a href='#'>Inicio</a></li>
-            <li><a href='#'>Inicio</a></li>
-            <li><a href='#'>Inicio</a></li>
-          </ul>
+    <main className='flex h-screen w-full'>
+      <aside className='w-1/6 h-screen shadow-xl bg-slate-800 text-white'>
+        <Link href='/'>
+          <Image src={sideImage} width={200} height={200} alt='sideimage' className='m-auto h-auto w-auto my-0 object-cover' />
+        </Link>
+        <nav className='flex flex-col'>
+          <Link className='p-3 hover:bg-gray-900 transition-color' href='/'>Volver a pagina inicial</Link>
+          <Link className={`p-3 hover:bg-gray-900 transition-colors ${path === '/panel' ? 'bg-gray-700' : ''}`} href='#'>Autos</Link>
+          <Link className={`p-3 hover:bg-gray-900 transition-colors ${path === '/usuarios' ? 'bg-gray-700' : ''}`} href='#'>Usuarios</Link>
         </nav>
       </aside>
-      <section className='w-2/3'>
+      <section className='w-full bg-slate-50'>
         {children}
       </section>
     </main>

@@ -4,9 +4,10 @@ import Button from '@/components/Button'
 import Logo from '@/assets/maxautosicon.png'
 import sideImage from '@/assets/maxHero1.jpg'
 import Image from 'next/image'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { login } from '@/services/api'
 import { useRouter } from 'next/navigation'
+import { deleteCookie } from 'cookies-next'
 
 export default function page () {
   const router = useRouter()
@@ -15,13 +16,14 @@ export default function page () {
     password: ''
   })
 
+  useEffect(() => {
+    deleteCookie('token')
+  }, [])
+
   const handleSubmit = (e) => {
     e.preventDefault()
     login(values)
-      .then(res => {
-        window.localStorage.setItem('token', crypto.randomUUID())
-        router.push('/panel')
-      })
+      .then(res => router.replace('/panel'))
       .catch(err => console.log(err))
   }
 

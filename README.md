@@ -4,12 +4,12 @@ Aplicación para la concesionaria MaxAutos como proyecto final de Fundamentos We
 
 ## Clonar repositorio en tu maquina
 ```bash
-git clone https://github.com/shogunIncognito/simplemaxapp.git
+git clone https://github.com/shogunIncognito/simplemaxapp-pWeb.git
 ```
 
 ## Accede al repositorio
 ```bash
-cd simplemaxapp
+cd simplemaxapp-pWeb
 ```
 
 

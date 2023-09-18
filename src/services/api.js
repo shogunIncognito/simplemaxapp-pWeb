@@ -12,3 +12,18 @@ export const login = async (values) => {
   })
   return response.data
 }
+
+export const getCars = async () => {
+  const response = await api.get('/cars')
+  return response.data
+}
+
+export const createCar = async (values) => {
+  const response = await api.post('/cars', values)
+  return response.data
+}
+
+export const updateCar = async (id, values) => {
+  const response = await api.put(`/cars/${id}`, values)
+  return response.data
+}

@@ -24,12 +24,12 @@ model Car {
   id Int @id @default(autoincrement())
   brand String
   model String
-  year Int
+  year String
   description String? @default("")
-  kilometers Int
+  kilometers String
   image String @db.LongText
   color String
-  price Int
+  price String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt  
 }

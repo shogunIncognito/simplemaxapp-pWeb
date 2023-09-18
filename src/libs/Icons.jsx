@@ -18,7 +18,7 @@ export const AboutIcon = ({ width = '40px', ...props }) => (
 )
 
 export const MaxAutosIcon = ({ ...props }) => (
-  <Image {...props} src={MaxIcon} alt='MaxAutos' style={{ width: 120, height: 90 }} />
+  <Image priority {...props} src={MaxIcon} alt='MaxAutos' style={{ width: 120, height: 90 }} />
 )
 
 export const LoginIcon = ({ ...props }) => (

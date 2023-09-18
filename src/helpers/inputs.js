@@ -1,5 +1,5 @@
 
-export const createCarInputs = [
+export const carInputs = [
   {
     type: 'text',
     name: 'brand',
@@ -43,3 +43,5 @@ export const createCarInputs = [
     value: 123000
   }
 ]
+
+export const tableHeaders = ['ID', 'Marca', 'Modelo', 'Año', 'Kilómetros', 'Color', 'Precio', 'Imagen', 'Acciones']

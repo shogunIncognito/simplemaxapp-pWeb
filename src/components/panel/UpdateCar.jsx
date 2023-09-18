@@ -1,6 +1,6 @@
 'use client'
 
-import { createCarInputs } from '@/helpers/inputs'
+import { carInputs } from '@/helpers/inputs'
 import ModalBackdrop from '../ModalBackdrop'
 import Image from 'next/image'
 import Button from '../Button'
@@ -49,7 +49,7 @@ export default function UpdateCar ({ selectedCar, setSelectedCar }) {
           <div className='flex flex-col gap-3'>
             {/* propiedad value del input es mientras el desarrollo de la app, quitar cuando se termine */}
             {
-                  createCarInputs.map((input, index) => (
+                  carInputs.map((input, index) => (
                     <input onChange={handleChange} value={values[input.name]} key={index} required className='transition-all duration-300 ring-2 focus:ring-blue-600 hover:ring-blue-400 outline-none p-2 rounded' type={input.type} name={input.name} placeholder={input.placeholder} />
                   ))
                 }

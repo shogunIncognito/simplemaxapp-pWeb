@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import Button from '../Button'
 import ModalBackdrop from '../ModalBackdrop'
-import { createCarInputs } from '@/helpers/inputs'
+import { carInputs } from '@/helpers/inputs'
 import useDisclosure from '@/hooks/useDisclosure'
 import Image from 'next/image'
 import { createCar } from '@/services/api'
@@ -48,7 +48,7 @@ export default function CreateCar () {
               <div className='flex flex-col gap-3'>
                 {/* propiedad value del input es mientras el desarrollo de la app, quitar cuando se termine */}
                 {
-                  createCarInputs.map((input, index) => (
+                  carInputs.map((input, index) => (
                     <div key={index} className='flex flex-col gap-1'>
                       <label className='text-white'>{input.placeholder}</label>
                       <input value={input.value} required className='transition-all duration-300 ring-2 focus:ring-blue-600 hover:ring-blue-400 outline-none p-2 rounded' type={input.type} name={input.name} placeholder={input.placeholder} />

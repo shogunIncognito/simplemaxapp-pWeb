@@ -27,3 +27,8 @@ export const updateCar = async (id, values) => {
   const response = await api.put(`/cars/${id}`, values)
   return response.data
 }
+
+export const deleteCar = async (id) => {
+  const response = await api.delete(`/cars/${id}`)
+  return response.data
+}

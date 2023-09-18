@@ -1,9 +1,10 @@
 'use client'
 
-import { CarIcon, HomeIcon, MaxAutosIcon } from '@/libs/Icons'
+import { CarIcon, HomeIcon, LoginIcon, MaxAutosIcon } from '@/libs/Icons'
+import Link from 'next/link'
 import { useEffect, useRef } from 'react'
 
-const scrollClasses = ['p-7']
+const scrollClasses = ['p-6']
 
 export default function NavBar () {
   const nav = useRef(null)
@@ -24,7 +25,9 @@ export default function NavBar () {
 
   return (
     <header ref={nav} className='bg-slate-50 top-0 sticky duration-300 ease-in-out transition-all shadow-xl z-50 p-4 flex w-full items-center'>
-      <MaxAutosIcon className='absolute' />
+      <Link href='/' className='absolute'>
+        <MaxAutosIcon />
+      </Link>
       <nav className='m-auto w-full flex justify-center items-center'>
         <ul className='flex justify-center items-center'>
           <li>
@@ -41,6 +44,9 @@ export default function NavBar () {
           </li>
         </ul>
       </nav>
+      <Link href='/login' className='absolute right-0'>
+        <LoginIcon />
+      </Link>
     </header>
   )
 }

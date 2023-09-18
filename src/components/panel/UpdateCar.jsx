@@ -6,10 +6,12 @@ import Image from 'next/image'
 import Button from '../Button'
 import { useState } from 'react'
 import { updateCar } from '@/services/api'
+import useCarsStore from '@/hooks/useCarsStore'
 
 export default function UpdateCar ({ selectedCar, setSelectedCar }) {
   const [image, setImage] = useState(selectedCar.image)
   const [values, setValues] = useState(selectedCar)
+  const { fetchCars } = useCarsStore()
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -17,6 +19,7 @@ export default function UpdateCar ({ selectedCar, setSelectedCar }) {
 
     updateCar(selectedCar.id, { ...data, image })
       .then(() => {
+        fetchCars()
         setSelectedCar(null)
       })
       .catch(err => console.log(err))
@@ -43,10 +46,10 @@ export default function UpdateCar ({ selectedCar, setSelectedCar }) {
 
   return (
     <ModalBackdrop>
-      <div className='animate__animated animate__zoomIn flex z-50 flex-col bg-slate-700 p-8 rounded'>
+      <div className='animate__animated animate__zoomIn w-2/5 flex z-50 flex-col bg-slate-700 p-8 rounded'>
         <h2 className='text-2xl text-white mb-10'>Crear auto</h2>
         <form onSubmit={handleSubmit}>
-          <div className='flex flex-col gap-3'>
+          <div className='grid grid-cols-2 gap-3'>
             {/* propiedad value del input es mientras el desarrollo de la app, quitar cuando se termine */}
             {
                   carInputs.map((input, index) => (
@@ -54,12 +57,17 @@ export default function UpdateCar ({ selectedCar, setSelectedCar }) {
                   ))
                 }
             {/* agregar required al input de las imágenes  */}
-            <input onChange={handleImage} className='p-2 text-white' type='file' accept='image/*' />
-            {image && <Image className='self-center rounded h-auto w-auto min max-w-[120px] max-h-[120px]' alt='carImage' src={image} width={120} height={120} />}
           </div>
-          <div className='flex gap-2 max-w-full items-center'>
-            <Button type='submit' className='mt-7 bg-green-500 hover:bg-green-700'>Actualizar</Button>
-            <Button onClick={() => setSelectedCar(null)} className='mt-7 bg-red-500 hover:bg-red-700'>Cancelar</Button>
+          <div className='flex gap-2 w-full items-center mt-5 justify-center'>
+            <label className='text-white bg-gray-800 p-2 rounded'>
+              Agregar imagen
+              <input hidden type='file' onChange={handleImage} accept='image/*' />
+            </label>
+            {image && <Image className='self-center rounded h-auto w-auto min-w-[150px] object-cover min-h-[150px] max-w-[120px] max-h-[120px]' alt='carImage' src={image} width={120} height={120} />}
+          </div>
+          <div className='flex gap-2 max-w-full justify-center items-center'>
+            <Button type='submit' className='mt-7 w-40 bg-green-500 hover:bg-green-700'>Actualizar</Button>
+            <Button onClick={() => setSelectedCar(null)} className='mt-7 w-40 bg-red-500 hover:bg-red-700'>Cancelar</Button>
           </div>
         </form>
       </div>

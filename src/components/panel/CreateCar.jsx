@@ -61,13 +61,13 @@ export default function CreateCar () {
                     </div>
                   ))
                 }
-                {/* agregar required al input de las imágenes  */}
               </div>
               <div className='flex gap-2 w-full items-center mt-5 justify-center'>
                 <label className='text-white bg-gray-800 p-2 rounded'>
                   Agregar imagen
                   <input hidden type='file' onChange={handleImage} accept='image/*' />
                 </label>
+                {/* agregar required al input de las imágenes  */}
                 {image && <Image className='self-center rounded h-auto w-auto min-w-[150px] object-cover min-h-[150px] max-w-[120px] max-h-[120px]' alt='carImage' src={image} width={120} height={120} />}
               </div>
               <div className='flex gap-2 max-w-full items-center justify-center'>

@@ -28,13 +28,15 @@ export default function UpdateCar ({ selectedCar, setSelectedCar }) {
   const handleImage = (e) => {
     const file = e.target.files[0]
 
-    const reader = new global.FileReader()
+    if (file) {
+      const reader = new global.FileReader()
 
-    reader.onloadend = () => {
-      setImage(reader.result)
+      reader.onloadend = () => {
+        setImage(reader.result)
+      }
+
+      reader.readAsDataURL(file)
     }
-
-    reader.readAsDataURL(file)
   }
 
   const handleChange = (e) => {

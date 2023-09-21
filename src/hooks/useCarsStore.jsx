@@ -6,11 +6,9 @@ const useCarsStore = create((set) => ({
   loading: true,
   addCar: (car) => set((state) => ({ cars: [...state.cars, car] })),
   deleteCar: (id) => set((state) => ({ cars: state.cars.filter((car) => car.id !== id) })),
-  fetchCars: () => {
+  fetchCars: async () => {
     getCars()
-      .then((cars) => {
-        set({ cars })
-      })
+      .then((cars) => set({ cars }))
       .catch((err) => console.log(err))
       .finally(() => set({ loading: false }))
   }

@@ -31,16 +31,16 @@ export default function NavBar () {
       <nav className='m-auto w-full flex justify-center items-center'>
         <ul className='flex justify-center items-center'>
           <li>
-            <a className='transition-all items-center gap-2 flex px-4 py-2 border-2 border-transparent hover:border-black rounded' href='#'>
+            <Link className='transition-all items-center gap-2 flex px-4 py-2 border-2 border-transparent hover:border-black rounded' href='/'>
               <HomeIcon />
               Inicio
-            </a>
+            </Link>
           </li>
           <li>
-            <a className='transition-all items-center gap-2 flex px-4 py-2 border-2 border-transparent hover:border-black rounded' href='#'>
+            <Link className='transition-all items-center gap-2 flex px-4 py-2 border-2 border-transparent hover:border-black rounded' href='/cars'>
               <CarIcon />
               Nuestros Autos
-            </a>
+            </Link>
           </li>
         </ul>
       </nav>

@@ -18,7 +18,7 @@ export default function page () {
       <div className='my-4 flex-col'>
         <CreateCar />
       </div>
-      <div className='relative overflow-auto max-h-[88vh]'>
+      <div className='relative overflow-auto max-h-[90%] md:max-h-[88vh]'>
         <table className='w-full max-w-full overflow-x-auto text-sm text-center text-gray-500 dark:text-gray-400'>
           <thead className='text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400'>
             <tr>
@@ -62,8 +62,8 @@ export default function page () {
                 <td className='capitalize px-6 py-4'>
                   $ {Math.round(car.price).toLocaleString()}
                 </td>
-                <td className='px-6 py-4 h-full'>
-                  <Image src={car.image} alt='carro' width={120} height={150} className='rounded-lg m-auto w-auto h-auto min-w-[160px] object-cover ring-2 min-h-[160px] max-w-[160px] max-h-[160px]' />
+                <td className='px-6 py-4'>
+                  <Image src={car.image} alt='carro' width={170} height={170} className='rounded-lg object-cover m-auto w-auto h-auto ring-2 max-w-[160px] max-h-[160px]' />
                 </td>
                 <td className='px-6 py-4 h-full m-auto'>
                   <button onClick={() => setSelectedCar(car)} className='transition-colors w-full mb-1 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded'>

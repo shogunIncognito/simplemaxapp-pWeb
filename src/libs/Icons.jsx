@@ -32,3 +32,43 @@ export const LoginIcon = ({ ...props }) => (
     <path d='M13.28 5.88a.806.806 0 00-.44-.12H.8c-.44 0-.84.36-.84.84v15.08c0 .44.36.84.84.84h2.4v2.92c0 .28.12.52.36.68.12.08.28.12.44.12.12 0 .24-.04.32-.08l8.84-3.76a.82.82 0 00.52-.76V6.6c-.04-.28-.16-.56-.4-.72zM1.64 20.8V7.4H8.8L3.72 9.6a.82.82 0 00-.52.76V20.8H1.64zm10.36.32l-7.12 3.04V10.88L12 7.84v13.28zm-4.36-4.28a.84.84 0 11-1.68 0 .84.84 0 011.68 0z' />
   </svg>
 )
+
+export const MenuIcon = ({ ...props }) => {
+  return (
+    <svg
+      xmlns='http://www.w3.org/2000/svg'
+      fill='none'
+      stroke='#fff'
+      viewBox='0 0 24 24'
+      {...props}
+      width={60}
+    >
+      <path
+        strokeLinecap='round'
+        strokeLinejoin='round'
+        strokeWidth='2'
+        d='M4 6h16M4 12h16M4 18h16'
+      />
+    </svg>
+  )
+}
+
+export const CloseIcon = ({ ...props }) => {
+  return (
+    <svg
+      xmlns='http://www.w3.org/2000/svg'
+      fill='none'
+      stroke='#000'
+      viewBox='0 0 24 24'
+      {...props}
+      width={60}
+    >
+      <path
+        fill='#fff'
+        fillRule='evenodd'
+        d='M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10zM8.97 8.97a.75.75 0 011.06 0L12 10.94l1.97-1.97a.75.75 0 011.06 1.06L13.06 12l1.97 1.97a.75.75 0 01-1.06 1.06L12 13.06l-1.97 1.97a.75.75 0 01-1.06-1.06L10.94 12l-1.97-1.97a.75.75 0 010-1.06z'
+        clipRule='evenodd'
+      />
+    </svg>
+  )
+}

@@ -24,24 +24,22 @@ export default function DeleteCar ({ carToDelete, setCarToDelete }) {
   }
 
   return (
-    <ModalBackdrop>
-      <div className='animate__animated animate__zoomIn flex z-50 flex-col bg-slate-700 p-8 rounded'>
-        <h2 className='text-2xl text-white m-auto mb-4'>¿Eliminar auto?</h2>
-        <p className='text-white text-lg'>El auto {carToDelete.brand} {carToDelete.model} sera eliminado</p>
-        <div className='flex gap-2 mt-3'>
-          <Button
-            onClick={handleDeleteCar}
-            className='w-full bg-red-500 hover:bg-red-700 font-bold'
-          >
-            {loading ? '...' : 'Eliminar'}
-          </Button>
-          <Button
-            onClick={() => setCarToDelete(null)}
-            className='w-full'
-          >
-            Cancelar
-          </Button>
-        </div>
+    <ModalBackdrop className='md:w-1/4'>
+      <h2 className='text-2xl text-white m-auto mb-4'>¿Eliminar auto?</h2>
+      <p className='text-white text-lg'>El auto {carToDelete.brand} {carToDelete.model} sera eliminado</p>
+      <div className='flex gap-2 mt-3'>
+        <Button
+          onClick={handleDeleteCar}
+          className='w-full bg-red-500 hover:bg-red-700 font-bold'
+        >
+          {loading ? '...' : 'Eliminar'}
+        </Button>
+        <Button
+          onClick={() => setCarToDelete(null)}
+          className='w-full'
+        >
+          Cancelar
+        </Button>
       </div>
     </ModalBackdrop>
   )

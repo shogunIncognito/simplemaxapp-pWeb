@@ -1,7 +1,11 @@
-export default function ModalBackdrop ({ children, ...props }) {
+import { twMerge } from 'tailwind-merge'
+
+export default function ModalBackdrop ({ children, className, ...props }) {
   return (
-    <div {...props} className='z-30 absolute bg-black/60 h-screen w-screen top-0 left-0 flex justify-center items-center'>
-      {children}
+    <div className='z-30 absolute bg-black/60 h-screen w-screen top-0 left-0 flex justify-center items-center'>
+      <div {...props} className={twMerge('animate__animated animate__zoomIn w-4/5 md:w-2/5 flex z-50 flex-col bg-slate-700 p-8 rounded', className)}>
+        {children}
+      </div>
     </div>
   )
 }

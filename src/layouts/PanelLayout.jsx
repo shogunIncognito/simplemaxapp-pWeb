@@ -31,11 +31,11 @@ export default function PanelLayout ({ children }) {
         <div onClick={handleOpen} className='absolute left-0'>
           <MenuIcon className='w-12 ml-2' />
         </div>
-        <h2 className='text-center text-2xl font-bold'>Max <span className='text-blue-500'>Autos</span> </h2>
+        <h2 className='text-center text-2xl font-bold'>Max<span className='text-blue-500'>Autos</span></h2>
       </header>
 
       {open && (
-        <aside className='top-0 animate__animated animate__slideInLeft w-full flex flex-col absolute z-20 h-screen shadow-xl bg-slate-800 text-white'>
+        <aside className='top-0 md:hidden animate__animated animate__slideInLeft w-full flex flex-col absolute z-20 h-screen shadow-xl bg-slate-800 text-white'>
           <CloseIcon onClick={handleClose} className='w-12 m-2 self-end cursor-pointer' />
           <Image src={sideImage} width={180} alt='sideimage' className='m-auto my-0 object-cover h-auto' />
           <nav className='flex flex-col'>

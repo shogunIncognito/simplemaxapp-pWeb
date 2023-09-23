@@ -57,30 +57,28 @@ export default function UpdateCar ({ selectedCar, setSelectedCar }) {
 
   return (
     <ModalBackdrop>
-      <div className='animate__animated animate__zoomIn w-2/5 flex z-50 flex-col bg-slate-700 p-8 rounded'>
-        <h2 className='text-2xl text-white mb-10'>Crear auto</h2>
-        <form onSubmit={handleSubmit}>
-          <div className='grid grid-cols-2 gap-3'>
-            {/* propiedad value del input es mientras el desarrollo de la app, quitar cuando se termine */}
-            {
+      <h2 className='text-2xl text-white mb-10'>Crear auto</h2>
+      <form onSubmit={handleSubmit}>
+        <div className='grid grid-cols-2 gap-3'>
+          {/* propiedad value del input es mientras el desarrollo de la app, quitar cuando se termine */}
+          {
               carInputs.map((input, index) => (
                 <input onChange={handleChange} value={values[input.name]} key={index} required className='transition-all duration-300 ring-2 focus:ring-blue-600 hover:ring-blue-400 outline-none p-2 rounded' type={input.type} name={input.name} placeholder={input.placeholder} />
               ))
             }
-          </div>
-          <div className='flex gap-2 w-full items-center mt-5 justify-center'>
-            <label className='text-white bg-gray-800 p-2 rounded'>
-              Agregar imagen
-              <input hidden type='file' onChange={handleImage} accept='image/*' />
-            </label>
-            {image && <Image className='self-center rounded h-auto w-auto min-w-[150px] object-cover min-h-[150px] max-w-[120px] max-h-[120px]' alt='carImage' src={image} width={120} height={120} />}
-          </div>
-          <div className='flex gap-2 max-w-full justify-center items-center'>
-            <Button disabled={loading} type='submit' className='mt-7 w-40 bg-green-500 hover:bg-green-700 disabled:bg-opacity-70 disabled:cursor-not-allowed'>{loading ? '...' : 'Actualizar'}</Button>
-            <Button onClick={() => setSelectedCar(null)} className='mt-7 w-40 bg-red-500 hover:bg-red-700'>Cancelar</Button>
-          </div>
-        </form>
-      </div>
+        </div>
+        <div className='flex gap-2 w-full items-center mt-5 justify-center'>
+          <label className='text-white bg-gray-800 p-2 rounded'>
+            Agregar imagen
+            <input hidden type='file' onChange={handleImage} accept='image/*' />
+          </label>
+          {image && <Image className='self-center rounded h-auto w-auto min-w-[150px] object-cover min-h-[150px] max-w-[120px] max-h-[120px]' alt='carImage' src={image} width={120} height={120} />}
+        </div>
+        <div className='flex gap-2 max-w-full justify-center items-center'>
+          <Button disabled={loading} type='submit' className='mt-7 w-40 bg-green-500 hover:bg-green-700 disabled:bg-opacity-70 disabled:cursor-not-allowed'>{loading ? '...' : 'Actualizar'}</Button>
+          <Button onClick={() => setSelectedCar(null)} className='mt-7 w-40 bg-red-500 hover:bg-red-700'>Cancelar</Button>
+        </div>
+      </form>
     </ModalBackdrop>
   )
 }

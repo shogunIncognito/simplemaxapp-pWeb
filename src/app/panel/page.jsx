@@ -15,6 +15,7 @@ export default function page () {
 
   return (
     <section className='bg-neutral-800 w-full h-full p-5'>
+      <h2 className='text-white md:hidden font-bold opacity-75 text-3xl text-center'>Autos</h2>
       <div className='my-4 flex-col'>
         <CreateCar />
       </div>

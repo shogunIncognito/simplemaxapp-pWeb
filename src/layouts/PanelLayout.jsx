@@ -6,6 +6,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import { useEffect } from 'react'
+import toast from 'react-hot-toast'
 
 export default function PanelLayout ({ children }) {
   const { open, handleOpen, handleClose } = useDisclosure()
@@ -14,7 +15,10 @@ export default function PanelLayout ({ children }) {
 
   const closeSession = () => {
     deleteCookie('token')
-    router.push('/login')
+    router.replace('/login')
+    toast('Sesión cerrada', {
+      icon: '👋'
+    })
   }
 
   useEffect(() => {
@@ -42,7 +46,7 @@ export default function PanelLayout ({ children }) {
             <Link className='p-4 px-6 hover:bg-gray-900 transition-color' href='/'>Volver a pagina inicial</Link>
             <Link className={`p-4 px-6 hover:bg-gray-900 transition-colors ${path === '/panel' ? 'bg-gray-700' : ''}`} href='/panel'>Autos</Link>
             <Link className={`p-4 px-6 hover:bg-gray-900 transition-colors ${path === '/usuarios' ? 'bg-gray-700' : ''}`} href='#'>Usuarios</Link>
-            <Link onClick={closeSession} className='p-4 px-6 hover:bg-gray-900 transition-colors' href='#'>Cerrar sesión</Link>
+            <p onClick={closeSession} className='p-4 px-6 cursor-pointer hover:bg-gray-900 transition-colors'>Cerrar sesión</p>
           </nav>
         </aside>
       )}
@@ -54,7 +58,7 @@ export default function PanelLayout ({ children }) {
           <Link className='p-4 px-6 hover:bg-gray-900 transition-color' href='/'>Volver a pagina inicial</Link>
           <Link className={`p-4 px-6 hover:bg-gray-900 transition-colors ${path === '/panel' ? 'bg-gray-700' : ''}`} href='#'>Autos</Link>
           <Link className={`p-4 px-6 hover:bg-gray-900 transition-colors ${path === '/usuarios' ? 'bg-gray-700' : ''}`} href='#'>Usuarios</Link>
-          <Link onClick={closeSession} className='p-4 px-6 hover:bg-red-700/80 transition-colors' href='#'>Cerrar sesión</Link>
+          <p onClick={closeSession} className='p-4 px-6 h cursor-pointer hover:bg-red-700/80 transition-colors'>Cerrar sesión</p>
         </nav>
       </aside>
 

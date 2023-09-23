@@ -10,6 +10,7 @@ import { createCar } from '@/services/api'
 import useCarsStore from '@/hooks/useCarsStore'
 import { objectHasEmptyValues } from '@/utils/functions'
 import toast from 'react-hot-toast'
+import Input from '../Input'
 
 export default function CreateCar () {
   const { open, handleClose, handleOpen } = useDisclosure()
@@ -66,7 +67,7 @@ export default function CreateCar () {
                   carInputs.map((input, index) => (
                     <div key={index} className='flex flex-col gap-1'>
                       <label className='text-white'>{input.placeholder}</label>
-                      <input value={input.value} required className='transition-all duration-300 ring-2 focus:ring-blue-600 hover:ring-blue-400 outline-none p-2 rounded' type={input.type} name={input.name} placeholder={input.placeholder} />
+                      <Input value={input.value} required className='p-2' type={input.type} name={input.name} placeholder={input.placeholder} />
                     </div>
                   ))
                 }

@@ -7,11 +7,11 @@ export function middleware (request) {
 
   if (!token && path === '/login') return NextResponse.next()
   if (token && path === '/login') return redirect('/panel')
-  if (!token && path === '/panel') return redirect('/login')
+  if (!token && path.starsWith('/panel')) return redirect('/login')
 
   NextResponse.next()
 }
 
 export const config = {
-  matcher: ['/login', '/panel']
+  matcher: ['/login', '/panel/:path*']
 }

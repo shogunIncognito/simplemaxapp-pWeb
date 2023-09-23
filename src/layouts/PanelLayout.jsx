@@ -1,4 +1,5 @@
 import sideImage from '@/assets/maxautoslogoblanco.png'
+import { panelLinks } from '@/helpers/inputs'
 import useDisclosure from '@/hooks/useDisclosure'
 import { CloseIcon, MenuIcon } from '@/libs/Icons'
 import { deleteCookie, getCookie } from 'cookies-next'
@@ -44,8 +45,11 @@ export default function PanelLayout ({ children }) {
           <Image src={sideImage} width={180} alt='sideimage' className='m-auto my-0 object-cover h-auto' />
           <nav className='flex flex-col'>
             <Link className='p-4 px-6 hover:bg-gray-900 transition-color' href='/'>Volver a pagina inicial</Link>
-            <Link className={`p-4 px-6 hover:bg-gray-900 transition-colors ${path === '/panel' ? 'bg-gray-700' : ''}`} href='/panel'>Autos</Link>
-            <Link className={`p-4 px-6 hover:bg-gray-900 transition-colors ${path === '/usuarios' ? 'bg-gray-700' : ''}`} href='#'>Usuarios</Link>
+            {
+              panelLinks.map((link, index) => (
+                <Link key={index} className={`p-4 px-6 hover:bg-gray-900 transition-colors ${path === link.href ? 'bg-gray-700' : ''}`} href={link.href}>{link.text}</Link>
+              ))
+            }
             <p onClick={closeSession} className='p-4 px-6 cursor-pointer hover:bg-gray-900 transition-colors'>Cerrar sesión</p>
           </nav>
         </aside>
@@ -56,13 +60,16 @@ export default function PanelLayout ({ children }) {
         <Image src={sideImage} width={170} height={200} alt='sideimage' className='m-auto h-auto my-0 object-cover' />
         <nav className='flex flex-col'>
           <Link className='p-4 px-6 hover:bg-gray-900 transition-color' href='/'>Volver a pagina inicial</Link>
-          <Link className={`p-4 px-6 hover:bg-gray-900 transition-colors ${path === '/panel' ? 'bg-gray-700' : ''}`} href='#'>Autos</Link>
-          <Link className={`p-4 px-6 hover:bg-gray-900 transition-colors ${path === '/usuarios' ? 'bg-gray-700' : ''}`} href='#'>Usuarios</Link>
+          {
+            panelLinks.map((link, index) => (
+              <Link key={index} className={`p-4 px-6 hover:bg-gray-900 transition-colors ${path === link.href ? 'bg-gray-700' : ''}`} href={link.href}>{link.text}</Link>
+            ))
+          }
           <p onClick={closeSession} className='p-4 px-6 h cursor-pointer hover:bg-red-700/80 transition-colors'>Cerrar sesión</p>
         </nav>
       </aside>
 
-      <section className='md:w-10/12 w-full md:h-full h-[92%] bg-slate-50'>
+      <section className='md:w-10/12 w-full md:h-full h-[92%] bg-neutral-800 text-white'>
         {children}
       </section>
     </main>

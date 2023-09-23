@@ -9,6 +9,7 @@ import { updateCar } from '@/services/api'
 import useCarsStore from '@/hooks/useCarsStore'
 import toast from 'react-hot-toast'
 import { objectHasEmptyValues } from '@/utils/functions'
+import Input from '../Input'
 
 export default function UpdateCar ({ selectedCar, setSelectedCar }) {
   const [image, setImage] = useState(selectedCar.image)
@@ -63,7 +64,7 @@ export default function UpdateCar ({ selectedCar, setSelectedCar }) {
           {/* propiedad value del input es mientras el desarrollo de la app, quitar cuando se termine */}
           {
               carInputs.map((input, index) => (
-                <input onChange={handleChange} value={values[input.name]} key={index} required className='transition-all duration-300 ring-2 focus:ring-blue-600 hover:ring-blue-400 outline-none p-2 rounded' type={input.type} name={input.name} placeholder={input.placeholder} />
+                <Input onChange={handleChange} value={values[input.name]} key={index} required className='transition-all duration-300 ring-2 focus:ring-blue-600 hover:ring-blue-400 outline-none p-2 rounded' type={input.type} name={input.name} placeholder={input.placeholder} />
               ))
             }
         </div>

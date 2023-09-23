@@ -25,7 +25,7 @@ export default function Layout ({ children }) {
     )
   }
 
-  if (path === '/panel') {
+  if (path.startsWith('/panel')) {
     return (
       <PanelLayout>
         {children}

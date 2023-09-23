@@ -9,6 +9,7 @@ import { login } from '@/services/api'
 import { useRouter } from 'next/navigation'
 import { deleteCookie } from 'cookies-next'
 import toast from 'react-hot-toast'
+import Input from '@/components/Input'
 
 export default function page () {
   const router = useRouter()
@@ -54,11 +55,11 @@ export default function page () {
           <Image className='self-center object-cover h-auto' alt='loginLogo' src={Logo} width={170} height={120} />
           <div className='flex flex-col gap-1'>
             <label className='text-md opacity-70' htmlFor='username'>Usuario</label>
-            <input value={values.username} onChange={handleChange} className='py-1 font-medium px-2 ring-2 rounded outline-none hover:ring-blue-400 focus:ring-blue-600 transition-all duration-300' id='username' type='text' name='username' />
+            <Input value={values.username} onChange={handleChange} id='username' type='text' name='username' />
           </div>
           <div className='flex flex-col gap-1'>
             <label className='text-md opacity-70' htmlFor='password'>Contraseña</label>
-            <input value={values.password} onChange={handleChange} className='py-1 font-medium px-2 ring-2 rounded outline-none hover:ring-blue-400 focus:ring-blue-600 transition-all duration-300' id='password' type='password' name='password' />
+            <Input value={values.password} onChange={handleChange} id='password' type='password' name='password' />
           </div>
           <Button disabled={isBotonDisabled || loading} className='mt-3 disabled:bg-opacity-70 disabled:cursor-not-allowed'>{loading ? '...' : 'Iniciar sesión'}</Button>
         </form>

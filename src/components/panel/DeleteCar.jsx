@@ -1,18 +1,26 @@
+'use client'
+
 import { deleteCar as deleteCarApi } from '@/services/api'
 import Button from '../Button'
 import ModalBackdrop from '../ModalBackdrop'
 import useCarsStore from '@/hooks/useCarsStore'
+import toast from 'react-hot-toast'
+import { useState } from 'react'
 
 export default function DeleteCar ({ carToDelete, setCarToDelete }) {
   const { deleteCar } = useCarsStore()
+  const [loading, setLoading] = useState(false)
 
   const handleDeleteCar = () => {
+    setLoading(true)
     deleteCarApi(carToDelete.id)
       .then(() => {
         deleteCar(carToDelete.id)
+        toast.success('Auto eliminado')
         setCarToDelete(null)
       })
-      .catch(err => console.log(err))
+      .catch(err => toast.error(err.message))
+      .finally(() => setLoading(false))
   }
 
   return (
@@ -25,7 +33,7 @@ export default function DeleteCar ({ carToDelete, setCarToDelete }) {
             onClick={handleDeleteCar}
             className='w-full bg-red-500 hover:bg-red-700 font-bold'
           >
-            Eliminar
+            {loading ? '...' : 'Eliminar'}
           </Button>
           <Button
             onClick={() => setCarToDelete(null)}

@@ -8,23 +8,33 @@ import useDisclosure from '@/hooks/useDisclosure'
 import Image from 'next/image'
 import { createCar } from '@/services/api'
 import useCarsStore from '@/hooks/useCarsStore'
+import { objectHasEmptyValues } from '@/utils/functions'
+import toast from 'react-hot-toast'
 
 export default function CreateCar () {
   const { open, handleClose, handleOpen } = useDisclosure()
   const [image, setImage] = useState(null)
+  const [loading, setLoading] = useState(false)
   const { addCar } = useCarsStore()
 
   const handleSubmit = (e) => {
     e.preventDefault()
+
     const data = Object.fromEntries(new FormData(e.target))
 
+    if (!image) return toast.error('Debe agregar una imagen')
+    if (objectHasEmptyValues(data)) return toast.error('Todos los campos son obligatorios')
+
+    setLoading(true)
     createCar({ ...data, image })
       .then(car => {
         handleClose()
         setImage(null)
         addCar(car)
+        toast.success('Auto agregado')
       })
-      .catch(err => console.log(err))
+      .catch(err => toast.error(err.message))
+      .finally(() => setLoading(false))
   }
 
   const handleImage = (e) => {
@@ -67,12 +77,11 @@ export default function CreateCar () {
                   Agregar imagen
                   <input hidden type='file' onChange={handleImage} accept='image/*' />
                 </label>
-                {/* agregar required al input de las imágenes  */}
                 {image && <Image className='self-center rounded h-auto w-auto min-w-[150px] object-cover min-h-[150px] max-w-[120px] max-h-[120px]' alt='carImage' src={image} width={120} height={120} />}
               </div>
               <div className='flex gap-2 max-w-full items-center justify-center'>
-                <Button type='submit' className='mt-7 w-40'>Agregar</Button>
-                <Button onClick={handleClose} className='mt-7 w-40 bg-red-500 hover:bg-red-700'>Cancelar</Button>
+                <Button disabled={loading} type='submit' className='mt-7 w-40 disabled:bg-opacity-70 disabled:cursor-not-allowed'>{loading ? '...' : 'Agregar'}</Button>
+                <Button onClick={handleClose} className='mt-7 w-40 bg-red-500 hover:bg-red-700'>Cerrar</Button>
               </div>
             </form>
           </div>

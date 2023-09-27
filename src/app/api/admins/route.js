@@ -4,7 +4,7 @@ import bcrypt from 'bcrypt'
 
 export async function GET () {
   try {
-    const admins = await prisma.admin.findMany()
+    const admins = await prisma.admin.findMany({ select: { id: true, name: true, cedula: true } })
     return NextResponse.json(admins)
   } catch (error) {
     return NextResponse.json({ message: error.message }, { status: 500 })

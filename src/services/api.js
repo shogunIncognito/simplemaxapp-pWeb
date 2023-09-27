@@ -32,3 +32,18 @@ export const deleteCar = async (id) => {
   const response = await api.delete(`/cars/${id}`)
   return response.data
 }
+
+export const getUsers = async () => {
+  const response = await api.get('/admins')
+  return response.data
+}
+
+export const createUser = async (values) => {
+  const response = await api.post('/admins', values)
+  return response.data
+}
+
+export const deleteUser = async (id) => {
+  const response = await api.delete(`/admins/${id}`)
+  return response.data
+}

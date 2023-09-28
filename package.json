@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "preview": "npm install && npm run build && npm run start"
   },
   "dependencies": {
     "@prisma/client": "5.3.0",

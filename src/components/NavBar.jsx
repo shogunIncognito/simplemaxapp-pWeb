@@ -24,8 +24,8 @@ export default function NavBar () {
   }, [])
 
   return (
-    <header ref={nav} className='bg-slate-50 top-0 sticky duration-300 ease-in-out transition-all shadow-xl z-50 p-4 flex w-full items-center'>
-      <Link href='/' className='absolute'>
+    <header ref={nav} className='bg-slate-50 shadow-xl flex-col md:flex-row top-0 sticky duration-300 ease-in-out transition-all z-50 p-4 flex w-full items-center'>
+      <Link href='/' className='md:absolute'>
         <MaxAutosIcon />
       </Link>
       <nav className='m-auto w-full flex justify-center items-center'>
@@ -45,7 +45,7 @@ export default function NavBar () {
         </ul>
       </nav>
       <Link href='/login' className='absolute right-0'>
-        <LoginIcon />
+        <LoginIcon className='mr-4' />
       </Link>
     </header>
   )

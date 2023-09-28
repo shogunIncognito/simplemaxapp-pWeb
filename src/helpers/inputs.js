@@ -26,14 +26,14 @@ export const carInputs = [
   {
     type: 'number',
     name: 'kilometers',
-    placeholder: 'Color',
+    placeholder: 'Kilometros',
     value: 4323
   },
   {
     type: 'string',
-    name: 'kilometers',
-    placeholder: 'Color',
-    value: 4323
+    name: 'description',
+    placeholder: 'Descripcion',
+    value: "Carro ultra veloz para toda la familia"
   },
   {
     type: 'number',

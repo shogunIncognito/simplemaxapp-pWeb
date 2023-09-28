@@ -33,7 +33,7 @@ export const carInputs = [
     type: 'string',
     name: 'description',
     placeholder: 'Descripcion',
-    value: "Carro ultra veloz para toda la familia"
+    value: 'Carro ultra veloz para toda la familia'
   },
   {
     type: 'number',

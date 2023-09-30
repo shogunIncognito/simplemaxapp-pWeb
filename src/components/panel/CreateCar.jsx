@@ -57,6 +57,7 @@ export default function CreateCar () {
       <button onClick={handleOpen} className='transition-colors bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded'>
         Agregar
       </button>
+
       {open && (
         <ModalBackdrop>
           <h2 className='text-2xl text-white mb-10'>Crear auto</h2>
@@ -86,6 +87,7 @@ export default function CreateCar () {
           </form>
         </ModalBackdrop>
       )}
+
     </>
   )
 }

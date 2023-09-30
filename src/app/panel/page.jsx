@@ -16,9 +16,11 @@ export default function page () {
   return (
     <section className='bg-neutral-800 w-full h-full p-5'>
       <h2 className='text-white md:hidden font-bold opacity-75 text-3xl text-center'>Autos</h2>
+
       <div className='my-4 flex-col'>
         <CreateCar />
       </div>
+
       <div className='relative overflow-auto max-h-[90%] md:max-h-[88vh]'>
         <table className='w-full max-w-full overflow-x-auto text-sm text-center text-gray-500 dark:text-gray-400'>
           <thead className='text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400'>
@@ -79,6 +81,7 @@ export default function page () {
           </tbody>
         </table>
       </div>
+
       {selectedCar && <UpdateCar selectedCar={selectedCar} setSelectedCar={setSelectedCar} />}
       {carToDelete && <DeleteCar carToDelete={carToDelete} setCarToDelete={setCarToDelete} />}
     </section>

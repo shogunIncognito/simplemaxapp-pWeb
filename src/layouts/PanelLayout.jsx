@@ -30,7 +30,7 @@ export default function PanelLayout ({ children }) {
   }, [])
 
   return (
-    <main className='md:flex h-screen w-full'>
+    <main className='md:flex h-screen w-full bg-slate-800'>
       {/* Mobile Layout */}
       <header className='relative h-[8%] md:hidden text-white bg-slate-800 flex justify-center items-center w-full'>
         <div onClick={handleOpen} className='absolute left-0'>
@@ -47,7 +47,7 @@ export default function PanelLayout ({ children }) {
             <Link className='p-4 px-6 hover:bg-gray-900 transition-color' href='/'>Volver a pagina inicial</Link>
             {
               panelLinks.map((link, index) => (
-                <Link key={index} className={`p-4 px-6 hover:bg-gray-900 transition-colors ${path === link.href ? 'bg-gray-700' : ''}`} href={link.href}>{link.text}</Link>
+                <Link onClick={handleClose} key={index} className={`p-4 px-6 hover:bg-gray-900 transition-colors ${path === link.href ? 'bg-gray-700' : ''}`} href={link.href}>{link.text}</Link>
               ))
             }
             <p onClick={closeSession} className='p-4 px-6 cursor-pointer hover:bg-gray-900 transition-colors'>Cerrar sesión</p>
@@ -56,7 +56,7 @@ export default function PanelLayout ({ children }) {
       )}
 
       {/* Desktop Layout */}
-      <aside className='w-1/6 hidden md:block h-screen shadow-xl bg-slate-800 text-white'>
+      <aside className='w-1/6 hidden md:block h-screen shadow-xl text-white'>
         <Image src={sideImage} width={170} height={200} alt='sideimage' className='m-auto h-auto my-0 object-cover' />
         <nav className='flex flex-col'>
           <Link className='p-4 px-6 hover:bg-gray-900 transition-color' href='/'>Volver a pagina inicial</Link>
@@ -69,7 +69,7 @@ export default function PanelLayout ({ children }) {
         </nav>
       </aside>
 
-      <section className='md:w-10/12 w-full md:h-full h-[92%] bg-neutral-800 text-white'>
+      <section className='md:w-10/12 w-full md:h-full h-[92%] overflow-hidden bg-neutral-800 text-white'>
         {children}
       </section>
     </main>

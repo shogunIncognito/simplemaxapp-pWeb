@@ -40,8 +40,8 @@ export default function page () {
 
   return (
     <>
-      <section className='w-full flex justify-center'>
-        <form onSubmit={handleSubmit} className='flex flex-col gap-3 bg-slate-900 mt-10 p-5 rounded'>
+      <section className='w-full h-[40%] flex justify-center'>
+        <form onSubmit={handleSubmit} className='flex flex-col gap-3 bg-slate-900 mt-4 p-4 rounded'>
           <div className='w-full flex flex-col gap-1'>
             <label className='opacity-80 font-bold' htmlFor='username'>Nombre</label>
             <Input required className='p-2' name='name' type='text' id='username' placeholder='Pedro' />
@@ -58,8 +58,8 @@ export default function page () {
         </form>
       </section>
 
-      <div className='p-2'>
-        <table className='w-full mt-10 max-w-full overflow-x-auto text-sm text-center text-gray-500 dark:text-gray-400'>
+      <div className='mt-10 max-h-[50%] overflow-auto'>
+        <table className='w-full max-w-full overflow-x-auto text-sm text-center text-gray-500 dark:text-gray-400'>
           <thead className='text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400'>
             <tr>
               <th scope='col' className='px-6 py-3'>

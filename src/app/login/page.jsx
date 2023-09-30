@@ -23,12 +23,12 @@ export default function page () {
     deleteCookie('token')
   }, [])
 
-  const isBotonDisabled = !values.username || !values.password
+  const isButtonDisabled = !values.username || !values.password
 
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    if (isBotonDisabled) return toast.error('Hay campos vacíos')
+    if (isButtonDisabled) return toast.error('Hay campos vacíos')
 
     setLoading(true)
     login(values)
@@ -61,7 +61,7 @@ export default function page () {
             <label className='text-md opacity-70' htmlFor='password'>Contraseña</label>
             <Input value={values.password} onChange={handleChange} id='password' type='password' name='password' />
           </div>
-          <Button disabled={isBotonDisabled || loading} className='mt-3 disabled:bg-opacity-70 disabled:cursor-not-allowed'>{loading ? '...' : 'Iniciar sesión'}</Button>
+          <Button disabled={isButtonDisabled || loading} className='mt-3 disabled:bg-opacity-70 disabled:cursor-not-allowed'>{loading ? '...' : 'Iniciar sesión'}</Button>
         </form>
       </section>
       <section className='h-screen w-full md:w-1/2 lg:w-2/3'>

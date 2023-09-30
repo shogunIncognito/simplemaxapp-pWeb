@@ -3,6 +3,7 @@
 import Button from '@/components/Button'
 import Input from '@/components/Input'
 import { createUser, getUsers } from '@/services/api'
+import { objectHasEmptyValues } from '@/utils/functions'
 import { useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
 
@@ -20,8 +21,10 @@ export default function page () {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+
     const data = Object.fromEntries(new FormData(e.target))
-    console.log(data)
+    if (objectHasEmptyValues(data)) return toast.error('Todos los campos son obligatorios')
+
     createUser(data)
       .then(res => {
         setUsers([...users, res])
@@ -48,8 +51,8 @@ export default function page () {
             <Input required className='p-2' name='password' type='password' id='password' placeholder='contraseña' />
           </div>
           <div className='w-full flex flex-col gap-1'>
-            <label className='opacity-80 font-bold' htmlFor='cedula'>Contraseña</label>
-            <Input required className='p-2' name='cedula' type='number' id='cedula' placeholder='123456789' />
+            <label className='opacity-80 font-bold' htmlFor='cedula'>Cedula</label>
+            <Input minLength='10' required className='p-2' name='cedula' type='number' id='cedula' placeholder='123456789' />
           </div>
           <Button className='py-2 mt-2'>Crear</Button>
         </form>

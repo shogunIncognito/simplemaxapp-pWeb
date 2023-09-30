@@ -21,13 +21,13 @@ export default function CreateCar () {
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    const data = Object.fromEntries(new FormData(e.target))
+    const { description, ...restOfForm } = Object.fromEntries(new FormData(e.target))
 
     if (!image) return toast.error('Debe agregar una imagen')
-    if (objectHasEmptyValues(data)) return toast.error('Todos los campos son obligatorios')
+    if (objectHasEmptyValues(restOfForm)) return toast.error('Todos los campos son obligatorios')
 
     setLoading(true)
-    createCar({ ...data, image })
+    createCar({ ...restOfForm, description, image })
       .then(car => {
         handleClose()
         setImage(null)
@@ -67,7 +67,7 @@ export default function CreateCar () {
                   carInputs.map((input, index) => (
                     <div key={index} className='flex flex-col gap-1'>
                       <label className='text-white'>{input.placeholder}</label>
-                      <Input value={input.value} required className='p-2' type={input.type} name={input.name} placeholder={input.placeholder} />
+                      <Input value={input.value} required={input.name !== 'description'} className='p-2' type={input.type} name={input.name} placeholder={input.placeholder} />
                     </div>
                   ))
                 }

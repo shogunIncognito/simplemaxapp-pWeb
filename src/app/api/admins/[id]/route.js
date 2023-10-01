@@ -35,8 +35,6 @@ export async function DELETE (request, { params }) {
     const { id } = params
     const deletedAdmin = await prisma.admin.delete({ where: { id: Number(id) } })
 
-    console.log(deletedAdmin)
-
     return NextResponse.json(deletedAdmin)
   } catch (error) {
     if (error.code === 'P2025') return NextResponse.json({ message: 'Admin not found' }, { status: 404 })

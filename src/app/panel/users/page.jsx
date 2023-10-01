@@ -2,6 +2,8 @@
 
 import Button from '@/components/Button'
 import Input from '@/components/Input'
+import DeleteUser from '@/components/panel/DeleteUser'
+import useSessionStore from '@/hooks/useSessionStore'
 import { createUser, getUsers } from '@/services/api'
 import { objectHasEmptyValues } from '@/utils/functions'
 import { useEffect, useState } from 'react'
@@ -10,6 +12,7 @@ import toast from 'react-hot-toast'
 export default function page () {
   const [users, setUsers] = useState([])
   const [loading, setLoading] = useState(true)
+  const { session } = useSessionStore()
 
   useEffect(() => {
     setLoading(true)
@@ -38,13 +41,15 @@ export default function page () {
       })
   }
 
+  const filteredUsers = session ? users.filter(user => user.id !== session.id) : users
+
   return (
     <>
       <section className='w-full h-[40%] flex justify-center'>
         <form onSubmit={handleSubmit} className='flex flex-col gap-3 bg-slate-900 mt-4 p-4 rounded'>
           <div className='w-full flex flex-col gap-1'>
-            <label className='opacity-80 font-bold' htmlFor='username'>Nombre</label>
-            <Input required className='p-2' name='name' type='text' id='username' placeholder='Pedro' />
+            <label className='opacity-80 font-bold' htmlFor='name'>Nombre</label>
+            <Input required className='p-2' name='name' type='text' id='name' placeholder='Pedro' />
           </div>
           <div className='w-full flex flex-col gap-1'>
             <label className='opacity-80 font-bold' htmlFor='password'>Contraseña</label>
@@ -86,7 +91,7 @@ export default function page () {
               </tr>
             )}
 
-            {users.map(user => (
+            {filteredUsers.map(user => (
               <tr key={user.id} className='bg-white border-b dark:bg-gray-800 dark:border-gray-700'>
                 <td className='capitalize px-6 py-4'>
                   {user.id}
@@ -98,9 +103,7 @@ export default function page () {
                   {user.cedula}
                 </th>
                 <td className='px-6 py-4 h-full w-1/6 m-auto'>
-                  <Button onClick={() => {}} className='transition-colors w-full mt-1 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded'>
-                    Eliminar
-                  </Button>
+                  <DeleteUser setUsers={setUsers} user={user} />
                 </td>
               </tr>
             ))}

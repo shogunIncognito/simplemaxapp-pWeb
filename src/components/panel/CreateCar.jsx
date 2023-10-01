@@ -23,7 +23,6 @@ export default function CreateCar () {
 
     const { description, ...restOfForm } = Object.fromEntries(new FormData(e.target))
 
-    console.log(restOfForm)
     if (!image) return toast.error('Debe agregar una imagen')
     if (objectHasEmptyValues(restOfForm)) return toast.error('Todos los campos son obligatorios')
 

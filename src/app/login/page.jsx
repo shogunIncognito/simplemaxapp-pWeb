@@ -10,24 +10,26 @@ import { useRouter } from 'next/navigation'
 import { deleteCookie } from 'cookies-next'
 import toast from 'react-hot-toast'
 import Input from '@/components/Input'
+import useSessionStore from '@/hooks/useSessionStore'
 
 export default function page () {
   const router = useRouter()
+  const { setSession } = useSessionStore()
   const [loading, setLoading] = useState(false)
   const [values, setValues] = useState({
-    username: '',
+    name: '',
     password: ''
   })
 
   useEffect(() => {
     deleteCookie('token')
+    window.localStorage.removeItem('session')
   }, [])
 
-  const isButtonDisabled = !values.username || !values.password
+  const isButtonDisabled = !values.name || !values.password
 
   const handleSubmit = (e) => {
     e.preventDefault()
-
     if (isButtonDisabled) return toast.error('Hay campos vacíos')
 
     setLoading(true)
@@ -35,8 +37,10 @@ export default function page () {
       .then(res => {
         toast.success('Bienvenido')
         router.replace('/panel')
+        window.localStorage.setItem('session', JSON.stringify(res.session))
+        setSession(res.session)
       })
-      .catch(err => console.log(err))
+      .catch(err => toast.error(err.response.data.message))
       .finally(() => setLoading(false))
   }
 
@@ -54,8 +58,8 @@ export default function page () {
         <form onSubmit={handleSubmit} className='w-3/4 lg:w-1/2 relative rounded-md font-bold gap-4 p-6 py-10 mb-10 flex flex-col'>
           <Image className='self-center object-cover h-auto' alt='loginLogo' src={Logo} width={170} height={120} />
           <div className='flex flex-col gap-1'>
-            <label className='text-md opacity-70' htmlFor='username'>Usuario</label>
-            <Input value={values.username} onChange={handleChange} id='username' type='text' name='username' />
+            <label className='text-md opacity-70' htmlFor='name'>Usuario</label>
+            <Input value={values.name} onChange={handleChange} id='name' type='text' name='name' />
           </div>
           <div className='flex flex-col gap-1'>
             <label className='text-md opacity-70' htmlFor='password'>Contraseña</label>

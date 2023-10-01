@@ -19,7 +19,11 @@ export async function POST (request) {
     if (!passwordMatch) return NextResponse.json({ message: 'Password does not match' }, { status: 400 })
 
     return NextResponse.json({
-      token: crypto.randomUUID()
+      token: crypto.randomUUID(),
+      session: {
+        id: existAdmin.id,
+        name: existAdmin.name
+      }
     })
   } catch (error) {
     return NextResponse.json({ message: error.message }, { status: 500 })

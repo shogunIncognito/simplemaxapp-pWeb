@@ -22,7 +22,7 @@ export default function AddBrand () {
         reFetch()
         setBrand('')
       })
-      .catch(err => console.log(err))
+      .catch(err => toast.error(err.message))
       .finally(() => setLoading(false))
   }
 
@@ -36,7 +36,7 @@ export default function AddBrand () {
       <Button className='font-bold py-2 px-4' onClick={handleOpen}>Agregar marca</Button>
 
       {open && (
-        <ModalBackdrop className='gap-4 justify-center items-center p-8 md:w-2/12'>
+        <ModalBackdrop className='gap-4 justify-center items-center p-8 md:w-auto'>
           <h1 className='text-xl font-bold opacity-80'>Añadir marca nueva</h1>
           <form className='gap-4 justify-center items-center flex flex-col'>
             <div>

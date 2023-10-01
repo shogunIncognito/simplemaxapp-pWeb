@@ -9,10 +9,10 @@ import useCarsStore from '@/hooks/useCarsStore'
 import { useEffect } from 'react'
 
 export default function Layout ({ children }) {
-  const { fetchCars } = useCarsStore()
+  const { reFetch } = useCarsStore()
   // al iniciar la app, se cargan los autos en el store
   useEffect(() => {
-    fetchCars()
+    reFetch()
   }, [])
 
   const path = usePathname()

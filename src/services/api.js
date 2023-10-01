@@ -47,3 +47,13 @@ export const deleteUser = async (id) => {
   const response = await api.delete(`/admins/${id}`)
   return response.data
 }
+
+export const getBrands = async () => {
+  const response = await api.get('/brands')
+  return response.data
+}
+
+export const createBrand = async (brand) => {
+  const response = await api.post('/brands', { name: brand })
+  return response.data
+}

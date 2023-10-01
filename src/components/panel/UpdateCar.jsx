@@ -14,7 +14,7 @@ import Input from '../Input'
 export default function UpdateCar ({ selectedCar, setSelectedCar }) {
   const [image, setImage] = useState(selectedCar.image)
   const [loading, setLoading] = useState(false)
-  const { fetchCars } = useCarsStore()
+  const { reFetch, brands } = useCarsStore()
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -26,7 +26,7 @@ export default function UpdateCar ({ selectedCar, setSelectedCar }) {
     setLoading(true)
     updateCar(selectedCar.id, { ...restOfForm, description, image })
       .then(() => {
-        fetchCars()
+        reFetch()
         setSelectedCar(null)
         toast.success('Auto actualizado')
       })
@@ -53,6 +53,14 @@ export default function UpdateCar ({ selectedCar, setSelectedCar }) {
       <h2 className='text-2xl text-white mb-10'>Crear auto</h2>
       <form onSubmit={handleSubmit}>
         <div className='grid grid-cols-2 gap-3'>
+          <div className='flex flex-col gap-1'>
+            <label className='text-white'>Marca</label>
+            <select name='brand' id='brand' className='h-full text-gray-600 font-medium px-2 ring-2 rounded outline-none hover:ring-blue-400 focus:ring-blue-600 transition-all duration-300'>
+              {brands.map(brand => (
+                <option key={brand.id} value={brand.id}>{brand.name}</option>
+              ))}
+            </select>
+          </div>
           {
             carInputs.map((input, index) => (
               <div key={index} className='flex flex-col gap-1'>

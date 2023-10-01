@@ -7,6 +7,8 @@ import UpdateCar from '@/components/panel/UpdateCar'
 import { tableHeaders } from '@/helpers/inputs'
 import DeleteCar from '@/components/panel/DeleteCar'
 import useCarsStore from '@/hooks/useCarsStore'
+import AddBrand from '@/components/panel/AddBrand'
+import Button from '@/components/Button'
 
 export default function page () {
   const { cars, loading } = useCarsStore()
@@ -17,8 +19,9 @@ export default function page () {
     <section className='bg-neutral-800 w-full h-full p-5'>
       <h2 className='text-white md:hidden font-bold opacity-75 text-3xl text-center'>Autos</h2>
 
-      <div className='my-4 flex-col'>
+      <div className='my-4 flex items-start gap-2'>
         <CreateCar />
+        <AddBrand />
       </div>
 
       <div className='relative overflow-auto max-h-[90%] md:max-h-[88vh]'>
@@ -69,12 +72,12 @@ export default function page () {
                   <Image src={car.image} alt='carro' width={170} height={170} className='rounded-lg object-cover m-auto w-auto h-auto ring-2 max-w-[160px] max-h-[160px]' />
                 </td>
                 <td className='px-6 py-4 h-full m-auto'>
-                  <button onClick={() => setSelectedCar(car)} className='transition-colors w-full mb-1 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded'>
+                  <Button onClick={() => setSelectedCar(car)} className='w-full mb-1 bg-green-500 hover:bg-green-700 font-bold '>
                     Editar
-                  </button>
-                  <button onClick={() => setCarToDelete(car)} className='transition-colors w-full mt-1 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded'>
+                  </Button>
+                  <Button onClick={() => setCarToDelete(car)} className='w-full mt-1 bg-red-500 hover:bg-red-700 font-bold py-2 px-4'>
                     Eliminar
-                  </button>
+                  </Button>
                 </td>
               </tr>
             ))}

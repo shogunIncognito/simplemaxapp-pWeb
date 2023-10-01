@@ -1,12 +1,6 @@
 export const carInputs = [
   {
     type: 'text',
-    name: 'brand',
-    placeholder: 'Marca',
-    value: 'Toyota'
-  },
-  {
-    type: 'text',
     name: 'model',
     placeholder: 'Modelo',
     value: 'Corolla'

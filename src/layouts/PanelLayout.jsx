@@ -65,8 +65,8 @@ export default function PanelLayout ({ children }) {
         <Image src={sideImage} width={170} height={200} alt='sideimage' className='pointer-events-none m-auto h-auto my-0 object-cover' />
 
         <div className='flex items-center gap-2 ml-5 mb-5'>
-          <UserIcon className='w-12 bg-slate-600 rounded-full' />
-          <h2 className='opacity-80'>{session?.name}</h2>
+          <UserIcon className='w-10 bg-slate-600 rounded-full' />
+          <h2 className='opacity-80 capitalize'>{session?.name}</h2>
         </div>
 
         <nav className='flex flex-col'>
@@ -79,7 +79,7 @@ export default function PanelLayout ({ children }) {
           <p onClick={closeSession} className='p-4 px-6 h cursor-pointer hover:bg-red-700/80 transition-colors'>Cerrar sesión</p>
         </nav>
 
-        <div className='min-h-fit absolute bottom-5 self-center'>
+        <div className='min-h-fit absolute pointer-events-none bottom-5 self-center'>
           <p className='text-center text-xs opacity-50'>Max<span className='text-blue-500'>Autos</span></p>
         </div>
       </aside>

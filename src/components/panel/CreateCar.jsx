@@ -66,8 +66,6 @@ export default function CreateCar () {
           <h2 className='text-2xl text-white mb-10'>Crear auto</h2>
           <form onSubmit={handleSubmit}>
             <div className='grid grid-cols-2 gap-3'>
-              {/* propiedad value del input es mientras el desarrollo de la app, quitar cuando se termine */}
-
               <div className='flex flex-col gap-1'>
                 <label className='text-white'>Marca</label>
                 <select name='brandId' id='brandId' className='h-full text-gray-600 font-medium px-2 ring-2 rounded outline-none hover:ring-blue-400 focus:ring-blue-600 transition-all duration-300'>

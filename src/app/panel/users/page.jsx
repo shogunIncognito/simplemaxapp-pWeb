@@ -45,7 +45,7 @@ export default function page () {
 
   return (
     <>
-      <section className='w-full h-[40%] flex justify-center'>
+      <section className='w-full h-auto flex justify-center'>
         <form onSubmit={handleSubmit} className='flex flex-col gap-3 bg-slate-900 mt-4 p-4 rounded'>
           <div className='w-full flex flex-col gap-1'>
             <label className='opacity-80 font-bold' htmlFor='name'>Nombre</label>

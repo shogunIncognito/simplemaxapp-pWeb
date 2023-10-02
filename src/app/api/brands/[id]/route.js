@@ -3,7 +3,12 @@ import { NextResponse } from 'next/server'
 
 export async function GET (request, { params }) {
   try {
-    const brand = await prisma.brands.findUnique({ where: { id: Number(params.id) } })
+    const brand = await prisma.brands.findUnique({
+      where: { id: Number(params.id) },
+      include: {
+        cars: true
+      }
+    })
     if (!brand) return NextResponse.json({ message: 'Brand not found' }, { status: 404 })
 
     return NextResponse.json(brand)

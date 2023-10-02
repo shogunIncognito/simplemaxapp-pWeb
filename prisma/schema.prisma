@@ -28,7 +28,7 @@ model Car {
   year String
   description String? @default("")
   kilometers String
-  image String @db.LongText
+  image String? @db.LongText
   color String
   price String
   createdAt DateTime @default(now())

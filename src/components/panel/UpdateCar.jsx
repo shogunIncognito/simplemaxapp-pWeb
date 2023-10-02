@@ -10,13 +10,18 @@ import useCarsStore from '@/hooks/useCarsStore'
 import toast from 'react-hot-toast'
 import { objectHasEmptyValues } from '@/utils/functions'
 import Input from '../Input'
+import { uploadCarImage } from '@/services/firebase'
 
 export default function UpdateCar ({ selectedCar, setSelectedCar }) {
+  const { reFetch, brands } = useCarsStore()
   const [values, setValues] = useState(selectedCar)
   const [loading, setLoading] = useState(false)
-  const { reFetch, brands } = useCarsStore()
+  const [images, setImages] = useState({
+    image: null,
+    previewImage: selectedCar.image
+  })
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
 
     // el id no se actualiza
@@ -25,29 +30,38 @@ export default function UpdateCar ({ selectedCar, setSelectedCar }) {
     if (!values.image) return toast.error('Debe agregar una imagen')
     if (objectHasEmptyValues(restOfValues)) return toast.error('Todos los campos son obligatorios')
 
-    setLoading(true)
-    updateCar(selectedCar.id, { ...restOfValues, description })
-      .then(() => {
-        reFetch()
-        setSelectedCar(null)
-        toast.success('Auto actualizado')
-      })
-      .catch(err => toast.error(err.message))
-      .finally(() => setLoading(false))
+    try {
+      setLoading(true)
+
+      const image = images.image ? await handleUpdateImage(selectedCar.id) : images.previewImage
+
+      updateCar(selectedCar.id, { ...restOfValues, description, image })
+        .then(() => {
+          reFetch()
+          setSelectedCar(null)
+          toast.success('Auto actualizado')
+        })
+        .finally(() => setLoading(false))
+    } catch (error) {
+
+    }
   }
 
   const handleImage = (e) => {
     const file = e.target.files[0]
+    if (!file) return
+    setImages(prev => ({ ...prev, image: file }))
 
-    if (file) {
-      const reader = new global.FileReader()
-
-      reader.onloadend = () => {
-        setValues({ ...values, image: reader.result })
-      }
-
-      reader.readAsDataURL(file)
+    // eslint-disable-next-line no-undef
+    const reader = new FileReader()
+    reader.readAsDataURL(file)
+    reader.onloadend = () => {
+      setImages(prev => ({ ...prev, previewImage: reader.result }))
     }
+  }
+
+  const handleUpdateImage = async (carId) => {
+    return await uploadCarImage(images.image, carId)
   }
 
   const handleChange = (e) => {
@@ -95,7 +109,7 @@ export default function UpdateCar ({ selectedCar, setSelectedCar }) {
             Agregar imagen
             <input hidden type='file' onChange={handleImage} accept='image/*' />
           </label>
-          {values.image && <Image className='self-center rounded h-auto w-auto min-w-[150px] object-cover min-h-[150px] max-w-[120px] max-h-[120px]' alt='carImage' src={values.image} width={120} height={120} />}
+          {images.previewImage && <Image className='self-center rounded h-auto w-auto min-w-[150px] object-cover min-h-[150px] max-w-[120px] max-h-[120px]' alt='carImage' src={images.previewImage} width={120} height={120} />}
         </div>
         <div className='flex gap-2 max-w-full justify-center items-center'>
           <Button disabled={loading} type='submit' className='mt-7 w-40 bg-green-500 hover:bg-green-700 disabled:bg-opacity-70 disabled:cursor-not-allowed'>{loading ? '...' : 'Actualizar'}</Button>

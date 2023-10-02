@@ -7,7 +7,7 @@ import UpdateCar from '@/components/panel/UpdateCar'
 import { tableHeaders } from '@/helpers/inputs'
 import DeleteCar from '@/components/panel/DeleteCar'
 import useCarsStore from '@/hooks/useCarsStore'
-import AddBrand from '@/components/panel/AddBrand'
+import AddBrand from '@/components/panel/Brands'
 import Button from '@/components/Button'
 
 export default function page () {

@@ -29,16 +29,9 @@ export async function POST (request) {
       brandId: Number(body.brandId)
     }
 
-    const newCar = await prisma.car.create({ data: car })
+    const newCar = await prisma.car.create({ data: car, include: { brand: true } })
 
-    const newCarWithBrand = await prisma.car.findUnique({
-      where: { id: newCar.id },
-      include: {
-        brand: true
-      }
-    })
-
-    return NextResponse.json({ ...newCarWithBrand, brand: newCarWithBrand.brand.name })
+    return NextResponse.json({ ...newCar, brand: newCar.brand.name })
   } catch (error) {
     return NextResponse.json({ message: error.message }, { status: 500 })
   }

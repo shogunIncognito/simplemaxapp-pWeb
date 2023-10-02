@@ -6,52 +6,69 @@ import ModalBackdrop from '../ModalBackdrop'
 import { carInputs } from '@/helpers/inputs'
 import useDisclosure from '@/hooks/useDisclosure'
 import Image from 'next/image'
-import { createCar } from '@/services/api'
+import { createCar, updateCar } from '@/services/api'
 import useCarsStore from '@/hooks/useCarsStore'
 import { objectHasEmptyValues } from '@/utils/functions'
 import toast from 'react-hot-toast'
 import Input from '../Input'
+import { uploadCarImage } from '@/services/firebase'
 
 export default function CreateCar () {
   const { open, handleClose, handleOpen } = useDisclosure()
-  const [image, setImage] = useState(null)
+  const [images, setImages] = useState({
+    image: null,
+    previewImage: null
+  })
   const [loading, setLoading] = useState(false)
   const { addCar, brands } = useCarsStore()
 
-  const handleSubmit = (e) => {
+  const handleImage = (e) => {
+    const file = e.target.files[0]
+    if (!file) return
+
+    setImages(prev => ({ ...prev, image: file }))
+
+    // eslint-disable-next-line no-undef
+    const reader = new FileReader()
+    reader.readAsDataURL(file)
+    reader.onloadend = () => {
+      setImages(prev => ({ ...prev, previewImage: reader.result }))
+    }
+  }
+
+  const handleUpdateImage = async (carId) => {
+    setLoading(true)
+    const imgUrl = await uploadCarImage(images.image, carId)
+    setLoading(false)
+    return imgUrl
+  }
+
+  const handleSubmit = async (e) => {
     e.preventDefault()
 
     const { description, ...restOfForm } = Object.fromEntries(new FormData(e.target))
 
-    if (!image) return toast.error('Debe agregar una imagen')
+    if (!images.image) return toast.error('Debe agregar una imagen')
     if (objectHasEmptyValues(restOfForm)) return toast.error('Todos los campos son obligatorios')
 
-    setLoading(true)
-    createCar({ ...restOfForm, description, image })
-      .then(car => {
-        handleClose()
-        setImage(null)
-        addCar(car)
-        toast.success('Auto agregado')
+    try {
+      setLoading(true)
+      const newCar = await createCar({ ...restOfForm, description })
+      const uploadedCarImage = await handleUpdateImage(newCar.id)
+      const carWithImage = await updateCar(newCar.id, { image: uploadedCarImage })
+
+      setImages({
+        image: null,
+        previewImage: null
       })
-      .catch(err => {
-        toast.error(err.message)
-        console.log(err)
-      })
-      .finally(() => setLoading(false))
-  }
 
-  const handleImage = (e) => {
-    const file = e.target.files[0]
-
-    if (file) {
-      const reader = new global.FileReader()
-
-      reader.onloadend = () => {
-        setImage(reader.result)
-      }
-
-      reader.readAsDataURL(file)
+      addCar(carWithImage)
+      toast.success('Auto agregado')
+    } catch (error) {
+      toast.error(error.message)
+      console.log(error)
+    } finally {
+      setLoading(false)
     }
   }
 
@@ -88,7 +105,7 @@ export default function CreateCar () {
                 Agregar imagen
                 <input hidden type='file' onChange={handleImage} accept='image/*' />
               </label>
-              {image && <Image className='self-center rounded h-auto w-auto min-w-[150px] object-cover min-h-[150px] max-w-[120px] max-h-[120px]' alt='carImage' src={image} width={120} height={120} />}
+              {images.previewImage && <Image className='self-center rounded h-auto w-auto min-w-[150px] object-cover min-h-[150px] max-w-[120px] max-h-[120px]' alt='carImage' src={images.previewImage} width={120} height={120} />}
             </div>
             <div className='flex gap-2 max-w-full items-center justify-center'>
               <Button disabled={loading} type='submit' className='mt-7 w-40 disabled:bg-opacity-70 disabled:cursor-not-allowed'>{loading ? '...' : 'Agregar'}</Button>

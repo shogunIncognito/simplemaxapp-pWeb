@@ -6,6 +6,7 @@ import ModalBackdrop from '../ModalBackdrop'
 import useCarsStore from '@/hooks/useCarsStore'
 import toast from 'react-hot-toast'
 import { useState } from 'react'
+import { deleteCarImage } from '@/services/firebase'
 
 export default function DeleteCar ({ carToDelete, setCarToDelete }) {
   const { deleteCar } = useCarsStore()
@@ -13,7 +14,8 @@ export default function DeleteCar ({ carToDelete, setCarToDelete }) {
 
   const handleDeleteCar = () => {
     setLoading(true)
-    deleteCarApi(carToDelete.id)
+
+    Promise.all([deleteCarImage(carToDelete.id), deleteCarApi(carToDelete.id)])
       .then(() => {
         deleteCar(carToDelete.id)
         toast.success('Auto eliminado')

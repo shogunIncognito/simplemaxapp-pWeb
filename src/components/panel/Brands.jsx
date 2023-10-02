@@ -7,7 +7,7 @@ import { useState } from 'react'
 import useCarsStore from '@/hooks/useCarsStore'
 import toast from 'react-hot-toast'
 
-export default function AddBrand () {
+export default function Brands () {
   const { open, handleClose, handleOpen } = useDisclosure()
   const { reFetch, brands, loading: brandsLoading } = useCarsStore()
   const [loading, setLoading] = useState(false)

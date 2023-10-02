@@ -2,38 +2,32 @@ export const carInputs = [
   {
     type: 'text',
     name: 'model',
-    placeholder: 'Modelo',
-    value: 'Corolla'
+    placeholder: 'Modelo'
   },
   {
     type: 'number',
     name: 'year',
-    placeholder: 'Año',
-    value: 2019
+    placeholder: 'Año'
   },
   {
     type: 'text',
     name: 'color',
-    placeholder: 'Color',
-    value: 'Rojo'
+    placeholder: 'Color'
   },
   {
     type: 'number',
     name: 'kilometers',
-    placeholder: 'Kilometros',
-    value: 4323
+    placeholder: 'Kilometros'
   },
   {
     type: 'string',
     name: 'description',
-    placeholder: 'Descripcion',
-    value: 'Carro ultra veloz para toda la familia'
+    placeholder: 'Descripcion'
   },
   {
     type: 'number',
     name: 'price',
-    placeholder: 'Precio',
-    value: 123000
+    placeholder: 'Precio'
   }
 ]
 

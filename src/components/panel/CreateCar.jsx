@@ -80,7 +80,7 @@ export default function CreateCar () {
                 carInputs.map((input, index) => (
                   <div key={index} className='flex flex-col gap-1'>
                     <label className='text-white'>{input.placeholder}</label>
-                    <Input value={input.value} required={input.name !== 'description'} className='p-2' type={input.type} name={input.name} placeholder={input.placeholder} />
+                    <Input required={input.name !== 'description'} className='p-2' type={input.type} name={input.name} placeholder={input.placeholder} />
                   </div>
                 ))
               }

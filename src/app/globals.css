@@ -32,3 +32,11 @@
 *::-webkit-scrollbar-track {
   border-radius: 10px;
 }
+
+.slider-conteiner{
+  margin: 0 auto;
+}
+
+#slider-conteiner{
+  margin:0 auto ; 
+}

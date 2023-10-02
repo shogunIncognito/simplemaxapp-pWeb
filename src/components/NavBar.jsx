@@ -1,30 +1,9 @@
-'use client'
-
 import { CarIcon, HomeIcon, LoginIcon, MaxAutosIcon } from '@/libs/Icons'
 import Link from 'next/link'
-import { useEffect, useRef } from 'react'
-
-const scrollClasses = ['p-6']
 
 export default function NavBar () {
-  const nav = useRef(null)
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (nav.current != null) {
-        if (window.scrollY > 90) {
-          nav.current.classList.add(...scrollClasses)
-        } else {
-          nav.current.classList.remove(...scrollClasses)
-        }
-      }
-    }
-
-    window.addEventListener('scroll', handleScroll)
-  }, [])
-
   return (
-    <header ref={nav} className='bg-slate-50 shadow-xl flex-col md:flex-row top-0 sticky duration-300 ease-in-out transition-all z-50 p-4 flex w-full items-center'>
+    <header className='bg-slate-50 shadow-xl flex-col md:flex-row top-0 sticky duration-300 ease-in-out transition-all z-50 p-4 flex w-full items-center'>
       <Link href='/' className='md:absolute'>
         <MaxAutosIcon />
       </Link>

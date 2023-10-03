@@ -20,11 +20,14 @@ export default function Carrusel () {
     <>
       <motion.div id='slider-conteiner' className='w-[80%] overflow-x-hidden border-x-2 borderx-solid border-black'> {/* slider-conteiner */}
         <motion.div className='flex cursor-grab' drag='x' dragConstraints={{ right: 0, left: -2000 }}> {/* slider */}
+
           <motion.div
-            className='my-0 mx-2  min-w-[200px] h-[150px] p-3 hover:border-2 hover:border-solid hover:border-blue-700 flex items-center justify-center hola'
+            className='my-0 mx-2 relative  min-w-[200px] h-[150px] p-3 hover:border-2 group hover:border-solid hover:border-blue-700 flex items-center justify-center hola'
           >
             <img className='w-24 h-20 pointer-events-none' src={kia.src} />{/* item */}
+            <video muted loop autoPlay playsInline className='-z-10 object-cover top-0 w-full h-full opacity-50 absolute invisible group-hover:visible' src='https://cdn.pixabay.com/vimeo/304735769/calle-19627.mp4?width=1280&hash=84c8347627305ec3a01dbe5618ecde30d4c8ec6e' />
           </motion.div>
+
           <motion.div
             className='my-0 mx-2 min-w-[200px] h-[150px] p-3 hover:border-2 hover:border-solid hover:border-blue-700 flex items-center justify-center'
           >

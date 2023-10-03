@@ -1,7 +1,5 @@
-'use client'
+import Carrusel from '@/components/Carrusel'
 import Button from '../components/Button'
-import kia from '../assets/pngwing.com.png'
-import { motion } from 'framer-motion'
 import './globals.css'
 
 export default function Home () {
@@ -17,31 +15,13 @@ export default function Home () {
         <video muted loop autoPlay playsInline className='-z-10 object-cover top-0 w-full h-screen absolute' src='https://cdn.pixabay.com/vimeo/304735769/calle-19627.mp4?width=1280&hash=84c8347627305ec3a01dbe5618ecde30d4c8ec6e' />
       </section>
 
-      <motion.div id='slider-conteiner' className='w-[80%] overflow-x-hidden border-2 border-solid border-black'> {/* slider-conteiner */}
-        <motion.div className='flex cursor-grab' drag='x' dragConstraints={{ right: 0, left: -2560 }}> {/* slider */}
-          <motion.div className='my-0 mx-auto min-w-[30rem] h-[380px] p-3 hover:border-2 hover:border-solid hover:border-blue-700'>
-            <img className='h-full w-full pointer-events-none' src={kia.src} />{/* item */}
-          </motion.div>
-          <motion.div className='my-0 mx-auto min-w-[30rem] h-[25rem] p-3 hover:border-2 hover:border-solid hover:border-blue-700'>
-            <img className='h-full w-full pointer-events-none' src={kia.src} />
-          </motion.div>
-          <motion.div className='my-0 mx-auto min-w-[30rem] h-[25rem] p-3 hover:border-2 hover:border-solid hover:border-blue-700'>
-            <img className='h-full w-full pointer-events-none' src={kia.src} />
-          </motion.div>
-          <motion.div className='my-0 mx-auto min-w-[30rem] h-[25rem] p-3 hover:border-2 hover:border-solid hover:border-blue-700'>
-            <img className='h-full w-full pointer-events-none' src={kia.src} />
-          </motion.div>
-          <motion.div className='my-0 mx-auto min-w-[30rem] h-[25rem] p-3 hover:border-2 hover:border-solid hover:border-blue-700'>
-            <img className='h-full w-full pointer-events-none' src={kia.src} />
-          </motion.div>
-          <motion.div className='my-0 mx-auto min-w-[30rem] h-[25rem] p-3 hover:border-2 hover:border-solid hover:border-blue-700'>
-            <img className='h-full w-full pointer-events-none' src={kia.src} />
-          </motion.div>
-          <motion.div className='my-0 mx-auto min-w-[30rem] h-[25rem] p-3 hover:border-2 hover:border-solid hover:border-blue-700'>
-            <img className='h-full w-full pointer-events-none' src={kia.src} />
-          </motion.div>
-        </motion.div>
-      </motion.div>
+      <section className='w-full text-center'>
+        <div className='typewriter'>
+          <h1 className='text'>Texto de ejemplo</h1>
+        </div>
+        <Carrusel />
+      </section>
+
       {/* Contenido principal de la pagina inicial '/' */}
     </>
   )

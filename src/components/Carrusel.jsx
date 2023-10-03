@@ -13,6 +13,7 @@ import mazda from '../assets/marcas/mazda.png'
 import jeep from '../assets/marcas/jeep.png'
 import hyundai from '../assets/marcas/hyundai.png'
 import ford from '../assets/marcas/ford.png'
+import { Kia } from './fondos'
 import { motion } from 'framer-motion'
 
 export default function Carrusel () {
@@ -21,7 +22,7 @@ export default function Carrusel () {
       <motion.div id='slider-conteiner' className='w-[80%] overflow-x-hidden border-x-2 borderx-solid border-black'> {/* slider-conteiner */}
         <motion.div className='flex cursor-grab' drag='x' dragConstraints={{ right: 0, left: -2000 }}> {/* slider */}
           <motion.div
-            className='my-0 mx-2  min-w-[200px] h-[150px] p-3 hover:border-2 hover:border-solid hover:border-blue-700 flex items-center justify-center hola'
+            className={`my-0 mx-2  min-w-[200px] h-[150px] p-3 hover:border-2 hover:border-solid hover:border-blue-700 flex items-center justify-center hover:${Kia}`}
           >
             <img className='w-24 h-20 pointer-events-none' src={kia.src} />{/* item */}
           </motion.div>

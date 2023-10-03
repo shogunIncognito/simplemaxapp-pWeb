@@ -22,7 +22,7 @@ export default function page () {
   })
 
   useEffect(() => {
-    deleteCookie('token')
+    deleteCookie('auth-token')
     window.localStorage.removeItem('session')
   }, [])
 

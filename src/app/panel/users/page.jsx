@@ -28,6 +28,9 @@ export default function page () {
     const data = Object.fromEntries(new FormData(e.target))
     if (objectHasEmptyValues(data)) return toast.error('Todos los campos son obligatorios')
 
+    if (data.cedula.length !== 10) return toast.error('La cédula debe tener 10 dígitos')
+
+    setLoading(true)
     createUser(data)
       .then(res => {
         setUsers([...users, res])
@@ -39,6 +42,7 @@ export default function page () {
         if (err.request.status === 400) return toast.error('El usuario ya existe')
         toast.error(err.message)
       })
+      .finally(() => setLoading(false))
   }
 
   const filteredUsers = session ? users.filter(user => user.id !== session.id) : users
@@ -60,9 +64,9 @@ export default function page () {
           </div>
           <div className='w-full flex flex-col gap-1'>
             <label className='opacity-80 font-bold' htmlFor='cedula'>Cedula</label>
-            <Input minLength='10' required className='p-2' name='cedula' type='number' id='cedula' placeholder='123456789' />
+            <Input minLength='10' required className='p-2' name='cedula' type='number' id='cedula' placeholder='1234567890' />
           </div>
-          <Button className='py-2 mt-2 w-40 self-center'>Crear</Button>
+          <Button disabled={loading} className='py-2 mt-2 w-40 self-center'>{loading ? '...' : 'Crear'}</Button>
         </form>
       </section>
 
@@ -86,7 +90,7 @@ export default function page () {
           </thead>
           <tbody>
 
-            {loading && (
+            {loading && users.length === 0 && (
               <tr className='bg-white border-b dark:bg-gray-800 dark:border-gray-700'>
                 <td colSpan='9' className='px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white'>
                   Cargando...

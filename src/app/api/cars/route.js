@@ -1,5 +1,7 @@
 import { prisma } from '@/libs/prisma'
 import { NextResponse } from 'next/server'
+import { headers } from 'next/headers'
+import { validateToken } from '@/utils/functions'
 
 export async function GET () {
   try {
@@ -22,6 +24,10 @@ export async function GET () {
 
 export async function POST (request) {
   try {
+    const token = headers().get('auth-token')
+
+    if (!validateToken(token)) return NextResponse.json({ message: token ? 'Invalid token' : 'No token provided' }, { status: 401 })
+
     const body = await request.json()
 
     const car = {

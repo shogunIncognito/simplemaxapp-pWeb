@@ -9,6 +9,7 @@ import DeleteCar from '@/components/panel/DeleteCar'
 import useCarsStore from '@/hooks/useCarsStore'
 import AddBrand from '@/components/panel/Brands'
 import Button from '@/components/Button'
+import Link from 'next/link'
 
 export default function page () {
   const { cars, loading } = useCarsStore()
@@ -69,7 +70,9 @@ export default function page () {
                   $ {Math.round(car.price).toLocaleString()}
                 </td>
                 <td className='px-6 py-4'>
-                  <Image src={car.image} alt='carro' width={170} height={170} className='rounded-lg object-cover m-auto w-auto h-auto ring-2 max-w-[160px] max-h-[160px]' />
+                  <Link href={car.image} target='_blank' rel='noreferrer'>
+                    <Image src={car.image} alt='carro' width={170} height={170} className='rounded-lg object-cover cursor-pointer m-auto w-auto h-auto ring-2 max-w-[160px] max-h-[160px]' />
+                  </Link>
                 </td>
                 <td className='px-6 py-4 h-full m-auto'>
                   <Button onClick={() => setSelectedCar(car)} className='w-full mb-1 bg-green-500 hover:bg-green-700 font-bold '>

@@ -45,21 +45,24 @@ export default function page () {
 
   return (
     <>
-      <section className='w-full h-auto flex justify-center'>
+      <section className='w-full flex-col items-center h-auto flex justify-center'>
+        <h2 className='text-2xl opacity-75 font-bold md:hidden mt-5'>Usuarios</h2>
         <form onSubmit={handleSubmit} className='flex flex-col gap-3 bg-slate-900 mt-4 p-4 rounded'>
-          <div className='w-full flex flex-col gap-1'>
-            <label className='opacity-80 font-bold' htmlFor='name'>Nombre</label>
-            <Input required className='p-2' name='name' type='text' id='name' placeholder='Pedro' />
-          </div>
-          <div className='w-full flex flex-col gap-1'>
-            <label className='opacity-80 font-bold' htmlFor='password'>Contraseña</label>
-            <Input required className='p-2' name='password' type='password' id='password' placeholder='contraseña' />
+          <div className='flex gap-2'>
+            <div className='w-full flex flex-col gap-1'>
+              <label className='opacity-80 font-bold' htmlFor='name'>Nombre</label>
+              <Input required className='p-2' name='name' type='text' id='name' placeholder='Pedro' />
+            </div>
+            <div className='w-full flex flex-col gap-1'>
+              <label className='opacity-80 font-bold' htmlFor='password'>Contraseña</label>
+              <Input required className='p-2' name='password' type='password' id='password' placeholder='contraseña' />
+            </div>
           </div>
           <div className='w-full flex flex-col gap-1'>
             <label className='opacity-80 font-bold' htmlFor='cedula'>Cedula</label>
             <Input minLength='10' required className='p-2' name='cedula' type='number' id='cedula' placeholder='123456789' />
           </div>
-          <Button className='py-2 mt-2'>Crear</Button>
+          <Button className='py-2 mt-2 w-40 self-center'>Crear</Button>
         </form>
       </section>
 

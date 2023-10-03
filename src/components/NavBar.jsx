@@ -1,5 +1,7 @@
-import { CarIcon, HomeIcon, LoginIcon, MaxAutosIcon } from '@/libs/Icons'
+import { LoginIcon, MaxAutosIcon } from '@/libs/Icons'
 import Link from 'next/link'
+import { AiFillHome } from 'react-icons/ai'
+import { FaCarAlt } from 'react-icons/fa'
 
 export default function NavBar () {
   return (
@@ -11,13 +13,13 @@ export default function NavBar () {
         <ul className='flex justify-center items-center'>
           <li>
             <Link className='transition-all items-center gap-2 flex px-4 py-2 border-2 border-transparent hover:border-black rounded' href='/'>
-              <HomeIcon />
+              <AiFillHome size={30} />
               Inicio
             </Link>
           </li>
           <li>
             <Link className='transition-all items-center gap-2 flex px-4 py-2 border-2 border-transparent hover:border-black rounded' href='/cars'>
-              <CarIcon />
+              <FaCarAlt size={30} />
               Nuestros Autos
             </Link>
           </li>

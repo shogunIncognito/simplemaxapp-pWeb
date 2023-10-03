@@ -1,8 +1,11 @@
 import sideImage from '@/assets/maxautoslogoblanco.png'
-import { panelLinks } from '@/helpers/inputs'
 import useDisclosure from '@/hooks/useDisclosure'
 import useSessionStore from '@/hooks/useSessionStore'
 import { CloseIcon, MenuIcon, UserIcon } from '@/libs/Icons'
+import { AiFillHome } from 'react-icons/ai'
+import { FaCarAlt } from 'react-icons/fa'
+import { BiSolidUser } from 'react-icons/bi'
+import { RiLogoutBoxRLine as RxExit } from 'react-icons/ri'
 import { deleteCookie, getCookie } from 'cookies-next'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -46,37 +49,66 @@ export default function PanelLayout ({ children }) {
       {open && (
         <aside className='top-0 md:hidden animate__animated animate__slideInLeft w-full flex flex-col absolute z-20 h-screen shadow-xl bg-slate-800 text-white'>
           <CloseIcon onClick={handleClose} className='w-12 m-2 self-end cursor-pointer' />
-          <Image src={sideImage} width={180} alt='sideimage' className='pointer-events-none m-auto my-0 object-cover h-auto' />
+          <Image src={sideImage} width={200} height='auto' priority alt='sideimage' className='pointer-events-none m-auto my-0 object-cover h-auto' />
+          <div className='flex items-center gap-2 ml-5 mb-5'>
+            <UserIcon className='w-12 bg-slate-600 rounded-full' />
+            <h2 className='opacity-80 capitalize'>{session?.name}</h2>
+          </div>
+
           <nav className='flex flex-col'>
-            <Link className='p-4 px-6 hover:bg-gray-900 transition-color' href='/'>Volver a pagina inicial</Link>
-            {
-              panelLinks.map((link, index) => (
-                <Link onClick={handleClose} key={index} className={`p-4 px-6 hover:bg-gray-900 transition-colors ${path === link.href ? 'bg-gray-700' : ''}`} href={link.href}>{link.text}</Link>
-              ))
-            }
-            <p onClick={closeSession} className='p-4 px-6 cursor-pointer hover:bg-gray-900 transition-colors'>Cerrar sesión</p>
+            <Link className='p-4 px-6 hover:bg-gray-900 text-white flex gap-2 items-center transition-color' href='/'>
+              <AiFillHome size={28} className='opacity-75 ' />
+              <p className=''>Volver a pagina inicial</p>
+            </Link>
+            <Link className={`p-4 px-6 hover:bg-gray-900 text-white flex gap-2 items-center transition-colors ${path === '/panel' ? 'bg-gray-700' : ''}`} href='/panel'>
+              <FaCarAlt size={28} className='opacity-75' />
+              <p className=''>Autos</p>
+            </Link>
+            <Link className={`p-4 px-6 hover:bg-gray-900 text-white flex gap-2 items-center transition-colors ${path === '/panel/users' ? 'bg-gray-700' : ''}`} href='/panel/users'>
+              <BiSolidUser size={28} className='opacity-75' />
+              <p className=''>Usuarios</p>
+            </Link>
+            <button onClick={closeSession} className='p-4 px-6 flex items-center gap-2 hover:bg-red-700/80 transition-colors'>
+              <RxExit size={28} className='opacity-75' />
+              <p className=''>Cerrar sesión</p>
+            </button>
           </nav>
+
+          <div className='min-h-fit absolute pointer-events-none bottom-5 self-center'>
+            <p className='text-center text-xs opacity-50'>Max<span className='text-blue-500'>Autos</span></p>
+          </div>
         </aside>
       )}
 
       {/* Desktop Layout */}
       <aside className='w-1/6 hidden relative md:flex md:flex-col h-screen shadow-xl text-white'>
 
-        <Image src={sideImage} width={170} height={200} alt='sideimage' className='pointer-events-none m-auto h-auto my-0 object-cover' />
+        <Image src={sideImage} width={200} height={200} priority alt='sideimage' className='pointer-events-none m-auto h-auto my-0 object-cover' />
 
-        <div className='flex items-center gap-2 ml-5 mb-5'>
-          <UserIcon className='w-10 bg-slate-600 rounded-full' />
+        <div className='flex items-center gap-2 p-4 shadow-md mb-5 bg-neutral-900 w-full'>
+          <UserIcon className='w-10 bg-white rounded-full' />
           <h2 className='opacity-80 capitalize'>{session?.name}</h2>
         </div>
 
         <nav className='flex flex-col'>
-          <Link className='p-4 px-6 hover:bg-gray-900 transition-color' href='/'>Volver a pagina inicial</Link>
-          {
-            panelLinks.map((link, index) => (
-              <Link key={index} className={`p-4 px-6 hover:bg-gray-900 transition-colors ${path === link.href ? 'bg-gray-700' : ''}`} href={link.href}>{link.text}</Link>
-            ))
-          }
-          <p onClick={closeSession} className='p-4 px-6 h cursor-pointer hover:bg-red-700/80 transition-colors'>Cerrar sesión</p>
+
+          <Link className='p-4 px-6 lg:p-4 md:p-3 hover:bg-gray-900 text-white flex gap-2 items-center transition-color' href='/'>
+            <AiFillHome size={20} className='opacity-75 ' />
+            <p className=''>Volver a pagina inicial</p>
+          </Link>
+          <Link className={`p-4 px-6 lg:p-4 md:p-3 hover:bg-gray-900 text-white flex gap-2 items-center transition-colors ${path === '/panel' ? 'bg-neutral-900/60' : ''}`} href='/panel'>
+            <FaCarAlt size={20} className='opacity-75' />
+            <p className=''>Autos</p>
+          </Link>
+          <Link className={`p-4 px-6 lg:p-4 md:p-3 hover:bg-gray-900 text-white flex gap-2 items-center transition-colors ${path === '/panel/users' ? 'bg-neutral-900/60' : ''}`} href='/panel/users'>
+            <BiSolidUser size={20} className='opacity-75' />
+            <p className=''>Usuarios</p>
+          </Link>
+          <button onClick={closeSession} className='p-4 px-6 lg:p-4 md:p-3 flex items-center gap-2 hover:bg-red-700/80 transition-colors'>
+            <RxExit size={20} className='opacity-75' />
+            <p className=''>Cerrar sesión</p>
+          </button>
+
         </nav>
 
         <div className='min-h-fit absolute pointer-events-none bottom-5 self-center'>

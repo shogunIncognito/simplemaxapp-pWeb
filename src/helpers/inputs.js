@@ -32,14 +32,3 @@ export const carInputs = [
 ]
 
 export const tableHeaders = ['ID', 'Marca', 'Modelo', 'Año', 'Kilómetros', 'Color', 'Precio', 'Imagen', 'Acciones']
-
-export const panelLinks = [
-  {
-    href: '/panel',
-    text: 'Autos'
-  },
-  {
-    href: '/panel/users',
-    text: 'Usuarios'
-  }
-]

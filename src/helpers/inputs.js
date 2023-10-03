@@ -32,3 +32,27 @@ export const carInputs = [
 ]
 
 export const tableHeaders = ['ID', 'Marca', 'Modelo', 'Año', 'Kilómetros', 'Color', 'Precio', 'Imagen', 'Acciones']
+
+export const brandsCarrousel = [
+  {
+    name: 'Mazda',
+    url: 'https/....',
+    width: 'w-[90px]',
+    height: 'h-20',
+    videoUrl: 'https/....'
+  },
+  {
+    name: 'Ford',
+    url: 'https/....',
+    width: 'w-[90px]',
+    height: 'h-20',
+    videoUrl: 'https/....'
+  },
+  {
+    name: 'Chevrolet',
+    url: 'https/....',
+    width: 'w-[90px]',
+    height: 'h-20',
+    videoUrl: 'https/....'
+  }
+]

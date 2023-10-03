@@ -14,12 +14,25 @@ import jeep from '../assets/marcas/jeep.png'
 import hyundai from '../assets/marcas/hyundai.png'
 import ford from '../assets/marcas/ford.png'
 import { motion } from 'framer-motion'
+// import { brandsCarrousel } from '@/helpers/inputs'
 
 export default function Carrusel () {
   return (
     <>
       <motion.div id='slider-conteiner' className='w-[80%] overflow-x-hidden border-x-2 borderx-solid border-black'> {/* slider-conteiner */}
         <motion.div className='flex cursor-grab' drag='x' dragConstraints={{ right: 0, left: -2000 }}> {/* slider */}
+
+          {
+            // brandsCarrousel.map((item, index) => (
+            //   <motion.div
+            //     key={index}
+            //     className='my-0 mx-2 relative  min-w-[200px] h-[150px] p-3 hover:border-2 group hover:border-solid hover:border-blue-700 flex items-center justify-center hola'
+            //   >
+            //     <img className={`${item.width} ${item.height} pointer-events-none`} src={item.url} />{/* item */}
+            //     <video muted loop autoPlay playsInline className='-z-10 object-cover top-0 w-full h-full opacity-50 absolute invisible group-hover:visible' src={item.videoUrl} />
+            //   </motion.div>
+            // ))
+          }
 
           <motion.div
             className='my-0 mx-2 relative  min-w-[200px] h-[150px] p-3 hover:border-2 group hover:border-solid hover:border-blue-700 flex items-center justify-center hola'
@@ -41,7 +54,7 @@ export default function Carrusel () {
           <motion.div
             className='my-0 mx-2 min-w-[200px] h-[150px] p-3 hover:border-2 hover:border-solid hover:border-blue-700 flex items-center justify-center'
           >
-            <img className='}w-[90pmarcas/x] h-[60px] pointer-events-none' src={chevrolet.src} />
+            <img className='w-[90%] h-[60px] pointer-events-none' src={chevrolet.src} />
           </motion.div>
           <motion.div
             className='my-0 mx-2 min-w-[200px] h-[150px] p-3 hover:border-2 hover:border-solid hover:border-blue-700 flex items-center justify-center'

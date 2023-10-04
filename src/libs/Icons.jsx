@@ -6,7 +6,7 @@ export const CarIcon = ({ width = '40px', color = 'black', ...props }) => (
 )
 
 export const MaxAutosIcon = ({ ...props }) => (
-  <Image priority {...props} src={MaxIcon} alt='MaxAutos' style={{ width: 120, height: 90 }} />
+  <Image priority {...props} src={MaxIcon} alt='MaxAutos' style={{ width: 100, height: 75 }} />
 )
 
 export const LoginIcon = ({ ...props }) => (

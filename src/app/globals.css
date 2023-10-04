@@ -41,37 +41,39 @@
   margin:0 auto ; 
 }
 
-.typewriter {
+.hola {
+  animation: scroll 40s linear infinite;
+  width: calc(200px * 28);
+}
+
+@keyframes scroll {
+  0%{
+    transform: translateX(0);
+  }
+  100%{
+    transform: translateX(calc(-200px*14));
+  }
+}
+
+.hola:hover{
+  animation-play-state: paused;
+}
+
+/* .maquina{
+  animation: typing 2s steps(2),blink .5 infinite step-end alternate;
   overflow: hidden;
-  white-space: nowrap;
-  border-right: 0.15em solid orange;
-  margin: 0 auto;
-  font-size: 24px;
-  font-weight: bold;
 }
 
-.text {
-  display: inline-block;
-  animation: typing 3.5s steps(40, end) infinite, blink-caret 0.75s step-end infinite;
-}
-
-@keyframes typing {
-  from {
+@keyframes typing{
+  from{
     width: 0;
   }
-  to {
-    width: 100%;
-  }
 }
-
-@keyframes blink-caret {
-  from, to {
+@keyframes blink{
+  50%{
     border-color: transparent;
   }
-  50% {
-    border-color: orange;
-  }
-}
+} */
 
 /* .hola:hover{
   background-image: url("https://s3.amazonaws.com/kia.com.co/small_picanto_x_9693f2d236.png");

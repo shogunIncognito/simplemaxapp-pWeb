@@ -17,32 +17,38 @@ export const carInputs = [
   {
     type: 'text',
     name: 'model',
-    placeholder: 'Modelo'
+    label: 'Modelo',
+    placeholder: 'Prado'
   },
   {
     type: 'number',
     name: 'year',
-    placeholder: 'Año'
+    label: 'Año',
+    placeholder: '2023'
   },
   {
     type: 'text',
     name: 'color',
-    placeholder: 'Color'
+    label: 'Color',
+    placeholder: 'Azul'
   },
   {
     type: 'number',
     name: 'kilometers',
-    placeholder: 'Kilometros'
+    label: 'Kilómetros',
+    placeholder: '12000'
   },
   {
     type: 'string',
     name: 'description',
-    placeholder: 'Descripcion'
+    label: 'Descripción',
+    placeholder: 'Carro en buen estado y ...'
   },
   {
     type: 'number',
     name: 'price',
-    placeholder: 'Precio'
+    label: 'Precio',
+    placeholder: '20.000.000'
   }
 ]
 

@@ -1,9 +1,15 @@
 import { prisma } from '@/libs/prisma'
 import { NextResponse } from 'next/server'
 import bcrypt from 'bcrypt'
+import { headers } from 'next/headers'
+import { validateToken } from '@/utils/functions'
 
 export async function GET (request, { params }) {
   try {
+    const token = headers().get('auth-token')
+
+    if (!validateToken(token)) return NextResponse.json({ message: token ? 'Invalid token' : 'No token provided' }, { status: 401 })
+
     const { id } = params
     const admin = await prisma.admin.findUnique({ where: { id: Number(id) } })
     return NextResponse.json(admin)
@@ -14,6 +20,10 @@ export async function GET (request, { params }) {
 
 export async function PUT (request, { params }) {
   try {
+    const token = headers().get('auth-token')
+
+    if (!validateToken(token)) return NextResponse.json({ message: token ? 'Invalid token' : 'No token provided' }, { status: 401 })
+
     const { id } = params
     const body = await request.json()
 

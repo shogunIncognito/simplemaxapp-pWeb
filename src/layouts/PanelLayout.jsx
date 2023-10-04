@@ -20,7 +20,7 @@ export default function PanelLayout ({ children }) {
   const path = usePathname()
 
   const closeSession = () => {
-    deleteCookie('token')
+    deleteCookie('auth-token')
     setSession(null)
     window.localStorage.removeItem('session')
     router.replace('/login')
@@ -30,7 +30,7 @@ export default function PanelLayout ({ children }) {
   }
 
   useEffect(() => {
-    const token = getCookie('token')
+    const token = getCookie('auth-token')
     if (token?.split('-').length !== 5) {
       closeSession()
     }
@@ -50,8 +50,9 @@ export default function PanelLayout ({ children }) {
         <aside className='top-0 md:hidden animate__animated animate__slideInLeft w-full flex flex-col absolute z-20 h-screen shadow-xl bg-slate-800 text-white'>
           <CloseIcon onClick={handleClose} className='w-12 m-2 self-end cursor-pointer' />
           <Image src={sideImage} width={200} height='auto' priority alt='sideimage' className='pointer-events-none m-auto my-0 object-cover h-auto' />
-          <div className='flex items-center gap-2 ml-5 mb-5'>
-            <UserIcon className='w-12 bg-slate-600 rounded-full' />
+
+          <div className='flex items-center gap-2 p-4 shadow-md mb-5 bg-neutral-900 w-full'>
+            <UserIcon className='w-10 bg-white rounded-full' />
             <h2 className='opacity-80 capitalize'>{session?.name}</h2>
           </div>
 

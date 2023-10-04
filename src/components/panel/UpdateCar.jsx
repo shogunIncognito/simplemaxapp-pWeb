@@ -1,6 +1,6 @@
 'use client'
 
-import { carInputs } from '@/helpers/inputs'
+import { carInputs } from '@/helpers/data'
 import ModalBackdrop from '../ModalBackdrop'
 import Image from 'next/image'
 import Button from '../Button'
@@ -76,20 +76,37 @@ export default function UpdateCar ({ selectedCar, setSelectedCar }) {
     <ModalBackdrop>
       <h2 className='text-2xl text-white mb-10'>Crear auto</h2>
       <form onSubmit={handleSubmit}>
-        <div className='grid grid-cols-2 gap-3'>
+        <div className='grid grid-cols-3 gap-3'>
+
           <div className='flex flex-col gap-1'>
             <label className='text-white'>Marca</label>
-            <select onChange={handleChange} value={values.brandId} name='brand' id='brand' className='h-full text-gray-600 font-medium px-1 ring-2 rounded outline-none hover:ring-blue-400 focus:ring-blue-600 transition-all duration-300'>
+            <select name='fuel' id='fuel' className='h-full text-gray-600 font-medium px-2 py-2  ring-2 rounded outline-none hover:ring-blue-400 focus:ring-blue-600 transition-all duration-300'>
               {brands.map(brand => (
                 <option key={brand.id} value={brand.id}>{brand.name}</option>
               ))}
             </select>
           </div>
 
+          <div className='flex flex-col gap-1'>
+            <label className='text-white'>Tipo combustible</label>
+            <select name='brandId' id='brandId' className='h-full text-gray-600 font-medium px-2 py-2 ring-2 rounded outline-none hover:ring-blue-400 focus:ring-blue-600 transition-all duration-300'>
+              <option value='corriente'>Corriente</option>
+              <option value='diesel'>Diesel</option>
+            </select>
+          </div>
+
+          <div className='flex flex-col gap-1'>
+            <label className='text-white'>Transmisión</label>
+            <select name='transmission' id='transmission' className='h-full text-gray-600 font-medium px-2 py-2  ring-2 rounded outline-none hover:ring-blue-400 focus:ring-blue-600 transition-all duration-300'>
+              <option value='manual'>Manual</option>
+              <option value='automatica'>Automática</option>
+            </select>
+          </div>
+
           {
             carInputs.map((input, index) => (
               <div key={index} className='flex flex-col gap-1'>
-                <label className='text-white'>{input.placeholder}</label>
+                <label className='text-white'>{input.label}</label>
                 <Input
                   onChange={handleChange}
                   value={values[input.name]}

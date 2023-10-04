@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { brandsCarrousel } from '@/helpers/inputs'
+import { brandsCarrousel } from '@/helpers/data'
 
 export default function Carrusel () {
   return (

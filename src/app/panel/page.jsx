@@ -4,7 +4,7 @@ import Image from 'next/image'
 import CreateCar from '@/components/panel/CreateCar'
 import { useState } from 'react'
 import UpdateCar from '@/components/panel/UpdateCar'
-import { tableHeaders } from '@/helpers/inputs'
+import { tableHeaders } from '@/helpers/data'
 import DeleteCar from '@/components/panel/DeleteCar'
 import useCarsStore from '@/hooks/useCarsStore'
 import AddBrand from '@/components/panel/Brands'
@@ -42,6 +42,14 @@ export default function page () {
               <tr className='bg-white border-b dark:bg-gray-800 dark:border-gray-700'>
                 <td colSpan='9' className='px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white'>
                   Cargando...
+                </td>
+              </tr>
+            )}
+
+            {cars.length === 0 && !loading && (
+              <tr className='bg-white border-b dark:bg-gray-800 dark:border-gray-700'>
+                <td colSpan='9' className='px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white'>
+                  No hay autos
                 </td>
               </tr>
             )}

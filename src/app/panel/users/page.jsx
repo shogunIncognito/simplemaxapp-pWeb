@@ -52,7 +52,7 @@ export default function page () {
       <section className='w-full flex-col items-center h-auto flex justify-center'>
         <h2 className='text-2xl opacity-75 font-bold md:hidden mt-5'>Usuarios</h2>
         <form onSubmit={handleSubmit} className='flex flex-col gap-3 bg-slate-900 mt-4 p-4 rounded'>
-          <div className='flex gap-2'>
+          <div className='flex md:flex-row flex-col gap-2'>
             <div className='w-full flex flex-col gap-1'>
               <label className='opacity-80 font-bold' htmlFor='name'>Nombre</label>
               <Input required className='p-2' name='name' type='text' id='name' placeholder='Pedro' />

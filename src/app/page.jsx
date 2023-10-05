@@ -17,11 +17,12 @@ export default function Home () {
       </section>
 
       <section className='w-full text-center'>
-        <h1 className='font-serif font-bold my-5'>NUESTRAS MARCAS</h1>
+        <h1 className='font-mono font-bold my-5'>NUESTRAS MARCAS</h1>
         <Carrusel />
       </section>
 
-      <section className='flex bg-blue-500 w-full p-12 mt-5 justify-around -z-10'>
+      <section className='w-full text-center bg-blue-500 p-10 '>
+        <h2 className='font-mono font-bold text-lg'>SERVICIOS DE MAX AUTOS</h2>
         <Tarjetas />
       </section>
 

@@ -137,7 +137,7 @@ export const brandsCarrousel = [
     urlimg: `${ford.src}`,
     width: 'w-32',
     height: 'h-28',
-    imgUrl: 'https://www.romacarabs.com/wp-content/uploads/2020/07/las-medidas-ecosport.jpg'
+    imgUrl: 'https://i1.wp.com/tiempomotor.com/wp-content/uploads/2022/01/Hennessey_VelociRaptor_600_1-1.jpg?resize=1170%2C610&ssl=1'
   },
   {
     name: 'mazda',

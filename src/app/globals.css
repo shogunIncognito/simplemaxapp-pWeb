@@ -59,6 +59,13 @@
   animation-play-state: paused;
 }
 
+/* .quienesomos{
+  background-image: url("../assets/maxHero1.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+} */
+
 /* .maquina{
   animation: typing 2s steps(2),blink .5 infinite step-end alternate;
   overflow: hidden;

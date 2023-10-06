@@ -2,6 +2,11 @@
 
 Aplicación para la concesionaria MaxAutos como proyecto final de Fundamentos Web
 
+### Tecnologias utilizadas
+- **Next.js**: Framework de React para renderizado del lado del servidor y en el cliente.
+- **Tailwind CSS**: Framework de CSS utilitario para diseñar interfaces de usuario rápidamente.
+- **MySQL**: Sistema de administración de bases de datos relacionales
+
 ## Clonar repositorio en tu maquina
 ```bash
 git clone https://github.com/shogunIncognito/simplemaxapp-pWeb.git
@@ -20,12 +25,26 @@ npm install
 yarn install
 ```
 
-
-## Crea un archivo .env para las variables de entorno
-Crea un archivo llamado `.env` en la raíz del proyecto para las variables de entorno y lograr el funcionamiento del proyecto, coloca esto en el archivo creado y dentro de las comillas coloca tu url de la base de datos de MySQL
+## Crea un archivo `.env` para las variables de entorno
+Crea un archivo llamado `.env` en la raíz del proyecto para las variables de entorno y lograr el funcionamiento del proyecto, coloca esto en el archivo creado y dentro de las comillas coloca tu url de la base de datos de MySQL PlanetScale y las credenciales de Firebase para el almacenamiento de imagenes
 
 ```env
-DATABASE_URL=""
+DATABASE_URL = ""
+
+# firebase credentials
+NEXT_PUBLIC_APIKEY = ""
+NEXT_PUBLIC_AUTHDOMAIN = ""
+NEXT_PUBLIC_PROJECTID = ""
+NEXT_PUBLIC_STORAGEBUCKET = "" 
+NEXT_PUBLIC_MESSAGINGSENDERID = "" 
+NEXT_PUBLIC_APPID = ""
+```
+
+## Inserta tablas a la base de datos de PlanetScale
+Crea las tablas en la base de datos de **PlanetScale** en base a los modelos especificados en el archivo [schema.prisma](prisma/schema.prisma)
+
+```bash
+npx prisma db push
 ```
 
 ## Iniciar proyecto

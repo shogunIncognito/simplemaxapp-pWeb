@@ -22,7 +22,7 @@ export default function Home () {
       </section>
 
       <section className='w-full text-center bg-blue-500 p-10 '>
-        <h2 className='font-mono font-bold text-lg'>SERVICIOS DE MAX AUTOS</h2>
+        <h2 className='font-mono font-bold text-2xl text-white'>SERVICIOS DE MAX AUTOS</h2>
         <Tarjetas />
       </section>
 

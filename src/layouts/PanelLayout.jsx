@@ -49,7 +49,7 @@ export default function PanelLayout ({ children }) {
       {open && (
         <aside className='top-0 md:hidden animate__animated animate__slideInLeft w-full flex flex-col absolute z-20 h-screen shadow-xl bg-slate-800 text-white'>
           <CloseIcon onClick={handleClose} className='w-12 m-2 self-end cursor-pointer' />
-          <Image src={sideImage} width={200} height='auto' priority alt='sideimage' className='pointer-events-none m-auto my-0 object-cover h-auto' />
+          <Image src={sideImage} width={170} height='auto' priority alt='sideimage' className='pointer-events-none m-auto my-0 mb-10 object-cover h-auto' />
 
           <div className='flex items-center gap-2 p-4 shadow-md mb-5 bg-neutral-900 w-full'>
             <UserIcon className='w-10 bg-white rounded-full' />
@@ -61,11 +61,11 @@ export default function PanelLayout ({ children }) {
               <AiFillHome size={28} className='opacity-75 ' />
               <p className=''>Volver a pagina inicial</p>
             </Link>
-            <Link className={`p-4 px-6 hover:bg-gray-900 text-white flex gap-2 items-center transition-colors ${path === '/panel' ? 'bg-gray-700' : ''}`} href='/panel'>
+            <Link onClick={handleClose} className={`p-4 px-6 hover:bg-gray-900 text-white flex gap-2 items-center transition-colors ${path === '/panel' ? 'bg-gray-700' : ''}`} href='/panel'>
               <FaCarAlt size={28} className='opacity-75' />
               <p className=''>Autos</p>
             </Link>
-            <Link className={`p-4 px-6 hover:bg-gray-900 text-white flex gap-2 items-center transition-colors ${path === '/panel/users' ? 'bg-gray-700' : ''}`} href='/panel/users'>
+            <Link onClick={handleClose} className={`p-4 px-6 hover:bg-gray-900 text-white flex gap-2 items-center transition-colors ${path === '/panel/users' ? 'bg-gray-700' : ''}`} href='/panel/users'>
               <BiSolidUser size={28} className='opacity-75' />
               <p className=''>Usuarios</p>
             </Link>
@@ -84,7 +84,7 @@ export default function PanelLayout ({ children }) {
       {/* Desktop Layout */}
       <aside className='w-1/6 hidden relative md:flex md:flex-col h-screen shadow-xl text-white'>
 
-        <Image src={sideImage} width={200} height={200} priority alt='sideimage' className='pointer-events-none m-auto h-auto my-0 object-cover' />
+        <Image src={sideImage} width={140} height='auto' priority alt='sideimage' className='pointer-events-none m-auto h-auto my-5 object-cover' />
 
         <div className='flex items-center gap-2 p-4 shadow-md mb-5 bg-neutral-900 w-full'>
           <UserIcon className='w-10 bg-white rounded-full' />

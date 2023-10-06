@@ -6,6 +6,7 @@ Aplicación para la concesionaria MaxAutos como proyecto final de Fundamentos We
 - **Next.js**: Framework de React para renderizado del lado del servidor y en el cliente.
 - **Tailwind CSS**: Framework de CSS utilitario para diseñar interfaces de usuario rápidamente.
 - **MySQL**: Sistema de administración de bases de datos relacionales
+- **Prisma**: Prisma es un ORM de próxima generación para Node.js y TypeScript 
 
 ## Clonar repositorio en tu maquina
 ```bash

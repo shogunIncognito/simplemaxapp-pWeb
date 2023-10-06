@@ -1,14 +1,18 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { createCar, updateCar } from '@/services/api'
 import useCarsStore from '@/hooks/useCarsStore'
 import { objectHasEmptyValues } from '@/utils/functions'
 import toast from 'react-hot-toast'
 import { uploadCarImage } from '@/services/firebase'
 import CarForm from './CarForm'
+import Button from '../Button'
+import useDisclosure from '@/hooks/useDisclosure'
+import ModalBackdrop from '../ModalBackdrop'
 
 export default function CreateCar () {
+  const { open, handleClose, handleOpen } = useDisclosure()
   const [loading, setLoading] = useState(false)
   const { addCar, brands } = useCarsStore()
   const [images, setImages] = useState({
@@ -25,6 +29,10 @@ export default function CreateCar () {
     description: '',
     cylinder: '1.0'
   })
+
+  useEffect(() => {
+    setValues(prev => ({ ...prev, brandId: brands[0]?.id }))
+  }, [brands])
 
   const handleImage = (e) => {
     const file = e.target.files[0]
@@ -76,15 +84,27 @@ export default function CreateCar () {
   }
 
   return (
-    <CarForm
-      setValues={setValues}
-      handleImage={handleImage}
-      handleSubmit={handleSubmit}
-      loading={loading}
-      images={images}
-      brands={brands}
-    >
-      Agregar vehículo
-    </CarForm>
+    <>
+      <Button onClick={handleOpen} className='bg-green-500 hover:bg-green-700 font-bold py-2 px-4 rounded'>
+        Agregar vehículo
+      </Button>
+
+      {open && (
+        <ModalBackdrop>
+          <CarForm
+            setValues={setValues}
+            values={values}
+            handleImage={handleImage}
+            handleSubmit={handleSubmit}
+            loading={loading}
+            images={images}
+            brands={brands}
+            handleClose={handleClose}
+          >
+            Agregar vehículo
+          </CarForm>
+        </ModalBackdrop>
+      )}
+    </>
   )
 }

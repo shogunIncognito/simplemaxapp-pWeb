@@ -23,7 +23,23 @@ export default function Home () {
         <Carrusel />
       </section>
 
-      <section className='w-full text-center bg-blue-500 p-10 '>
+      <section className='w-full h-screen flex'>
+        <div className='w-[50%] bg-slate-700 flex items-center justify-center'>
+          <div className='flex flex-col text-center justify-center items-center p-8'>
+            <h2 className='text-5xl font-bold text-center text-white'>Max <span className='text-blue-500'>Autos</span> </h2>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugiat expedita sunt ducimus aspernatur
+              quam eius vitae at libero iste, minus accusamus sequi nihil incidunt nostrum atque quaerat,
+              dignissimos saepe fuga!
+            </p>
+            <Link className='border-2 border-white border-solid p-2 text-blue-50 w-[30%]' href='/QuienesSomos'>VER MAS</Link>
+          </div>
+        </div>
+        <div className='w-[50%] h-full bg-blue-500 quienesomos '>
+          <img className='w-full h-full object-cover' src={img.src} alt='' />
+        </div>
+      </section>
+
+      <section className='w-full text-center bg-white p-10 '>
         <h2 className='font-mono font-bold text-lg'>SERVICIOS DE MAX AUTOS</h2>
         <Tarjetas />
       </section>

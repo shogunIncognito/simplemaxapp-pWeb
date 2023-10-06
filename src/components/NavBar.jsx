@@ -26,7 +26,7 @@ export default function NavBar () {
           <li className='hover:scale-110'>
             <Link className='transition-all items-center gap-2 flex px-4 py-2 border-2 border-transparent' href='/QuienesSomos'>
               <FaCarAlt size={30} />
-              Nuestros Autos
+              Nosotros
             </Link>
           </li>
         </ul>

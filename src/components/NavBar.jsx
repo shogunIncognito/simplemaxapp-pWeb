@@ -23,6 +23,12 @@ export default function NavBar () {
               Nuestros Autos
             </Link>
           </li>
+          <li className='hover:scale-110'>
+            <Link className='transition-all items-center gap-2 flex px-4 py-2 border-2 border-transparent' href='/QuienesSomos'>
+              <FaCarAlt size={30} />
+              Nosotros
+            </Link>
+          </li>
         </ul>
       </nav>
       <Link href='/login' className='absolute right-0 hover:scale-110'>

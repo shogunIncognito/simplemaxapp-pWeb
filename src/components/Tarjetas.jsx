@@ -1,5 +1,7 @@
 'use client'
 import { MdOutlineSell } from 'react-icons/md'
+import { GiBuyCard } from 'react-icons/gi'
+import { TiDeviceDesktop } from 'react-icons/ti'
 import { motion } from 'framer-motion'
 
 export default function Tarjetas () {
@@ -23,7 +25,7 @@ export default function Tarjetas () {
         >
           <img className='-z-0 object-cover w-full h-full absolute hover:scale-105 transition-[1.5]' src='https://static.retail.autofact.cl/blog/20160615165912.original7202790009111910632.jpg' />
           <div className='z-10 w-full h-full bg-black/60 p-3 flex flex-col justify-center items-center'>
-            <MdOutlineSell className='z-10 block mx-auto text-white' size={40} />
+            <GiBuyCard className='z-10 block mx-auto text-white' size={40} />
             <p className='z-10 block bottom-0 text-white'>COMPRAMOS TU AUTO AL <br />MEJOR PRECIO </p>
           </div>
 
@@ -34,7 +36,7 @@ export default function Tarjetas () {
         >
           <img className='-z-0 object-cover w-full h-full absolute hover:scale-105 transition-[1.5]' src='https://www.bizerba.com/dam/jcr:48b58ccd-3a04-4ea8-899e-6d976442acfd/consulting_1920x1080px_image_w642_h361_retina.jpg' />
           <div className='z-10 w-full h-full bg-black/60 p-3 flex flex-col justify-center items-center'>
-            <MdOutlineSell className='z-10 block mx-auto text-white' size={40} />
+            <TiDeviceDesktop className='z-10 block mx-auto text-white' size={40} />
             <p className='z-10 block bottom-0 text-white'>ACESORAMIENTO</p>
           </div>
         </motion.div>

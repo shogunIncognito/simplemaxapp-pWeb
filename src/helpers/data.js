@@ -79,8 +79,8 @@ export const brandsCarrousel = [
   {
     name: 'chevrolet',
     urlimg: `${chevrolet.src}`,
-    width: 'w-[100px] h-[50px]',
-    height: 'h-[60px]',
+    width: 'w-[100px]',
+    height: 'h-[50px]',
     imgUrl: 'https://www.motor.com.co/__export/1684343462969/sites/motor/img/2023/01/22/chevrolet-montana-1464762_1.jpg_2006041591.jpg'
   },
   {
@@ -121,8 +121,8 @@ export const brandsCarrousel = [
   {
     name: 'jeep',
     urlimg: `${jeep.src}`,
-    width: 'w-[110px]',
-    height: 'h-20',
+    width: 'w-[120px]',
+    height: 'h-16',
     imgUrl: 'https://www.elcarrocolombiano.com/wp-content/uploads/2022/12/20221212-JEEP-GRAND-CHEROKEE-L-2023-COLOMBIA-PRECIO-FICHA-TECNICA-SUV-7-PASAJEROS-01.jpg'
   },
   {

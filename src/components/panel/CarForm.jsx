@@ -8,22 +8,24 @@ export default function CarForm ({
   loading, images, handleClose, brands, children
 }) {
   const handleChange = (e) => {
+    const { name, value } = e.target
     if (!setValues) return
-    if (e.target.name === 'brand') return setValues(prev => ({ ...prev, brandId: Number(e.target.value) }))
+    if (name === 'brand') return setValues(prev => ({ ...prev, brandId: Number(value) }))
 
     setValues(prev => ({
       ...prev,
-      [e.target.name]: e.target.value
+      [name]: name === 'plate' ? value.toUpperCase() : value
     }))
   }
 
   return (
     <>
       <form onSubmit={handleSubmit}>
+        <h2 className='text-2xl font-bold opacity-80 mb-3'>{children}</h2>
         <div className='grid grid-cols-2 md:grid-cols-3 gap-3'>
-          <div className='flex flex-col gap-1'>
-            <label className='text-white'>Marca</label>
-            <select onChange={handleChange} name='brandId' id='brandId' className='h-full text-gray-600 font-medium px-2 py-2  ring-2 rounded outline-none hover:ring-blue-400 focus:ring-blue-600 transition-all duration-300'>
+          <div className='flex flex-col gap-1 overflow-ellipsis'>
+            <label className='text-white whitespace-nowrap text-ellipsis overflow-hidden'>Marca</label>
+            <select onChange={handleChange} name='brandId' id='brandId' className=' text-gray-600 font-medium px-2 py-2  ring-2 rounded outline-none hover:ring-blue-400 focus:ring-blue-600 transition-all duration-300'>
               {brands.map(brand => (
                 <option key={brand.id} value={brand.id}>{brand.name}</option>
               ))}
@@ -31,45 +33,53 @@ export default function CarForm ({
           </div>
 
           <div className='flex flex-col gap-1'>
-            <label className='text-white'>Tipo combustible</label>
-            <select onChange={handleChange} name='fuel' id='fuel' className='h-full text-gray-600 font-medium px-2 py-2 ring-2 rounded outline-none hover:ring-blue-400 focus:ring-blue-600 transition-all duration-300'>
+            <label className='text-white whitespace-nowrap text-ellipsis overflow-hidden'>Tipo combustible</label>
+            <select onChange={handleChange} name='fuel' id='fuel' className=' text-gray-600 font-medium px-2 py-2 ring-2 rounded outline-none hover:ring-blue-400 focus:ring-blue-600 transition-all duration-300'>
               <option value='corriente'>Corriente</option>
               <option value='diesel'>Diesel</option>
             </select>
           </div>
 
-          <div className='flex flex-col gap-1'>
-            <label className='text-white'>Transmisión</label>
-            <select onChange={handleChange} name='transmission' id='transmission' className='h-full text-gray-600 font-medium px-2 py-2  ring-2 rounded outline-none hover:ring-blue-400 focus:ring-blue-600 transition-all duration-300'>
+          <div className='flex flex-col gap-1 overflow-ellipsis'>
+            <label className='text-white whitespace-nowrap text-ellipsis overflow-hidden'>Transmisión</label>
+            <select onChange={handleChange} name='transmission' id='transmission' className=' text-gray-600 font-medium px-2 py-2  ring-2 rounded outline-none hover:ring-blue-400 focus:ring-blue-600 transition-all duration-300'>
               <option value='manual'>Manual</option>
               <option value='automatica'>Automática</option>
             </select>
           </div>
 
-          <div className='flex flex-col gap-1'>
-            <label className='text-white'>Tipo de vehículo</label>
-            <select onChange={handleChange} name='type' id='type' className='h-full text-gray-600 font-medium px-2 py-2  ring-2 rounded outline-none hover:ring-blue-400 focus:ring-blue-600 transition-all duration-300'>
+          <div className='flex flex-col gap-1 overflow-ellipsis'>
+            <label className='text-white whitespace-nowrap text-ellipsis overflow-hidden'>Tipo de vehículo</label>
+            <select onChange={handleChange} name='type' id='type' className=' text-gray-600 font-medium px-2 py-2  ring-2 rounded outline-none hover:ring-blue-400 focus:ring-blue-600 transition-all duration-300'>
               <option value='automovil'>Automóvil</option>
               <option value='camioneta'>Camioneta</option>
             </select>
           </div>
 
-          <div className='flex flex-col gap-1'>
-            <label className='text-white'>Cilindraje</label>
-            <select onChange={handleChange} name='cylinder' id='cylinder' className='h-full text-gray-600 font-medium px-2 py-2  ring-2 rounded outline-none hover:ring-blue-400 focus:ring-blue-600 transition-all duration-300'>
+          <div className='flex flex-col gap-1 overflow-ellipsis'>
+            <label className='text-white whitespace-nowrap text-ellipsis overflow-hidden'>CC</label>
+            <select onChange={handleChange} name='cc' id='cc' className=' text-gray-600 font-medium px-2 py-2 ring-2 rounded outline-none hover:ring-blue-400 focus:ring-blue-600 transition-all duration-300'>
               <option value='1.0'>1.0</option>
+              <option value='1.1'>1.1</option>
               <option value='1.2'>1.2</option>
+              <option value='1.3'>1.3</option>
               <option value='1.4'>1.4</option>
+              <option value='1.5'>1.5</option>
               <option value='1.6'>1.6</option>
               <option value='1.8'>1.8</option>
               <option value='2.0'>2.0</option>
               <option value='2.2'>2.2</option>
+              <option value='2.4'>2.4</option>
+              <option value='2.5'>2.5</option>
+              <option value='2.6'>2.6</option>
+              <option value='2.7'>2.7</option>
+              <option value='2.8'>2.8</option>
             </select>
           </div>
           {
             carInputs.map((input, index) => (
               <div key={index} className='flex flex-col gap-1'>
-                <label className='text-white'>{input.label}</label>
+                <label className='text-white whitespace-nowrap text-ellipsis overflow-hidden'>{input.label}</label>
                 <Input
                   onChange={handleChange}
                   value={values[input.name]}

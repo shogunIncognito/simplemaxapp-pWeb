@@ -16,27 +16,39 @@ import ford from '../assets/marcas/ford.png'
 export const carInputs = [
   {
     type: 'text',
-    name: 'model',
-    label: 'Modelo',
-    placeholder: 'Prado'
+    name: 'plate',
+    label: 'Placa',
+    placeholder: 'ABC123'
   },
   {
     type: 'number',
-    name: 'year',
-    label: 'Año',
-    placeholder: '2023'
+    name: 'model',
+    label: 'Modelo',
+    placeholder: '2020'
+  },
+  {
+    type: 'text',
+    name: 'line',
+    label: 'Linea',
+    placeholder: 'Captiva Sport'
   },
   {
     type: 'text',
     name: 'color',
     label: 'Color',
-    placeholder: 'Azul'
+    placeholder: 'Rojo'
   },
   {
     type: 'number',
     name: 'kilometers',
     label: 'Kilómetros',
     placeholder: '12000'
+  },
+  {
+    type: 'number',
+    name: 'owners',
+    label: 'Dueños',
+    placeholder: '1'
   },
   {
     type: 'string',
@@ -52,7 +64,7 @@ export const carInputs = [
   }
 ]
 
-export const tableHeaders = ['ID', 'Marca', 'Modelo', 'Año', 'Kilómetros', 'Color', 'Precio', 'Imagen', 'Acciones']
+export const tableHeaders = ['ID', 'Placa', 'Marca', 'Modelo', 'Linea', 'Kilómetros', 'CC', 'Color', 'Precio', 'Imagen', 'Acciones']
 
 export const brandsCarrousel = [
   {

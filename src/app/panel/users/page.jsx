@@ -2,6 +2,7 @@
 
 import Button from '@/components/Button'
 import Input from '@/components/Input'
+import Spinner from '@/components/Spinner'
 import DeleteUser from '@/components/panel/DeleteUser'
 import useSessionStore from '@/hooks/useSessionStore'
 import { createUser, getUsers } from '@/services/api'
@@ -71,51 +72,47 @@ export default function page () {
       </section>
 
       <div className='mt-10 max-h-[50%] overflow-auto'>
-        <table className='w-full max-w-full overflow-x-auto text-sm text-center text-gray-500 dark:text-gray-400'>
-          <thead className='text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400'>
-            <tr>
-              <th scope='col' className='px-6 py-3'>
-                ID
-              </th>
-              <th scope='col' className='px-6 py-3'>
-                Nombre
-              </th>
-              <th scope='col' className='px-6 py-3'>
-                Cedula
-              </th>
-              <th scope='col' className='px-6 py-3'>
-                Acciones
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-
-            {loading && users.length === 0 && (
-              <tr className='bg-white border-b dark:bg-gray-800 dark:border-gray-700'>
-                <td colSpan='9' className='px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white'>
-                  Cargando...
-                </td>
-              </tr>
+        {loading
+          ? <Spinner />
+          : (
+            <table className='w-full max-w-full overflow-x-auto text-sm text-center text-gray-500 dark:text-gray-400'>
+              <thead className='text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400'>
+                <tr>
+                  <th scope='col' className='px-6 py-3'>
+                    ID
+                  </th>
+                  <th scope='col' className='px-6 py-3'>
+                    Nombre
+                  </th>
+                  <th scope='col' className='px-6 py-3'>
+                    Cedula
+                  </th>
+                  <th scope='col' className='px-6 py-3'>
+                    Acciones
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {filteredUsers.map(user => (
+                  <tr key={user.id} className='bg-white border-b dark:bg-gray-800 dark:border-gray-700'>
+                    <td className='capitalize px-6 py-4'>
+                      {user.id}
+                    </td>
+                    <th scope='row' className='px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white'>
+                      {user.name}
+                    </th>
+                    <th scope='row' className='px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white'>
+                      {user.cedula}
+                    </th>
+                    <td className='px-6 py-4 h-full w-1/6 m-auto'>
+                      <DeleteUser setUsers={setUsers} user={user} />
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
             )}
 
-            {filteredUsers.map(user => (
-              <tr key={user.id} className='bg-white border-b dark:bg-gray-800 dark:border-gray-700'>
-                <td className='capitalize px-6 py-4'>
-                  {user.id}
-                </td>
-                <th scope='row' className='px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white'>
-                  {user.name}
-                </th>
-                <th scope='row' className='px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white'>
-                  {user.cedula}
-                </th>
-                <td className='px-6 py-4 h-full w-1/6 m-auto'>
-                  <DeleteUser setUsers={setUsers} user={user} />
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
       </div>
     </>
   )

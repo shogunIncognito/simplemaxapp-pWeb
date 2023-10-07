@@ -24,10 +24,13 @@ export default function CreateCar () {
     fuel: 'corriente',
     transmission: 'manual',
     type: 'automovil',
+    owners: '',
     model: '',
-    year: '',
+    line: '',
+    plate: '',
     description: '',
-    cylinder: '1.0'
+    color: '',
+    cc: '1.0'
   })
 
   useEffect(() => {

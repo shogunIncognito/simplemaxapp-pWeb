@@ -2,6 +2,7 @@ import sideImage from '@/assets/maxautoslogoblanco.png'
 import useDisclosure from '@/hooks/useDisclosure'
 import useSessionStore from '@/hooks/useSessionStore'
 import { CloseIcon, MenuIcon, UserIcon } from '@/libs/Icons'
+import { FiArrowLeft } from 'react-icons/fi'
 import { AiFillHome } from 'react-icons/ai'
 import { FaCarAlt } from 'react-icons/fa'
 import { BiSolidUser } from 'react-icons/bi'
@@ -58,10 +59,14 @@ export default function PanelLayout ({ children }) {
 
           <nav className='flex flex-col'>
             <Link className='p-4 px-6 hover:bg-gray-900 text-white flex gap-2 items-center transition-color' href='/'>
-              <AiFillHome size={28} className='opacity-75 ' />
+              <FiArrowLeft size={28} className='opacity-75 ' />
               <p className=''>Volver a pagina inicial</p>
             </Link>
             <Link onClick={handleClose} className={`p-4 px-6 hover:bg-gray-900 text-white flex gap-2 items-center transition-colors ${path === '/panel' ? 'bg-gray-700' : ''}`} href='/panel'>
+              <AiFillHome size={28} className='opacity-75' />
+              <p className=''>Inicio</p>
+            </Link>
+            <Link onClick={handleClose} className={`p-4 px-6 hover:bg-gray-900 text-white flex gap-2 items-center transition-colors ${path === '/panel/cars' ? 'bg-gray-700' : ''}`} href='/panel/cars'>
               <FaCarAlt size={28} className='opacity-75' />
               <p className=''>Autos</p>
             </Link>
@@ -94,10 +99,14 @@ export default function PanelLayout ({ children }) {
         <nav className='flex flex-col'>
 
           <Link className='p-4 px-6 lg:p-4 md:p-3 hover:bg-gray-900 text-white flex gap-2 items-center transition-color' href='/'>
-            <AiFillHome size={20} className='opacity-75 ' />
+            <FiArrowLeft size={20} className='opacity-75 ' />
             <p className=''>Volver a pagina inicial</p>
           </Link>
           <Link className={`p-4 px-6 lg:p-4 md:p-3 hover:bg-gray-900 text-white flex gap-2 items-center transition-colors ${path === '/panel' ? 'bg-neutral-900/60' : ''}`} href='/panel'>
+            <AiFillHome size={20} className='opacity-75' />
+            <p className=''>Inicio</p>
+          </Link>
+          <Link className={`p-4 px-6 lg:p-4 md:p-3 hover:bg-gray-900 text-white flex gap-2 items-center transition-colors ${path === '/panel/cars' ? 'bg-neutral-900/60' : ''}`} href='/panel/cars'>
             <FaCarAlt size={20} className='opacity-75' />
             <p className=''>Autos</p>
           </Link>

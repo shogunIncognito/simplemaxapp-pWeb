@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { createCar, updateCar } from '@/services/api'
 import useCarsStore from '@/hooks/useCarsStore'
 import { objectHasEmptyValues } from '@/utils/functions'
@@ -11,31 +11,31 @@ import Button from '../Button'
 import useDisclosure from '@/hooks/useDisclosure'
 import ModalBackdrop from '../ModalBackdrop'
 
+const carInitialValues = {
+  brandId: '',
+  fuel: 'corriente',
+  transmission: 'manual',
+  type: 'automovil',
+  owners: '',
+  kilometers: '',
+  price: '',
+  model: '',
+  line: '',
+  plate: '',
+  description: '',
+  color: '',
+  cc: '1.0'
+}
+
 export default function CreateCar () {
   const { open, handleClose, handleOpen } = useDisclosure()
   const [loading, setLoading] = useState(false)
   const { addCar, brands } = useCarsStore()
+  const [values, setValues] = useState(carInitialValues)
   const [images, setImages] = useState({
     image: null,
     previewImage: null
   })
-  const [values, setValues] = useState({
-    brandId: brands[0]?.id,
-    fuel: 'corriente',
-    transmission: 'manual',
-    type: 'automovil',
-    owners: '',
-    model: '',
-    line: '',
-    plate: '',
-    description: '',
-    color: '',
-    cc: '1.0'
-  })
-
-  useEffect(() => {
-    setValues(prev => ({ ...prev, brandId: brands[0]?.id }))
-  }, [brands])
 
   const handleImage = (e) => {
     const file = e.target.files[0]
@@ -76,24 +76,26 @@ export default function CreateCar () {
       })
 
       addCar(carWithImage)
-      toast.success('vehículo agregado')
+      toast.success('Auto agregado')
     } catch (error) {
       toast.error(error.message)
       console.log(error)
     } finally {
       setLoading(false)
       e.target.reset()
+      setValues(carInitialValues)
     }
   }
 
   return (
     <>
       <Button onClick={handleOpen} className='bg-green-500 hover:bg-green-700 font-bold py-2 px-4 rounded'>
-        Agregar vehículo
+        Agregar auto
       </Button>
 
       {open && (
         <ModalBackdrop>
+          <h2 className='text-2xl font-bold opacity-80 mb-3'>Agregar auto</h2>
           <CarForm
             setValues={setValues}
             values={values}
@@ -104,7 +106,7 @@ export default function CreateCar () {
             brands={brands}
             handleClose={handleClose}
           >
-            Agregar vehículo
+            Agregar
           </CarForm>
         </ModalBackdrop>
       )}

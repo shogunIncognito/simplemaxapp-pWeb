@@ -5,9 +5,9 @@ import { useRouter } from 'next/navigation'
 export default function page () {
   const router = useRouter()
   return (
-    <section className='flex flex-col m-10 w-full justify-center items-center'>
+    <section className='flex flex-col md:m-10 w-full justify-center items-center'>
       <h2 className='text-3xl font-bold'>Administrar</h2>
-      <div className='flex gap-2 my-8'>
+      <div className='flex gap-2 my-8 flex-col md:flex-row'>
         <article onClick={() => router.push('/panel/cars')} className='cursor-pointer relative transition-all shadow-md rounded w-64 h-44'>
           <div className='hover:bg-black/70 shadow-md transition-all z-10 p-3 w-full h-full flex justify-center items-center rounded-md bg-black/60 absolute top-0'>
             <h2 className='text-2xl opacity-80 font-bold text-center'>Carros</h2>

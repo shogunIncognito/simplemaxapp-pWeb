@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "preview": "npm install && npm run build && npm run start",
+    "preview": "npm run build && npm run start",
     "postinstall": "prisma generate"
   },
   "dependencies": {

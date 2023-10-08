@@ -10,8 +10,7 @@ export default function CarForm ({
   const handleChange = (e) => {
     const { name, value } = e.target
     if (!setValues) return
-    if (name === 'brand') return setValues(prev => ({ ...prev, brandId: Number(value) }))
-
+    if (name === 'brandId') return setValues(prev => ({ ...prev, brandId: Number(value) }))
     setValues(prev => ({
       ...prev,
       [name]: name === 'plate' ? value.toUpperCase() : value
@@ -21,11 +20,11 @@ export default function CarForm ({
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <h2 className='text-2xl font-bold opacity-80 mb-3'>{children}</h2>
         <div className='grid grid-cols-2 md:grid-cols-3 gap-3'>
           <div className='flex flex-col gap-1 overflow-ellipsis'>
             <label className='text-white whitespace-nowrap text-ellipsis overflow-hidden'>Marca</label>
-            <select onChange={handleChange} name='brandId' id='brandId' className=' text-gray-600 font-medium px-2 py-2  ring-2 rounded outline-none hover:ring-blue-400 focus:ring-blue-600 transition-all duration-300'>
+            <select onChange={handleChange} value={values.brandId} name='brandId' id='brandId' className='text-gray-600 font-medium px-2 py-2 ring-2 rounded outline-none hover:ring-blue-400 focus:ring-blue-600 transition-all duration-300'>
+              <option value='' disabled>Seleccione una marca</option>
               {brands.map(brand => (
                 <option key={brand.id} value={brand.id}>{brand.name}</option>
               ))}
@@ -34,7 +33,7 @@ export default function CarForm ({
 
           <div className='flex flex-col gap-1'>
             <label className='text-white whitespace-nowrap text-ellipsis overflow-hidden'>Tipo combustible</label>
-            <select onChange={handleChange} name='fuel' id='fuel' className=' text-gray-600 font-medium px-2 py-2 ring-2 rounded outline-none hover:ring-blue-400 focus:ring-blue-600 transition-all duration-300'>
+            <select onChange={handleChange} name='fuel' id='fuel' className='text-gray-600 font-medium px-2 py-2 ring-2 rounded outline-none hover:ring-blue-400 focus:ring-blue-600 transition-all duration-300'>
               <option value='corriente'>Corriente</option>
               <option value='diesel'>Diesel</option>
             </select>
@@ -101,7 +100,7 @@ export default function CarForm ({
           {images.previewImage && <Image className='self-center rounded h-auto w-auto min-w-[150px] object-cover min-h-[150px] max-w-[120px] max-h-[120px]' alt='carImage' src={images.previewImage} width={120} height={120} />}
         </div>
         <div className='flex gap-2 max-w-full items-center justify-center'>
-          <Button disabled={loading} type='submit' className='mt-7 w-40 disabled:bg-opacity-70 disabled:cursor-not-allowed'>{loading ? '...' : 'Agregar'}</Button>
+          <Button disabled={loading} type='submit' className='mt-7 w-40 disabled:bg-opacity-70 disabled:cursor-not-allowed'>{loading ? '...' : children}</Button>
           <Button onClick={handleClose} className='mt-7 w-40 bg-red-500 hover:bg-red-700'>Cerrar</Button>
         </div>
       </form>

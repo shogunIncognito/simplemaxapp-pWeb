@@ -4,10 +4,9 @@ import Button from '@/components/Button'
 import Logo from '@/assets/maxautosicon.png'
 import sideImage from '@/assets/maxHero1.jpg'
 import Image from 'next/image'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { login } from '@/services/api'
 import { useRouter } from 'next/navigation'
-import { deleteCookie } from 'cookies-next'
 import toast from 'react-hot-toast'
 import Input from '@/components/Input'
 import useSessionStore from '@/hooks/useSessionStore'
@@ -20,11 +19,6 @@ export default function page () {
     name: '',
     password: ''
   })
-
-  useEffect(() => {
-    deleteCookie('auth-token')
-    window.localStorage.removeItem('session')
-  }, [])
 
   const isButtonDisabled = !values.name || !values.password
 

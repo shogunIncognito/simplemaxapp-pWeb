@@ -32,15 +32,15 @@ export default function UpdateCar ({ selectedCar, setSelectedCar }) {
 
       const image = images.image ? await handleUpdateImage(selectedCar.id) : images.previewImage
 
-      updateCar(selectedCar.id, { ...restOfValues, description, image })
-        .then(() => {
-          reFetch()
-          setSelectedCar(null)
-          toast.success('Auto actualizado')
-        })
-        .finally(() => setLoading(false))
-    } catch (error) {
+      await updateCar(selectedCar.id, { ...restOfValues, description, image })
 
+      reFetch()
+      setSelectedCar(null)
+      toast.success('Auto actualizado')
+    } catch (error) {
+      toast.error(error.message)
+    } finally {
+      setLoading(false)
     }
   }
 
@@ -57,18 +57,13 @@ export default function UpdateCar ({ selectedCar, setSelectedCar }) {
     }
   }
 
-  const handleUpdateImage = async (carId) => {
-    return await uploadCarImage(images.image, carId)
-  }
-
-  const handleClose = () => {
-    setSelectedCar(null)
-  }
+  const handleUpdateImage = async (carId) => await uploadCarImage(images.image, carId)
+  const handleClose = () => setSelectedCar(null)
 
   return (
     <>
       <ModalBackdrop>
-        <h2 className='text-2xl text-white mb-10'>Crear auto</h2>
+        <h2 className='text-2xl font-bold opacity-80 mb-3'>Actualizar auto</h2>
         <CarForm
           setValues={setValues}
           handleImage={handleImage}
@@ -79,7 +74,7 @@ export default function UpdateCar ({ selectedCar, setSelectedCar }) {
           brands={brands}
           handleClose={handleClose}
         >
-          Actualizar auto
+          Actualizar
         </CarForm>
       </ModalBackdrop>
     </>

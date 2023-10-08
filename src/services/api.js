@@ -75,7 +75,6 @@ export const deleteUser = async (id) => {
 }
 
 export const getBrands = async () => {
-  console.log(getToken())
   const response = await api.get('/brands')
   return response.data
 }

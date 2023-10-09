@@ -11,6 +11,7 @@ import AddBrand from '@/components/panel/Brands'
 import Button from '@/components/Button'
 import Link from 'next/link'
 import Spinner from '@/components/Spinner'
+import CarFilter from '@/components/panel/CarFilter'
 
 export default function page () {
   const { cars, loading } = useCarsStore()
@@ -23,9 +24,12 @@ export default function page () {
     <section className='bg-neutral-800 w-full h-full p-5'>
       <h2 className='text-white md:hidden font-bold opacity-75 text-3xl text-center'>Autos</h2>
 
-      <div className='my-4 flex items-start gap-2'>
-        <CreateCar />
-        <AddBrand />
+      <div className='my-4 gap-3 flex-col md:flex-row flex items-start '>
+        <div className='gap-2 flex '>
+          <CreateCar />
+          <AddBrand />
+        </div>
+        <CarFilter />
       </div>
 
       <div className='relative overflow-auto max-h-[90%] md:max-h-[88vh]'>

@@ -1,6 +1,7 @@
 import { LoginIcon, MaxAutosIcon } from '@/libs/Icons'
 import Link from 'next/link'
 import { AiFillHome } from 'react-icons/ai'
+import { RiTeamFill } from 'react-icons/ri'
 import { FaCarAlt } from 'react-icons/fa'
 
 export default function NavBar () {
@@ -25,7 +26,7 @@ export default function NavBar () {
           </li>
           <li className='hover:scale-110'>
             <Link className='transition-all items-center gap-2 flex px-4 py-2 border-2 border-transparent' href='/QuienesSomos'>
-              <FaCarAlt size={30} />
+              <RiTeamFill size={30} />
               Nosotros
             </Link>
           </li>

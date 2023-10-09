@@ -33,7 +33,7 @@ export default function CarForm ({
 
           <div className='flex flex-col gap-1'>
             <label className='text-white whitespace-nowrap text-ellipsis overflow-hidden'>Tipo combustible</label>
-            <select onChange={handleChange} name='fuel' id='fuel' className='text-gray-600 font-medium px-2 py-2 ring-2 rounded outline-none hover:ring-blue-400 focus:ring-blue-600 transition-all duration-300'>
+            <select onChange={handleChange} value={values.fuel} name='fuel' id='fuel' className='text-gray-600 font-medium px-2 py-2 ring-2 rounded outline-none hover:ring-blue-400 focus:ring-blue-600 transition-all duration-300'>
               <option value='corriente'>Corriente</option>
               <option value='diesel'>Diesel</option>
             </select>
@@ -41,7 +41,7 @@ export default function CarForm ({
 
           <div className='flex flex-col gap-1 overflow-ellipsis'>
             <label className='text-white whitespace-nowrap text-ellipsis overflow-hidden'>Transmisión</label>
-            <select onChange={handleChange} name='transmission' id='transmission' className=' text-gray-600 font-medium px-2 py-2  ring-2 rounded outline-none hover:ring-blue-400 focus:ring-blue-600 transition-all duration-300'>
+            <select onChange={handleChange} value={values.transmission} name='transmission' id='transmission' className=' text-gray-600 font-medium px-2 py-2  ring-2 rounded outline-none hover:ring-blue-400 focus:ring-blue-600 transition-all duration-300'>
               <option value='manual'>Manual</option>
               <option value='automatica'>Automática</option>
             </select>
@@ -49,7 +49,7 @@ export default function CarForm ({
 
           <div className='flex flex-col gap-1 overflow-ellipsis'>
             <label className='text-white whitespace-nowrap text-ellipsis overflow-hidden'>Tipo de vehículo</label>
-            <select onChange={handleChange} name='type' id='type' className=' text-gray-600 font-medium px-2 py-2  ring-2 rounded outline-none hover:ring-blue-400 focus:ring-blue-600 transition-all duration-300'>
+            <select onChange={handleChange} value={values.type} name='type' id='type' className=' text-gray-600 font-medium px-2 py-2  ring-2 rounded outline-none hover:ring-blue-400 focus:ring-blue-600 transition-all duration-300'>
               <option value='automovil'>Automóvil</option>
               <option value='camioneta'>Camioneta</option>
             </select>
@@ -57,7 +57,7 @@ export default function CarForm ({
 
           <div className='flex flex-col gap-1 overflow-ellipsis'>
             <label className='text-white whitespace-nowrap text-ellipsis overflow-hidden'>CC</label>
-            <select onChange={handleChange} name='cc' id='cc' className=' text-gray-600 font-medium px-2 py-2 ring-2 rounded outline-none hover:ring-blue-400 focus:ring-blue-600 transition-all duration-300'>
+            <select onChange={handleChange} value={values.cc} name='cc' id='cc' className=' text-gray-600 font-medium px-2 py-2 ring-2 rounded outline-none hover:ring-blue-400 focus:ring-blue-600 transition-all duration-300'>
               <option value='1.0'>1.0</option>
               <option value='1.1'>1.1</option>
               <option value='1.2'>1.2</option>

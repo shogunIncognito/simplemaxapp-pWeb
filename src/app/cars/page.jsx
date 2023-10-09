@@ -23,9 +23,10 @@ export default function page () {
   if (Buscar === '') {
     iterador = cars
   } else {
-    iterador = cars.filter((date) =>
-      date.brand.toLowerCase().includes(Buscar.toLowerCase())
-    )
+    iterador = cars.filter((car) => {
+      const datoString = `${car.brand} ${car.line} ${car.model}`
+      return datoString.toLowerCase().includes(Buscar.toLowerCase())
+    })
     console.log(iterador)
   }
 

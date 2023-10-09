@@ -41,18 +41,29 @@ export default function page () {
         <table className='w-full max-w-full overflow-x-auto text-sm text-center text-gray-500 dark:text-gray-400'>
           <thead className='text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400'>
             <tr>
+
               {tableHeaders.map((header, index) => (
                 <th key={index} scope='col' className='px-6 py-3'>
                   {header.label}
                 </th>
               ))}
+
             </tr>
           </thead>
           <tbody>
+
             {cars.length === 0 && !loading && (
               <tr className='bg-white border-b dark:bg-gray-800 dark:border-gray-700'>
-                <td colSpan='9' className='px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white'>
+                <td colSpan='11' className='px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white'>
                   No hay autos
+                </td>
+              </tr>
+            )}
+
+            {filteredCars.length === 0 && !loading && (
+              <tr className='bg-white border-b dark:bg-gray-800 dark:border-gray-700'>
+                <td colSpan='11' className='px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white'>
+                  No hay autos que coincidan con el filtro
                 </td>
               </tr>
             )}
@@ -101,6 +112,7 @@ export default function page () {
                 </td>
               </tr>
             ))}
+
           </tbody>
         </table>
       </div>

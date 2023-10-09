@@ -29,8 +29,8 @@ npm install
 yarn install
 ```
 
-## Crea un archivo `.env` para las variables de entorno
-Crea un archivo llamado `.env` en la raíz del proyecto para las variables de entorno y lograr el funcionamiento del proyecto, coloca esto en el archivo creado y dentro de las comillas coloca tu url de la base de datos de MySQL PlanetScale y las credenciales de Firebase para el almacenamiento de imagenes
+## Ingresa las credenciales en el archivo `.env`
+En el archivo [`.env`](.env) ubicado en la raíz del proyecto para las variables de entorno y para lograr el funcionamiento del proyecto. Dentro de las comillas coloca tu url de la base de datos de MySQL PlanetScale y las credenciales de Firebase para el almacenamiento de imagenes
 
 ```env
 DATABASE_URL = ""

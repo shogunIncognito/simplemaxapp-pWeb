@@ -5,7 +5,7 @@ import { filterCars } from '@/utils/functions'
 import { useDebouncedCallback } from 'use-debounce'
 
 export default function CarFilter ({ cars, setCars }) {
-  const headersToFilter = tableHeaders.filter(header => header.value !== 'Acciones' && header.value !== 'Imagen')
+  const headersToFilter = tableHeaders.filter(header => header.label !== 'Acciones' && header.label !== 'Imagen')
   const [filters, setFilter] = useState({
     value: '',
     option: headersToFilter[0].value

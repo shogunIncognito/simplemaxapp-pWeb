@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import CreateCar from '@/components/panel/CreateCar'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import UpdateCar from '@/components/panel/UpdateCar'
 import { tableHeaders } from '@/helpers/data'
 import DeleteCar from '@/components/panel/DeleteCar'
@@ -17,6 +17,11 @@ export default function page () {
   const { cars, loading } = useCarsStore()
   const [selectedCar, setSelectedCar] = useState(null)
   const [carToDelete, setCarToDelete] = useState(null)
+  const [filteredCars, setFilteredCars] = useState([])
+
+  useEffect(() => {
+    setFilteredCars(cars)
+  }, [cars])
 
   if (loading) return <Spinner />
 
@@ -29,7 +34,7 @@ export default function page () {
           <CreateCar />
           <AddBrand />
         </div>
-        <CarFilter />
+        <CarFilter cars={cars} setCars={setFilteredCars} />
       </div>
 
       <div className='relative overflow-auto max-h-[90%] md:max-h-[88vh]'>
@@ -38,7 +43,7 @@ export default function page () {
             <tr>
               {tableHeaders.map((header, index) => (
                 <th key={index} scope='col' className='px-6 py-3'>
-                  {header}
+                  {header.label}
                 </th>
               ))}
             </tr>
@@ -52,7 +57,7 @@ export default function page () {
               </tr>
             )}
 
-            {cars.map(car => (
+            {filteredCars.map(car => (
               <tr key={car.id} className='bg-white border-b dark:bg-gray-800 dark:border-gray-700'>
                 <th scope='row' className='px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white'>
                   {car.id}

@@ -64,7 +64,52 @@ export const carInputs = [
   }
 ]
 
-export const tableHeaders = ['ID', 'Placa', 'Marca', 'Modelo', 'Linea', 'Kilómetros', 'CC', 'Color', 'Precio', 'Imagen', 'Acciones']
+export const tableHeaders = [
+  {
+    label: 'ID',
+    value: 'id'
+  },
+  {
+    label: 'Placa',
+    value: 'plate'
+  },
+  {
+    label: 'Marca',
+    value: 'brand'
+  },
+  {
+    label: 'Modelo',
+    value: 'model'
+  },
+  {
+    label: 'Linea',
+    value: 'line'
+  },
+  {
+    label: 'Kilómetros',
+    value: 'kilometers'
+  },
+  {
+    label: 'CC',
+    value: 'cc'
+  },
+  {
+    label: 'Color',
+    value: 'color'
+  },
+  {
+    label: 'Precio',
+    value: 'price'
+  },
+  {
+    label: 'Imagen',
+    value: 'image'
+  },
+  {
+    label: 'Acciones',
+    value: 'actions'
+  }
+]
 
 export const brandsCarrousel = [
   {

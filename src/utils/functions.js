@@ -13,3 +13,12 @@ export const validateToken = (token) => {
 
   return tokenSplit.length === 5 && tokenSplit[0].length === 8 && tokenSplit[4].length === 12
 }
+
+export const filterCars = (cars, filters) => {
+  console.log({ cars, filters })
+  return cars.filter(car => {
+    if (String(car[filters.option]).toLocaleLowerCase().includes(filters.value.toLowerCase())) return true
+
+    return false
+  })
+}

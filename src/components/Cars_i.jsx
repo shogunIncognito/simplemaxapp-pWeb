@@ -23,7 +23,7 @@ export default function CarsI ({ result }) {
               </div>
               <div className='flex w-full h-full'>
                 <div className='flex flex-col items-center justify-center w-[50%] h-full'>
-                  <h1 className='text-center'>{car.brand} {car.model} {car.line}</h1>
+                  <h1 className='text-center'>{car.brand} {car.line} {car.model}</h1>
                   <h3>KLM: {car.kilometers}</h3>
 
                 </div>

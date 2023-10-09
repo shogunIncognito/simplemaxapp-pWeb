@@ -7,6 +7,7 @@ Aplicación para la concesionaria MaxAutos como proyecto final de Fundamentos We
 - **Tailwind CSS**: Framework de CSS utilitario para diseñar interfaces de usuario rápidamente.
 - **MySQL**: Sistema de administración de bases de datos relacionales
 - **Prisma**: Prisma es un ORM de próxima generación para Node.js y TypeScript 
+- **Firebase**: Servicio de almacenamiento de objetos potente, simple y rentable para almacenamiento de imagenes
 
 ## Clonar repositorio en tu maquina
 ```bash

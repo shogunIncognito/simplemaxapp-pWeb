@@ -1,14 +1,13 @@
 'use client'
-import useCarsStore from '@/hooks/useCarsStore'
 import maxautos from '../assets/maxautosicon.png'
 import Link from 'next/link'
 
-export default function CarsI () {
-  const { cars } = useCarsStore()
+export default function CarsI ({ result }) {
+  console.log(result)
   return (
     <>
-      <div className='h-full grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 gap-6 p-5'>
-        {cars.map((car) => (
+      <div className='h-full grid 2xl:grid-cols-4 xl:grid-cols-3 grid-cols-1 gap-6 p-5'>
+        {result.map((car) => (
           <div key={car.id} className='max-w-sm h-[500px] m-auto mt-0 flex flex-col overflow-hidden border-2 border-blue-400 rounded-md'>
             <div className='w-full h-[284px] bg-blue-400 p-4 overflow-hidden border-2 rounded'>
               <img className='object-cover w-full h-full' src={car.image} alt='' />

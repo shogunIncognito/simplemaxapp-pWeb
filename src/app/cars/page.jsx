@@ -1,5 +1,7 @@
 'use client'
+import Button from '@/components/Button'
 import CarsI from '@/components/Cars_i'
+import Input from '@/components/Input'
 import useCarsStore from '@/hooks/useCarsStore'
 import { useState } from 'react'
 
@@ -7,8 +9,8 @@ import { useState } from 'react'
 
 export default function page () {
   const { cars, loading } = useCarsStore()
-  const [Bus, setBus] = useState('')
-  const [Buscar, setBuscar] = useState('')
+  const [bus, setBus] = useState('')
+  const [buscar, setBuscar] = useState('')
 
   const InputChange = (e) => {
     setBus(e.target.value)
@@ -16,32 +18,27 @@ export default function page () {
 
   const onSubmit = (e) => {
     e.preventDefault()
-    setBuscar(Bus)
+    setBuscar(bus)
   }
 
-  let iterador = []
-  if (Buscar === '') {
-    iterador = cars
-  } else {
-    iterador = cars.filter((car) => {
-      const datoString = `${car.brand} ${car.line} ${car.model}`
-      return datoString.toLowerCase().includes(Buscar.toLowerCase())
-    })
-    console.log(iterador)
-  }
+  // carros filtrados en español 👍
+  const filteredCars = cars.filter((car) => {
+    const datoString = `${car.brand} ${car.line} ${car.model}`
+    return datoString.toLowerCase().includes(buscar.toLowerCase())
+  })
 
   return (
     <>
       <section className='flex w-full justify-center bg-blue-300 p-3'>
-        <form onSubmit={onSubmit} action=''>
-          <input placeholder='Buscar' value={Bus} onChange={InputChange} type='text' />
-          <button type='submit'>Enviar</button>
+        <form onSubmit={onSubmit}>
+          <Input placeholder='Buscar' value={bus} onChange={InputChange} type='text' />
+          <Button>Enviar</Button>
         </form>
       </section>
       <section>
         {loading
           ? <h2>Cargando</h2>
-          : <CarsI result={iterador} />}
+          : <CarsI result={filteredCars} />}
       </section>
     </>
 

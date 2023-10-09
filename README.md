@@ -1,8 +1,10 @@
 # MaxApp Proyecto
 
-Aplicación para la concesionaria MaxAutos como proyecto final de Fundamentos Web
+![MaxLogo](src/assets/maxautoslogoblanco.png)
 
-### Tecnologias utilizadas
+Aplicación para la concesionaria MaxAutos como proyecto final de Fundamentos Web desarrollada en colaboración por [shogunIncognito](https://github.com/shogunIncognito) y [EmersonR14-dev](https://github.com/EmersonR14-dev).
+
+### Herramientas utilizadas
 - **Next.js**: Framework de React para renderizado del lado del servidor y en el cliente.
 - **Tailwind CSS**: Framework de CSS utilitario para diseñar interfaces de usuario rápidamente.
 - **MySQL**: Sistema de administración de bases de datos relacionales

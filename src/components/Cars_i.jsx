@@ -8,18 +8,18 @@ export default function CarsI ({ result }) {
     <>
       <div className='h-full grid 2xl:grid-cols-4 xl:grid-cols-3 grid-cols-1 gap-6 p-5'>
         {result.map((car) => (
-          <div key={car.id} className='max-w-sm h-[500px] m-auto mt-0 flex flex-col overflow-hidden border-2 border-blue-400 rounded-md'>
-            <div className='w-full h-[284px] bg-blue-400 p-4 overflow-hidden border-2 rounded'>
-              <img className='object-cover w-full h-full' src={car.image} alt='' />
+          <div key={car.id} className='max-w-sm h-[500px] m-auto mt-0 flex flex-col overflow-hidden border-2 border-blue-300 rounded-md'>
+            <div className='w-full h-[284px] bg-blue-300 p-4 overflow-hidden border-2 rounded'>
+              <img className='object-cover w-full h-full outline-2 outline outline-blue-100' src={car.image} alt='' />
             </div>
-            <div className='w-full h-[62px] flex items-center justify-center bg-blue-400 p-3'>
+            <div className='w-full h-[62px] flex items-center justify-center bg-blue-300 p-3'>
               <img className='w-14 h-12' src={maxautos.src} alt='' />
             </div>
             <hr />
             <div className='h-[154px] flex flex-col bg-blue-100'>
               <div className='flex'>
                 <p className='w-[50%] bg-gray-500 p-1 text-center'>{car.line}</p>
-                <p className='w-[50%] bg-blue-400 p-1 text-center'>$ {Math.round(car.price).toLocaleString()}</p>
+                <p className='w-[50%] bg-blue-300 p-1 text-center'>$ {Math.round(car.price).toLocaleString()}</p>
               </div>
               <div className='flex w-full h-full'>
                 <div className='flex flex-col items-center justify-center w-[50%] h-full'>

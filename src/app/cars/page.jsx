@@ -3,6 +3,7 @@ import Button from '@/components/Button'
 import CarsI from '@/components/Cars_i'
 import Input from '@/components/Input'
 import useCarsStore from '@/hooks/useCarsStore'
+import Spinner from '@/components/Spinner'
 import { useState } from 'react'
 
 // setBuscar(setBuscar(false))
@@ -37,7 +38,7 @@ export default function page () {
       </section>
       <section>
         {loading
-          ? <h2>Cargando</h2>
+          ? <Spinner color='text-blue-400' className='m-4' />
           : <CarsI result={filteredCars} />}
       </section>
     </>

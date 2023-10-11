@@ -52,6 +52,7 @@ export default function page () {
     <>
       <section className='w-full flex-col items-center h-auto flex justify-center'>
         <h2 className='text-2xl opacity-75 font-bold md:hidden mt-5'>Usuarios</h2>
+
         <form onSubmit={handleSubmit} className='flex flex-col gap-3 bg-slate-900 mt-4 p-4 rounded'>
           <div className='flex md:flex-row flex-col gap-2'>
             <div className='w-full flex flex-col gap-1'>
@@ -67,8 +68,9 @@ export default function page () {
             <label className='opacity-80 font-bold' htmlFor='cedula'>Cedula</label>
             <Input minLength='10' required className='p-2' name='cedula' type='number' id='cedula' placeholder='1234567890' />
           </div>
-          <Button disabled={loading} className='py-2 mt-2 w-40 self-center'>{loading ? '...' : 'Crear'}</Button>
+          <Button disabled={loading} className='py-2 mt-2 w-40 self-center'>{loading ? <Spinner className='p-0' size={24} /> : 'Crear'}</Button>
         </form>
+
       </section>
 
       <div className='mt-10 max-h-[50%] overflow-auto'>

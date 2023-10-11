@@ -10,6 +10,7 @@ import { useRouter } from 'next/navigation'
 import toast from 'react-hot-toast'
 import Input from '@/components/Input'
 import useSessionStore from '@/hooks/useSessionStore'
+import Spinner from '@/components/Spinner'
 
 export default function page () {
   const router = useRouter()
@@ -59,7 +60,9 @@ export default function page () {
             <label className='text-md opacity-70' htmlFor='password'>Contraseña</label>
             <Input value={values.password} onChange={handleChange} id='password' type='password' name='password' />
           </div>
-          <Button disabled={isButtonDisabled || loading} className='mt-3 disabled:bg-opacity-70 disabled:cursor-not-allowed'>{loading ? '...' : 'Iniciar sesión'}</Button>
+          <Button disabled={isButtonDisabled || loading} className='mt-3 disabled:bg-opacity-70 disabled:cursor-not-allowed'>
+            {loading ? <Spinner className='p-0' size={28} /> : 'Iniciar sesión'}
+          </Button>
         </form>
       </section>
       <section className='h-screen w-full md:w-1/2 lg:w-2/3'>

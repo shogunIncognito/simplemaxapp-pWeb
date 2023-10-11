@@ -3,7 +3,6 @@ import maxautos from '../assets/maxautosicon.png'
 import Link from 'next/link'
 
 export default function CarsI ({ result }) {
-  console.log(result)
   return (
     <>
       <div className='h-full grid 2xl:grid-cols-4 xl:grid-cols-3 grid-cols-1 gap-6 p-5'>

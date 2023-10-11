@@ -6,6 +6,7 @@ import { createBrand, deleteBrand } from '@/services/api'
 import { useState } from 'react'
 import useCarsStore from '@/hooks/useCarsStore'
 import toast from 'react-hot-toast'
+import Spinner from '../Spinner'
 
 export default function Brands () {
   const { open, handleClose, handleOpen } = useDisclosure()
@@ -70,7 +71,7 @@ export default function Brands () {
                   className='py-2 bg-green-600 hover:bg-green-800 disabled:bg-green-900 disabled:pointer-events-none'
                   onClick={handleCreate}
                 >
-                  {loading ? '...' : 'Agregar'}
+                  {loading ? <Spinner className='p-0' size={24} /> : 'Agregar'}
                 </Button>
               </div>
             </form>
@@ -91,7 +92,7 @@ export default function Brands () {
                   className='py-2 bg-red-600 hover:bg-red-800 disabled:bg-red-900 disabled:pointer-events-none'
                   onClick={handleDelete}
                 >
-                  {loading ? '...' : 'Eliminar'}
+                  {loading ? <Spinner className='p-0' size={24} /> : 'Eliminar'}
                 </Button>
               </div>
             </form>

@@ -2,6 +2,7 @@ import Button from '../Button'
 import Input from '../Input'
 import Image from 'next/image'
 import { carInputs } from '@/helpers/data'
+import Spinner from '../Spinner'
 
 export default function CarForm ({
   setValues, values, handleImage, handleSubmit,
@@ -100,7 +101,9 @@ export default function CarForm ({
           {images.previewImage && <Image className='self-center rounded h-auto w-auto min-w-[150px] object-cover min-h-[150px] max-w-[120px] max-h-[120px]' alt='carImage' src={images.previewImage} width={120} height={120} />}
         </div>
         <div className='flex gap-2 max-w-full items-center justify-center'>
-          <Button disabled={loading} type='submit' className='mt-7 w-40 disabled:bg-opacity-70 disabled:cursor-not-allowed'>{loading ? '...' : children}</Button>
+          <Button disabled={loading} type='submit' className='mt-7 w-40 disabled:bg-opacity-70 disabled:cursor-not-allowed'>
+            {loading ? <Spinner className='p-0' size={24} /> : children}
+          </Button>
           <Button onClick={handleClose} className='mt-7 w-40 bg-red-500 hover:bg-red-700'>Cerrar</Button>
         </div>
       </form>

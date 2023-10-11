@@ -4,6 +4,7 @@ import CarsI from '@/components/Cars_i'
 import Input from '@/components/Input'
 import useCarsStore from '@/hooks/useCarsStore'
 import Spinner from '@/components/Spinner'
+import { LuSearch } from 'react-icons/lu'
 import { useState } from 'react'
 
 // setBuscar(setBuscar(false))
@@ -24,16 +25,16 @@ export default function page () {
 
   // carros filtrados en español 👍
   const filteredCars = cars.filter((car) => {
-    const datoString = `${car.brand} ${car.line} ${car.model}`
+    const datoString = `${car.brand} ${car.line} ${car.model} ${car.color}`
     return datoString.toLowerCase().includes(buscar.toLowerCase())
   })
 
   return (
     <>
-      <section className='flex w-full justify-center bg-blue-300 p-3'>
-        <form onSubmit={onSubmit}>
-          <Input placeholder='Buscar' value={bus} onChange={InputChange} type='text' />
-          <Button>Enviar</Button>
+      <section className='flex top-20 sticky w-full justify-center bg-blue-300 p-3'>
+        <form className='rounded-md overflow-hidden bg-white w-[50%]' onSubmit={onSubmit}>
+          <Input className='h-full w-[90%] border-solid' placeholder='Buscar por marca, linea, año y color' value={bus} onChange={InputChange} type='text' />
+          <Button className='w-[10%] border-solid h-full text-end'><LuSearch className='text-center' size={12} /> </Button>
         </form>
       </section>
       <section>

@@ -31,12 +31,16 @@ export default function page () {
 
   return (
     <>
-      <section className='flex top-20 sticky w-full justify-center bg-blue-300 p-3'>
+      <section className='flex top-20 sticky w-full justify-center bg-blue-300 p-3 shadow-xl'>
         <form className='rounded-md overflow-hidden bg-white w-[50%]' onSubmit={onSubmit}>
           <Input className='h-full w-[90%] border-solid' placeholder='Buscar por marca, linea, año y color' value={bus} onChange={InputChange} type='text' />
           <Button className='w-[10%] border-solid h-full text-end'><LuSearch className='text-center' size={12} /> </Button>
         </form>
       </section>
+      <section className='image-cars flex flex-col justify-center text-center w-full lg:h-[45vh] h-[35vh] bg-center bg-cover bg-fixed'>
+        <h1 className='text-white text-3xl font-bold'>NUESTROS  AUTOS</h1>
+      </section>
+
       <section>
         {loading
           ? <Spinner color='text-blue-400' className='m-4' />

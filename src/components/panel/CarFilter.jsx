@@ -28,7 +28,7 @@ export default function CarFilter ({ cars, setCars }) {
   }
 
   return (
-    <div className='flex h-full py-1 gap-2 px-2 items-center'>
+    <div className='flex py-1 gap-2 px-2 items-center'>
       <h2>Filtrar por</h2>
       <div className='flex gap-1 items-center'>
 

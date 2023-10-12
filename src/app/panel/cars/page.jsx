@@ -26,10 +26,10 @@ export default function page () {
   if (loading) return <Spinner />
 
   return (
-    <section className='bg-neutral-800 w-full h-full p-5'>
+    <section className='bg-neutral-800 w-full h-full m-2 p-5'>
       <h2 className='text-white md:hidden font-bold opacity-75 text-3xl text-center'>Autos</h2>
 
-      <div className='my-4 gap-3 flex-col md:flex-row flex items-start '>
+      <div className='my-4 gap-3 md:h-[5%] h-[12%] flex-col md:flex-row flex items-start '>
         <div className='gap-2 flex '>
           <CreateCar />
           <AddBrand />
@@ -37,7 +37,7 @@ export default function page () {
         <CarFilter cars={cars} setCars={setFilteredCars} />
       </div>
 
-      <div className='relative overflow-auto max-h-[90%] md:max-h-[88vh]'>
+      <div className='relative overflow-auto max-h-[80%] md:max-h-[90%]'>
         <table className='w-full max-w-full overflow-x-auto text-sm text-center text-gray-500 dark:text-gray-400'>
           <thead className='text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400'>
             <tr>

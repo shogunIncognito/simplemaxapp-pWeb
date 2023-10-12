@@ -21,9 +21,10 @@ export default function PanelLayout ({ children }) {
 
   const closeSession = () => {
     deleteCookie('auth-token')
-    setSession(null)
     window.localStorage.removeItem('session')
-    router.replace('/login')
+    setSession(null)
+    router.push('/login')
+    router.refresh()
     toast('Sesión cerrada', {
       icon: '👋'
     })
@@ -118,7 +119,7 @@ export default function PanelLayout ({ children }) {
         </div>
       </aside>
 
-      <section className='md:w-10/12 w-full md:h-full h-[92%] overflow-hidden bg-neutral-800 text-white'>
+      <section className='md:w-10/12 w-full h-full overflow-hidden bg-neutral-800 text-white'>
         {children}
       </section>
     </main>

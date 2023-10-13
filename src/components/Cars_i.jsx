@@ -24,7 +24,6 @@ export default function CarsI ({ result }) {
                 <div className='flex flex-col items-center justify-center w-[50%] h-full'>
                   <h1 className='text-center'>{car.brand} {car.line} {car.model}</h1>
                   <h3>KLM: {car.kilometers}</h3>
-
                 </div>
                 <div className='flex w-[50%] h-full items-center justify-center p-2'>
                   <Link href='/' className='border-2 border-blue-400 rounded p-1 bg-blue-400 text-white hover:bg-blue-500 hover:text-white hover:border-blue-500 text-center'>MAS INFORMACION</Link>

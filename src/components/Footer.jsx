@@ -2,14 +2,16 @@ import MaxIcon from '../assets/maxautosicon.png'
 import { BsWhatsapp } from 'react-icons/bs'
 import { BiPhoneCall } from 'react-icons/bi'
 import { AiOutlineInstagram } from 'react-icons/ai'
-import Link from 'next/link'
+import { GrLocation, GrMapLocation } from 'react-icons/gr'
+import { MdLocationCity } from 'react-icons/md'
 
 export default function Footer () {
   return (
     <>
-      <section className='grid grid-cols-4 h-[300px] bg-blue-400'>
-        <div className='flex items-center justify-center'>
-          <img className='w-24 h-20' src={MaxIcon.src} />
+      <section className='grid grid-cols-3 h-[300px] bg-blue-400'>
+        <div className='flex flex-col items-center justify-center'>
+          <img className='w-24 h-20 my-4' src={MaxIcon.src} />
+          <h1>HolaPaSomosUnosDuros</h1>
         </div>
         <div className='flex flex-col items-center justify-center'>
           <h1 className='my-2 font-semibold'>CONTACTANOS</h1>
@@ -17,17 +19,10 @@ export default function Footer () {
           <p className='flex my-2'><BiPhoneCall className='mx-1' size={25} />+57 3108504578</p>
           <p className='flex my-2'><AiOutlineInstagram className='mx-1' size={25} />maxautoscalidad</p>
         </div>
-        <div className='flex flex-col items-center justify-center p-4'>
-          <h1 className='my-2 font-semibold'>NOSOTROS</h1>
-          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam odio minima perferendis quaerat
-            non temporibus perspiciatis officiis! Atque hic voluptatibus quaerat ea magni at corporis, laborum
-            voluptatum accusamus mollitia aut.
-          </p>
-        </div>
         <div className='flex flex-col items-center justify-center'>
-          <Link className='my-4 hover:text-cyan-100' href='/'>Inicio</Link>
-          <Link className='my-4 hover:text-cyan-100' href='/cars'>Nuestros Autos</Link>
-          <Link className='my-4 hover:text-cyan-100' href='/QuienesSomos'>Nosotros</Link>
+          <p className='flex my-2'><MdLocationCity className='mx-1' size={25} /> Colombia</p>
+          <p className='flex my-2'><GrMapLocation className='mx-1' size={25} /> Villavicencio-Meta</p>
+          <p className='flex my-2'><GrLocation className='mx-1' size={25} /> SPM19 MZ4 CS3</p>
         </div>
       </section>
     </>

@@ -32,8 +32,8 @@ export default function NavBar () {
           </li>
         </ul>
       </nav>
-      <Link href='/login' className='absolute right-0 hover:scale-110'>
-        <LoginIcon className='mr-4' />
+      <Link href='/login' className='absolute right-10 hover:scale-110'>
+        <LoginIcon className='' />
       </Link>
     </header>
   )

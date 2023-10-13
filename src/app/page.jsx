@@ -2,6 +2,7 @@ import Carrusel from '@/components/Carrusel'
 import Button from '../components/Button'
 import Tarjetas from '@/components/Tarjetas'
 import img from '../assets/maxHero1.jpg'
+import { AiOutlineEye } from 'react-icons/ai'
 import Link from 'next/link'
 import './globals.css'
 
@@ -26,14 +27,14 @@ export default function Home () {
       <section className='w-full h-screen flex'>
         <div className='w-[50%] flex items-center justify-center bg-gradient-to-l from-white to-blue-400'>
           <div className='flex flex-col text-center justify-center items-center p-8'>
-            <h2 className='text-5xl font-bold text-center m-3'>Max <span className='text-blue-500'>Autos</span> </h2>
-            <p className='m-3'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugiat expedita sunt ducimus aspernatur
+            <h2 className='text-5xl font-bold text-center m-5'>Max <span className='text-blue-500'>Autos</span> </h2>
+            <p className='m-5'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugiat expedita sunt ducimus aspernatur
               quam eius vitae at libero iste, minus accusamus sequi nihil incidunt nostrum atque quaerat,
               dignissimos saepe fuga!
             </p>
-            <div>
-              <Link className='border-2 border-black border-solid p-2 text-black w-[25%] m-3 rounded-md hover:bg-blue-400' href='/QuienesSomos'>
-                VER MAS
+            <div className=''>
+              <Link className='grid place-content-center border-2 border-blue-500 border-solid px-10 py-2 text-black w-[25%] m-5 rounded hover:bg-blue-400 hover:text-white' href='/QuienesSomos'>
+                <p><AiOutlineEye className='text-blue-500 hover:text-white' size={22} /></p>
               </Link>
             </div>
           </div>

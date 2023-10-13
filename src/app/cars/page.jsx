@@ -32,9 +32,9 @@ export default function page () {
   return (
     <>
       <section className='flex top-20 sticky w-full justify-center bg-blue-300 p-3 shadow-xl'>
-        <form className='rounded-md overflow-hidden bg-white w-[50%]' onSubmit={onSubmit}>
-          <Input className='h-full w-[90%] border-solid' placeholder='Buscar por marca, linea, año y color' value={bus} onChange={InputChange} type='text' />
-          <Button className='w-[10%] border-solid h-full text-end'><LuSearch className='text-center' size={12} /> </Button>
+        <form className='flex rounded-md overflow-hidden bg-transparent w-[50%]' onSubmit={onSubmit}>
+          <Input className='h-full w-[90%] border-solid rounded-none' placeholder='Buscar por marca, linea, año y color' value={bus} onChange={InputChange} type='text' />
+          <Button className='w-[10%] border-solid h-full rounded-none grid place-content-center'><LuSearch size={15} /> </Button>
         </form>
       </section>
       <section className='image-cars flex flex-col justify-center text-center w-full lg:h-[45vh] h-[35vh] bg-center bg-cover bg-fixed'>

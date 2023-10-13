@@ -38,8 +38,8 @@ export default function page () {
       </div>
 
       <div className='relative overflow-auto max-h-[80%] md:max-h-[90%]'>
-        <table className='w-full max-w-full overflow-x-auto text-sm text-center text-gray-500 dark:text-gray-400'>
-          <thead className='text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400'>
+        <table className='w-full max-w-full overflow-x-auto text-sm text-center text-gray-400'>
+          <thead className='text-xs uppercase bg-gray-700 text-gray-400'>
             <tr>
 
               {tableHeaders.map((header, index) => (
@@ -53,24 +53,24 @@ export default function page () {
           <tbody>
 
             {cars.length === 0 && !loading && (
-              <tr className='bg-white border-b dark:bg-gray-800 dark:border-gray-700'>
-                <td colSpan='11' className='px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white'>
+              <tr className='border-b bg-gray-800 border-gray-700'>
+                <td colSpan='11' className='px-6 py-4 font-medium whitespace-nowrap text-white'>
                   No hay autos
                 </td>
               </tr>
             )}
 
             {filteredCars.length === 0 && !loading && (
-              <tr className='bg-white border-b dark:bg-gray-800 dark:border-gray-700'>
-                <td colSpan='11' className='px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white'>
+              <tr className='border-b bg-gray-800 border-gray-700'>
+                <td colSpan='11' className='px-6 py-4 font-medium whitespace-nowrap text-white'>
                   No hay autos que coincidan con el filtro
                 </td>
               </tr>
             )}
 
             {filteredCars.map(car => (
-              <tr key={car.id} className='bg-white border-b dark:bg-gray-800 dark:border-gray-700'>
-                <th scope='row' className='px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white'>
+              <tr key={car.id} className='border-b bg-gray-800 border-gray-700'>
+                <th scope='row' className='px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-white'>
                   {car.id}
                 </th>
                 <td className='capitalize px-6 py-4'>

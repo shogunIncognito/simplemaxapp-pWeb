@@ -7,11 +7,12 @@ import { AiFillHome } from 'react-icons/ai'
 import { FaCarAlt } from 'react-icons/fa'
 import { BiSolidUser } from 'react-icons/bi'
 import { RiLogoutBoxRLine as RxExit } from 'react-icons/ri'
-import { deleteCookie } from 'cookies-next'
+import { deleteCookie, getCookie } from 'cookies-next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import toast from 'react-hot-toast'
+import { useEffect } from 'react'
 
 export default function PanelLayout ({ children }) {
   const { open, handleOpen, handleClose } = useDisclosure()
@@ -20,8 +21,8 @@ export default function PanelLayout ({ children }) {
   const path = usePathname()
 
   const closeSession = () => {
-    deleteCookie('auth-token')
     window.localStorage.removeItem('session')
+    deleteCookie('auth-token')
     setSession(null)
     router.push('/login')
     router.refresh()
@@ -29,6 +30,12 @@ export default function PanelLayout ({ children }) {
       icon: '👋'
     })
   }
+
+  useEffect(() => {
+    if (!getCookie('auth-token') || !session) {
+      router.push('/login')
+    }
+  }, [path])
 
   return (
     <main className='md:flex h-screen w-full bg-slate-800'>

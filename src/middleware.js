@@ -14,5 +14,5 @@ export function middleware (request) {
 }
 
 export const config = {
-  matcher: ['/login', '/panel/:path*']
+  matcher: ['/login', '/panel/:path*', '/panel']
 }

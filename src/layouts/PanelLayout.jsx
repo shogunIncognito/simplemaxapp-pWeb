@@ -33,7 +33,7 @@ export default function PanelLayout ({ children }) {
   }
 
   useEffect(() => {
-    if (!getCookie('auth-token') || !session) {
+    if (!getCookie('auth-token')) {
       router.push('/login')
     }
   }, [path])
@@ -55,7 +55,8 @@ export default function PanelLayout ({ children }) {
 
           <div className='flex items-center gap-2 p-4 shadow-md mb-5 bg-neutral-900 w-full'>
             <UserIcon className='w-10 bg-white rounded-full' />
-            <h2 className='opacity-80 capitalize'>{session?.name}</h2>
+            <h2 className='opacity-80 capitalize'>{session?.name || 'Cargando...'}</h2>
+            <UserSettings />
           </div>
 
           <nav className='flex flex-col'>
@@ -94,7 +95,7 @@ export default function PanelLayout ({ children }) {
 
         <div className='flex items-center gap-2 p-4 shadow-md mb-5 bg-neutral-900 w-full'>
           <UserIcon className='w-10 bg-white rounded-full' />
-          <h2 className='opacity-80 capitalize'>{session?.name}</h2>
+          <h2 className='opacity-80 capitalize'>{session?.name || 'Cargando...'}</h2>
           <UserSettings />
         </div>
 

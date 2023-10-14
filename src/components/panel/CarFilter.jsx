@@ -41,7 +41,7 @@ export default function CarFilter ({ cars, setCars }) {
           ))}
         </Select>
 
-        <Input onChange={handleChange} name='value' value={filters.value} placeholder='...' className='h-full w-2/3 text-white bg-transparent hover:border-gray-400 focus:border-gray-300 ring-0 border-b-2 border-gray-500 self-end' />
+        <Input onChange={handleChange} name='value' value={filters.value} placeholder='...' className='h-full w-2/3 border-gray-400 self-end' />
       </div>
     </div>
   )

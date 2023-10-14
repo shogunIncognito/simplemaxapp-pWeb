@@ -62,7 +62,7 @@ export default function UpdateCar ({ selectedCar, setSelectedCar }) {
 
   return (
     <>
-      <ModalBackdrop>
+      <ModalBackdrop open>
         <h2 className='text-2xl font-bold opacity-80 mb-3'>Actualizar auto</h2>
         <CarForm
           setValues={setValues}

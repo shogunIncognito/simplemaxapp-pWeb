@@ -1,7 +1,7 @@
 import Button from '../Button'
 import Input from '../Input'
 import Image from 'next/image'
-import { carInputs } from '@/helpers/data'
+import { carInputs, selectOptionsCC } from '@/helpers/data'
 import Spinner from '../Spinner'
 import Select from '../Select'
 
@@ -13,6 +13,7 @@ export default function CarForm ({
     const { name, value } = e.target
     if (!setValues) return
     if (name === 'brandId') return setValues(prev => ({ ...prev, brandId: Number(value) }))
+
     setValues(prev => ({
       ...prev,
       [name]: name === 'plate' ? value.toUpperCase() : value
@@ -60,21 +61,11 @@ export default function CarForm ({
           <div className='flex flex-col gap-1 overflow-ellipsis'>
             <label className='text-white whitespace-nowrap text-ellipsis overflow-hidden'>CC</label>
             <Select onChange={handleChange} value={values.cc} name='cc' id='cc'>
-              <option className='bg-slate-600' value='1.0'>1.0</option>
-              <option className='bg-slate-600' value='1.1'>1.1</option>
-              <option className='bg-slate-600' value='1.2'>1.2</option>
-              <option className='bg-slate-600' value='1.3'>1.3</option>
-              <option className='bg-slate-600' value='1.4'>1.4</option>
-              <option className='bg-slate-600' value='1.5'>1.5</option>
-              <option className='bg-slate-600' value='1.6'>1.6</option>
-              <option className='bg-slate-600' value='1.8'>1.8</option>
-              <option className='bg-slate-600' value='2.0'>2.0</option>
-              <option className='bg-slate-600' value='2.2'>2.2</option>
-              <option className='bg-slate-600' value='2.4'>2.4</option>
-              <option className='bg-slate-600' value='2.5'>2.5</option>
-              <option className='bg-slate-600' value='2.6'>2.6</option>
-              <option className='bg-slate-600' value='2.7'>2.7</option>
-              <option className='bg-slate-600' value='2.8'>2.8</option>
+
+              {selectOptionsCC.map((cc, index) => (
+                <option key={index} className='bg-slate-600' value={cc}>{cc}</option>
+              ))}
+
             </Select>
           </div>
           {

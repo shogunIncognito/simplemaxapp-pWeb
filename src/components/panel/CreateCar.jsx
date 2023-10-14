@@ -93,23 +93,21 @@ export default function CreateCar () {
         Agregar auto
       </Button>
 
-      {open && (
-        <ModalBackdrop>
-          <h2 className='text-2xl font-bold opacity-80 mb-3'>Agregar auto</h2>
-          <CarForm
-            setValues={setValues}
-            values={values}
-            handleImage={handleImage}
-            handleSubmit={handleSubmit}
-            loading={loading}
-            images={images}
-            brands={brands}
-            handleClose={handleClose}
-          >
-            Agregar
-          </CarForm>
-        </ModalBackdrop>
-      )}
+      <ModalBackdrop open={open}>
+        <h2 className='text-2xl font-bold opacity-80 mb-3'>Agregar auto</h2>
+        <CarForm
+          setValues={setValues}
+          values={values}
+          handleImage={handleImage}
+          handleSubmit={handleSubmit}
+          loading={loading}
+          images={images}
+          brands={brands}
+          handleClose={handleClose}
+        >
+          Agregar
+        </CarForm>
+      </ModalBackdrop>
     </>
   )
 }

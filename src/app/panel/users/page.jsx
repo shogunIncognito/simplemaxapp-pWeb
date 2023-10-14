@@ -14,16 +14,19 @@ import toast from 'react-hot-toast'
 
 export default function page () {
   const [users, setUsers] = useState([])
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState({
+    create: false,
+    getUsers: true
+  })
   const { session } = useSessionStore()
   const { handleClose, handleOpen, open } = useDisclosure()
 
   useEffect(() => {
-    setLoading(true)
+    setLoading({ ...loading, getUsers: true })
     getUsers()
       .then(res => setUsers(res))
       .catch(err => toast.error(err.message))
-      .finally(() => setLoading(false))
+      .finally(() => setLoading({ ...loading, getUsers: false }))
   }, [])
 
   const handleSubmit = (e) => {
@@ -34,7 +37,7 @@ export default function page () {
 
     if (data.cedula.length !== 10) return toast.error('La cédula debe tener 10 dígitos')
 
-    setLoading(true)
+    setLoading({ ...loading, create: true })
     createUser(data)
       .then(res => {
         setUsers([...users, res])
@@ -46,7 +49,10 @@ export default function page () {
         if (err.request.status === 400) return toast.error('El usuario ya existe')
         toast.error(err.message)
       })
-      .finally(() => setLoading(false))
+      .finally(() => {
+        setLoading({ ...loading, create: false })
+        handleClose()
+      })
   }
 
   const filteredUsers = session ? users.filter(user => user.id !== session.id) : users
@@ -55,40 +61,38 @@ export default function page () {
     <>
       <section className='w-full flex-col items-center h-auto flex justify-center'>
         <h2 className='text-2xl opacity-75 font-bold md:hidden mt-5'>Usuarios</h2>
-        <Button onClick={handleOpen} className='mt-5 self-start mx-16'>Crear usuario</Button>
+        <Button onClick={handleOpen} className={`mt-5 self-start mx-16 ${loading.getUsers && 'invisible'}`}>Crear usuario</Button>
 
-        {open && (
-          <ModalBackdrop>
-            <h2 className='text-2xl opacity-75 self-center'>Agregar usuario</h2>
-            <form onSubmit={handleSubmit} className='flex justify-center items-center flex-col gap-3 mt-4 p-4 rounded'>
-              <div className='flex md:flex-row flex-col gap-2'>
-                <div className='w-full flex flex-col gap-1'>
-                  <label className='opacity-80 font-bold' htmlFor='name'>Nombre</label>
-                  <Input required className='p-2' name='name' type='text' id='name' placeholder='Pedro' />
-                </div>
-                <div className='w-full flex flex-col gap-1'>
-                  <label className='opacity-80 font-bold' htmlFor='password'>Contraseña</label>
-                  <Input required className='p-2' name='password' type='password' id='password' placeholder='contraseña' />
-                </div>
+        <ModalBackdrop open={open} className='bg-neutral-800'>
+          <h2 className='text-2xl opacity-75 self-center'>Agregar usuario</h2>
+          <form onSubmit={handleSubmit} className='flex justify-center items-center flex-col gap-3 mt-4 p-4 rounded'>
+            <div className='flex md:flex-row flex-col gap-2'>
+              <div className='w-full flex flex-col gap-1'>
+                <label className='opacity-80 font-bold' htmlFor='name'>Nombre</label>
+                <Input required className='p-2' name='name' type='text' id='name' placeholder='Pedro' />
               </div>
-              <div className='w-full flex flex-col gap-1 mt-3'>
-                <label className='opacity-80 font-bold mx-auto' htmlFor='cedula'>Cedula</label>
-                <Input minLength='10' required className='p-2 w-1/2 mx-auto' name='cedula' type='number' id='cedula' placeholder='1234567890' />
+              <div className='w-full flex flex-col gap-1'>
+                <label className='opacity-80 font-bold' htmlFor='password'>Contraseña</label>
+                <Input required className='p-2' name='password' type='password' id='password' placeholder='contraseña' />
               </div>
+            </div>
+            <div className='w-full flex flex-col gap-1 mt-3'>
+              <label className='opacity-80 font-bold mx-auto' htmlFor='cedula'>Cedula</label>
+              <Input minLength='10' required className='p-2 w-full md:w-1/2 mx-auto' name='cedula' type='number' id='cedula' placeholder='1234567890' />
+            </div>
 
-              <div className='flex items-center gap-2'>
-                <Button type='submit' disabled={loading} className='py-2 mt-2 w-40 self-center'>{loading ? <Spinner className='p-0' size={24} /> : 'Crear'}</Button>
-                <Button onClick={handleClose} className='py-2 mt-2 w-40 self-center'>Cancelar</Button>
-              </div>
+            <div className='flex items-center gap-2 mt-3'>
+              <Button type='submit' disabled={loading.create} className='py-2 mt-2 w-40 self-center bg-purple-600 hover:bg-purple-800'>{loading.create ? <Spinner className='p-0' size={24} /> : 'Crear'}</Button>
+              <Button onClick={handleClose} className='py-2 mt-2 w-40 self-center'>Cancelar</Button>
+            </div>
 
-            </form>
-          </ModalBackdrop>
-        )}
+          </form>
+        </ModalBackdrop>
 
       </section>
 
       <div className='mt-5 mx-16 max-h-[50%] overflow-auto'>
-        {loading
+        {loading.getUsers
           ? <Spinner />
           : (
             <table className='w-full max-w-full overflow-x-auto text-sm text-center text-gray-400'>

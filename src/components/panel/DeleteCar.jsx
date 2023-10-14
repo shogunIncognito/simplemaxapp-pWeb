@@ -27,9 +27,9 @@ export default function DeleteCar ({ carToDelete, setCarToDelete }) {
   }
 
   return (
-    <ModalBackdrop className='md:w-1/4'>
+    <ModalBackdrop open className='md:w-1/4'>
       <h2 className='text-2xl text-white m-auto mb-4'>¿Eliminar auto?</h2>
-      <p className='text-white text-lg'>El auto {carToDelete.brand} {carToDelete.line} sera eliminado</p>
+      <p className='text-white text-lg'>El auto <span className='text-red-400'>{carToDelete.brand} {carToDelete.line}</span> sera eliminado</p>
       <div className='flex gap-2 mt-3'>
         <Button
           onClick={handleDeleteCar}

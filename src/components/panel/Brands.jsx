@@ -57,52 +57,50 @@ export default function Brands () {
     <>
       <Button className='font-bold py-2 px-4' onClick={handleOpen}>Gestionar marcas</Button>
 
-      {open && (
-        <ModalBackdrop className='gap-6 justify-center items-center p-8 md:w-auto'>
-          <h1 className='text-xl font-bold opacity-80'>Añadir o eliminar marcas</h1>
-          <div className='flex gap-6 md:flex-row flex-col'>
-            <form className='gap-4 justify-center items-center flex flex-col'>
-              <div>
-                <h2 className='text-lg opacity-85'>Nombre de marca a añadir</h2>
-                <Input name='brandToAdd' value={brand.brandToAdd} onChange={handleChange} className='py-2' placeholder='Renault...' />
-              </div>
-              <div className='flex gap-1'>
-                <Button
-                  disabled={loading}
-                  className='py-2 bg-green-600 hover:bg-green-800 disabled:bg-green-900 disabled:pointer-events-none'
-                  onClick={handleCreate}
-                >
-                  {loading ? <Spinner className='p-0' size={24} /> : 'Agregar'}
-                </Button>
-              </div>
-            </form>
-            <form className='gap-4 justify-center items-center flex flex-col'>
-              <div>
-                <h2 className='text-lg opacity-85'>Seleccionar marca a eliminar</h2>
+      <ModalBackdrop open={open} className='gap-6 justify-center items-center p-8 md:w-auto'>
+        <h1 className='text-xl font-bold opacity-80'>Añadir o eliminar marcas</h1>
+        <div className='flex gap-6 md:flex-row flex-col'>
+          <form className='gap-4 justify-center items-center flex flex-col'>
+            <div>
+              <h2 className='text-lg opacity-85'>Nombre de marca a añadir</h2>
+              <Input name='brandToAdd' value={brand.brandToAdd} onChange={handleChange} className='py-2' placeholder='Renault...' />
+            </div>
+            <div className='flex gap-1'>
+              <Button
+                disabled={loading}
+                className='py-2 bg-green-600 hover:bg-green-800 disabled:bg-green-900 disabled:pointer-events-none'
+                onClick={handleCreate}
+              >
+                {loading ? <Spinner className='p-0' size={24} /> : 'Agregar'}
+              </Button>
+            </div>
+          </form>
+          <form className='gap-4 justify-center items-center flex flex-col'>
+            <div>
+              <h2 className='text-lg opacity-85'>Seleccionar marca a eliminar</h2>
 
-                <Select className='w-full' name='brandToDelete' value={brand.brandToDelete} onChange={handleChange}>
-                  {!brandsLoading
-                    ? brands.map(brand => (
-                      <option className='bg-slate-500' key={brand.id} value={brand.id}>{brand.name}</option>
-                    ))
-                    : <option className='bg-slate-500'>Cargando...</option>}
-                </Select>
+              <Select className='w-full' name='brandToDelete' value={brand.brandToDelete} onChange={handleChange}>
+                {!brandsLoading
+                  ? brands.map(brand => (
+                    <option className='bg-slate-500' key={brand.id} value={brand.id}>{brand.name}</option>
+                  ))
+                  : <option className='bg-slate-500'>Cargando...</option>}
+              </Select>
 
-              </div>
-              <div className='flex gap-1'>
-                <Button
-                  disabled={loading || brandsLoading}
-                  className='py-2 bg-red-600 hover:bg-red-800 disabled:bg-red-900 disabled:pointer-events-none'
-                  onClick={handleDelete}
-                >
-                  {loading ? <Spinner className='p-0' size={24} /> : 'Eliminar'}
-                </Button>
-              </div>
-            </form>
-          </div>
-          <Button className='py-2' onClick={handleClose}>Cerrar</Button>
-        </ModalBackdrop>
-      )}
+            </div>
+            <div className='flex gap-1'>
+              <Button
+                disabled={loading || brandsLoading}
+                className='py-2 bg-red-600 hover:bg-red-800 disabled:bg-red-900 disabled:pointer-events-none'
+                onClick={handleDelete}
+              >
+                {loading ? <Spinner className='p-0' size={24} /> : 'Eliminar'}
+              </Button>
+            </div>
+          </form>
+        </div>
+        <Button className='py-2' onClick={handleClose}>Cerrar</Button>
+      </ModalBackdrop>
     </>
   )
 }

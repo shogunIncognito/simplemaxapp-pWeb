@@ -29,16 +29,14 @@ export default function DeleteUser ({ user, setUsers }) {
         Eliminar
       </Button>
 
-      {open && (
-        <ModalBackdrop className='md:w-auto justify-center items-center font-bold gap-5'>
-          <h2 className='text-xl opacity-85'>Eliminar usuario</h2>
-          <h2 className='text-lg opacity-85'>El usuario <span className='text-red-400'>{user.name}</span> sera eliminado</h2>
-          <div className='flex gap-1'>
-            <Button disabled={loading} className='bg-red-500 hover:bg-red-700 disabled:bg-red-900 disabled:pointer-events-none' onClick={handleDelete}>{loading ? <Spinner className='p-0' size={24} /> : 'Eliminar'}</Button>
-            <Button onClick={handleClose}>Cancelar</Button>
-          </div>
-        </ModalBackdrop>
-      )}
+      <ModalBackdrop open={open} className='md:w-auto justify-center items-center font-bold gap-5'>
+        <h2 className='text-xl opacity-85'>Eliminar usuario</h2>
+        <h2 className='text-lg opacity-85'>El usuario <span className='text-red-400'>{user.name}</span> sera eliminado</h2>
+        <div className='flex gap-1'>
+          <Button disabled={loading} className='bg-red-500 hover:bg-red-700 disabled:bg-red-900 disabled:pointer-events-none' onClick={handleDelete}>{loading ? <Spinner className='p-0' size={24} /> : 'Eliminar'}</Button>
+          <Button onClick={handleClose}>Cancelar</Button>
+        </div>
+      </ModalBackdrop>
     </>
   )
 }

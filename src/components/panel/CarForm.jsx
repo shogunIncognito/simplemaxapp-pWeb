@@ -3,6 +3,7 @@ import Input from '../Input'
 import Image from 'next/image'
 import { carInputs } from '@/helpers/data'
 import Spinner from '../Spinner'
+import Select from '../Select'
 
 export default function CarForm ({
   setValues, values, handleImage, handleSubmit,
@@ -24,57 +25,57 @@ export default function CarForm ({
         <div className='grid grid-cols-2 md:grid-cols-3 gap-3'>
           <div className='flex flex-col gap-1 overflow-ellipsis'>
             <label className='text-white whitespace-nowrap text-ellipsis overflow-hidden'>Marca</label>
-            <select onChange={handleChange} value={values.brandId} name='brandId' id='brandId' className='text-gray-600 font-medium px-2 py-2 ring-2 rounded outline-none hover:ring-blue-400 focus:ring-blue-600 transition-all duration-300'>
-              <option value='' disabled>Seleccione una marca</option>
+            <Select onChange={handleChange} value={values.brandId} name='brandId' id='brandId'>
+              <option className='bg-slate-600' value='' disabled>Seleccione una marca</option>
               {brands.map(brand => (
-                <option key={brand.id} value={brand.id}>{brand.name}</option>
+                <option className='bg-slate-600' key={brand.id} value={brand.id}>{brand.name}</option>
               ))}
-            </select>
+            </Select>
           </div>
 
           <div className='flex flex-col gap-1'>
             <label className='text-white whitespace-nowrap text-ellipsis overflow-hidden'>Tipo combustible</label>
-            <select onChange={handleChange} value={values.fuel} name='fuel' id='fuel' className='text-gray-600 font-medium px-2 py-2 ring-2 rounded outline-none hover:ring-blue-400 focus:ring-blue-600 transition-all duration-300'>
-              <option value='corriente'>Corriente</option>
-              <option value='diesel'>Diesel</option>
-            </select>
+            <Select onChange={handleChange} value={values.fuel} name='fuel' id='fuel'>
+              <option className='bg-slate-600' value='corriente'>Corriente</option>
+              <option className='bg-slate-600' value='diesel'>Diesel</option>
+            </Select>
           </div>
 
           <div className='flex flex-col gap-1 overflow-ellipsis'>
             <label className='text-white whitespace-nowrap text-ellipsis overflow-hidden'>Transmisión</label>
-            <select onChange={handleChange} value={values.transmission} name='transmission' id='transmission' className=' text-gray-600 font-medium px-2 py-2  ring-2 rounded outline-none hover:ring-blue-400 focus:ring-blue-600 transition-all duration-300'>
-              <option value='manual'>Manual</option>
-              <option value='automatica'>Automática</option>
-            </select>
+            <Select onChange={handleChange} value={values.transmission} name='transmission' id='transmission'>
+              <option className='bg-slate-600' value='manual'>Manual</option>
+              <option className='bg-slate-600' value='automatica'>Automática</option>
+            </Select>
           </div>
 
           <div className='flex flex-col gap-1 overflow-ellipsis'>
             <label className='text-white whitespace-nowrap text-ellipsis overflow-hidden'>Tipo de vehículo</label>
-            <select onChange={handleChange} value={values.type} name='type' id='type' className=' text-gray-600 font-medium px-2 py-2  ring-2 rounded outline-none hover:ring-blue-400 focus:ring-blue-600 transition-all duration-300'>
-              <option value='automovil'>Automóvil</option>
-              <option value='camioneta'>Camioneta</option>
-            </select>
+            <Select onChange={handleChange} value={values.type} name='type' id='type'>
+              <option className='bg-slate-600' value='automovil'>Automóvil</option>
+              <option className='bg-slate-600' value='camioneta'>Camioneta</option>
+            </Select>
           </div>
 
           <div className='flex flex-col gap-1 overflow-ellipsis'>
             <label className='text-white whitespace-nowrap text-ellipsis overflow-hidden'>CC</label>
-            <select onChange={handleChange} value={values.cc} name='cc' id='cc' className=' text-gray-600 font-medium px-2 py-2 ring-2 rounded outline-none hover:ring-blue-400 focus:ring-blue-600 transition-all duration-300'>
-              <option value='1.0'>1.0</option>
-              <option value='1.1'>1.1</option>
-              <option value='1.2'>1.2</option>
-              <option value='1.3'>1.3</option>
-              <option value='1.4'>1.4</option>
-              <option value='1.5'>1.5</option>
-              <option value='1.6'>1.6</option>
-              <option value='1.8'>1.8</option>
-              <option value='2.0'>2.0</option>
-              <option value='2.2'>2.2</option>
-              <option value='2.4'>2.4</option>
-              <option value='2.5'>2.5</option>
-              <option value='2.6'>2.6</option>
-              <option value='2.7'>2.7</option>
-              <option value='2.8'>2.8</option>
-            </select>
+            <Select onChange={handleChange} value={values.cc} name='cc' id='cc'>
+              <option className='bg-slate-600' value='1.0'>1.0</option>
+              <option className='bg-slate-600' value='1.1'>1.1</option>
+              <option className='bg-slate-600' value='1.2'>1.2</option>
+              <option className='bg-slate-600' value='1.3'>1.3</option>
+              <option className='bg-slate-600' value='1.4'>1.4</option>
+              <option className='bg-slate-600' value='1.5'>1.5</option>
+              <option className='bg-slate-600' value='1.6'>1.6</option>
+              <option className='bg-slate-600' value='1.8'>1.8</option>
+              <option className='bg-slate-600' value='2.0'>2.0</option>
+              <option className='bg-slate-600' value='2.2'>2.2</option>
+              <option className='bg-slate-600' value='2.4'>2.4</option>
+              <option className='bg-slate-600' value='2.5'>2.5</option>
+              <option className='bg-slate-600' value='2.6'>2.6</option>
+              <option className='bg-slate-600' value='2.7'>2.7</option>
+              <option className='bg-slate-600' value='2.8'>2.8</option>
+            </Select>
           </div>
           {
             carInputs.map((input, index) => (

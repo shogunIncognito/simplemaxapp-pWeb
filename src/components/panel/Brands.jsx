@@ -7,6 +7,7 @@ import { useState } from 'react'
 import useCarsStore from '@/hooks/useCarsStore'
 import toast from 'react-hot-toast'
 import Spinner from '../Spinner'
+import Select from '../Select'
 
 export default function Brands () {
   const { open, handleClose, handleOpen } = useDisclosure()
@@ -78,13 +79,15 @@ export default function Brands () {
             <form className='gap-4 justify-center items-center flex flex-col'>
               <div>
                 <h2 className='text-lg opacity-85'>Seleccionar marca a eliminar</h2>
-                <select name='brandToDelete' value={brand.brandToDelete} onChange={handleChange} className='w-full text-gray-600 font-medium py-2 ring-2 rounded outline-none hover:ring-blue-400 focus:ring-blue-600 transition-all duration-300'>
+
+                <Select className='w-full' name='brandToDelete' value={brand.brandToDelete} onChange={handleChange}>
                   {!brandsLoading
                     ? brands.map(brand => (
-                      <option key={brand.id} value={brand.id}>{brand.name}</option>
+                      <option className='bg-slate-500' key={brand.id} value={brand.id}>{brand.name}</option>
                     ))
-                    : <option>Cargando...</option>}
-                </select>
+                    : <option className='bg-slate-500'>Cargando...</option>}
+                </Select>
+
               </div>
               <div className='flex gap-1'>
                 <Button

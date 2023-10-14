@@ -13,6 +13,7 @@ import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import toast from 'react-hot-toast'
 import { useEffect } from 'react'
+import UserSettings from '@/components/panel/UserSettings'
 
 export default function PanelLayout ({ children }) {
   const { open, handleOpen, handleClose } = useDisclosure()
@@ -25,7 +26,7 @@ export default function PanelLayout ({ children }) {
     deleteCookie('auth-token')
     setSession(null)
     router.push('/login')
-    router.refresh()
+
     toast('Sesión cerrada', {
       icon: '👋'
     })
@@ -94,6 +95,7 @@ export default function PanelLayout ({ children }) {
         <div className='flex items-center gap-2 p-4 shadow-md mb-5 bg-neutral-900 w-full'>
           <UserIcon className='w-10 bg-white rounded-full' />
           <h2 className='opacity-80 capitalize'>{session?.name}</h2>
+          <UserSettings />
         </div>
 
         <nav className='flex flex-col'>

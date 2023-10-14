@@ -54,11 +54,11 @@ export default function page () {
           <Image className='self-center object-cover h-auto' alt='loginLogo' src={Logo} width={170} height={120} />
           <div className='flex flex-col gap-1'>
             <label className='text-md opacity-70' htmlFor='name'>Usuario</label>
-            <Input value={values.name} onChange={handleChange} id='name' type='text' name='name' />
+            <Input className='bg-white shadow text-gray-700 p-1.5' value={values.name} onChange={handleChange} id='name' type='text' name='name' />
           </div>
           <div className='flex flex-col gap-1'>
             <label className='text-md opacity-70' htmlFor='password'>Contraseña</label>
-            <Input value={values.password} onChange={handleChange} id='password' type='password' name='password' />
+            <Input className='bg-white shadow text-gray-700 p-1.5' value={values.password} onChange={handleChange} id='password' type='password' name='password' />
           </div>
           <Button disabled={isButtonDisabled || loading} className='mt-3 disabled:bg-opacity-70 disabled:cursor-not-allowed'>
             {loading ? <Spinner className='p-0' size={28} /> : 'Iniciar sesión'}

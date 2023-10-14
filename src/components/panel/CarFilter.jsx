@@ -3,6 +3,7 @@ import Input from '../Input'
 import { useState } from 'react'
 import { filterCars } from '@/utils/functions'
 import { useDebouncedCallback } from 'use-debounce'
+import Select from '../Select'
 
 export default function CarFilter ({ cars, setCars }) {
   const headersToFilter = tableHeaders.filter(header => header.label !== 'Acciones' && header.label !== 'Imagen')
@@ -18,11 +19,11 @@ export default function CarFilter ({ cars, setCars }) {
 
   const handleChange = (e) => {
     if (e.target.value === ' ') return
-    const newFilters = {
-      ...filters,
+
+    setFilter(prev => ({
+      ...prev,
       [e.target.name]: e.target.value
-    }
-    setFilter(newFilters)
+    }))
 
     carDebounced()
   }
@@ -32,13 +33,13 @@ export default function CarFilter ({ cars, setCars }) {
       <h2>Filtrar por</h2>
       <div className='flex gap-1 items-center'>
 
-        <select onChange={handleChange} name='option' value={filters.option} className='h-full outline-none px-1 bg-transparent'>
+        <Select onChange={handleChange} name='option' value={filters.option} className='h-full outline-none px-1 bg-transparent'>
           {headersToFilter.map((header, index) => (
             <option key={index} className='bg-neutral-800' value={header.value}>
               {header.label}
             </option>
           ))}
-        </select>
+        </Select>
 
         <Input onChange={handleChange} name='value' value={filters.value} placeholder='...' className='h-full w-2/3 text-white bg-transparent hover:border-gray-400 focus:border-gray-300 ring-0 border-b-2 border-gray-500 self-end' />
       </div>

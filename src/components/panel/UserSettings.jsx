@@ -1,6 +1,7 @@
 import useDisclosure from '@/hooks/useDisclosure'
 import { IoMdSettings } from 'react-icons/io'
 import { FaExchangeAlt } from 'react-icons/fa'
+import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai'
 import ModalBackdrop from '../ModalBackdrop'
 import Button from '../Button'
 import Input from '../Input'
@@ -28,6 +29,7 @@ export default function UserSettings () {
   const [values, setValues] = useState(initialFormValues)
   const [settingsView, setSettingsView] = useState('username')
   const [loading, setLoading] = useState(false)
+  const [showPassword, setShowPassword] = useState(false)
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -35,6 +37,7 @@ export default function UserSettings () {
 
     if (objectHasEmptyValues(data)) return toast.error('Todos los campos son obligatorios')
     if (data.newPassword !== data.confirmPassword) return toast.error('Confirmar contraseña no coinciden')
+    if (data.newPassword === data.currentPassword) return toast.error('La nueva contraseña no puede ser igual a la actual')
 
     setLoading(true)
     updateUser(session.id, data, e.target.name)
@@ -74,8 +77,8 @@ export default function UserSettings () {
       </div>
 
       <ModalBackdrop open={open} className='p-0 w-auto mx-5'>
-        <div className='flex flex-col gap-6 p-6 shadow-md bg-neutral-900'>
-          <header className='self-end group relative'>
+        <div className='flex flex-col gap-6 p-3 shadow-md bg-neutral-900'>
+          <header className='self-end p-1.5 group relative'>
             <FaExchangeAlt className='cursor-pointer hover:text-purple-600' size={25} onClick={handleToggleView} />
             <span className='animate__animated animate__bounceIn absolute hidden whitespace-nowrap -right-12 z-20 group-hover:block -top-10 bg-neutral-600 shadow-2xl 00 rounded p-1.5'>
               Cambiar {settingsView === 'username' ? 'contraseña' : 'nombre'}
@@ -83,7 +86,7 @@ export default function UserSettings () {
           </header>
           {settingsView === 'username'
             ? (
-              <section className='flex items-center flex-col justify-center mx-10'>
+              <section className='flex items-center flex-col justify-center mx-8'>
                 <h2 className='opacity-80 mb-7 capitalize text-2xl text-center'>Cambiar nombre</h2>
 
                 <form name='toUsername' onSubmit={handleSubmit} className='flex gap-5 flex-col justify-start items-start'>
@@ -100,20 +103,29 @@ export default function UserSettings () {
               </section>
               )
             : (
-              <section className='flex flex-col justify-center mx-10'>
+              <section className='flex flex-col justify-center mx-8'>
                 <h2 className='opacity-80 mb-7 capitalize text-2xl text-center'>Cambiar contraseña</h2>
                 <form name='toPassword' onSubmit={handleSubmit} className='flex gap-5 flex-col justify-start items-center'>
+
+                  {showPassword
+                    ? (
+                      <AiFillEyeInvisible onClick={() => setShowPassword(false)} size={33} className='cursor-pointer self-end p-1 bg-neutral-700 rounded hover:bg-neutral-800' />
+                      )
+                    : (
+                      <AiFillEye onClick={() => setShowPassword(true)} size={33} className='cursor-pointer self-end p-1 bg-neutral-700 rounded hover:bg-neutral-800' />
+                      )}
+
                   <div className='grid grid-cols-2'>
                     <label>Contraseña actual</label>
-                    <Input value={values.toPassword.currentPassword} onChange={handleChange} name='currentPassword' type='password' />
+                    <Input value={values.toPassword.currentPassword} onChange={handleChange} name='currentPassword' type={showPassword ? 'password' : 'text'} />
                   </div>
                   <div className='grid grid-cols-2'>
                     <label>Nueva contraseña</label>
-                    <Input value={values.toPassword.newPassword} onChange={handleChange} name='newPassword' type='password' />
+                    <Input value={values.toPassword.newPassword} onChange={handleChange} name='newPassword' type={showPassword ? 'password' : 'text'} />
                   </div>
                   <div className='grid grid-cols-2'>
                     <label>Confirmar contraseña</label>
-                    <Input value={values.toPassword.confirmPassword} onChange={handleChange} name='confirmPassword' type='password' />
+                    <Input value={values.toPassword.confirmPassword} onChange={handleChange} name='confirmPassword' type={showPassword ? 'password' : 'text'} />
                   </div>
 
                   <div className='flex gap-2 w-2/3 my-4 items-center'>

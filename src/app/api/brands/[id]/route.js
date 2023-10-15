@@ -26,7 +26,7 @@ export async function DELETE (request, { params }) {
     if (!validateToken(token)) return NextResponse.json({ message: token ? 'Invalid token' : 'No token provided' }, { status: 401 })
 
     const existBrand = await prisma.brands.findUnique({ where: { id: Number(params.id) } })
-    if (!existBrand) return NextResponse.json({ message: 'Brand doesn`t exists' }, { status: 400 })
+    if (!existBrand) return NextResponse.json({ message: 'Brand doesn`t exists' }, { status: 404 })
 
     await prisma.brands.delete({ where: { id: Number(params.id) } })
 

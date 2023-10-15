@@ -9,6 +9,7 @@ import useDisclosure from '@/hooks/useDisclosure'
 import useSessionStore from '@/hooks/useSessionStore'
 import { createUser, getUsers } from '@/services/api'
 import { objectHasEmptyValues } from '@/utils/functions'
+import { createUserCodes } from '@/utils/statusCodes'
 import { useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
 
@@ -43,15 +44,13 @@ export default function page () {
         setUsers([...users, res])
         toast.success('Usuario creado')
         e.target.reset()
+        handleClose()
       })
       .catch(err => {
-        console.log(err)
-        if (err.request.status === 400) return toast.error('El usuario ya existe')
-        toast.error(err.message)
+        toast.error(createUserCodes[err.response.status] || 'Error al crear usuario')
       })
       .finally(() => {
         setLoading({ ...loading, create: false })
-        handleClose()
       })
   }
 

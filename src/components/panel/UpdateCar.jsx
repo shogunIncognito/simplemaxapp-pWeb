@@ -8,6 +8,7 @@ import toast from 'react-hot-toast'
 import { objectHasEmptyValues } from '@/utils/functions'
 import { uploadCarImage } from '@/services/firebase'
 import CarForm from './CarForm'
+import { updateCarCodes } from '@/utils/statusCodes'
 
 export default function UpdateCar ({ selectedCar, setSelectedCar }) {
   const { reFetch, brands } = useCarsStore()
@@ -38,7 +39,7 @@ export default function UpdateCar ({ selectedCar, setSelectedCar }) {
       setSelectedCar(null)
       toast.success('Auto actualizado')
     } catch (error) {
-      toast.error(error.message)
+      toast.error(updateCarCodes[error.response.status] || 'Error al actualizar auto')
     } finally {
       setLoading(false)
     }

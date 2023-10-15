@@ -8,6 +8,7 @@ import useCarsStore from '@/hooks/useCarsStore'
 import toast from 'react-hot-toast'
 import Spinner from '../Spinner'
 import Select from '../Select'
+import { createBrandCodes, deleteBrandCodes } from '@/utils/statusCodes'
 
 export default function Brands () {
   const { open, handleClose, handleOpen } = useDisclosure()
@@ -27,8 +28,7 @@ export default function Brands () {
         reFetch()
         setBrand({ ...brand, brandToAdd: '' })
       })
-      // ajustar los errores de la api
-      .catch(err => toast.error(err.message))
+      .catch(err => toast.error(createBrandCodes[err.response.status] || 'Error al crear marca'))
       .finally(() => setLoading(false))
   }
 
@@ -49,7 +49,7 @@ export default function Brands () {
         reFetch()
         setBrand('')
       })
-      .catch(err => toast.error(err.message))
+      .catch(err => toast.error(deleteBrandCodes[err.response.status] || 'Error al eliminar marca'))
       .finally(() => setLoading(false))
   }
 

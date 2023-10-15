@@ -11,6 +11,7 @@ import toast from 'react-hot-toast'
 import Input from '@/components/Input'
 import useSessionStore from '@/hooks/useSessionStore'
 import Spinner from '@/components/Spinner'
+import { loginCodes } from '@/utils/statusCodes'
 
 export default function page () {
   const router = useRouter()
@@ -35,7 +36,9 @@ export default function page () {
         window.localStorage.setItem('session', JSON.stringify(res.session))
         setSession(res.session)
       })
-      .catch(err => toast.error(err.response.data.message))
+      .catch(err => {
+        toast.error(loginCodes[err.response.status] || 'Error al iniciar sesión')
+      })
       .finally(() => setLoading(false))
   }
 

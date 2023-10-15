@@ -5,19 +5,59 @@ import ModalBackdrop from '../ModalBackdrop'
 import Button from '../Button'
 import Input from '../Input'
 import { useState } from 'react'
+import { objectHasEmptyValues } from '@/utils/functions'
+import toast from 'react-hot-toast'
+import { updateUser } from '@/services/api'
+import useSessionStore from '@/hooks/useSessionStore'
+import { updatePasswordCodes, updateUsernameCodes } from '@/utils/statusCodes'
+import Spinner from '../Spinner'
+
+const initialFormValues = {
+  toPassword: {
+    actualPassword: '',
+    newPassword: '',
+    confirmPassword: ''
+  },
+  toUsername: {
+    username: ''
+  }
+}
 
 export default function UserSettings () {
   const { open, handleClose, handleOpen } = useDisclosure()
+  const { session } = useSessionStore()
+  const [values, setValues] = useState(initialFormValues)
   const [settingsView, setSettingsView] = useState('username')
+  const [loading, setLoading] = useState(false)
 
   const handleSubmit = (e) => {
     e.preventDefault()
     const data = Object.fromEntries(new FormData(e.target))
-    console.log(data)
+
+    if (objectHasEmptyValues(data)) return toast.error('Todos los campos son obligatorios')
+    if (data.newPassword !== data.confirmPassword) return toast.error('Las contraseñas no coinciden')
+
+    setLoading(true)
+    updateUser(session.id, data, e.target.name)
+      .then(res => {
+        toast.success('Usuario actualizado')
+        handleClose()
+      })
+      .catch(err => {
+        if (e.target.name === 'toPassword') return toast.error(updatePasswordCodes[err.response.status] || 'Error al actualizar contraseña')
+        toast.error(updateUsernameCodes[err.response.status] || 'Error al actualizar nombre de usuario')
+      })
+      .finally(() => {
+        setLoading(false)
+        setValues(initialFormValues)
+      })
   }
 
-  const handleToggleView = () => {
-    setSettingsView(settingsView === 'username' ? 'password' : 'username')
+  const handleToggleView = () => setSettingsView(settingsView === 'username' ? 'password' : 'username')
+
+  const handleChange = (e) => {
+    const { name, value } = e.target
+    setValues({ ...values, [e.target.form.name]: { ...values[e.target.form.name], [name]: value } })
   }
 
   return (
@@ -42,10 +82,10 @@ export default function UserSettings () {
               <section className='flex items-center flex-col justify-center mx-10'>
                 <h2 className='opacity-80 mb-7 capitalize text-2xl text-center'>Cambiar nombre</h2>
 
-                <form onSubmit={handleSubmit} className='flex gap-5 flex-col justify-start items-start'>
+                <form name='toUsername' onSubmit={handleSubmit} className='flex gap-5 flex-col justify-start items-start'>
                   <div className='flex gap-5 flex-col'>
                     <label>Nuevo nombre de usuario</label>
-                    <Input name='username' />
+                    <Input value={values.toUsername.username} onChange={handleChange} name='username' />
                   </div>
 
                   <div className='flex gap-2 my-4 items-center'>
@@ -58,22 +98,22 @@ export default function UserSettings () {
             : (
               <section className='flex flex-col justify-center mx-10'>
                 <h2 className='opacity-80 mb-7 capitalize text-2xl text-center'>Cambiar contraseña</h2>
-                <form onSubmit={handleSubmit} className='flex gap-5 flex-col justify-start items-center'>
+                <form name='toPassword' onSubmit={handleSubmit} className='flex gap-5 flex-col justify-start items-center'>
                   <div className='grid grid-cols-2'>
                     <label>Contraseña actual</label>
-                    <Input name='actualPassword' type='password' />
+                    <Input value={values.toPassword.actualPassword} onChange={handleChange} name='actualPassword' type='password' />
                   </div>
                   <div className='grid grid-cols-2'>
                     <label>Nueva contraseña</label>
-                    <Input name='newPassword' type='password' />
+                    <Input value={values.toPassword.newPassword} onChange={handleChange} name='newPassword' type='password' />
                   </div>
                   <div className='grid grid-cols-2'>
                     <label>Confirmar contraseña</label>
-                    <Input name='confirmPassword' type='password' />
+                    <Input value={values.toPassword.confirmPassword} onChange={handleChange} name='confirmPassword' type='password' />
                   </div>
 
                   <div className='flex gap-2 my-4 items-center'>
-                    <Button type='submit' className='bg-purple-600 hover:bg-purple-800'>Guardar</Button>
+                    <Button type='submit' className='bg-purple-600 hover:bg-purple-800'>{loading ? <Spinner /> : 'Guardar'}</Button>
                     <Button onClick={handleClose}>Cancelar</Button>
                   </div>
                 </form>

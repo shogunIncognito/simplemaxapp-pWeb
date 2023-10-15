@@ -5,6 +5,7 @@ import { useState } from 'react'
 import { deleteUser } from '@/services/api'
 import toast from 'react-hot-toast'
 import Spinner from '../Spinner'
+import { deleteUserCodes } from '@/utils/statusCodes'
 
 export default function DeleteUser ({ user, setUsers }) {
   const { open, handleClose, handleOpen } = useDisclosure()
@@ -19,7 +20,7 @@ export default function DeleteUser ({ user, setUsers }) {
         setUsers(prev => prev.filter(u => u.id !== user.id))
         handleClose()
       })
-      .catch(err => toast.error(err.message))
+      .catch(err => toast.error(deleteUserCodes[err.response.status] || 'Error al eliminar usuario'))
       .finally(() => setLoading(false))
   }
 

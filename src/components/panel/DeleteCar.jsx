@@ -8,6 +8,7 @@ import toast from 'react-hot-toast'
 import { useState } from 'react'
 import { deleteCarImage } from '@/services/firebase'
 import Spinner from '../Spinner'
+import { deleteCarCodes } from '@/utils/statusCodes'
 
 export default function DeleteCar ({ carToDelete, setCarToDelete }) {
   const { deleteCar } = useCarsStore()
@@ -22,7 +23,7 @@ export default function DeleteCar ({ carToDelete, setCarToDelete }) {
         toast.success('Auto eliminado')
         setCarToDelete(null)
       })
-      .catch(err => toast.error(err.message))
+      .catch(err => toast.error(deleteCarCodes[err.response.status] || 'Error al eliminar auto'))
       .finally(() => setLoading(false))
   }
 

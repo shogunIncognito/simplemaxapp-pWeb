@@ -16,7 +16,7 @@ export async function POST (request) {
 
     const passwordMatch = await bcrypt.compare(body.password, existAdmin.password)
 
-    if (!passwordMatch) return NextResponse.json({ message: 'Password does not match' }, { status: 400 })
+    if (!passwordMatch) return NextResponse.json({ message: 'Username or password does not match' }, { status: 400 })
 
     return NextResponse.json({
       token: crypto.randomUUID(),

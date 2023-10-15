@@ -5,7 +5,11 @@ const api = axios.create({
   baseURL: '/api'
 })
 
-const getToken = () => getCookies('auth-token')['auth-token']
+const getToken = () => ({
+  headers: {
+    'auth-token': getCookies('auth-token')['auth-token']
+  }
+})
 
 export const login = async (values) => {
   const response = await api.post('/admins/login', values)
@@ -21,56 +25,37 @@ export const getCars = async () => {
 }
 
 export const createCar = async (values) => {
-  const response = await api.post('/cars', values, {
-    headers: {
-      'auth-token': getToken()
-    }
-  })
+  const response = await api.post('/cars', values, getToken())
   return response.data
 }
 
 export const updateCar = async (id, values) => {
-  const response = await api.put(`/cars/${id}`, values, {
-    headers: {
-      'auth-token': getToken()
-    }
-  })
+  const response = await api.put(`/cars/${id}`, values, getToken())
   return response.data
 }
 
 export const deleteCar = async (id) => {
-  const response = await api.delete(`/cars/${id}`, {
-    headers: {
-      'auth-token': getToken()
-    }
-  })
+  const response = await api.delete(`/cars/${id}`, getToken())
   return response.data
 }
 
 export const getUsers = async () => {
-  const response = await api.get('/admins', {
-    headers: {
-      'auth-token': getToken()
-    }
-  })
+  const response = await api.get('/admins', getToken())
   return response.data
 }
 
 export const createUser = async (values) => {
-  const response = await api.post('/admins', values, {
-    headers: {
-      'auth-token': getToken()
-    }
-  })
+  const response = await api.post('/admins', values, getToken())
   return response.data
 }
 
 export const deleteUser = async (id) => {
-  const response = await api.delete(`/admins/${id}`, {
-    headers: {
-      'auth-token': getToken()
-    }
-  })
+  const response = await api.delete(`/admins/${id}`, getToken())
+  return response.data
+}
+
+export const updateUser = async (id, values, type) => {
+  const response = await api.put(`/admins/${id}&type=${type}`, values, getToken())
   return response.data
 }
 
@@ -80,19 +65,11 @@ export const getBrands = async () => {
 }
 
 export const createBrand = async (brand) => {
-  const response = await api.post('/brands', { name: brand }, {
-    headers: {
-      'auth-token': getToken()
-    }
-  })
+  const response = await api.post('/brands', { name: brand }, getToken())
   return response.data
 }
 
 export const deleteBrand = async (id) => {
-  const response = await api.delete(`/brands/${id}`, {
-    headers: {
-      'auth-token': getToken()
-    }
-  })
+  const response = await api.delete(`/brands/${id}`, getToken())
   return response.data
 }

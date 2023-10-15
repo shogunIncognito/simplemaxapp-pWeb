@@ -10,6 +10,7 @@ import CarForm from './CarForm'
 import Button from '../Button'
 import useDisclosure from '@/hooks/useDisclosure'
 import ModalBackdrop from '../ModalBackdrop'
+import { createCarCodes } from '@/utils/statusCodes'
 
 const carInitialValues = {
   brandId: '',
@@ -78,7 +79,7 @@ export default function CreateCar () {
       addCar(carWithImage)
       toast.success('Auto agregado')
     } catch (error) {
-      toast.error(error.message)
+      toast.error(createCarCodes[error.response.status] || 'Error al agregar auto')
       console.log(error)
     } finally {
       setLoading(false)

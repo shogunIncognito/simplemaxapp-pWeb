@@ -73,7 +73,7 @@ export default function page () {
               </div>
               <div className='w-full flex flex-col gap-1'>
                 <label className='opacity-80 font-bold' htmlFor='password'>Contraseña</label>
-                <Input required className='p-2' name='password' type='password' id='password' placeholder='contraseña' />
+                <Input required className='p-2' name='password' type='password' id='password' placeholder='*******' />
               </div>
             </div>
             <div className='w-full flex flex-col gap-1 mt-3'>

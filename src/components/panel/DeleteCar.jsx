@@ -7,7 +7,6 @@ import useCarsStore from '@/hooks/useCarsStore'
 import toast from 'react-hot-toast'
 import { useState } from 'react'
 import { deleteCarImage } from '@/services/firebase'
-import Spinner from '../Spinner'
 import { deleteCarCodes } from '@/utils/statusCodes'
 
 export default function DeleteCar ({ carToDelete, setCarToDelete }) {
@@ -33,10 +32,11 @@ export default function DeleteCar ({ carToDelete, setCarToDelete }) {
       <p className='text-white text-lg'>El auto <span className='text-red-400'>{carToDelete.brand} {carToDelete.line}</span> sera eliminado</p>
       <div className='flex gap-2 mt-3'>
         <Button
+          loading={loading}
           onClick={handleDeleteCar}
           className='w-full bg-red-500 hover:bg-red-700 font-bold'
         >
-          {loading ? <Spinner className='p-0' size={24} /> : 'Eliminar'}
+          Eliminar
         </Button>
         <Button
           onClick={() => setCarToDelete(null)}

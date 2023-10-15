@@ -81,7 +81,7 @@ export default function page () {
             </div>
 
             <div className='flex items-center gap-2 mt-3'>
-              <Button type='submit' disabled={loading.create} className='py-2 mt-2 w-40 self-center bg-purple-600 hover:bg-purple-800'>{loading.create ? <Spinner className='p-0' size={24} /> : 'Crear'}</Button>
+              <Button type='submit' loading={loading.create} disabled={loading.create} className='py-2 mt-2 w-40 self-center bg-purple-600 hover:bg-purple-800'>Crear</Button>
               <Button onClick={handleClose} className='py-2 mt-2 w-40 self-center'>Cancelar</Button>
             </div>
 

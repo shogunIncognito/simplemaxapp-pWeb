@@ -10,7 +10,6 @@ import toast from 'react-hot-toast'
 import { updateUser } from '@/services/api'
 import useSessionStore from '@/hooks/useSessionStore'
 import { updatePasswordCodes, updateUsernameCodes } from '@/utils/statusCodes'
-import Spinner from '../Spinner'
 
 const initialFormValues = {
   toPassword: {
@@ -94,7 +93,7 @@ export default function UserSettings () {
                   </div>
 
                   <div className='flex w-full gap-2 my-4 items-center'>
-                    <Button type='submit' className='bg-purple-600 flex-1 hover:bg-purple-800'>{loading ? <Spinner className='p-0' size={24} /> : 'Guardar'}</Button>
+                    <Button disabled={loading} loading={loading} type='submit' className='bg-purple-600 flex-1 hover:bg-purple-800'>Guardar</Button>
                     <Button className='flex-1' onClick={handleClose}>Cancelar</Button>
                   </div>
                 </form>
@@ -118,7 +117,7 @@ export default function UserSettings () {
                   </div>
 
                   <div className='flex gap-2 w-2/3 my-4 items-center'>
-                    <Button type='submit' className='bg-purple-600 flex-1 hover:bg-purple-800'>{loading ? <Spinner className='p-0' size={24} /> : 'Guardar'}</Button>
+                    <Button loading={loading} type='submit' className='bg-purple-600 flex-1 hover:bg-purple-800'>Guardar</Button>
                     <Button className='flex-1' onClick={handleClose}>Cancelar</Button>
                   </div>
                 </form>

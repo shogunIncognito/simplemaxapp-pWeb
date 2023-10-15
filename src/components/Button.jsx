@@ -1,12 +1,14 @@
 import { twMerge } from 'tailwind-merge'
+import Spinner from './Spinner'
 
-export default function Button ({ children, className, ...props }) {
+export default function Button ({ children, loading, className, ...props }) {
   return (
     <button
+      loading={loading}
       {...props}
       className={twMerge('bg-blue-600 disabled:bg-blue-900 rounded disabled:pointer-events-none text-white px-6 py-3 hover:bg-blue-800 transition-all duration-200 ease-in-out', className)}
     >
-      {children}
+      {loading ? <Spinner className='p-0' size={24} /> : children}
     </button>
   )
 }

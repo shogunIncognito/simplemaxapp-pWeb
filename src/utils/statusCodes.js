@@ -8,7 +8,7 @@ export const updateUsernameCodes = {
 
 export const updatePasswordCodes = {
   200: 'Contraseña actualizada con éxito',
-  400: 'Contraseña no actual no coincide',
+  400: 'Contraseña actual no coincide',
   401: 'No autorizado',
   404: 'Usuario no encontrado',
   500: 'Error interno del servidor'

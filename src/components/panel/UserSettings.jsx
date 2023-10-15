@@ -14,7 +14,7 @@ import Spinner from '../Spinner'
 
 const initialFormValues = {
   toPassword: {
-    actualPassword: '',
+    currentPassword: '',
     newPassword: '',
     confirmPassword: ''
   },
@@ -25,7 +25,7 @@ const initialFormValues = {
 
 export default function UserSettings () {
   const { open, handleClose, handleOpen } = useDisclosure()
-  const { session } = useSessionStore()
+  const { session, setSession } = useSessionStore()
   const [values, setValues] = useState(initialFormValues)
   const [settingsView, setSettingsView] = useState('username')
   const [loading, setLoading] = useState(false)
@@ -35,12 +35,18 @@ export default function UserSettings () {
     const data = Object.fromEntries(new FormData(e.target))
 
     if (objectHasEmptyValues(data)) return toast.error('Todos los campos son obligatorios')
-    if (data.newPassword !== data.confirmPassword) return toast.error('Las contraseñas no coinciden')
+    if (data.newPassword !== data.confirmPassword) return toast.error('Confirmar contraseña no coinciden')
 
     setLoading(true)
     updateUser(session.id, data, e.target.name)
       .then(res => {
         toast.success('Usuario actualizado')
+
+        if (e.target.name === 'toUsername') {
+          setSession({ ...session, name: data.username })
+        }
+
+        setValues(initialFormValues)
         handleClose()
       })
       .catch(err => {
@@ -49,7 +55,6 @@ export default function UserSettings () {
       })
       .finally(() => {
         setLoading(false)
-        setValues(initialFormValues)
       })
   }
 
@@ -88,9 +93,9 @@ export default function UserSettings () {
                     <Input value={values.toUsername.username} onChange={handleChange} name='username' />
                   </div>
 
-                  <div className='flex gap-2 my-4 items-center'>
-                    <Button type='submit' className='bg-purple-600 hover:bg-purple-800'>Guardar</Button>
-                    <Button onClick={handleClose}>Cancelar</Button>
+                  <div className='flex w-full gap-2 my-4 items-center'>
+                    <Button type='submit' className='bg-purple-600 flex-1 hover:bg-purple-800'>{loading ? <Spinner className='p-0' size={24} /> : 'Guardar'}</Button>
+                    <Button className='flex-1' onClick={handleClose}>Cancelar</Button>
                   </div>
                 </form>
               </section>
@@ -101,7 +106,7 @@ export default function UserSettings () {
                 <form name='toPassword' onSubmit={handleSubmit} className='flex gap-5 flex-col justify-start items-center'>
                   <div className='grid grid-cols-2'>
                     <label>Contraseña actual</label>
-                    <Input value={values.toPassword.actualPassword} onChange={handleChange} name='actualPassword' type='password' />
+                    <Input value={values.toPassword.currentPassword} onChange={handleChange} name='currentPassword' type='password' />
                   </div>
                   <div className='grid grid-cols-2'>
                     <label>Nueva contraseña</label>
@@ -112,9 +117,9 @@ export default function UserSettings () {
                     <Input value={values.toPassword.confirmPassword} onChange={handleChange} name='confirmPassword' type='password' />
                   </div>
 
-                  <div className='flex gap-2 my-4 items-center'>
-                    <Button type='submit' className='bg-purple-600 hover:bg-purple-800'>{loading ? <Spinner /> : 'Guardar'}</Button>
-                    <Button onClick={handleClose}>Cancelar</Button>
+                  <div className='flex gap-2 w-2/3 my-4 items-center'>
+                    <Button type='submit' className='bg-purple-600 flex-1 hover:bg-purple-800'>{loading ? <Spinner className='p-0' size={24} /> : 'Guardar'}</Button>
+                    <Button className='flex-1' onClick={handleClose}>Cancelar</Button>
                   </div>
                 </form>
               </section>

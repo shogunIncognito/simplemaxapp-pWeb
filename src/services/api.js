@@ -55,7 +55,7 @@ export const deleteUser = async (id) => {
 }
 
 export const updateUser = async (id, values, type) => {
-  const response = await api.put(`/admins/${id}&type=${type}`, values, getToken())
+  const response = await api.put(`/admins/${id}?type=${type}`, values, getToken())
   return response.data
 }
 

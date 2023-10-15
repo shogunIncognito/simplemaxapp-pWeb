@@ -26,7 +26,7 @@ export default function CarsI ({ result }) {
                   <h3>KLM: {car.kilometers}</h3>
                 </div>
                 <div className='flex w-[50%] h-full items-center justify-center p-2'>
-                  <Link href='/' className='border-2 border-blue-400 rounded p-1 bg-blue-400 text-white hover:bg-blue-500 hover:text-white hover:border-blue-500 text-center'>MAS INFORMACION</Link>
+                  <Link href={`/cars/${car.id}`} className='border-2 border-blue-400 rounded p-1 bg-blue-400 text-white hover:bg-blue-500 hover:text-white hover:border-blue-500 text-center'>MAS INFORMACION</Link>
                 </div>
               </div>
             </div>

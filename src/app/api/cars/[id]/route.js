@@ -16,23 +16,6 @@ export async function GET (request, { params }) {
   }
 }
 
-export async function DELETE (request, { params }) {
-  try {
-    const token = headers().get('auth-token')
-
-    if (!validateToken(token)) return NextResponse.json({ message: token ? 'Invalid token' : 'No token provided' }, { status: 401 })
-
-    const { id } = params
-    const car = await prisma.car.delete({ where: { id: Number(id) } })
-
-    if (!car) return NextResponse.json({ message: 'Car not found' }, { status: 404 })
-
-    return NextResponse.json(car)
-  } catch (error) {
-    return NextResponse.json({ message: error.message }, { status: 500 })
-  }
-}
-
 export async function PUT (request, { params }) {
   try {
     const token = headers().get('auth-token')

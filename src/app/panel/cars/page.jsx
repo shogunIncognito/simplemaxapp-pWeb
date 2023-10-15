@@ -12,12 +12,15 @@ import Button from '@/components/Button'
 import Link from 'next/link'
 import Spinner from '@/components/Spinner'
 import CarFilter from '@/components/panel/CarFilter'
+import { deleteCar } from '@/services/api'
+import toast from 'react-hot-toast'
 
 export default function page () {
   const { cars, loading } = useCarsStore()
   const [selectedCar, setSelectedCar] = useState(null)
   const [carToDelete, setCarToDelete] = useState(null)
   const [filteredCars, setFilteredCars] = useState([])
+  const [carsSelected, setCarsSelected] = useState([])
 
   useEffect(() => {
     setFilteredCars(cars)
@@ -25,22 +28,52 @@ export default function page () {
 
   if (loading) return <Spinner />
 
+  const addCarToList = (id) => {
+    if (carsSelected.includes(id)) {
+      setCarsSelected(prev => prev.filter(carId => carId !== id))
+      return
+    }
+    setCarsSelected(prev => [...prev, id])
+  }
+
+  const deleteSelectedCars = () => {
+    deleteCar(carsSelected)
+      .then(() => {
+        setCarsSelected([])
+        toast.success('Autos eliminados')
+        setFilteredCars(prev => prev.filter(car => !carsSelected.includes(car.id)))
+      })
+      .catch(() => {
+        toast.error('Error al eliminar los autos')
+      })
+      .finally(() => {
+        setCarsSelected([])
+      })
+  }
+
   return (
-    <section className='bg-neutral-800 w-full h-full m-2 p-5'>
+    <section className='bg-neutral-800 p-4 w-full max-h-screen h-full'>
       <h2 className='text-white md:hidden font-bold opacity-75 text-3xl text-center'>Autos</h2>
 
-      <div className='my-4 gap-3 md:h-[5%] h-[12%] flex-col md:flex-row flex items-start '>
+      <div className='my-4 gap-3 flex-col min-h-min max-h-[15%] md:flex-row flex items-start '>
         <div className='gap-2 flex '>
           <CreateCar />
           <AddBrand />
         </div>
         <CarFilter cars={cars} setCars={setFilteredCars} />
+
+        {carsSelected.length > 0 && (
+          <Button disabled={carsSelected.length === 0} className='animate__animated animate__fadeIn animate__faster bg-red-500 hover:bg-red-700 font-bold py-2 px-4' onClick={deleteSelectedCars}>
+            Eliminar seleccionados
+          </Button>
+        )}
       </div>
 
-      <div className='relative overflow-auto max-h-[80%] md:max-h-[90%]'>
+      <div className='relative mt-2 lg:max-h-[88%] md:max-h-[85%] max-h-[70%] overflow-auto'>
         <table className='w-full max-w-full overflow-x-auto text-sm text-center text-gray-400'>
           <thead className='text-xs uppercase bg-gray-700 text-gray-400'>
             <tr>
+              <th scope='col' className='px-6 py-3' />
 
               {tableHeaders.map((header, index) => (
                 <th key={index} scope='col' className='px-6 py-3'>
@@ -70,6 +103,9 @@ export default function page () {
 
             {filteredCars.map(car => (
               <tr key={car.id} className='border-b bg-gray-800 border-gray-700'>
+                <th scope='row' className='px-6 py-4 font-medium whitespace-nowrap text-white'>
+                  <input onClick={() => addCarToList(car.id)} type='checkbox' className='form-checkbox h-4 w-4 text-gray-500' />
+                </th>
                 <th scope='row' className='px-6 py-4 font-medium whitespace-nowrap text-white'>
                   {car.id}
                 </th>

@@ -36,8 +36,11 @@ export default function UserSettings () {
     const data = Object.fromEntries(new FormData(e.target))
 
     if (objectHasEmptyValues(data)) return toast.error('Todos los campos son obligatorios')
-    if (data.newPassword !== data.confirmPassword) return toast.error('Confirmar contraseña no coinciden')
-    if (data.newPassword === data.currentPassword) return toast.error('La nueva contraseña no puede ser igual a la actual')
+
+    if (e.target.name === 'toPassword') {
+      if (data.newPassword !== data.confirmPassword) return toast.error('Confirmar contraseña no coinciden')
+      if (data.newPassword === data.currentPassword) return toast.error('La nueva contraseña no puede ser igual a la actual')
+    }
 
     setLoading(true)
     updateUser(session.id, data, e.target.name)

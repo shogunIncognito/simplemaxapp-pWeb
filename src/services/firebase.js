@@ -26,9 +26,40 @@ export const uploadCarImage = async (image, carId) => {
   }
 }
 
-export const deleteCarImage = async (carId) => {
+export const uploadCarsImages = async (images = []) => {
   try {
-    const delRef = ref(storage, `images/proyectoWebMaxautos/${carId}`)
+    if (images.length === 0) return []
+    const urls = images.map(async image => {
+      const imagesRef = ref(storage, `images/proyectoWebMaxautos/${image.name}`)
+      await uploadBytes(imagesRef, image)
+      return getDownloadURL(imagesRef)
+    })
+
+    return Promise.all(urls)
+  } catch (error) {
+    console.log(error)
+    return null
+  }
+}
+
+export const deleteCarsImages = async (images = []) => {
+  try {
+    if (images.length === 0) return
+    const urls = images.map((image) => {
+      const delRef = ref(storage, image)
+      return deleteObject(delRef)
+    })
+
+    return Promise.all(urls)
+  } catch (error) {
+    console.log(error)
+    return null
+  }
+}
+
+export const deleteCarImage = async (image) => {
+  try {
+    const delRef = ref(storage, image)
     await deleteObject(delRef)
     return true
   } catch (error) {

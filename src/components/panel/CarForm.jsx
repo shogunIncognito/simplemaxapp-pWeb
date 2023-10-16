@@ -3,10 +3,11 @@ import Input from '../Input'
 import Image from 'next/image'
 import { carInputs, selectOptionsCC } from '@/helpers/data'
 import Select from '../Select'
+import { AiFillDelete } from 'react-icons/ai'
 
 export default function CarForm ({
   setValues, values, handleImage, handleSubmit,
-  loading, images, handleClose, brands, children
+  loading, images, handleDeleteImage, handleClose, brands, children
 }) {
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -21,7 +22,7 @@ export default function CarForm ({
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className='overflow-auto lg:max-h-90[dvh] max-h-[80dvh]'>
         <div className='grid grid-cols-2 md:grid-cols-3 gap-3'>
           <div className='flex flex-col gap-1 overflow-ellipsis'>
             <label className='text-white whitespace-nowrap text-ellipsis overflow-hidden'>Marca</label>
@@ -84,12 +85,33 @@ export default function CarForm ({
             ))
           }
         </div>
-        <div className='flex flex-col md:flex-row gap-3 w-full items-center mt-5 justify-center'>
+        <div className='flex flex-col gap-3 items-center mt-5 justify-center'>
           <label className='text-white bg-gray-800 p-2 rounded'>
             Agregar imagen
-            <input hidden type='file' onChange={handleImage} accept='image/*' />
+            <input hidden type='file' multiple onChange={handleImage} accept='image/*' />
           </label>
-          {images.previewImage && <Image className='self-center rounded h-auto w-auto min-w-[150px] object-cover min-h-[150px] max-w-[120px] max-h-[120px]' alt='carImage' src={images.previewImage} width={120} height={120} />}
+
+          <section className='grid grid-rows-1 md:grid-rows-2 max-w-[40%] grid-flow-col overflow-x-auto'>
+            {images.length > 0 && (
+              images.map((image, index) => {
+                return (
+                  <div key={index} className='relative w-32 h-32'>
+                    <Image
+                      src={image.url}
+                      alt='car image'
+                      width={100}
+                      height={100}
+                      className='rounded object-cover block w-full h-full'
+                    />
+                    <div onClick={() => handleDeleteImage(image)} className='cursor-pointer absolute top-1 right-1 bg-red-500 rounded-full p-1'>
+                      <AiFillDelete size={20} />
+                    </div>
+                  </div>
+                )
+              })
+            )}
+          </section>
+
         </div>
         <div className='flex gap-2 max-w-full items-center justify-center'>
           <Button loading={loading} disabled={loading} type='submit' className='mt-7 w-40 disabled:bg-opacity-70 disabled:cursor-not-allowed'>

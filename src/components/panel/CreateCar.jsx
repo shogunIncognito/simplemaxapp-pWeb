@@ -33,27 +33,26 @@ export default function CreateCar () {
   const [loading, setLoading] = useState(false)
   const { addCar, brands } = useCarsStore()
   const [values, setValues] = useState(carInitialValues)
-  const [images, setImages] = useState({
-    image: null,
-    previewImage: null
-  })
+  const [images, setImages] = useState([])
 
   const handleImage = (e) => {
-    const file = e.target.files[0]
-    if (!file) return
+    const files = Array.from(e.target.files)
+    // imágenes que se van a subir
 
-    setImages(prev => ({ ...prev, image: file }))
+    const mapedFiles = files.map((file) => {
+      const url = URL.createObjectURL(file)
+      return { url, file }
+    })
 
-    // eslint-disable-next-line no-undef
-    const reader = new FileReader()
-    reader.readAsDataURL(file)
-    reader.onloadend = () => {
-      setImages(prev => ({ ...prev, previewImage: reader.result }))
-    }
+    // imagenes que se van a mostrar como preview
+    const newUrls = [...images, ...mapedFiles]
+    setImages(newUrls)
+
+    console.log(images)
   }
 
   const handleUpdateImage = async (carId) => {
-    const imgUrl = await uploadCarImage(images.image, carId)
+    const imgUrl = await uploadCarImage(images, carId)
     return imgUrl
   }
 
@@ -62,7 +61,7 @@ export default function CreateCar () {
 
     const { description, ...restOfForm } = values
 
-    if (!images.image) return toast.error('Debe agregar una imagen')
+    if (!images) return toast.error('Debe agregar una imagen')
     if (objectHasEmptyValues(restOfForm)) return toast.error('Todos los campos son obligatorios')
 
     try {
@@ -72,8 +71,8 @@ export default function CreateCar () {
       const carWithImage = await updateCar(newCar.id, { image: uploadedCarImage })
 
       setImages({
-        image: null,
-        previewImage: null
+        images: [],
+        previewImages: []
       })
 
       addCar(carWithImage)
@@ -88,6 +87,11 @@ export default function CreateCar () {
     }
   }
 
+  const handleDeleteImage = async (imageToDel) => {
+    const newImages = images.filter(image => image.url !== imageToDel.url)
+    setImages(newImages)
+  }
+
   return (
     <>
       <Button onClick={handleOpen} className='bg-green-500 hover:bg-green-700 font-bold py-2 px-4 rounded'>
@@ -99,6 +103,7 @@ export default function CreateCar () {
         <CarForm
           setValues={setValues}
           values={values}
+          handleDeleteImage={handleDeleteImage}
           handleImage={handleImage}
           handleSubmit={handleSubmit}
           loading={loading}

@@ -5,11 +5,7 @@ import { NextResponse } from 'next/server'
 
 export async function GET () {
   try {
-    const brands = await prisma.brands.findMany({
-      include: {
-        cars: true
-      }
-    })
+    const brands = await prisma.brands.findMany()
     return NextResponse.json(brands)
   } catch (error) {
     return NextResponse.json({ message: error.message }, { status: 500 })

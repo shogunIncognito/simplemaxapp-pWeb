@@ -6,7 +6,7 @@ import { updateCar } from '@/services/api'
 import useCarsStore from '@/hooks/useCarsStore'
 import toast from 'react-hot-toast'
 import { objectHasEmptyValues } from '@/utils/functions'
-import { uploadCarImage } from '@/services/firebase'
+import { deleteCarImage, uploadCarsImages } from '@/services/firebase'
 import CarForm from './CarForm'
 import { updateCarCodes } from '@/utils/statusCodes'
 
@@ -14,10 +14,7 @@ export default function UpdateCar ({ selectedCar, setSelectedCar }) {
   const { reFetch, brands } = useCarsStore()
   const [values, setValues] = useState(selectedCar)
   const [loading, setLoading] = useState(false)
-  const [images, setImages] = useState({
-    image: null,
-    previewImage: selectedCar.image
-  })
+  const [images, setImages] = useState(selectedCar.image)
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -28,12 +25,16 @@ export default function UpdateCar ({ selectedCar, setSelectedCar }) {
     if (!values.image) return toast.error('Debe agregar una imagen')
     if (objectHasEmptyValues(restOfValues)) return toast.error('Todos los campos son obligatorios')
 
+    const urlsToUpload = images.reduce((acc, curr) => {
+      if (typeof curr === 'string') return acc
+      return [...acc, curr.file]
+    }, [])
+
     try {
       setLoading(true)
+      const newImages = await uploadCarsImages(urlsToUpload, selectedCar.plate)
 
-      const image = images.image ? await handleUpdateImage(selectedCar.id) : images.previewImage
-
-      await updateCar(selectedCar.id, { ...restOfValues, description, image })
+      await updateCar(selectedCar.id, { ...restOfValues, description, image: [...selectedCar.image, newImages].join(',') })
 
       reFetch()
       setSelectedCar(null)
@@ -46,19 +47,39 @@ export default function UpdateCar ({ selectedCar, setSelectedCar }) {
   }
 
   const handleImage = (e) => {
-    const file = e.target.files[0]
-    if (!file) return
-    setImages(prev => ({ ...prev, image: file }))
+    const files = Array.from(e.target.files)
+    // imágenes que se van a subir
 
-    // eslint-disable-next-line no-undef
-    const reader = new FileReader()
-    reader.readAsDataURL(file)
-    reader.onloadend = () => {
-      setImages(prev => ({ ...prev, previewImage: reader.result }))
+    const mapedFiles = files.map((file) => {
+      const url = URL.createObjectURL(file)
+      return { url, file }
+    })
+
+    // imagenes que se van a mostrar como preview
+    const newUrls = [...images, ...mapedFiles]
+    setImages(newUrls)
+  }
+
+  const handleDeleteImage = async (img) => {
+    try {
+      if (typeof img === 'object') {
+        setImages(prev => prev.filter(image => image.url !== img.url))
+        toast.success('Imagen eliminada')
+        return
+      }
+
+      await deleteCarImage(img)
+      await updateCar(selectedCar.id, { image: images.filter(image => image !== img).join(',') })
+
+      setImages(prev => prev.filter(image => image !== img))
+      toast.success('Imagen eliminada')
+      reFetch()
+    } catch (error) {
+      console.log(error)
+      toast.error('Error al eliminar imagen')
     }
   }
 
-  const handleUpdateImage = async (carId) => await uploadCarImage(images.image, carId)
   const handleClose = () => setSelectedCar(null)
 
   return (
@@ -67,6 +88,7 @@ export default function UpdateCar ({ selectedCar, setSelectedCar }) {
         <h2 className='text-2xl font-bold opacity-80 mb-3'>Actualizar auto</h2>
         <CarForm
           setValues={setValues}
+          handleDeleteImage={handleDeleteImage}
           handleImage={handleImage}
           handleSubmit={handleSubmit}
           values={values}

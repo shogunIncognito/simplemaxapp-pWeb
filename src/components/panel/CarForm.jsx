@@ -97,7 +97,7 @@ export default function CarForm ({
                 return (
                   <div key={index} className='relative w-32 h-32'>
                     <Image
-                      src={image.url}
+                      src={typeof image === 'string' ? image : image.url}
                       alt='car image'
                       width={100}
                       height={100}

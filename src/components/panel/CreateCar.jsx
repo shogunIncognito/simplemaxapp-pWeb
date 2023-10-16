@@ -5,7 +5,7 @@ import { createCar, updateCar } from '@/services/api'
 import useCarsStore from '@/hooks/useCarsStore'
 import { objectHasEmptyValues } from '@/utils/functions'
 import toast from 'react-hot-toast'
-import { uploadCarImage } from '@/services/firebase'
+import { uploadCarsImages } from '@/services/firebase'
 import CarForm from './CarForm'
 import Button from '../Button'
 import useDisclosure from '@/hooks/useDisclosure'
@@ -47,13 +47,6 @@ export default function CreateCar () {
     // imagenes que se van a mostrar como preview
     const newUrls = [...images, ...mapedFiles]
     setImages(newUrls)
-
-    console.log(images)
-  }
-
-  const handleUpdateImage = async (carId) => {
-    const imgUrl = await uploadCarImage(images, carId)
-    return imgUrl
   }
 
   const handleSubmit = async (e) => {
@@ -64,18 +57,17 @@ export default function CreateCar () {
     if (!images) return toast.error('Debe agregar una imagen')
     if (objectHasEmptyValues(restOfForm)) return toast.error('Todos los campos son obligatorios')
 
+    const urlsToUpload = images.map(image => image.file)
+
     try {
       setLoading(true)
       const newCar = await createCar({ ...restOfForm, description })
-      const uploadedCarImage = await handleUpdateImage(newCar.id)
-      const carWithImage = await updateCar(newCar.id, { image: uploadedCarImage })
+      const uploadedCarImage = await uploadCarsImages(urlsToUpload, newCar.plate)
+      const carWithImages = await updateCar(newCar.id, { image: uploadedCarImage.join(',') })
 
-      setImages({
-        images: [],
-        previewImages: []
-      })
+      setImages([])
 
-      addCar(carWithImage)
+      addCar(carWithImages)
       toast.success('Auto agregado')
     } catch (error) {
       toast.error(createCarCodes[error.response.status] || 'Error al agregar auto')

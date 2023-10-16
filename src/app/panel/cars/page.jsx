@@ -134,8 +134,8 @@ export default function page () {
                   $ {Math.round(car.price).toLocaleString()}
                 </td>
                 <td className='px-6 py-4'>
-                  <Link href={car.image} target='_blank' rel='noreferrer'>
-                    <Image src={car.image} priority alt='carro' width={170} height={170} className='rounded-lg object-cover cursor-pointer m-auto w-auto h-auto ring-2 max-w-[160px] max-h-[160px]' />
+                  <Link href={car.image[0]} target='_blank' rel='noreferrer'>
+                    <Image src={car.image[0]} priority alt='carro' width={170} height={170} className='rounded-lg object-cover cursor-pointer m-auto w-auto h-auto ring-2 max-w-[160px] max-h-[160px]' />
                   </Link>
                 </td>
                 <td className='px-6 py-4 h-full m-auto'>

@@ -29,7 +29,7 @@ model Car {
   line String
   description String? @default("")
   kilometers String
-  image String @db.Text
+  image String? @db.Text
   fuel String
   transmission String
   cc String

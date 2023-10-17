@@ -24,14 +24,17 @@ export default function page ({ params }) {
 
   return (
     <>
-      <section className='w-full h-[100vh] flex'>
-        <div className='w-[50%] overflow-hidden h-full flex flex-col items-center justify-center'>
-          <div className='w-[73%] h-auto'>
+      <section className='w-full h-[100vh] flex mb-4'>
+        <div className='w-[50%] h-full flex flex-col items-center justify-center'>
+          <div className='w-[73%] h-[85%]'>
             <div className='w-full max-w-fit h-[85%] border rounded-md overflow-hidden mb-2 '>
               <div className='w-full object-fill max-w-full h-full flex duration-700 ' style={{ transform: `translateX(-${Translate}%)` }}>
                 {
                 imagenes.map((i, index) => (
-                  <img key={index} className='w-full h-full object-fill object-center' src={i} alt='' />
+                  <div key={index} className='w-full h-full min-w-full'>
+                    <img className='w-full h-full object-fill object-center' src={i} alt='' />
+                  </div>
+
                 ))
                 }
               </div>

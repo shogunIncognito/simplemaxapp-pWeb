@@ -3,13 +3,14 @@
 import Link from 'next/link'
 
 export default function CarsI ({ result }) {
+  console.log(result)
   return (
     <>
       <div className='h-full grid 2xl:grid-cols-4 xl:grid-cols-3 grid-cols-1 gap-6 p-5'>
         {result.map((car) => (
           <div key={car.id} className='max-w-sm h-[400px] m-auto mt-0 flex flex-col overflow-hidden border-2 border-blue-400 rounded-md'>
             <div className='w-full h-[260px] bg-white p-4 overflow-hidden border-2 rounded border-blue-100'>
-              <img className='object-cover bg-center w-full h-full outline-2 outline outline-blue-400' src={car.image} alt='' />
+              <img className='object-cover bg-center w-full h-full outline-2 outline outline-blue-400' src={car.image[1]} alt='' />
             </div>
             {/* <div className='w-full h-[40px] flex items-center justify-center bg-white p-3'>
               <img className='w-11 h-9' src={maxautos.src} alt='' />

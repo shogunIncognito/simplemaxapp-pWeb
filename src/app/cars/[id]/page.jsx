@@ -8,10 +8,12 @@ import { TbSettingsCheck } from 'react-icons/tb'
 import { LuFuel } from 'react-icons/lu'
 import { GrConfigure } from 'react-icons/gr'
 import { BsCardText } from 'react-icons/bs'
+import { useState } from 'react'
 
 export default function page ({ params }) {
   const { cars, loading } = useCarsStore()
-  console.log(params)
+  const [IterCars, setIterCars] = useState(0)
+  console.log(IterCars)
 
   if (loading) return <Spinner />
 
@@ -19,18 +21,30 @@ export default function page ({ params }) {
     String(car.id) === params.id
   )
 
-  console.log(car)
+  const imagenes = car.image
 
   return (
     <>
       <section className='w-full h-[100vh] flex'>
         <div className='w-[50%] h-full flex flex-col items-center justify-center'>
           <div className='w-[85%] h-[85%]'>
-            <div className='w-full h-[85%] border rounded-md overflow-hidden mb-2'>
-              <img className='w-full h-full object-cover object-center' src={car.image} alt='' />
+            <div className='w-full h-[85%] border rounded-md overflow-hidden mb-2 '>
+              <div className={`w-full h-full flex duration-700 translate-x-[-${IterCars}%]`}>
+                {
+                imagenes.map((i, index) => (
+                  <img key={index} className='w-full h-full object-cover object-center' src={i} alt='' />
+                ))
+                }
+              </div>
             </div>
             <div className='flex justify-center w-full h-[20%] bg-blue-200 border rounded-md overflow-hidden p-1'>
-              <img className='w-[15%] h-full object-cover object-center rounded-md' src={car.image} alt='' />
+              {
+                imagenes.map((i, index) => (
+                  <img
+                    onClick={() => setIterCars(index * 100)} key={i * 9} className='w-[15%] cursor-pointer h-full object-cover object-center rounded-md mr-1' src={i} alt=''
+                  />
+                ))
+              }
             </div>
           </div>
         </div>

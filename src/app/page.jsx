@@ -24,7 +24,7 @@ export default function Home () {
         <Carrusel />
       </section>
 
-      <section className='w-full h-screen flex'>
+      <section className='w-full h-4/6 flex'>
         <div className='w-[50%] flex items-center justify-center bg-gradient-to-l from-white to-blue-400'>
           <div className='flex flex-col text-center justify-center items-center p-8'>
             <h2 className='text-5xl font-bold text-center m-5'>Max <span className='text-blue-500'>Autos</span> </h2>

@@ -6,7 +6,7 @@ import { FaCarAlt } from 'react-icons/fa'
 
 export default function NavBar () {
   return (
-    <header className=' bg-slate-50 h-20 shadow-xl flex-col md:flex-row top-0 sticky duration-300 ease-in-out transition-all z-50 p-4 flex w-full items-center'>
+    <header className=' bg-slate-50 h-24 shadow-xl flex-col md:flex-row top-0 sticky duration-300 ease-in-out transition-all z-50 p-4 flex w-full items-center'>
       <Link href='/' className='md:absolute'>
         <MaxAutosIcon />
       </Link>

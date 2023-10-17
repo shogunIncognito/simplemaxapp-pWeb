@@ -25,18 +25,18 @@ export default function page ({ params }) {
   return (
     <>
       <section className='w-full h-[100vh] flex'>
-        <div className='w-[50%] h-full flex flex-col items-center justify-center'>
-          <div className='w-[85%] h-[85%]'>
-            <div className='w-full h-[85%] border rounded-md overflow-hidden mb-2 '>
-              <div className='w-full h-full flex duration-700 ' style={{ transform: `translateX(-${Translate}%)` }}>
+        <div className='w-[50%] overflow-hidden h-full flex flex-col items-center justify-center'>
+          <div className='w-[73%] h-auto'>
+            <div className='w-full max-w-fit h-[85%] border rounded-md overflow-hidden mb-2 '>
+              <div className='w-full object-fill max-w-full h-full flex duration-700 ' style={{ transform: `translateX(-${Translate}%)` }}>
                 {
                 imagenes.map((i, index) => (
-                  <img key={index} className='w-full h-full object-cover object-center' src={i} alt='' />
+                  <img key={index} className='w-full h-full object-fill object-center' src={i} alt='' />
                 ))
                 }
               </div>
             </div>
-            <div className='flex justify-center w-full h-[20%] bg-blue-200 border rounded-md overflow-hidden p-1'>
+            <div className='flex h-[20%] bg-blue-200 border rounded-md overflow-x-auto p-1'>
               {
                 imagenes.map((i, index) => (
                   <img
@@ -55,47 +55,47 @@ export default function page ({ params }) {
             </div>
             <div className='w-full h-[80%] flex p-2'>
               <div className='w-[50%] h-full mr-2'>{/* Colmuna 1 */}
-                <div className='flex h-[20%] items-center border-b'>
+                <div className='flex h-[20%] items-center border-b capitalize'>
                   <AiOutlineTags className='mr-2' size={24} />
-                  <p> <span className='text-blue-400 text-xs'>Marca</span>  <br /> {car.brand}</p>
+                  <p> <span className='text-blue-400 text-xs capitalize'>Marca</span>  <br /> {car.brand}</p>
                 </div>
-                <div className='flex h-[20%] items-center border-b'>
+                <div className='flex h-[20%] items-center border-b capitalize'>
                   <IoColorFilterOutline className='mr-2' size={24} />
-                  <p> <span className='text-blue-400 text-xs'>Color</span>  <br /> {car.color}</p>
+                  <p> <span className='text-blue-400 text-xs capitalize'>Color</span>  <br /> {car.color}</p>
                 </div>
-                <div className='flex h-[20%] items-center border-b'>
+                <div className='flex h-[20%] items-center border-b capitalize'>
                   <AiOutlineFolderOpen className='mr-2' size={24} />
-                  <p> <span className='text-blue-400 text-xs'>Marca</span>  <br /> {car.type}</p>
+                  <p> <span className='text-blue-400 text-xs capitalize'>Tipo</span>  <br /> {car.type}</p>
                 </div>
-                <div className='flex h-[20%] items-center border-b'>
+                <div className='flex h-[20%] items-center border-b capitalize'>
                   <TbSettingsCheck className='mr-2' size={24} />
-                  <p> <span className='text-blue-400 text-xs'>Transmision</span>  <br /> {car.transmission}</p>
+                  <p> <span className='text-blue-400 text-xs capitalize'>Transmision</span>  <br /> {car.transmission}</p>
                 </div>
-                <div className='flex h-[20%] items-center border-b'>
+                <div className='flex h-[20%] items-center border-b capitalize'>
                   <LuFuel className='mr-2' size={24} />
-                  <p> <span className='text-blue-400 text-xs'>Combustible</span>  <br /> {car.fuel}</p>
+                  <p> <span className='text-blue-400 text-xs capitalize'>Combustible</span>  <br /> {car.fuel}</p>
                 </div>
               </div>
               <div className='w-[50%] h-full ml-2'>{/* Colmuna 2 */}
-                <div className='flex h-[20%] items-center border-b'>
+                <div className='flex h-[20%] items-center border-b capitalize'>
                   <AiOutlineCar className='mr-2' size={24} />
-                  <p> <span className='text-blue-400 text-xs'>Linea</span>  <br /> {car.line}</p>
+                  <p> <span className='text-blue-400 text-xs capitalize'>Linea</span>  <br /> {car.line}</p>
                 </div>
-                <div className='flex h-[20%] items-center border-b'>
+                <div className='flex h-[20%] items-center border-b capitalize'>
                   <SlSpeedometer className='mr-2' size={24} />
-                  <p> <span className='text-blue-400 text-xs'>Linea</span>  <br /> {car.kilometers}</p>
+                  <p> <span className='text-blue-400 text-xs capitalize'>Km</span>  <br /> {car.kilometers}</p>
                 </div>
-                <div className='flex h-[20%] items-center border-b'>
+                <div className='flex h-[20%] items-center border-b capitalize'>
                   <GrConfigure className='mr-2' size={24} />
-                  <p> <span className='text-blue-400 text-xs'>Año</span>  <br /> {car.model}</p>
+                  <p> <span className='text-blue-400 text-xs capitalize'>Año</span>  <br /> {car.model}</p>
                 </div>
-                <div className='flex h-[20%] items-center border-b'>
+                <div className='flex h-[20%] items-center border-b capitalize'>
                   <AiOutlineUserSwitch className='mr-2' size={24} />
-                  <p> <span className='text-blue-400 text-xs'>Propietarios</span>  <br /> {car.owners}</p>
+                  <p> <span className='text-blue-400 text-xs capitalize'>Propietarios</span>  <br /> {car.owners}</p>
                 </div>
-                <div className='flex h-[20%] items-center border-b'>
+                <div className='flex h-[20%] items-center border-b capitalize'>
                   <BsCardText className='mr-2' size={24} />
-                  <p> <span className='text-blue-400 text-xs'>Placa</span>  <br /> {car.plate}</p>
+                  <p> <span className='text-blue-400 text-xs capitalize'>Placa</span>  <br /> {car.plate}</p>
                 </div>
               </div>
             </div>

@@ -68,8 +68,8 @@ export default function UpdateCar ({ selectedCar, setSelectedCar }) {
         return
       }
 
-      await deleteCarImage(img)
       await updateCar(selectedCar.id, { image: images.filter(image => image !== img).join(',') })
+      await deleteCarImage(img)
 
       setImages(prev => prev.filter(image => image !== img))
       toast.success('Imagen eliminada')
@@ -77,6 +77,7 @@ export default function UpdateCar ({ selectedCar, setSelectedCar }) {
     } catch (error) {
       console.log(error)
       toast.error('Error al eliminar imagen')
+      reFetch()
     }
   }
 

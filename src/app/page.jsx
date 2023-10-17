@@ -13,10 +13,10 @@ export default function Home () {
       <section className='h-[95dvh] max-h-[95dvh] overflow-hidden bg-black/60 relative flex items-center justify-center text-white'>
         <div className='w-full h-72 flex flex-col items-center justify-center gap-3 mb-20 p-10 rounded'>
           <h1 className='text-5xl font-bold text-center'>Max <span className='text-blue-500'>Autos</span> </h1>
-          <p className='text-center'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque, voluptatibus.</p>
+          <p className='text-center text-xl italic bg-gradient-to-tr from-red-500 p-1 rounded-md'>Usados que dan confianza.</p>
           <Button className='bg-transparent border-2 border-white hover:bg-white hover:text-black mt-5'>Ver recientes</Button>
         </div>
-        <video muted loop autoPlay playsInline className='-z-10 object-cover top-0 w-full h-screen absolute' src='https://cdn.pixabay.com/vimeo/304735769/calle-19627.mp4?width=1280&hash=84c8347627305ec3a01dbe5618ecde30d4c8ec6e' />
+        <video muted loop autoPlay playsInline className='-z-10 object-cover top-0 w-full h-screen absolute' src='/videomaxapptest.mp4' />
       </section>
 
       <section className='w-full text-center pb-5'>

@@ -51,7 +51,7 @@ export default function PanelLayout ({ children }) {
       {open && (
         <aside className='top-0 md:hidden animate__animated animate__slideInLeft w-full flex flex-col absolute z-20 h-screen shadow-xl bg-slate-800 text-white'>
           <CloseIcon onClick={handleClose} className='w-12 m-2 self-end cursor-pointer' />
-          <Image src={sideImage} width={170} height='auto' priority alt='sideimage' className='pointer-events-none m-auto my-0 mb-10 object-cover h-auto' />
+          <Image src={sideImage} width={170} height='auto' priority alt='sideimage' className='pointer-events-none select-none m-auto my-0 mb-10 object-cover h-auto' />
 
           <div className='flex items-center gap-2 p-4 shadow-md mb-5 bg-neutral-900 w-full'>
             <UserIcon className='w-10 bg-white rounded-full' />
@@ -91,7 +91,7 @@ export default function PanelLayout ({ children }) {
       {/* Desktop Layout */}
       <aside className='w-1/6 hidden relative md:flex md:flex-col h-screen shadow-xl text-white'>
 
-        <Image src={sideImage} width={140} height='auto' priority alt='sideimage' className='pointer-events-none m-auto h-auto my-5 object-cover' />
+        <Image src={sideImage} width={140} height='auto' priority alt='sideimage' className='pointer-events-none select-none m-auto h-auto my-5 object-cover' />
 
         <div className='flex items-center gap-2 p-4 shadow-md mb-5 bg-neutral-900 w-full'>
           <UserIcon className='w-10 bg-white rounded-full' />

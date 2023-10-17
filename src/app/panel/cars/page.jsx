@@ -134,9 +134,14 @@ export default function page () {
                   $ {Math.round(car.price).toLocaleString()}
                 </td>
                 <td className='px-6 py-4'>
-                  <Link href={car.image[0]} target='_blank' rel='noreferrer'>
+                  <div className='cursor-pointer relative group'>
                     <Image src={car.image[0]} priority alt='carro' width={170} height={170} className='rounded-lg object-cover cursor-pointer m-auto w-auto h-auto ring-2 max-w-[160px] max-h-[160px]' />
-                  </Link>
+                    <div className='absolute top-0 left-0 w-full h-full bg-black/50 rounded-lg flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300'>
+                      <Link className='text-white font-bold' href={`/car/${car.id}`}>
+                        Ver o Cambiar imagen
+                      </Link>
+                    </div>
+                  </div>
                 </td>
                 <td className='px-6 py-4 h-full m-auto'>
                   <Button onClick={() => setSelectedCar(car)} className='w-full mb-1 bg-green-500 hover:bg-green-700 font-bold '>

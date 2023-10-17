@@ -66,8 +66,8 @@ export default function CreateCar () {
       const carWithImages = await updateCar(newCar.id, { image: uploadedCarImage.join(',') })
 
       setImages([])
+      addCar({ ...carWithImages, image: uploadedCarImage })
 
-      addCar(carWithImages)
       toast.success('Auto agregado')
     } catch (error) {
       toast.error(createCarCodes[error.response.status] || 'Error al agregar auto')

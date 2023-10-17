@@ -106,7 +106,7 @@ export default function UserSettings () {
               </section>
               )
             : (
-              <section className='flex flex-col justify-center mx-8'>
+              <section className='flex flex-col select-none justify-center mx-8'>
                 <h2 className='opacity-80 mb-7 capitalize text-2xl text-center'>Cambiar contraseña</h2>
                 <form name='toPassword' onSubmit={handleSubmit} className='flex gap-5 flex-col justify-start items-center'>
 
@@ -120,15 +120,15 @@ export default function UserSettings () {
 
                   <div className='grid grid-cols-2'>
                     <label>Contraseña actual</label>
-                    <Input value={values.toPassword.currentPassword} onChange={handleChange} name='currentPassword' type={showPassword ? 'password' : 'text'} />
+                    <Input value={values.toPassword.currentPassword} onChange={handleChange} name='currentPassword' type={showPassword ? 'text' : 'password'} />
                   </div>
                   <div className='grid grid-cols-2'>
                     <label>Nueva contraseña</label>
-                    <Input value={values.toPassword.newPassword} onChange={handleChange} name='newPassword' type={showPassword ? 'password' : 'text'} />
+                    <Input value={values.toPassword.newPassword} onChange={handleChange} name='newPassword' type={showPassword ? 'text' : 'password'} />
                   </div>
                   <div className='grid grid-cols-2'>
                     <label>Confirmar contraseña</label>
-                    <Input value={values.toPassword.confirmPassword} onChange={handleChange} name='confirmPassword' type={showPassword ? 'password' : 'text'} />
+                    <Input value={values.toPassword.confirmPassword} onChange={handleChange} name='confirmPassword' type={showPassword ? 'text' : 'password'} />
                   </div>
 
                   <div className='flex gap-2 w-2/3 my-4 items-center'>

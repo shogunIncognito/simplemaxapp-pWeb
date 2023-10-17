@@ -12,8 +12,7 @@ import { useState } from 'react'
 
 export default function page ({ params }) {
   const { cars, loading } = useCarsStore()
-  const [IterCars, setIterCars] = useState(0)
-  console.log(IterCars)
+  const [Translate, setTranslate] = useState(0)
 
   if (loading) return <Spinner />
 
@@ -29,7 +28,7 @@ export default function page ({ params }) {
         <div className='w-[50%] h-full flex flex-col items-center justify-center'>
           <div className='w-[85%] h-[85%]'>
             <div className='w-full h-[85%] border rounded-md overflow-hidden mb-2 '>
-              <div className={`w-full h-full flex duration-700 -translate-x-[${IterCars}%]`}>
+              <div className='w-full h-full flex duration-700 ' style={{ transform: `translateX(-${Translate}%)` }}>
                 {
                 imagenes.map((i, index) => (
                   <img key={index} className='w-full h-full object-cover object-center' src={i} alt='' />
@@ -41,7 +40,7 @@ export default function page ({ params }) {
               {
                 imagenes.map((i, index) => (
                   <img
-                    onClick={() => setIterCars(index * 100)} key={i * 9} className='w-[15%] cursor-pointer h-full object-cover object-center rounded-md mr-1' src={i} alt=''
+                    onClick={() => setTranslate(index * 100)} key={index + 100} className='w-[15%] cursor-pointer h-full object-cover object-center rounded-md mr-1' src={i} alt=''
                   />
                 ))
               }

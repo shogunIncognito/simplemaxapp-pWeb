@@ -74,3 +74,8 @@ export const deleteBrand = async (id) => {
   const response = await api.delete(`/brands/${id}`, getToken())
   return response.data
 }
+
+export const updatePreviewImage = async (id, preview) => {
+  const response = await api.patch(`/cars/${id}`, { preview }, getToken())
+  return response.data
+}

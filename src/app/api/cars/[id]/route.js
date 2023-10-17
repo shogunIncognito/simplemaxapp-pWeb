@@ -34,3 +34,22 @@ export async function PUT (request, { params }) {
     return NextResponse.json({ message: error.message }, { status: 500 })
   }
 }
+
+export async function PATCH (request, { params }) {
+  try {
+    const token = headers().get('auth-token')
+
+    if (!validateToken(token)) return NextResponse.json({ message: token ? 'Invalid token' : 'No token provided' }, { status: 401 })
+
+    const { id } = params
+    const { preview } = await request.json()
+
+    const car = await prisma.car.update({ where: { id: Number(id) }, data: { preview }, include: { brand: true } })
+
+    if (!car) return NextResponse.json({ message: 'Car not found' }, { status: 404 })
+
+    return NextResponse.json({ ...car, brand: car.brand.name })
+  } catch (error) {
+    return NextResponse.json({ message: error.message }, { status: 500 })
+  }
+}

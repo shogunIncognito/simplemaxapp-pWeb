@@ -20,7 +20,7 @@ export default function UpdateCar ({ selectedCar, setSelectedCar }) {
     e.preventDefault()
 
     // el id no se actualiza
-    const { description, id, brand, ...restOfValues } = values
+    const { description, preview, id, brand, ...restOfValues } = values
 
     if (!values.image) return toast.error('Debe agregar una imagen')
     if (objectHasEmptyValues(restOfValues)) return toast.error('Todos los campos son obligatorios')

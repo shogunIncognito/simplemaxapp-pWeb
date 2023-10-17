@@ -8,7 +8,7 @@ export default function CarsI ({ result }) {
       {result.map((car) => (
         <div key={car.id} className='max-w-sm h-[400px] m-auto mt-0 flex flex-col overflow-hidden border-2 border-blue-400 rounded-md'>
           <div className='w-full h-[260px] bg-white p-4 overflow-hidden border-2 rounded border-blue-100'>
-            <img className='object-cover bg-center w-full h-full outline-2 outline outline-blue-400' src={car.image[0]} alt={car.model} />
+            <img className='object-cover bg-center w-full h-full outline-2 outline outline-blue-400' src={car.preview || car.image[0]} alt={car.model} />
           </div>
           <hr />
           <div className='h-[140px] flex flex-col bg-blue-100'>

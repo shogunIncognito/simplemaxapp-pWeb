@@ -52,7 +52,7 @@ export default function CreateCar () {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    const { description, ...restOfForm } = values
+    const { description, preview, ...restOfForm } = values
 
     if (!images) return toast.error('Debe agregar una imagen')
     if (objectHasEmptyValues(restOfForm)) return toast.error('Todos los campos son obligatorios')

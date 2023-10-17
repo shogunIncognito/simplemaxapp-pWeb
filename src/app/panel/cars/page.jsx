@@ -9,11 +9,11 @@ import DeleteCar from '@/components/panel/DeleteCar'
 import useCarsStore from '@/hooks/useCarsStore'
 import AddBrand from '@/components/panel/Brands'
 import Button from '@/components/Button'
-import Link from 'next/link'
 import Spinner from '@/components/Spinner'
 import CarFilter from '@/components/panel/CarFilter'
 import { deleteCar } from '@/services/api'
 import toast from 'react-hot-toast'
+import ChangePreviewCar from '@/components/panel/ChangePreviewCar'
 
 export default function page () {
   const { cars, loading } = useCarsStore()
@@ -21,6 +21,7 @@ export default function page () {
   const [carToDelete, setCarToDelete] = useState(null)
   const [filteredCars, setFilteredCars] = useState([])
   const [carsSelected, setCarsSelected] = useState([])
+  const [carPreviewToChange, setCarPreviewToChange] = useState(null)
 
   useEffect(() => {
     setFilteredCars(cars)
@@ -135,11 +136,11 @@ export default function page () {
                 </td>
                 <td className='px-6 py-4'>
                   <div className='cursor-pointer relative group'>
-                    <Image src={car.image[0]} priority alt='carro' width={170} height={170} className='rounded-lg object-cover cursor-pointer m-auto w-auto h-auto ring-2 max-w-[160px] max-h-[160px]' />
-                    <div className='absolute top-0 left-0 w-full h-full bg-black/50 rounded-lg flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300'>
-                      <Link className='text-white font-bold' href={`/car/${car.id}`}>
+                    <Image src={car.preview || car.image[0]} priority alt='carro' width={170} height={170} className='rounded-lg object-cover cursor-pointer m-auto w-auto h-auto ring-2 max-w-[160px] max-h-[160px]' />
+                    <div onClick={() => setCarPreviewToChange(car)} className='absolute top-0 left-0 w-full h-full  bg-black/50 rounded-lg flex items-center justify-center opacity-0 group-hover:opacity-100 max-w-[160px] max-h-[160px] transition-all duration-300'>
+                      <span className='text-white font-bold'>
                         Ver o Cambiar imagen
-                      </Link>
+                      </span>
                     </div>
                   </div>
                 </td>
@@ -160,6 +161,7 @@ export default function page () {
 
       {selectedCar && <UpdateCar selectedCar={selectedCar} setSelectedCar={setSelectedCar} />}
       {carToDelete && <DeleteCar carToDelete={carToDelete} setCarToDelete={setCarToDelete} />}
+      {carPreviewToChange && <ChangePreviewCar car={carPreviewToChange} setCar={setCarPreviewToChange} />}
     </section>
   )
 }

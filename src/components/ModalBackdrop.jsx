@@ -5,7 +5,7 @@ export default function ModalBackdrop ({ children, open, className, ...props }) 
 
   return (
     <div className='z-30 absolute bg-black/60 h-screen w-screen top-0 left-0 flex justify-center items-center'>
-      <div {...props} className={twMerge('animate__animated animate__faster max-w-[90%] overflow-auto max-h-[90%] animate__fadeIn w-auto mx-5 flex z-50 flex-col bg-slate-700 p-6 rounded', className)}>
+      <div {...props} className={twMerge('animate__animated animate__faster max-w-[90%] overflow-auto max-h-[90%] animate__fadeIn w-auto mx-5 flex z-50 flex-col bg-slate-800 p-6 rounded', className)}>
         {children}
       </div>
     </div>

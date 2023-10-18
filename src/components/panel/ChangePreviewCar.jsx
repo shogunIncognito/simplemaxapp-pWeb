@@ -36,9 +36,9 @@ export default function ChangePreviewCar ({ car, setCar }) {
   return (
     <ModalBackdrop open>
       <h2 className='text-center text-xl opacity-75 mb-6'>Selecciona una imagen de previsualización</h2>
-      <section className='grid grid-rows-3 grid-flow-col overflow-x-auto p-1 gap-2 place-content-center'>
+      <section className='grid grid-rows-3 grid-flow-col overflow-x-auto p-1 gap-2 md:place-content-center'>
         {car.image.map((image, index) => (
-          <img onClick={() => setSelectedImage(image)} key={index} className={`w-44 max-w-fit max-h-44 rounded ${selectedImage === image && selectedClass} h-auto object-contain`} src={image} alt={car.name} />
+          <img onClick={() => setSelectedImage(image)} key={index} className={`w-44 max-w-fit select-none max-h-44 rounded ${selectedImage === image && selectedClass} h-auto object-contain`} src={image} alt={car.name} />
         ))}
       </section>
       <div className='flex mt-5 gap-2 justify-center items-center'>

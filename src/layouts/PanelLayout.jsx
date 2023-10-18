@@ -41,7 +41,7 @@ export default function PanelLayout ({ children }) {
   return (
     <main className='md:flex h-screen w-full bg-slate-800'>
       {/* Mobile Layout */}
-      <header className='relative h-[8%] md:hidden text-white bg-slate-800 flex justify-center items-center w-full'>
+      <header className='relative h-[8%] md:hidden text-white bg-blue-950/60 flex justify-center items-center w-full'>
         <div onClick={handleOpen} className='absolute left-0'>
           <MenuIcon className='w-12 ml-2' />
         </div>
@@ -49,7 +49,7 @@ export default function PanelLayout ({ children }) {
       </header>
 
       {open && (
-        <aside className='top-0 md:hidden animate__animated animate__slideInLeft w-full flex flex-col absolute z-20 h-screen shadow-xl bg-slate-800 text-white'>
+        <aside className='top-0 md:hidden animate__animated animate__slideInLeft w-full flex flex-col absolute z-20 h-screen shadow-xl bg-blue-950 text-white'>
           <CloseIcon onClick={handleClose} className='w-12 m-2 self-end cursor-pointer' />
           <Image src={sideImage} width={170} height='auto' priority alt='sideimage' className='pointer-events-none select-none m-auto my-0 mb-10 object-cover h-auto' />
 
@@ -89,9 +89,9 @@ export default function PanelLayout ({ children }) {
       )}
 
       {/* Desktop Layout */}
-      <aside className='w-1/6 hidden relative md:flex md:flex-col h-screen shadow-xl text-white'>
+      <aside className='lg:w-1/6 bg-blue-950/70 md:w-1/3 hidden relative md:flex md:flex-col h-screen shadow-xl text-white'>
 
-        <Image src={sideImage} width={140} height='auto' priority alt='sideimage' className='pointer-events-none select-none m-auto h-auto my-5 object-cover' />
+        <Image src={sideImage} width={140} height='auto' priority alt='sideimage' className='pointer-events-none select-none m-auto h-auto my-8 object-cover' />
 
         <div className='flex items-center gap-2 p-4 shadow-md mb-5 bg-neutral-900 w-full'>
           <UserIcon className='w-10 bg-white rounded-full' />
@@ -129,7 +129,7 @@ export default function PanelLayout ({ children }) {
         </div>
       </aside>
 
-      <section className='md:w-10/12 w-full h-full overflow-hidden bg-neutral-800 text-white'>
+      <section className='md:w-10/12 w-full h-full overflow-hidden bg-gradient-to-r from-blue-950/70 to-neutral-800 text-white'>
         {children}
       </section>
     </main>

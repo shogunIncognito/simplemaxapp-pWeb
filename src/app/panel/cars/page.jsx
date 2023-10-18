@@ -53,7 +53,7 @@ export default function page () {
   }
 
   return (
-    <section className='bg-neutral-800 p-4 w-full max-h-screen h-full'>
+    <section className='p-4 w-full max-h-screen h-full'>
       <h2 className='text-white md:hidden font-bold opacity-75 text-3xl text-center'>Autos</h2>
 
       <div className='my-4 gap-3 flex-col min-h-min max-h-[15%] md:flex-row flex items-start '>
@@ -103,7 +103,7 @@ export default function page () {
             )}
 
             {filteredCars.map(car => (
-              <tr key={car.id} className='border-b bg-gray-800 border-gray-700'>
+              <tr key={car.id} className='border-b bg-transparent border-gray-700'>
                 <th scope='row' className='px-6 py-4 font-medium whitespace-nowrap text-white'>
                   <input onClick={() => addCarToList(car.id)} type='checkbox' className='form-checkbox h-4 w-4 text-gray-500' />
                 </th>
@@ -135,11 +135,11 @@ export default function page () {
                   $ {Math.round(car.price).toLocaleString()}
                 </td>
                 <td className='px-6 py-4'>
-                  <div className='cursor-pointer relative group'>
-                    <Image src={car.preview || car.image[0]} priority alt='carro' width={170} height={170} className='rounded-lg object-cover cursor-pointer m-auto w-auto h-auto ring-2 max-w-[160px] max-h-[160px]' />
-                    <div onClick={() => setCarPreviewToChange(car)} className='absolute top-0 left-0 w-full h-full  bg-black/50 rounded-lg flex items-center justify-center opacity-0 group-hover:opacity-100 max-w-[160px] max-h-[160px] transition-all duration-300'>
+                  <div className='cursor-pointer flex justify-center items-center relative group'>
+                    <Image src={car.preview || car.image[0]} priority alt='carro' width={170} height={170} className='rounded-lg object-cover cursor-pointer w-auto h-auto ring-2 max-w-[160px] max-h-[160px]' />
+                    <div onClick={() => setCarPreviewToChange(car)} className='absolute top-0 w-full h-full bg-black/50 rounded-lg flex items-center justify-center opacity-0 group-hover:opacity-100 max-w-[160px] max-h-[160px] transition-all duration-300'>
                       <span className='text-white font-bold'>
-                        Ver o Cambiar imagen
+                        Cambiar imagen
                       </span>
                     </div>
                   </div>

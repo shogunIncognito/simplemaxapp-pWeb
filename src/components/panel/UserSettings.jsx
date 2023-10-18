@@ -79,7 +79,7 @@ export default function UserSettings () {
         </div>
       </div>
 
-      <ModalBackdrop open={open} className='p-0 w-auto mx-5'>
+      <ModalBackdrop open={open} className='p-0 overflow-visible w-auto mx-5'>
         <div className='flex flex-col gap-6 p-3 shadow-md bg-neutral-900'>
           <header className='self-end p-1.5 group relative'>
             <FaExchangeAlt className='cursor-pointer hover:text-purple-600' size={25} onClick={handleToggleView} />

@@ -59,8 +59,8 @@ export default function page () {
   return (
     <>
       <section className='w-full flex-col items-center h-auto flex justify-center'>
-        <h2 className='text-2xl opacity-75 font-bold md:hidden mt-5'>Usuarios</h2>
-        <Button onClick={handleOpen} className={`mt-5 self-start mx-16 ${loading.getUsers && 'invisible'}`}>Crear usuario</Button>
+        <h2 className='text-2xl opacity-75 font-bold md:hidden my-5'>Usuarios</h2>
+        <Button onClick={handleOpen} className={`md:mt-5 md:self-start self-center md:mx-16 ${loading.getUsers && 'invisible'}`}>Agregar usuario</Button>
 
         <ModalBackdrop open={open} className='bg-neutral-800'>
           <h2 className='text-2xl opacity-75 self-center'>Agregar usuario</h2>
@@ -90,9 +90,9 @@ export default function page () {
 
       </section>
 
-      <div className='mt-5 mx-16 max-h-[50%] overflow-auto'>
+      <div className='mt-5 mx-3 md:mx-16 w-max-[90%] md:max-h-[50%] overflow-auto'>
         {loading.getUsers
-          ? <Spinner />
+          ? <Spinner className='mt-40' />
           : (
             <table className='w-full max-w-full overflow-x-auto text-sm text-center text-gray-400'>
               <thead className='text-xs uppercase bg-gray-700 text-gray-400'>
@@ -113,8 +113,16 @@ export default function page () {
               </thead>
               <tbody>
 
+                {filteredUsers.length === 0 && (
+                  <tr className='border-b bg-gray-800 border-gray-700'>
+                    <td colSpan='11' className='px-6 py-4 font-medium whitespace-nowrap text-white'>
+                      No hay usuarios
+                    </td>
+                  </tr>
+                )}
+
                 {filteredUsers.map(user => (
-                  <tr key={user.id} className='border-b bg-gray-800 border-gray-700'>
+                  <tr key={user.id} className='border-b bg-transparent border-gray-700'>
                     <td className='capitalize px-6 py-4'>
                       {user.id}
                     </td>

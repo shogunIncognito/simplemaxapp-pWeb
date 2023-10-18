@@ -1,7 +1,14 @@
 export default function page () {
   return (
     <>
-      <h1>Holaaaaaaaaaa paaaaa</h1>
+      <section className='w-full h-screen flex'>
+        <div>
+          Hola
+        </div>
+        <div>
+          Hola
+        </div>
+      </section>
     </>
   )
 }

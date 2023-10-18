@@ -1,7 +1,7 @@
 'use client'
 import Spinner from '@/components/Spinner'
 import useCarsStore from '@/hooks/useCarsStore'
-import { AiOutlineCar, AiOutlineTags, AiOutlineFolderOpen, AiOutlineUserSwitch } from 'react-icons/ai'
+import { AiOutlineCar, AiOutlineTags, AiOutlineFolderOpen, AiOutlineUserSwitch, AiFillCaretRight, AiFillCaretLeft } from 'react-icons/ai'
 import { IoColorFilterOutline } from 'react-icons/io5'
 import { SlSpeedometer } from 'react-icons/sl'
 import { TbSettingsCheck } from 'react-icons/tb'
@@ -21,14 +21,23 @@ export default function page ({ params }) {
   )
 
   const imagenes = car.image
+  if (Translate >= imagenes.length * 100) {
+    setTranslate(0)
+  }
+  if (Translate <= -100) {
+    setTranslate((imagenes.length - 1) * 100)
+  }
+  console.log(Translate)
 
   return (
     <>
       <section className='w-full h-[100vh] flex mb-4'>
         <div className='w-[50%] h-full flex flex-col items-center justify-center'>
           <div className='w-[73%] h-[85%]'>
-            <div className='w-full max-w-fit h-[85%] border rounded-md overflow-hidden mb-2 '>
-              <div className='w-full object-fill max-w-full h-full flex duration-700 ' style={{ transform: `translateX(-${Translate}%)` }}>
+            <div className='w-full max-w-fit h-[80%] border rounded-md overflow-hidden mb-2 flex items-center relative'>
+              <button onClick={() => setTranslate(Translate - 100)} className='text-white absolute z-20 bg-slate-200 rounded-full m-2 p-1'><AiFillCaretLeft className='text-blue-400' size={20} /></button>
+              <button onClick={() => setTranslate(Translate + 100)} className='text-white absolute z-20 bg-slate-200 rounded-full  right-0 m-2 p-1'><AiFillCaretRight className='text-blue-400' size={20} /></button>
+              <div className='w-full object-fill max-w-full h-full flex duration-700' style={{ transform: `translateX(-${Translate}%)` }}>
                 {
                 imagenes.map((i, index) => (
                   <div key={index} className='w-full h-full min-w-full'>
@@ -38,6 +47,7 @@ export default function page ({ params }) {
                 ))
                 }
               </div>
+
             </div>
             <div className='flex h-[20%] bg-blue-200 border rounded-md overflow-x-auto p-1'>
               {

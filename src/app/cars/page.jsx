@@ -31,7 +31,7 @@ export default function page () {
 
   return (
     <>
-      <section className='flex top-20 sticky z-20 w-full justify-center bg-blue-300 p-3 shadow-xl'>
+      <section className='flex top-24 sticky z-20 w-full justify-center bg-blue-300 p-3 shadow-xl'>
         <form className='flex rounded-md overflow-hidden bg-transparent w-[50%]' onSubmit={onSubmit}>
           <Input className='h-full bg-white text-gray-700 w-[90%] border-solid rounded-none' placeholder='Buscar por marca, linea, año y color' value={bus} onChange={InputChange} type='text' />
           <Button className='w-[10%] border-solid h-full rounded-none grid place-content-center'><LuSearch size={15} /> </Button>

@@ -56,7 +56,7 @@ export default function page () {
     <section className='p-4 w-full max-h-screen h-full'>
       <h2 className='text-white md:hidden font-bold opacity-75 text-3xl text-center'>Autos</h2>
 
-      <div className='my-4 gap-3 flex-col min-h-min max-h-[15%] md:flex-row flex items-start '>
+      <div className='my-4 gap-3 flex-col md:flex-row flex items-start '>
         <div className='gap-2 flex '>
           <CreateCar />
           <AddBrand />
@@ -70,7 +70,7 @@ export default function page () {
         )}
       </div>
 
-      <div className='relative mt-2 lg:max-h-[88%] md:max-h-[85%] max-h-[70%] overflow-auto'>
+      <div className='relative mt-2 flex-1 max-h-[80%] md:max-h-[90%] overflow-auto'>
         <table className='w-full max-w-full overflow-x-auto text-sm text-center text-gray-400'>
           <thead className='text-xs uppercase bg-gray-700 text-gray-400'>
             <tr>

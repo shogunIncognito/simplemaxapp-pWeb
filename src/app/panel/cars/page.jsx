@@ -14,9 +14,10 @@ import CarFilter from '@/components/panel/CarFilter'
 import { deleteCar } from '@/services/api'
 import toast from 'react-hot-toast'
 import ChangePreviewCar from '@/components/panel/ChangePreviewCar'
+import { deleteCarsImages } from '@/services/firebase'
 
 export default function page () {
-  const { cars, loading } = useCarsStore()
+  const { cars, reFetch, loading } = useCarsStore()
   const [selectedCar, setSelectedCar] = useState(null)
   const [carToDelete, setCarToDelete] = useState(null)
   const [filteredCars, setFilteredCars] = useState([])
@@ -29,20 +30,33 @@ export default function page () {
 
   if (loading) return <Spinner />
 
-  const addCarToList = (id) => {
-    if (carsSelected.includes(id)) {
-      setCarsSelected(prev => prev.filter(carId => carId !== id))
-      return
-    }
-    setCarsSelected(prev => [...prev, id])
+  const addCarToList = (car) => {
+    carsSelected.find(carSel => carSel.id === car.id)
+      ? setCarsSelected(prev => prev.filter(carSel => carSel.id !== car.id))
+      : setCarsSelected(prev => [...prev, car])
   }
 
-  const deleteSelectedCars = () => {
+  const deleteSelectedCars = async () => {
+    const carsImages = carsSelected.reduce((acc, curr) => [...acc, ...curr.image], [])
+
+    try {
+      await deleteCar(carsSelected)
+      await deleteCarsImages(carsImages)
+
+      toast.success('Autos eliminados')
+      reFetch()
+    } catch (error) {
+      toast.error('Error al eliminar los autos')
+    } finally {
+      setCarsSelected([])
+    }
+
     deleteCar(carsSelected)
-      .then(() => {
+      .then(async () => {
+        await deleteCarsImages(carsImages)
         setCarsSelected([])
         toast.success('Autos eliminados')
-        setFilteredCars(prev => prev.filter(car => !carsSelected.includes(car.id)))
+        reFetch()
       })
       .catch(() => {
         toast.error('Error al eliminar los autos')
@@ -105,7 +119,7 @@ export default function page () {
             {filteredCars.map(car => (
               <tr key={car.id} className='border-b bg-transparent border-gray-700'>
                 <th scope='row' className='px-6 py-4 font-medium whitespace-nowrap text-white'>
-                  <input onClick={() => addCarToList(car.id)} type='checkbox' className='form-checkbox h-4 w-4 text-gray-500' />
+                  <input onClick={() => addCarToList(car)} type='checkbox' className='form-checkbox h-4 w-4 text-gray-500' />
                 </th>
                 <th scope='row' className='px-6 py-4 font-medium whitespace-nowrap text-white'>
                   {car.id}

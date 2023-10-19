@@ -35,7 +35,7 @@ export const updateCar = async (id, values) => {
 }
 
 export const deleteCar = async (id) => {
-  const ids = typeof id === 'object' ? id.reduce((acc, curr) => [...acc, `ids=${curr}`], []).join('&') : `ids=${id}`
+  const ids = typeof id === 'object' ? id.map(car => `ids=${car.id}`).join('&') : `ids=${id}`
   const response = await api.delete(`/cars?${ids}`, getToken())
   return response.data
 }

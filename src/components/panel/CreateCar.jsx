@@ -63,7 +63,7 @@ export default function CreateCar () {
       setLoading(true)
       const newCar = await createCar({ ...restOfForm, description })
       const uploadedCarImage = await uploadCarsImages(urlsToUpload, newCar.plate)
-      const carWithImages = await updateCar(newCar.id, { image: uploadedCarImage.join(',') })
+      const carWithImages = await updateCar(newCar.id, { image: uploadedCarImage.join('&&&') })
 
       setImages([])
       addCar({ ...carWithImages, image: uploadedCarImage })

@@ -10,7 +10,7 @@ export async function GET (request, { params }) {
 
     if (!car) return NextResponse.json({ message: 'Car not found' }, { status: 404 })
 
-    return NextResponse.json({ ...car, brand: car.brand.name })
+    return NextResponse.json({ ...car, brand: car.brand.name, image: car.image.split('&&&') })
   } catch (error) {
     return NextResponse.json({ message: error.message }, { status: 500 })
   }

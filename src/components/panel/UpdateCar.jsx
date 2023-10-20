@@ -34,7 +34,7 @@ export default function UpdateCar ({ selectedCar, setSelectedCar }) {
       setLoading(true)
       const newImages = await uploadCarsImages(urlsToUpload, selectedCar.plate)
 
-      await updateCar(selectedCar.id, { ...restOfValues, description, image: [...selectedCar.image, newImages].join(',') })
+      await updateCar(selectedCar.id, { ...restOfValues, description, image: [...selectedCar.image, newImages].join('&&&') })
 
       reFetch()
       setSelectedCar(null)
@@ -68,7 +68,7 @@ export default function UpdateCar ({ selectedCar, setSelectedCar }) {
         return
       }
 
-      await updateCar(selectedCar.id, { image: images.filter(image => image !== img).join(',') })
+      await updateCar(selectedCar.id, { image: images.filter(image => image !== img).join('&&&') })
       await deleteCarImage(img)
 
       setImages(prev => prev.filter(image => image !== img))

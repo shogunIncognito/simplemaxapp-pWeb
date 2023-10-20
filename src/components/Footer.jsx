@@ -8,7 +8,7 @@ import { MdLocationCity } from 'react-icons/md'
 export default function Footer () {
   return (
     <>
-      <section className='grid grid-cols-3 h-[300px] bg-blue-400'>
+      <section className='grid grid-cols-1 md:grid-cols-3 h-auto bg-blue-400'>
         <div className='flex flex-col items-center justify-center'>
           <img className='w-24 h-20 my-4' src={MaxIcon.src} />
           <h1>HolaPaSomosUnosDuros</h1>

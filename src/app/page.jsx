@@ -24,8 +24,8 @@ export default function Home () {
         <Carrusel />
       </section>
 
-      <section className='w-full h-4/6 flex'>
-        <div className='w-[50%] flex items-center justify-center bg-gradient-to-l from-white to-blue-400'>
+      <section className='w-full h-4/6 flex flex-col-reverse md:flex-row'>
+        <div className='w-full md:w-[50%] flex items-center justify-center bg-gradient-to-l from-white to-blue-400'>
           <div className='flex flex-col text-center justify-center items-center p-8'>
             <h2 className='text-5xl font-bold text-center m-5'>Max <span className='text-blue-500'>Autos</span> </h2>
             <p className='m-5'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugiat expedita sunt ducimus aspernatur
@@ -39,7 +39,7 @@ export default function Home () {
             </div>
           </div>
         </div>
-        <div className='w-[50%] h-full bg-blue-500'>
+        <div className='w-full md:w-[50%] h-full bg-blue-500'>
           <img className='w-full h-full object-cover bg-gradient-to-t from-black to-white' src={img.src} alt='' />
         </div>
       </section>

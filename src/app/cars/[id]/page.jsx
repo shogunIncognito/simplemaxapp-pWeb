@@ -40,8 +40,8 @@ export default function page ({ params }) {
               <div className='w-full object-fill max-w-full h-full flex duration-700' style={{ transform: `translateX(-${Translate}%)` }}>
                 {
                 imagenes.map((i, index) => (
-                  <div key={index} className='w-full h-full min-w-full'>
-                    <img className='w-full h-full object-fill object-center' src={i} alt='' />
+                  <div key={index} className='w-full h-full select-none min-w-full'>
+                    <img className='w-full h-full object-fill object-center select-none' src={i} alt='' />
                   </div>
 
                 ))
@@ -49,11 +49,11 @@ export default function page ({ params }) {
               </div>
 
             </div>
-            <div className='flex h-[20%] bg-blue-200 border rounded-md overflow-x-auto p-1'>
+            <div className='flex h-[20%] select-none bg-blue-200 border rounded-md overflow-x-auto p-1'>
               {
                 imagenes.map((i, index) => (
                   <img
-                    onClick={() => setTranslate(index * 100)} key={index + 100} className='w-[15%] cursor-pointer h-full object-cover object-center rounded-md mr-1' src={i} alt=''
+                    onClick={() => setTranslate(index * 100)} key={index + 100} className='w-[15%] cursor-pointer select-none h-full object-cover object-center rounded-md mr-1' src={i} alt=''
                   />
                 ))
               }

@@ -8,6 +8,7 @@ import PanelLayout from './PanelLayout'
 import useCarsStore from '@/hooks/useCarsStore'
 import { useEffect } from 'react'
 import useSessionStore from '@/hooks/useSessionStore'
+import NavBarResponsive from '@/components/NavBarResponsive'
 
 export default function Layout ({ children }) {
   const { reFetch } = useCarsStore()
@@ -40,6 +41,7 @@ export default function Layout ({ children }) {
   return (
     <>
       <NavBar />
+      <NavBarResponsive />
       <main>
         {children}
       </main>

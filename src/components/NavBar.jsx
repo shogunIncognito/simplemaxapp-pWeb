@@ -1,4 +1,4 @@
-import { LoginIcon } from '@/libs/Icons'
+import { GrUserAdmin } from 'react-icons/gr'
 import Link from 'next/link'
 import iconresponsive from '@/assets/maxautosicon.png'
 import { AiFillHome } from 'react-icons/ai'
@@ -34,9 +34,10 @@ export default function NavBar () {
             </li>
           </ul>
         </nav>
-        <Link href='/login' className='absolute right-10 hover:scale-110'>
-          <LoginIcon className='' />
+        <Link href='/login'>
+          <GrUserAdmin className='hover:scale-110 duration-200' size={35} />
         </Link>
+
       </header>
     </div>
 

@@ -31,8 +31,8 @@ export default function page ({ params }) {
 
   return (
     <>
-      <section className='w-full h-[100vh] flex mb-4'>
-        <div className='w-[50%] h-full flex flex-col items-center justify-center'>
+      <section className='w-full h-[100vh] flex flex-col xl:flex-row mb-4'>
+        <div className='w-full xl:w-[50%] h-full flex flex-col items-center justify-center p-12'>
           <div className='w-[73%] h-[85%]'>
             <div className='w-full max-w-fit h-[80%] border rounded-md overflow-hidden mb-2 flex items-center relative'>
               <button onClick={() => setTranslate(Translate - 100)} className='text-white absolute z-20 bg-slate-200 rounded-full m-2 p-1'><AiFillCaretLeft className='text-blue-400' size={20} /></button>
@@ -60,7 +60,7 @@ export default function page ({ params }) {
             </div>
           </div>
         </div>
-        <div className='w-[50%] h-full flex items-center justify-center'>
+        <div className='w-full xl:w-[50%] h-full flex items-center justify-center'>
           <div className='w-[90%] h-[85%] border rounded-md p-2 flex flex-col'>
             <div className='w-full h-[20%] flex flex-col justify-center border-b'>
               <h1 className='font-mono font-semibold text-2xl'>{car.brand} {car.line}</h1>

@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 export default function CarsI ({ result }) {
   return (
-    <div className='h-full my-14 grid 2xl:grid-cols-4 xl:grid-cols-3 grid-cols-1 gap-6 p-5'>
+    <div className='h-full my-14 grid 2xl:grid-cols-4 min-[2560px]:grid-cols-5 md:grid-cols-2 xl:grid-cols-3 grid-cols-1 gap-6 p-5'>
       {result.map((car) => (
         <div key={car.id} className='max-w-sm h-[400px] m-auto mt-0 flex flex-col overflow-hidden border-2 border-blue-400 rounded-md'>
           <div className='w-full h-[260px] bg-white p-4 overflow-hidden border-2 rounded border-blue-100'>

@@ -15,7 +15,9 @@ export default function NavBarResponsive () {
 
   return (
     <>
-      <div className='w-full h-16 bg-transparent max-lg:flex lg:hidden justify-center absolute'>
+      <div className='w-full h-16 bg-transparent max-lg:flex
+       lg:hidden justify-center absolute'
+      >
         <header className='w-[97%] h-16 bg-white flex items-center justify-between fixed z-[100] px-2 shadow-lg rounded-b-xl'>
           <button onClick={() => setBoton(!Boton)} className=''>
             <RiMenu4Line size={35} />

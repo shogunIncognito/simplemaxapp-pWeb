@@ -13,20 +13,20 @@ export default function Home () {
       <main className='z-10'>
         <section className='h-[95vh] max-h-[95vh] overflow-hidden bg-black/60 relative flex items-center justify-center text-white'>
           <div className='w-full h-72 flex flex-col items-center justify-center gap-3 mb-20 p-10 rounded'>
-            <h1 className='text-5xl font-bold text-center'>Max <span className='text-blue-500'>Autos</span> </h1>
-            <p className='text-center text-xl italic bg-gradient-to-tr from-red-500 p-1 rounded-md'>Usados que dan confianza.</p>
+            <h1 className='text-5xl min-[2560px]:text-4xl font-bold text-center'>Max <span className='text-blue-500'>Autos</span> </h1>
+            <p className='text-center text-xl min-[2560px]:text-4xl italic bg-gradient-to-tr from-blue-400 p-1 rounded-md'>Usados que dan confianza.</p>
             <Button className='bg-transparent border-2 border-white hover:bg-white hover:text-black mt-5'>Ver recientes</Button>
           </div>
           <video muted loop autoPlay playsInline className='-z-10 object-cover top-0 w-full h-screen absolute' src='/videomaxapptest.mp4' />
         </section>
 
-        <section className='w-full text-center pb-5'>
-          <h1 className='font-mono font-bold my-5'>NUESTRAS MARCAS</h1>
+        <section className='w-full h-[300px] text-center pb-5 flex flex-col items-center justify-center'>
+          <h1 className='font-mono text-xl font-extrabold my-8 sm:m-5 p-3'>NUESTRAS MARCAS</h1>
           <Carrusel />
         </section>
 
-        <section className='w-full h-4/6 flex flex-col-reverse md:flex-row'>
-          <div className='w-full md:w-[50%] flex items-center justify-center bg-gradient-to-l from-white to-blue-400'>
+        <section className='w-full h-4/6 flex flex-col-reverse lg:flex-row'>
+          <div className='w-full lg:w-[50%] flex items-center justify-center bg-gradient-to-l from-white to-blue-400'>
             <div className='flex flex-col text-center justify-center items-center p-8'>
               <h2 className='text-5xl font-bold text-center m-5'>Max <span className='text-blue-500'>Autos</span> </h2>
               <p className='m-5'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugiat expedita sunt ducimus aspernatur
@@ -40,8 +40,8 @@ export default function Home () {
               </div>
             </div>
           </div>
-          <div className='w-full md:w-[50%] h-full bg-blue-500'>
-            <img className='w-full h-full object-cover bg-gradient-to-t from-black to-white' src={img.src} alt='' />
+          <div className='w-full lg:w-[50%] h-full bg-blue-500'>
+            <img className='w-full h-full object-cover' src={img.src} alt='' />
           </div>
         </section>
 

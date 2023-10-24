@@ -10,7 +10,7 @@ export default function Tarjetas () {
       <div className='flex flex-col md:flex-row w-full mt-[35px] mb-5 justify-around -z-10 overflow-hidden '>
         <motion.div
           whileHover={{ scale: 1.1 }}
-          className='relative min-w-[30%] h-[250px] flex my-3 md:my-0 justify-center shadow-lg shadow-black'
+          className='relative min-w-[30%] h-[250px] flex my-5 md:my-0 justify-center shadow-lg shadow-black'
         >
           <img className='-z-0 object-cover w-full h-full absolute hover:scale-105 transition-[1.5]' src='https://www.ikusi.com/mx/wp-content/uploads/sites/2/2022/06/ikusi_ikusi_image_283.jpeg' />
           <div className='z-10 w-full h-full bg-black/60 p-3 flex flex-col justify-center items-center'>
@@ -21,7 +21,7 @@ export default function Tarjetas () {
         </motion.div>
         <motion.div
           whileHover={{ scale: 1.1 }}
-          className='relative min-w-[30%] h-[250px] flex my-3 md:my-0 justify-center shadow-lg shadow-black'
+          className='relative min-w-[30%] h-[250px] flex my-5 md:my-0 justify-center shadow-lg shadow-black'
         >
           <img className='-z-0 object-cover w-full h-full absolute hover:scale-105 transition-[1.5]' src='https://static.retail.autofact.cl/blog/20160615165912.original7202790009111910632.jpg' />
           <div className='z-10 w-full h-full bg-black/60 p-3 flex flex-col justify-center items-center'>
@@ -32,7 +32,7 @@ export default function Tarjetas () {
         </motion.div>
         <motion.div
           whileHover={{ scale: 1.1 }}
-          className='relative min-w-[30%] h-[250px] flex my-3 md:my-0 justify-center shadow-lg shadow-black'
+          className='relative min-w-[30%] h-[250px] flex my-5 md:my-0 justify-center shadow-lg shadow-black'
         >
           <img className='-z-0 object-cover w-full h-full absolute hover:scale-105 transition-[1.5]' src='https://www.bizerba.com/dam/jcr:48b58ccd-3a04-4ea8-899e-6d976442acfd/consulting_1920x1080px_image_w642_h361_retina.jpg' />
           <div className='z-10 w-full h-full bg-black/60 p-3 flex flex-col justify-center items-center'>

@@ -31,9 +31,9 @@ export default function page ({ params }) {
 
   return (
     <>
-      <section className='w-full h-[100vh] flex flex-col lg:flex-row mb-4'>
-        <div className='w-full xl:w-[50%] h-full flex flex-col items-center justify-center md:p-16 lg:p-14 min-[1920px]:p-24'>
-          <div className='w-[73%] h-[90%] md:w-[70%] md:h-[80%] lg:w-[80%] lg:h-[77%] xl:w-[90ssss%] xl:h-[87%] min-[1920px]:w-[95%] min-[1920px]:h-[85%]'>
+      <section className='w-full h-auto grid grid-cols-1 lg:grid-cols-2 py-10 max-md:p-0 max-md:py-20 md:py-24 min-[2560px]:p-36'>
+        <div className='w-full h-full flex flex-col items-center justify-center'>
+          <div className='w-[90%] h-full sm:w-[78%] sm:h-[88%] lg:w-[80%] lg:h-[90%] min-[1920px]:w-[80%] min-[1920px]:h-[80%] min-[2560px]:w-[80%] min-[2560px]:h-[90%] mb-11 lg:mb-9'>
             <div className='w-full max-w-fit h-[80%] border rounded-md overflow-hidden mb-2 flex items-center relative'>
               <button onClick={() => setTranslate(Translate - 100)} className='text-white absolute z-20 bg-slate-200 rounded-full m-2 p-1'><AiFillCaretLeft className='text-blue-400' size={20} /></button>
               <button onClick={() => setTranslate(Translate + 100)} className='text-white absolute z-20 bg-slate-200 rounded-full  right-0 m-2 p-1'><AiFillCaretRight className='text-blue-400' size={20} /></button>
@@ -60,13 +60,13 @@ export default function page ({ params }) {
             </div>
           </div>
         </div>
-        <div className='w-full xl:w-[50%] h-full flex items-center justify-center lg:p-16 min-[1920px]:p-24'>
-          <div className='w-[90%] h-[85%] md:w-[70%] md:h-[80%] lg:w-[95%] lg:h-[90%] min-[1920px]:w-[95%] min-[1920px]:h-[85%] border-2 border-blue-200 rounded-md p-2 flex flex-col'>
-            <div className='w-full h-[20%] flex flex-col justify-center border-b-2 border-blue-200'>
+        <div className='w-full h-auto sm:h-full flex items-center justify-center'>
+          <div className='w-[90%] h-auto sm:w-[78%] sm:h-[88%] md:w-[84%] md:h-[100%] lg:w-[95%] lg:h-[95%] min-[1920px]:w-[90%] min-[1920px]:h-[90%] border-2 border-blue-200 rounded-md p-2'>
+            <div className='w-full h-[20%] flex flex-col justify-center items-center sm:items-start border-b-2 border-blue-200'>
               <h1 className='font-mono font-semibold text-2xl min-[1920px]:text-4xl min-[2560px]:text-5xl'>{car.brand} {car.line}</h1>
               <h1 className='font-mono font-semibold text-2xl min-[1920px]:text-4xl min-[2560px]:text-5xl'><span className='text-blue-400'>$</span> {Math.round(car.price).toLocaleString()}</h1>
             </div>
-            <div className='w-full h-[80%] flex p-2'>
+            <div className='w-full h-[80%] flex flex-col sm:flex-row items-center p-2'>
               <div className='w-[50%] h-full mr-2'>{/* Colmuna 1 */}
                 <div className='flex h-[20%] items-center border-b-2 border-blue-200 capitalize'>
                   <AiOutlineTags className='mr-2' size={24} />

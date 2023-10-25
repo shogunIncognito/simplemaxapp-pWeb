@@ -29,10 +29,9 @@ export default function page ({ searchParams }) {
   })
 
   useEffect(() => {
-    // if (filterQuery) {
-    //   setBuscar(filterQuery)
-    // }
-    // la misma vuelta de abajo
+    // si lo de la izquierda es true, entonces se ejecuta lo de la derecha
+    // si no, se ejecuta lo de la izquierda
+    // true && 2+2 --> 4 // false && 2+2 --> false
     filterQuery && setBuscar(filterQuery)
   }, [])
 

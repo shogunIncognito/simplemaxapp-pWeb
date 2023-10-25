@@ -2,8 +2,10 @@
 
 import { motion } from 'framer-motion'
 import { brandsCarrousel } from '@/helpers/data'
+import { useRouter } from 'next/navigation'
 
 export default function Carrusel () {
+  const router = useRouter()
   return (
     <>
       <motion.div id='slider-conteiner' className='my-5 w-full overflow-hidden h-[170px]'> {/* slider-conteiner */}
@@ -11,6 +13,7 @@ export default function Carrusel () {
           {
             brandsCarrousel.map((item, index) => (
               <motion.div
+                onClick={() => router.push(`/cars?filter=${item.name}`)}
                 key={index}
                 className='relative min-w-[150px] h-[100px] sm:min-w-[200px] sm:h-[150px] p-3 hover:border-2 group hover:border-solid hover:border-black flex items-center justify-center hover:scale-110 transition-[1.5]'
               >
@@ -22,6 +25,7 @@ export default function Carrusel () {
           {
             brandsCarrousel.map((item, index) => (
               <motion.div
+                onClick={() => router.push(`/cars?filter=${item.name}`)}
                 key={index}
                 className='relative min-w-[150px] h-[100px] sm:min-w-[200px] sm:h-[150px] p-3 hover:border-2 group hover:border-solid hover:border-black flex items-center justify-center hover:scale-110 transition-[1.5]'
               >

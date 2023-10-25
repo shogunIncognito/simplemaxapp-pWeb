@@ -1,5 +1,4 @@
 import Carrusel from '@/components/Carrusel'
-import Button from '../components/Button'
 import Tarjetas from '@/components/Tarjetas'
 import img from '../assets/maxHero1.jpg'
 import { AiOutlineEye } from 'react-icons/ai'
@@ -15,7 +14,7 @@ export default function Home () {
           <div className='w-full h-72 flex flex-col items-center justify-center gap-3 mb-20 p-10 rounded'>
             <h1 className='text-5xl min-[2560px]:text-4xl font-bold text-center'>Max <span className='text-blue-500'>Autos</span> </h1>
             <p className='text-center text-xl min-[2560px]:text-4xl italic bg-gradient-to-tr from-blue-400 p-1 rounded-md'>Usados que dan confianza.</p>
-            <Button className='bg-transparent border-2 border-white hover:bg-white hover:text-black mt-5'>Ver recientes</Button>
+            <Link href='/cars' className='bg-transparent text-white px-6 py-3 rounded transition-colors border-2 border-white hover:bg-white hover:text-black mt-5'>Ver recientes</Link>
           </div>
           <video muted loop autoPlay playsInline className='-z-10 object-cover top-0 w-full h-screen absolute' src='/videomaxapptest.mp4' />
         </section>

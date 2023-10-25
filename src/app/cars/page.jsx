@@ -5,11 +5,10 @@ import Input from '@/components/Input'
 import useCarsStore from '@/hooks/useCarsStore'
 import Spinner from '@/components/Spinner'
 import { LuSearch } from 'react-icons/lu'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
-// setBuscar(setBuscar(false))
-
-export default function page () {
+export default function page ({ searchParams }) {
+  const filterQuery = searchParams.filter
   const { cars, loading } = useCarsStore()
   const [bus, setBus] = useState('')
   const [buscar, setBuscar] = useState('')
@@ -28,6 +27,14 @@ export default function page () {
     const datoString = `${car.brand} ${car.line} ${car.model} ${car.color}`
     return datoString.toLowerCase().includes(buscar.toLowerCase())
   })
+
+  useEffect(() => {
+    // if (filterQuery) {
+    //   setBuscar(filterQuery)
+    // }
+    // la misma vuelta de abajo
+    filterQuery && setBuscar(filterQuery)
+  }, [])
 
   return (
     <>

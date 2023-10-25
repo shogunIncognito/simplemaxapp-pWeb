@@ -22,7 +22,6 @@ export default function page ({ searchParams }) {
     setBuscar(bus)
   }
 
-  // carros filtrados en español
   const filteredCars = cars.filter((car) => {
     const datoString = `${car.brand} ${car.line} ${car.model} ${car.color}`
     return datoString.toLowerCase().includes(buscar.toLowerCase())
@@ -37,9 +36,6 @@ export default function page ({ searchParams }) {
 
   return (
     <>
-      {/* <div className='w-full h-[60vh] bg-slate-700'>
-        HolaPA
-      </div> */}
       <section className='image-cars flex flex-col justify-center text-center w-full max-lg:h-[70vh] lg:h-[70vh] h-[35vh] bg-center bg-cover bg-fixed'>
         <h1 className='text-white text-3xl font-bold'>NUESTROS  AUTOS</h1>
       </section>
@@ -52,7 +48,7 @@ export default function page ({ searchParams }) {
         </div>
       </section>
 
-      <section className='p-5'>
+      <section className='p-5' id='catalogo'>
         {loading
           ? <Spinner color='text-blue-400' className='m-4 my-40' />
           : <CarsI result={filteredCars} />}

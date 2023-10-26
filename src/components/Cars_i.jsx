@@ -1,8 +1,17 @@
 'use client'
-// import maxautos from '../assets/maxautosicon.png'
 import Link from 'next/link'
+import { RiEmotionSadLine } from 'react-icons/ri'
 
 export default function CarsI ({ result }) {
+  if (result.length === 0) {
+    return (
+      <h1 className='text-center justify-center items-center gap-1 my-24 flex text-2xl font-bold'>
+        No se encontraron resultados
+        <RiEmotionSadLine />
+      </h1>
+    )
+  }
+
   return (
     <div className='h-full my-14 grid 2xl:grid-cols-4 min-[2560px]:grid-cols-5 md:grid-cols-2 xl:grid-cols-3 grid-cols-1 gap-6 p-5'>
       {result.map((car) => (

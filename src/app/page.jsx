@@ -28,9 +28,8 @@ export default function Home () {
           <div className='w-full lg:w-[50%] flex items-center justify-center bg-gradient-to-l from-white to-blue-400'>
             <div className='flex flex-col text-center justify-center items-center p-8'>
               <h2 className='text-5xl font-bold text-center m-5'>Max <span className='text-blue-500'>Autos</span> </h2>
-              <p className='m-5'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugiat expedita sunt ducimus aspernatur
-                quam eius vitae at libero iste, minus accusamus sequi nihil incidunt nostrum atque quaerat,
-                dignissimos saepe fuga!
+              <p className='m-5 text-xl'>
+                Empresa 💯% Llanera dedicada a la compra y venta de vehículos usados a nivel Nacional con experiencia en el mercado de más de <span className='text-blue-500 font-bold'>10 años</span>
               </p>
               <div className=''>
                 <Link className='grid place-content-center border-2 border-blue-500 border-solid px-10 py-2 text-black w-[25%] m-5 rounded hover:bg-blue-400 hover:text-white' href='/QuienesSomos'>

@@ -11,7 +11,6 @@ import { FaCarAlt } from 'react-icons/fa'
 
 export default function NavBarResponsive () {
   const [Boton, setBoton] = useState(false)
-  console.log(Boton)
 
   return (
     <>
@@ -22,7 +21,9 @@ export default function NavBarResponsive () {
           <button onClick={() => setBoton(!Boton)} className=''>
             <RiMenu4Line size={35} />
           </button>
-          <img className='w-12 h-10 md:w-14 md:h-12' src={iconresponsive.src} alt='' />
+          <Link href='/'>
+            <img className='w-16 h-auto md:w-14 md:h-12' src={iconresponsive.src} alt='' />
+          </Link>
           <Link href='/login'>
             <GrUserAdmin className='hover:scale-110 duration-200' size={35} />
           </Link>

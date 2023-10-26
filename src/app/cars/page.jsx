@@ -28,10 +28,10 @@ export default function page ({ searchParams }) {
   })
 
   useEffect(() => {
-    // si lo de la izquierda es true, entonces se ejecuta lo de la derecha
-    // si no, se ejecuta lo de la izquierda
-    // true && 2+2 --> 4 // false && 2+2 --> false
-    filterQuery && setBuscar(filterQuery)
+    if (filterQuery) {
+      setBuscar(filterQuery)
+      setBus(filterQuery)
+    }
   }, [])
 
   return (
@@ -53,7 +53,6 @@ export default function page ({ searchParams }) {
           ? <Spinner color='text-blue-400' className='m-4 my-40' />
           : <CarsI result={filteredCars} />}
       </section>
-
     </>
 
   )

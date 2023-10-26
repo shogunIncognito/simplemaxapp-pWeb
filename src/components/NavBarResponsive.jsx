@@ -34,7 +34,7 @@ export default function NavBarResponsive () {
       <div
         style={{
           transform: `translateX(-${Boton ? 0 : 200}%)`,
-          zIndex: '100'
+          zIndex: '200'
         }}
         className='w-[75%] h-[95vh] bg-blue-200 transition-transform duration-300 top-0 fixed rounded-b-md flex flex-col items-center justify-between z-[106] shadow-xl p-4 lg:hidden'
       >
@@ -43,26 +43,26 @@ export default function NavBarResponsive () {
           <hr className='w-full text-black' />
         </div>
         <div className='w-full flex flex-col items-center'>
-          <div className='flex w-[80%] items-center justify-center p-2 hover:bg-blue-300 rounded-md'>
+          <div onClick={() => setBoton(false)} className='flex w-[80%] items-center justify-center p-2 hover:bg-blue-300 rounded-md'>
             <Link className='flex w-full h-full justify-center my-4 items-center' href='/'>
               <AiFillHome size={30} />
               <p className='flex items-center ml-3'>Inicio</p>
             </Link>
           </div>
-          <div className='flex w-[80%] items-center justify-center p-2 hover:bg-blue-300 rounded-md'>
+          <div onClick={() => setBoton(false)} className='flex w-[80%] items-center justify-center p-2 hover:bg-blue-300 rounded-md'>
             <Link className='flex w-full h-full justify-center my-4 items-center' href='/cars'>
               <FaCarAlt size={30} />
               <p className='flex items-center ml-3'>Inventario</p>
             </Link>
           </div>
-          <div className='flex w-[80%] items-center justify-center p-2 hover:bg-blue-300 rounded-md'>
+          <div onClick={() => setBoton(false)} className='flex w-[80%] items-center justify-center p-2 hover:bg-blue-300 rounded-md'>
             <Link className='flex w-full h-full justify-center my-4 items-center' href='/QuienesSomos'>
               <RiTeamFill size={30} />
               <p className='flex items-center ml-3'>Nosotros</p>
             </Link>
           </div>
         </div>
-        <div className='w-full h-20 flex justify-center items-center bottom-0 p-2'>
+        <div onClick={() => setBoton(false)} className='w-full h-20 flex justify-center items-center bottom-0 p-2'>
           <button onClick={() => setBoton(!Boton)}>
             <ImCancelCircle size={35} />
           </button>

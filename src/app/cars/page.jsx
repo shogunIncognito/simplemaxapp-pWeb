@@ -39,7 +39,7 @@ export default function page ({ searchParams }) {
       <section className='image-cars flex flex-col justify-center text-center w-full max-lg:h-[70vh] lg:h-[70vh] h-[35vh] bg-center bg-cover bg-fixed'>
         <h1 className='text-white text-3xl font-bold'>NUESTROS  AUTOS</h1>
       </section>
-      <section className='w-full bg-transparent max-[1920px]:top-[64px] min-[2560px]:top-[91px] flex justify-center sticky z-[100]'>
+      <section className='w-full bg-transparent max-[1920px]:top-[64px] min-[2560px]:top-[91px] flex justify-center sticky z-10'>
         <div className='flex z-20 w-[97%] justify-center bg-blue-300 p-4 shadow-xl rounded-b-lg'>
           <form className='flex rounded-md overflow-hidden bg-transparent max-md:w-full md:w-[50%]' onSubmit={onSubmit}>
             <Input className='max-md:text-xs h-full bg-white text-gray-700 w-[90%] border-solid rounded-none' placeholder='Buscar por marca, linea, año y color' value={bus} onChange={InputChange} type='text' />

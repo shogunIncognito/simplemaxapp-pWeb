@@ -14,19 +14,19 @@ export default function NavBar () {
         </Link>
         <nav className='m-auto w-full flex justify-center items-center'>
           <ul className='flex justify-center items-center'>
-            <li className='hover:scale-110 '>
+            <li className='hover:scale-110 transition-all duration-75 '>
               <Link className='transition-all items-center gap-2 flex px-4 py-2 border-2 border-transparent' href='/'>
                 <AiFillHome size={23} />
                 Inicio
               </Link>
             </li>
-            <li className='hover:scale-110'>
+            <li className='hover:scale-110 transition-all duration-75'>
               <Link className='transition-all items-center gap-2 flex px-4 py-2 border-2 border-transparent' href='/cars'>
                 <FaCarAlt size={23} />
                 Nuestros Autos
               </Link>
             </li>
-            <li className='hover:scale-110'>
+            <li className='hover:scale-110 transition-all duration-75'>
               <Link className='transition-all items-center gap-2 flex px-4 py-2 border-2 border-transparent' href='/QuienesSomos'>
                 <RiTeamFill size={23} />
                 Nosotros
@@ -35,7 +35,7 @@ export default function NavBar () {
           </ul>
         </nav>
         <Link href='/login'>
-          <GrUserAdmin className='hover:scale-110 duration-200' size={35} />
+          <GrUserAdmin className='hover:scale-110 transition-all duration-75' size={35} />
         </Link>
 
       </header>

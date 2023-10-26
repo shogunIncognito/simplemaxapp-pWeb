@@ -79,31 +79,3 @@
       content: "Placeholder para dispositivo grande";
   }
 }
-
-/* .quienesomos{
-  background-image: url("../assets/maxHero1.jpg");
-  background-size: cover;
-  background-attachment: fixed;
-  background-position: center;
-} */
-
-/* .maquina{
-  animation: typing 2s steps(2),blink .5 infinite step-end alternate;
-  overflow: hidden;
-}
-
-@keyframes typing{
-  from{
-    width: 0;
-  }
-}
-@keyframes blink{
-  50%{
-    border-color: transparent;
-  }
-} */
-
-/* .hola:hover{
-  background-image: url("https://s3.amazonaws.com/kia.com.co/small_picanto_x_9693f2d236.png");
-  background-repeat: contain; 
-} */

@@ -68,6 +68,9 @@ export default function NavBarResponsive () {
           </button>
         </div>
       </div>
+      {Boton && (
+        <div className='absolute top-0 h-full w-full bg-black/60 z-10' onClick={() => setBoton(false)} />
+      )}
     </>
 
   )

@@ -36,7 +36,7 @@ export default function page ({ searchParams }) {
 
   return (
     <>
-      <section className='image-cars flex flex-col justify-center text-center w-full max-lg:h-[70vh] lg:h-[70vh] h-[35vh] bg-center bg-cover bg-fixed'>
+      <section className='image-cars flex flex-col justify-center text-center w-full lg:h-[43vh] h-[35vh] bg-center bg-cover bg-fixed'>
         <h1 className='text-white text-3xl font-bold'>NUESTROS  AUTOS</h1>
       </section>
       <section className='w-full bg-transparent max-[1920px]:top-[64px] min-[2560px]:top-[91px] flex justify-center sticky z-10'>

@@ -21,13 +21,14 @@ export default function page ({ params }) {
   )
 
   const imagenes = car.image
+
   if (Translate >= imagenes.length * 100) {
     setTranslate(0)
   }
+
   if (Translate <= -100) {
     setTranslate((imagenes.length - 1) * 100)
   }
-  console.log(Translate)
 
   return (
     <>

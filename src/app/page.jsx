@@ -12,8 +12,8 @@ export default function Home () {
       <main className='z-10'>
         <section className='h-[95vh] max-h-[95vh] overflow-hidden bg-black/60 relative flex items-center justify-center text-white'>
           <div className='w-full h-72 flex flex-col items-center justify-center gap-3 mb-20 p-10 rounded'>
-            <h1 className='text-5xl min-[2560px]:text-4xl font-bold text-center'>Max <span className='text-blue-500'>Autos</span> </h1>
-            <p className='text-center text-xl min-[2560px]:text-4xl italic bg-gradient-to-tr from-blue-400 p-1 rounded-md'>Usados que dan confianza.</p>
+            <h1 className='text-5xl mb-3 min-[2560px]:text-4xl font-bold text-center'>Max <span className='text-blue-500'>Autos</span> </h1>
+            <p className='text-center text-2xl min-[2560px]:text-4xl italic bg-gradient-to-tr from-blue-400 p-1 rounded-md'>Usados que dan confianza.</p>
             <Link href='/cars' className='bg-transparent text-white px-6 py-3 rounded transition-colors border-2 border-white hover:bg-white hover:text-black mt-5'>Ver recientes</Link>
           </div>
           <video muted loop autoPlay playsInline className='-z-10 object-cover top-0 w-full h-screen absolute' src='/videomaxapptest.mp4' />
@@ -39,12 +39,12 @@ export default function Home () {
             </div>
           </div>
           <div className='w-full lg:w-[50%] h-full bg-blue-500'>
-            <img className='w-full h-full object-cover' src={img.src} alt='' />
+            <img className='w-full h-full object-cover select-none pointer-events-none' src={img.src} alt='maxautos' />
           </div>
         </section>
 
         <section className='w-full text-center bg-white p-10 '>
-          <h2 className='font-mono font-bold text-lg'>SERVICIOS DE MAX AUTOS</h2>
+          <h2 className='font-mono font-bold text-xl'>SERVICIOS DE MAX AUTOS</h2>
           <Tarjetas />
         </section>
       </main>

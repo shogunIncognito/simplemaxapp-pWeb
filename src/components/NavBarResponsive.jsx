@@ -36,7 +36,7 @@ export default function NavBarResponsive () {
           transform: `translateX(-${Boton ? 0 : 200}%)`,
           zIndex: '100'
         }}
-        className='w-[75%] h-[95vh] bg-blue-200 transition-transform duration-300 top-0 fixed rounded-b-md flex flex-col items-center justify-between z-[106] shadow-xl p-4'
+        className='w-[75%] h-[95vh] bg-blue-200 transition-transform duration-300 top-0 fixed rounded-b-md flex flex-col items-center justify-between z-[106] shadow-xl p-4 lg:hidden'
       >
         <div className='w-full h-32 flex flex-col justify-center items-center top-0 p-2'>
           <img className='w-24 h-20 my-3' src={iconresponsive.src} alt='' />

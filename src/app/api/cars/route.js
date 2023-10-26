@@ -14,7 +14,7 @@ export async function GET () {
     const carsWithBrand = cars.map(car => ({
       ...car,
       brand: car.brand.name,
-      image: car.image.split('&&&').filter(Boolean)
+      image: car.image?.split('&&&').filter(Boolean) || []
     }))
 
     return NextResponse.json(carsWithBrand)

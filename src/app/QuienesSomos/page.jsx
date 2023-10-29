@@ -52,41 +52,54 @@ export default function page () {
         </div>
       </section>
 
-      <section className='flex md:flex-row p-2 flex-col'>
-        <div className='md:w-1/3 w-full flex flex-col justify-center items-center bg-blue-300 shadow-lg font-bold rounded p-2'>
-          <h2 className='text-2xl'>Horarios de apertura</h2>
-          <ul className='my-5 flex flex-col gap-3'>
-            <li className='grid grid-cols-2'>
-              <p>Lunes</p>
-              8:00 AM - 6:00 PM
-            </li>
-            <li className='grid grid-cols-2'>
-              <p>Martes</p>
-              8:00 AM - 6:00 PM
-            </li>
-            <li className='grid grid-cols-2'>
-              <p>Miercoles</p>
-              8:00 AM - 6:00 PM
-            </li>
-            <li className='grid grid-cols-2'>
-              <p>Jueves</p>
-              8:00 AM - 6:00 PM
-            </li>
-            <li className='grid grid-cols-2'>
-              <p>Viernes</p>
-              8:00 AM - 6:00 PM
-            </li>
-            <li className='grid grid-cols-2'>
-              <p>Sabado</p>
-              8:00 AM - 6:00 PM
-            </li>
-            <li className='grid grid-cols-2'>
-              <p>Domingo</p>
-              CERRADO
-            </li>
-          </ul>
+      <section className='flex lg:flex-row p-2 flex-col'>
+        <div className='w-full lg:w-[30%] flex flex-col justify-center items-center bg-gradient-to-t to-blue-400 from-blue-100 shadow-lg font-bold rounded p-3'>
+          <table className='border-2 py-2 px-4 rounded-md'>
+            <thead className='border-2 py-2 px-4'>
+              <tr className='border-2 py-2 px-4 text-center'>
+                Horarios
+              </tr>
+            </thead>
+            <tbody className='border-2 py-2 px-4 bg-blue-400'>
+              <tr className='border-2 py-2 px-4'>Lunes
+                <td className='border-2 py-2 px-4'>
+                  8:00.AM. a 6:00.PM.
+                </td>
+              </tr>
+              <tr className='border-2 py-2 px-4'>Martes
+                <td className='border-2 py-2 px-4'>
+                  8:00.AM. a 6:00.PM.
+                </td>
+              </tr>
+              <tr className='border-2 py-2 px-4'>Miercoles
+                <td className='border-2 py-2 px-4'>
+                  8:00.AM. a 6:00.PM.
+                </td>
+              </tr>
+              <tr className='border-2 py-2 px-4'>Jueves
+                <td className='border-2 py-2 px-4'>
+                  8:00.AM. a 6:00.PM.
+                </td>
+              </tr>
+              <tr className='border-2 py-2 px-4'>Viernes
+                <td className='border-2 py-2 px-4'>
+                  8:00.AM. a 6:00.PM.
+                </td>
+              </tr>
+              <tr className='border-2 py-2 px-4'>Sabado
+                <td className='border-2 py-2 px-4'>
+                  8:00.AM. a 6:00.PM.
+                </td>
+              </tr>
+              <tr className='border-2 py-2 px-4'>Domingo
+                <td className='border-2 py-2 px-4'>
+                  CERRADO
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-        <iframe src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d497.4354539650095!2d-73.62022801996487!3d4.124806286974369!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3e2fc37b59d1df%3A0xebf7a3199e0db914!2sCompra%20Y%20Venta%20De%20Carros%20Max-Autos!5e0!3m2!1ses-419!2sco!4v1698363184868!5m2!1ses-419!2sco' className='flex-1 border-0 h-auto w-full' allowFullScreen='' loading='lazy' referrerPolicy='no-referrer-when-downgrade' />
+        <iframe src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d497.4354539650095!2d-73.62022801996487!3d4.124806286974369!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3e2fc37b59d1df%3A0xebf7a3199e0db914!2sCompra%20Y%20Venta%20De%20Carros%20Max-Autos!5e0!3m2!1ses-419!2sco!4v1698363184868!5m2!1ses-419!2sco' className='flex-1 border-0 h-[300px] lg:h-auto w-full lg:w-[70%]' allowFullScreen='' loading='lazy' referrerPolicy='no-referrer-when-downgrade' />
       </section>
     </>
   )

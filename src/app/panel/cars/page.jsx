@@ -67,10 +67,10 @@ export default function page () {
   }
 
   return (
-    <section className='p-4 w-full max-h-screen h-full'>
-      <h2 className='text-white md:hidden font-bold opacity-75 text-3xl text-center'>Autos</h2>
+    <section className='w-full flex-1 max-h-full'>
 
-      <div className='my-4 gap-3 flex-col md:flex-row flex items-start '>
+      <div className='gap-3 p-5 flex-col border-b-2 border-gray-300/40 md:flex-row flex items-start '>
+        <h2 className='text-white md:hidden font-bold opacity-75 text-3xl text-center'>Autos</h2>
         <div className='gap-2 flex '>
           <CreateCar />
           <AddBrand />
@@ -83,12 +83,11 @@ export default function page () {
           </Button>
         )}
       </div>
-
-      <div className='relative mt-2 flex-1 max-h-[80%] md:max-h-[90%] overflow-auto'>
-        <table className='w-full max-w-full overflow-x-auto text-sm text-center text-gray-400'>
-          <thead className='text-xs uppercase bg-gray-700 text-gray-400'>
+      <div className='relative flex-1 w-full pb-10 max-h-[70%] lg:max-h-[76%] xl:max-h-[80%] overflow-auto'>
+        <table className='w-full overflow-auto text-sm text-center text-gray-400'>
+          <thead className='text-xs sticky bg-[#171923] z-20 top-0 uppercase border-b border-green-800/90 text-gray-400'>
             <tr>
-              <th scope='col' className='px-6 py-3' />
+              <th scope='col' className='px-6' />
 
               {tableHeaders.map((header, index) => (
                 <th key={index} scope='col' className='px-6 py-3'>
@@ -101,7 +100,7 @@ export default function page () {
           <tbody>
 
             {cars.length === 0 && !loading && (
-              <tr className='border-b bg-gray-800 border-gray-700'>
+              <tr className='border-b border-green-800/90'>
                 <td colSpan='11' className='px-6 py-4 font-medium whitespace-nowrap text-white'>
                   No hay autos
                 </td>
@@ -109,7 +108,7 @@ export default function page () {
             )}
 
             {filteredCars.length === 0 && !loading && (
-              <tr className='border-b bg-gray-800 border-gray-700'>
+              <tr className='border-b border-green-800/90'>
                 <td colSpan='11' className='px-6 py-4 font-medium whitespace-nowrap text-white'>
                   No hay autos que coincidan con el filtro
                 </td>
@@ -117,7 +116,7 @@ export default function page () {
             )}
 
             {filteredCars.map(car => (
-              <tr key={car.id} className='border-b bg-transparent border-gray-700'>
+              <tr key={car.id} className='bg-transparent border-b border-green-800/90'>
                 <th scope='row' className='px-6 py-4 font-medium whitespace-nowrap text-white'>
                   <input onClick={() => addCarToList(car)} type='checkbox' className='form-checkbox h-4 w-4 text-gray-500' />
                 </th>
@@ -159,10 +158,10 @@ export default function page () {
                   </div>
                 </td>
                 <td className='px-6 py-4 h-full m-auto'>
-                  <Button onClick={() => setSelectedCar(car)} className='w-full mb-1 bg-green-500 hover:bg-green-700 font-bold '>
+                  <Button onClick={() => setSelectedCar(car)} className='w-full mb-1 bg-[#59da86] font-semibold text-black/70 hover:bg-green-600'>
                     Editar
                   </Button>
-                  <Button onClick={() => setCarToDelete(car)} className='w-full mt-1 bg-red-500 hover:bg-red-700 font-bold py-2 px-4'>
+                  <Button onClick={() => setCarToDelete(car)} className='w-full mt-1 bg-[#FBD38D] hover:bg-yellow-400/70 font-semibold text-black/70 py-2 px-4'>
                     Eliminar
                   </Button>
                 </td>

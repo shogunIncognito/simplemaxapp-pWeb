@@ -25,7 +25,7 @@ export default function DeleteUser ({ user, setUsers }) {
 
   return (
     <>
-      <Button onClick={handleOpen} className='transition-colors w-full mt-1 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded'>
+      <Button onClick={handleOpen} className='transition-colors w-full mt-1 bg-[#FBD38D] hover:bg-yellow-400/70 font-semibold text-black/70 py-2 px-4 rounded'>
         Eliminar
       </Button>
 
@@ -36,7 +36,7 @@ export default function DeleteUser ({ user, setUsers }) {
           <Button
             loading={loading}
             disabled={loading}
-            className='bg-red-500 hover:bg-red-700 disabled:bg-red-900 disabled:pointer-events-none'
+            className='bg-[#FBD38D] hover:bg-yellow-400/70 font-semibold text-black/70 disabled:bg-yellow-900 disabled:pointer-events-none'
             onClick={handleDelete}
           >
             Eliminar

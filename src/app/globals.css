@@ -21,7 +21,7 @@
 }
 
 *::-webkit-scrollbar:horizontal {		
-  height: 15px;
+  height: 10px;
 }
 
 *::-webkit-scrollbar-thumb {

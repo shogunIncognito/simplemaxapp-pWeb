@@ -54,7 +54,7 @@ export default function Brands () {
 
   return (
     <>
-      <Button className='font-bold py-2 px-4' onClick={handleOpen}>Gestionar marcas</Button>
+      <Button className='font-semibold py-2 px-4 bg-[#0987A0] hover:bg-sky-500' onClick={handleOpen}>Gestionar marcas</Button>
 
       <ModalBackdrop open={open} className='gap-6 justify-center items-center p-8 md:w-auto'>
         <h1 className='text-xl font-bold opacity-80'>Añadir o eliminar marcas</h1>

@@ -86,12 +86,12 @@ export default function CarForm ({
           }
         </div>
         <div className='flex flex-col gap-3 items-center mt-5 justify-center'>
-          <label className='text-white bg-gray-800 p-2 rounded'>
+          <label className='text-white bg-gray-600 transition-colors hover:bg-neutral-500 px-3 py-2 rounded'>
             Agregar imagen
             <input hidden type='file' multiple onChange={handleImage} accept='image/*' />
           </label>
 
-          <section className='grid grid-rows-1 md:grid-rows-2 max-w-[40%] grid-flow-col overflow-x-auto'>
+          <section className='grid grid-rows-1 mt-1 pb-1.5 gap-2 md:grid-rows-2 max-w-[40%] grid-flow-col overflow-x-auto'>
             {images.length > 0 && (
               images.map((image, index) => {
                 return (
@@ -101,7 +101,7 @@ export default function CarForm ({
                       alt='car image'
                       width={100}
                       height={100}
-                      className='rounded object-cover block w-full h-full'
+                      className='rounded-md object-cover block w-full h-full'
                     />
                     <div onClick={() => handleDeleteImage(image)} className='cursor-pointer absolute top-1 right-1 bg-red-500 rounded-full p-1'>
                       <AiFillDelete size={20} />
@@ -114,10 +114,10 @@ export default function CarForm ({
 
         </div>
         <div className='flex gap-2 max-w-full items-center justify-center'>
-          <Button loading={loading} disabled={loading} type='submit' className='mt-7 w-40 disabled:bg-opacity-70 disabled:cursor-not-allowed'>
+          <Button loading={loading} disabled={loading} type='submit' className='mt-7 bg-[#90CDF4] hover:bg-sky-600/90 text-black w-40 disabled:bg-opacity-70 disabled:cursor-not-allowed'>
             {children}
           </Button>
-          <Button onClick={handleClose} className='mt-7 w-40 bg-red-500 hover:bg-red-700'>Cerrar</Button>
+          <Button onClick={handleClose} className='mt-7 w-40 bg-gray-600 tex hover:bg-neutral-500'>Cerrar</Button>
         </div>
       </form>
     </>

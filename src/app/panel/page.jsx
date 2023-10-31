@@ -6,9 +6,9 @@ import { useRouter } from 'next/navigation'
 export default function page () {
   const router = useRouter()
   return (
-    <section className='flex flex-col w-full justify-center items-center'>
+    <section className='flex flex-col flex-1 w-full justify-center items-center'>
 
-      <div className='flex flex-col md:flex-row w-full h-screen'>
+      <div className='flex flex-col md:flex-row w-full h-full'>
 
         <article className='flex-1 group relative transition-all shadow-md rounded w-full h-full'>
           <div className='hover:bg-black/70 shadow-md transition-all gap-2 z-10 p-3 w-full h-full flex-col flex justify-center items-center rounded-md bg-black/50 absolute top-0'>

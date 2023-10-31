@@ -86,8 +86,8 @@ export default function CreateCar () {
 
   return (
     <>
-      <Button onClick={handleOpen} className='bg-green-500 hover:bg-green-700 font-bold py-2 px-4 rounded'>
-        Agregar auto
+      <Button onClick={handleOpen} className='bg-[#4ebe75] font-semibold text-black/70 hover:bg-green-600 py-2 px-4 rounded'>
+        Crear auto
       </Button>
 
       <ModalBackdrop open={open}>

@@ -72,15 +72,14 @@ export default function UserSettings () {
 
   return (
     <>
-      <div className='flex-1 relative flex justify-end'>
-        <div className='group'>
-          <IoMdSettings size={25} className='group-hover:text-gray-500 transition-colors cursor-pointer' onClick={handleOpen} />
-          <span className='animate__animated animate__bounceIn absolute hidden whitespace-nowrap -right-12 z-20 group-hover:block -top-10 bg-neutral-600 shadow-2xl 00 rounded p-1.5'>Ajustes usuario</span>
+      <div className='relative flex justify-end'>
+        <div>
+          <IoMdSettings size={25} className='hover:text-gray-400 transition-colors cursor-pointer' onClick={handleOpen} />
         </div>
       </div>
 
       <ModalBackdrop open={open} className='p-0 overflow-visible w-auto mx-5'>
-        <div className='flex flex-col gap-6 p-3 shadow-md bg-neutral-900'>
+        <div className='flex flex-col gap-6 p-3 shadow-md'>
           <header className='self-end p-1.5 group relative'>
             <FaExchangeAlt className='cursor-pointer hover:text-purple-600' size={25} onClick={handleToggleView} />
             <span className='animate__animated animate__bounceIn absolute hidden whitespace-nowrap -right-12 z-20 group-hover:block -top-10 bg-neutral-600 shadow-2xl 00 rounded p-1.5'>

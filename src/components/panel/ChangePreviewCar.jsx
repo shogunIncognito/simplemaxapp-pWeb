@@ -42,10 +42,10 @@ export default function ChangePreviewCar ({ car, setCar }) {
         ))}
       </section>
       <div className='flex mt-5 gap-2 justify-center items-center'>
-        <Button loading={loading} type='submit' disabled={!isValidImage || loading} onClick={handleChangePreview} className='bg-green-500 disabled:bg-green-900 hover:bg-green-700 font-bold py-3 px-6 w-1/3 self-center'>
+        <Button loading={loading} type='submit' disabled={!isValidImage || loading} onClick={handleChangePreview} className='bg-purple-600 disabled:bg-purple-900 hover:bg-purple-800 text-white py-3 px-6 w-1/3 self-center'>
           Cambiar
         </Button>
-        <Button onClick={() => setCar(null)} className='bg-red-500 hover:bg-red-700 font-bold w-1/3 py-3 px-6'>
+        <Button onClick={() => setCar(null)} className='bg-gray-600 hover:bg-neutral-500 font-bold w-1/3 py-3 px-6'>
           Cerrar
         </Button>
       </div>

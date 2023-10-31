@@ -57,12 +57,12 @@ export default function page () {
   const filteredUsers = session ? users.filter(user => user.id !== session.id) : users
 
   return (
-    <>
-      <section className='w-full flex-col items-center h-auto flex justify-center'>
+    <section className='w-full'>
+      <section className='w-full flex-col items-center flex justify-center'>
         <h2 className='text-2xl opacity-75 font-bold md:hidden my-5'>Usuarios</h2>
         <Button onClick={handleOpen} className={`md:mt-5 md:self-start self-center md:mx-16 ${loading.getUsers && 'invisible'}`}>Agregar usuario</Button>
 
-        <ModalBackdrop open={open} className='bg-neutral-800'>
+        <ModalBackdrop open={open}>
           <h2 className='text-2xl opacity-75 self-center'>Agregar usuario</h2>
           <form onSubmit={handleSubmit} className='flex justify-center items-center flex-col gap-3 mt-4 p-4 rounded'>
             <div className='flex md:flex-row flex-col gap-2'>
@@ -90,9 +90,9 @@ export default function page () {
 
       </section>
 
-      <div className='mt-5 mx-3 md:mx-16 w-max-[90%] md:max-h-[50%] overflow-auto'>
+      <div className='mt-5 mx-3 md:mx-16 w-max-[90%] md:max-h-[50%]'>
         {loading.getUsers
-          ? <Spinner className='mt-40' />
+          ? <Spinner className='mt-10' />
           : (
             <table className='w-full max-w-full overflow-x-auto text-sm text-center text-gray-400'>
               <thead className='text-xs uppercase bg-gray-700 text-gray-400'>
@@ -142,6 +142,6 @@ export default function page () {
             </table>
             )}
       </div>
-    </>
+    </section>
   )
 }

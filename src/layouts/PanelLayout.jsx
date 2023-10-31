@@ -56,39 +56,44 @@ export default function PanelLayout ({ children }) {
         {children}
       </section>
 
-      {open && (
-        <aside className='top-0 md:hidden animate__animated animate__slideInLeft w-full flex flex-col absolute z-50 h-screen shadow-xl bg-[#171923] text-white'>
-          <CloseIcon onClick={handleClose} className='w-12 m-2 self-end cursor-pointer' />
-          <Image src={sideImage} width={140} height='auto' priority alt='sideimage' className='pointer-events-none select-none m-auto my-0 mb-2 object-cover h-auto' />
+      <aside
+        style={{
+          transform: `translateX(-${open ? 0 : 200}%)`,
+          zIndex: '200'
+        }}
+        className='top-0 md:hidden transition-all duration-500 w-full flex flex-col absolute z-50
+        h-screen shadow-xl bg-[#171923] text-white'
+      >
+        <CloseIcon onClick={handleClose} className='w-12 m-2 self-end cursor-pointer' />
+        <Image src={sideImage} width={140} height='auto' priority alt='sideimage' className='pointer-events-none select-none m-auto my-0 mb-2 object-cover h-auto' />
 
-          <nav className='flex flex-col p-4'>
-            <Link className='p-4 px-6 rounded-md hover:bg-gray-900 text-white flex gap-2 items-center transition-color' href='/'>
-              <FiArrowLeft size={28} className='opacity-75 ' />
-              <p className=''>Volver a pagina inicial</p>
-            </Link>
-            <Link onClick={handleClose} className={`p-4 px-6 rounded-md hover:bg-gray-900 text-white flex gap-2 items-center transition-colors ${path === '/panel' ? 'bg-gray-700' : ''}`} href='/panel'>
-              <AiFillHome size={28} className='opacity-75' />
-              <p className=''>Inicio</p>
-            </Link>
-            <Link onClick={handleClose} className={`p-4 px-6 rounded-md hover:bg-gray-900 text-white flex gap-2 items-center transition-colors ${path === '/panel/cars' ? 'bg-gray-700' : ''}`} href='/panel/cars'>
-              <FaCarAlt size={28} className='opacity-75' />
-              <p className=''>Autos</p>
-            </Link>
-            <Link onClick={handleClose} className={`p-4 px-6 hover:bg-gray-900 text-white flex gap-2 items-center transition-colors ${path === '/panel/users' ? 'bg-gray-700' : ''}`} href='/panel/users'>
-              <BiSolidUser size={28} className='opacity-75' />
-              <p className=''>Usuarios</p>
-            </Link>
-            <button onClick={closeSession} className='p-4 px-6 rounded-md flex items-center gap-2 hover:bg-red-700/80 transition-colors'>
-              <RxExit size={28} className='opacity-75' />
-              <p className=''>Cerrar sesión</p>
-            </button>
-          </nav>
+        <nav className='flex flex-col p-4'>
+          <Link className='p-4 px-6 rounded-md hover:bg-gray-900 text-white flex gap-2 items-center transition-color' href='/'>
+            <FiArrowLeft size={28} className='opacity-75 ' />
+            <p className=''>Volver a pagina inicial</p>
+          </Link>
+          <Link onClick={handleClose} className={`p-4 px-6 rounded-md hover:bg-gray-900 text-white flex gap-2 items-center transition-colors ${path === '/panel' ? 'bg-gray-700' : ''}`} href='/panel'>
+            <AiFillHome size={28} className='opacity-75' />
+            <p className=''>Inicio</p>
+          </Link>
+          <Link onClick={handleClose} className={`p-4 px-6 rounded-md hover:bg-gray-900 text-white flex gap-2 items-center transition-colors ${path === '/panel/cars' ? 'bg-gray-700' : ''}`} href='/panel/cars'>
+            <FaCarAlt size={28} className='opacity-75' />
+            <p className=''>Autos</p>
+          </Link>
+          <Link onClick={handleClose} className={`p-4 px-6 hover:bg-gray-900 text-white flex gap-2 items-center transition-colors ${path === '/panel/users' ? 'bg-gray-700' : ''}`} href='/panel/users'>
+            <BiSolidUser size={28} className='opacity-75' />
+            <p className=''>Usuarios</p>
+          </Link>
+          <button onClick={closeSession} className='p-4 px-6 rounded-md flex items-center gap-2 hover:bg-red-700/80 transition-colors'>
+            <RxExit size={28} className='opacity-75' />
+            <p className=''>Cerrar sesión</p>
+          </button>
+        </nav>
 
-          <div className='min-h-fit absolute pointer-events-none bottom-5 self-center'>
-            <p className='text-center text-xs opacity-50'>Max<span className='text-blue-500'>Autos</span></p>
-          </div>
-        </aside>
-      )}
+        <div className='min-h-fit absolute pointer-events-none bottom-5 self-center'>
+          <p className='text-center text-xs opacity-50'>Max<span className='text-blue-500'>Autos</span></p>
+        </div>
+      </aside>
 
       {/* Desktop Layout */}
       <aside className='lg:w-1/6 border-gray-200/10 border-r-2 bg-[#171923] md:w-1/3 hidden relative md:flex md:flex-col h-screen px-3 shadow-xl text-white'>

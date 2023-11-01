@@ -13,7 +13,7 @@ import { createUserCodes } from '@/utils/statusCodes'
 import { useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
 
-export default function page () {
+export default function Users () {
   const [users, setUsers] = useState([])
   const [loading, setLoading] = useState({
     create: false,
@@ -57,46 +57,45 @@ export default function page () {
   const filteredUsers = session ? users.filter(user => user.id !== session.id) : users
 
   return (
-    <section className='w-full'>
-      <section className='w-full flex-col items-center flex justify-center'>
-        <h2 className='text-2xl opacity-75 font-bold md:hidden my-5'>Usuarios</h2>
-        <Button onClick={handleOpen} className={`md:mt-5 md:self-start self-center md:mx-16 ${loading.getUsers && 'invisible'}`}>Agregar usuario</Button>
+    <section className='flex-1'>
+      <header className='flex p-4 w-full justify-start items-center flex-col'>
+        <h2 className='text-2xl self-center opacity-75 font-bold md:hidden my-5'>Usuarios</h2>
+        <Button onClick={handleOpen} className={`md:self-start self-center ${loading.getUsers && 'invisible'}`}>Agregar usuario</Button>
+      </header>
 
-        <ModalBackdrop open={open}>
-          <h2 className='text-2xl opacity-75 self-center'>Agregar usuario</h2>
-          <form onSubmit={handleSubmit} className='flex justify-center items-center flex-col gap-3 mt-4 p-4 rounded'>
-            <div className='flex md:flex-row flex-col gap-2'>
-              <div className='w-full flex flex-col gap-1'>
-                <label className='opacity-80 font-bold' htmlFor='name'>Nombre</label>
-                <Input required className='p-2' name='name' type='text' id='name' placeholder='Pedro' />
-              </div>
-              <div className='w-full flex flex-col gap-1'>
-                <label className='opacity-80 font-bold' htmlFor='password'>Contraseña</label>
-                <Input required className='p-2' name='password' type='password' id='password' placeholder='*******' />
-              </div>
+      <ModalBackdrop open={open}>
+        <h2 className='text-2xl opacity-75 self-center'>Agregar usuario</h2>
+        <form onSubmit={handleSubmit} className='flex justify-center items-center flex-col gap-3 mt-4 p-4 rounded'>
+          <div className='flex md:flex-row flex-col gap-2'>
+            <div className='w-full flex flex-col gap-1'>
+              <label className='opacity-80 font-bold' htmlFor='name'>Nombre</label>
+              <Input required className='p-2' name='name' type='text' id='name' placeholder='Pedro' />
             </div>
-            <div className='w-full flex flex-col gap-1 mt-3'>
-              <label className='opacity-80 font-bold mx-auto' htmlFor='cedula'>Cedula</label>
-              <Input minLength='10' required className='p-2 w-full md:w-1/2 mx-auto' name='cedula' type='number' id='cedula' placeholder='1234567890' />
+            <div className='w-full flex flex-col gap-1'>
+              <label className='opacity-80 font-bold' htmlFor='password'>Contraseña</label>
+              <Input required className='p-2' name='password' type='password' id='password' placeholder='*******' />
             </div>
+          </div>
+          <div className='w-full flex flex-col gap-1 mt-3'>
+            <label className='opacity-80 font-bold mx-auto' htmlFor='cedula'>Cedula</label>
+            <Input minLength='10' required className='p-2 w-full md:w-1/2 mx-auto' name='cedula' type='number' id='cedula' placeholder='1234567890' />
+          </div>
 
-            <div className='flex items-center gap-2 mt-3'>
-              <Button type='submit' loading={loading.create} disabled={loading.create} className='py-2 mt-2 w-40 self-center bg-purple-600 hover:bg-purple-800'>Crear</Button>
-              <Button onClick={handleClose} className='py-2 mt-2 w-40 self-center'>Cancelar</Button>
-            </div>
+          <div className='flex items-center gap-2 mt-3'>
+            <Button type='submit' loading={loading.create} disabled={loading.create} className='py-2 mt-2 w-40 self-center bg-purple-600 hover:bg-purple-800'>Crear</Button>
+            <Button onClick={handleClose} className='py-2 mt-2 w-40 self-center'>Cancelar</Button>
+          </div>
 
-          </form>
-        </ModalBackdrop>
+        </form>
+      </ModalBackdrop>
 
-      </section>
-
-      <div className='mt-5 mx-3 md:mx-16 w-max-[90%] md:max-h-[50%]'>
+      <div className='flex-1 pb-4 px-3 overflow-auto w-max-[90%] max-h-[44%] md:max-h-[62%] lg:max-h-[53%]'>
         {loading.getUsers
           ? <Spinner className='mt-10' />
           : (
-            <table className='w-full max-w-full overflow-x-auto text-sm text-center text-gray-400'>
-              <thead className='text-xs uppercase bg-gray-700 text-gray-400'>
-                <tr>
+            <table className='w-full max-w-full text-sm text-center text-gray-400'>
+              <thead className='text-xs sticky top-0 uppercase bg-gray-700 text-gray-400'>
+                <tr className='p-0.5'>
                   <th scope='col' className='px-6 py-3'>
                     ID
                   </th>

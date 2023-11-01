@@ -83,7 +83,7 @@ export default function page () {
           </Button>
         )}
       </div>
-      <div className='relative flex-1 w-full pb-10 max-h-[70%] lg:max-h-[76%] xl:max-h-[80%] overflow-auto'>
+      <div className='relative flex-1 w-full max-h-[70%] lg:max-h-[76%] xl:max-h-[80%] overflow-auto'>
         <table className='w-full overflow-auto text-sm text-center text-gray-400'>
           <thead className='text-xs sticky bg-[#171923] z-20 top-0 uppercase border-b border-green-800/90 text-gray-400'>
             <tr>

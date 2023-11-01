@@ -41,7 +41,7 @@ export default function PanelLayout ({ children }) {
   return (
     <main className='flex-col max-w-full max-h-screen md:flex-row flex h-screen w-full bg-[#171923]'>
       {/* Mobile Layout */}
-      <section className='overflow-hidden md:hidden flex flex-col w-full h-full text-white'>
+      <section className='overflow-hidden md:hidden flex flex-col flex-1 text-white'>
         <header className='relative min-h-[8%] h-[8%] text-white bg-[#171923] border-b justify-between items-center border-gray-600/60 flex w-full'>
           <div onClick={handleOpen} className='ml-3 z-20'>
             <MenuIcon className='w-8 border rounded-lg border-gray-700/70' />
@@ -130,7 +130,7 @@ export default function PanelLayout ({ children }) {
         </div>
       </aside>
 
-      <section className='md:flex flex-col w-full hidden h-auto overflow-hidden text-white'>
+      <section className='md:flex flex-1 pb-32 md:pb-16 lg:pb-4 flex-col hidden h-auto overflow-hidden text-white'>
         <header className='border-b-2 h-min border-gray-200/10 flex items-center gap-3 capitalize p-4 bg-[#171923] justify-end'>
           <UserIcon className='w-10 bg-white rounded-full' />
           <h2 className='opacity-80 capitalize'>{session?.name || 'Cargando...'}</h2>

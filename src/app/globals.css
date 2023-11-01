@@ -79,3 +79,6 @@
       content: "Placeholder para dispositivo grande";
   }
 }
+html{
+  scroll-behavior: smooth;
+}

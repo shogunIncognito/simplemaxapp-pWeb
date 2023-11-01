@@ -7,8 +7,10 @@ import { SlSpeedometer } from 'react-icons/sl'
 import { TbSettingsCheck } from 'react-icons/tb'
 import { LuFuel } from 'react-icons/lu'
 import { GrConfigure } from 'react-icons/gr'
-import { BsCardText } from 'react-icons/bs'
+import { FaMapLocationDot } from 'react-icons/fa6'
+import { BsCardText, BsWhatsapp } from 'react-icons/bs'
 import { useState } from 'react'
+import Link from 'next/link'
 
 export default function page ({ params }) {
   const { cars, loading } = useCarsStore()
@@ -32,7 +34,7 @@ export default function page ({ params }) {
 
   return (
     <>
-      <section className='w-full h-auto grid grid-cols-1 lg:grid-cols-2 py-10 max-md:p-0 max-md:py-20 md:py-24 min-[2560px]:p-36'>
+      <section className='w-full h-auto grid grid-cols-1 lg:grid-cols-2 pt-10 max-md:p-0 max-md:pt-20 md:pt-24 min-[2560px]:p-36'>
         <div className='w-full h-auto min-[420px]:h-[70vh] sm:h-[90vh] lg:h-[78vh] flex flex-col items-center justify-center pt-5'>
           <div className='w-[90%] md:w-[80%] h-full sm:w-[78%] sm:h-[88%] lg:h-[90%] min-[1920px]:w-[80%] min-[1920px]:h-[80%] min-[2560px]:w-[80%] min-[2560px]:h-[90%] mb-11 lg:mb-9'>
             <div className='w-full max-w-fit h-[80%] border rounded-md overflow-hidden mb-2 flex items-center relative'>
@@ -67,68 +69,59 @@ export default function page ({ params }) {
               <h1 className='font-mono font-semibold text-2xl min-[1920px]:text-4xl min-[2560px]:text-5xl'>{car.brand} {car.line}</h1>
               <h1 className='font-mono font-semibold text-2xl min-[1920px]:text-4xl min-[2560px]:text-5xl'><span className='text-blue-400'>$</span> {Math.round(car.price).toLocaleString()}</h1>
             </div>
-            <div className='w-full h-[80%] flex flex-col sm:flex-row items-center p-2'>
+            <div className='w-full h-[80%] flex flex-row items-center p-2'>
               <div className='w-[50%] h-full mr-2'>{/* Colmuna 1 */}
                 <div className='flex h-[20%] items-center border-b-2 border-blue-200 capitalize'>
                   <AiOutlineTags className='mr-2' size={24} />
-                  <p className='min-[2560px]:text-3xl min-[1920px]:text-xl'> <span className='text-blue-400 text-xs min-[1920px]:text-base min-[2560px]:text-lg capitalize'>Marca</span>  <br /> {car.brand}</p>
+                  <p className='max-sm:text-sm min-[2560px]:text-3xl min-[1920px]:text-xl'> <span className='text-blue-400 max-sm:text-xs text-xs min-[1920px]:text-base min-[2560px]:text-lg capitalize'>Marca</span>  <br /> {car.brand}</p>
                 </div>
                 <div className='flex h-[20%] items-center border-b-2 border-blue-200 capitalize'>
                   <IoColorFilterOutline className='mr-2' size={24} />
-                  <p className='min-[2560px]:text-3xl min-[1920px]:text-xl'> <span className='text-blue-400 text-xs min-[1920px]:text-base min-[2560px]:text-lg capitalize'>Color</span>  <br /> {car.color}</p>
+                  <p className='max-sm:text-sm min-[2560px]:text-3xl min-[1920px]:text-xl'> <span className='text-blue-400 max-sm:text-xs text-xs min-[1920px]:text-base min-[2560px]:text-lg capitalize'>Color</span>  <br /> {car.color}</p>
                 </div>
                 <div className='flex h-[20%] items-center border-b border-blue-200 capitalize'>
                   <AiOutlineFolderOpen className='mr-2' size={24} />
-                  <p className='min-[2560px]:text-3xl min-[1920px]:text-xl'> <span className='text-blue-400 text-xs min-[1920px]:text-base min-[2560px]:text-lg capitalize'>Tipo</span>  <br /> {car.type}</p>
+                  <p className='max-sm:text-sm min-[2560px]:text-3xl min-[1920px]:text-xl'> <span className='text-blue-400 max-sm:text-xs text-xs min-[1920px]:text-base min-[2560px]:text-lg capitalize'>Tipo</span>  <br /> {car.type}</p>
                 </div>
                 <div className='flex h-[20%] items-center border-b-2 border-blue-200 capitalize'>
                   <TbSettingsCheck className='mr-2' size={24} />
-                  <p className='min-[2560px]:text-3xl min-[1920px]:text-xl'> <span className='text-blue-400 text-xs min-[1920px]:text-base min-[2560px]:text-lg capitalize'>Transmision</span>  <br /> {car.transmission}</p>
+                  <p className='max-sm:text-sm min-[2560px]:text-3xl min-[1920px]:text-xl'> <span className='text-blue-400 max-sm:text-xs text-xs min-[1920px]:text-base min-[2560px]:text-lg capitalize'>Transmision</span>  <br /> {car.transmission}</p>
                 </div>
                 <div className='flex h-[20%] items-center border-b-2 border-blue-200 capitalize'>
                   <LuFuel className='mr-2' size={24} />
-                  <p className='min-[2560px]:text-3xl min-[1920px]:text-xl'> <span className='text-blue-400 text-xs min-[1920px]:text-base min-[2560px]:text-lg capitalize'>Combustible</span>  <br /> {car.fuel}</p>
+                  <p className='max-sm:text-sm min-[2560px]:text-3xl min-[1920px]:text-xl'> <span className='text-blue-400 max-sm:text-xs text-xs min-[1920px]:text-base min-[2560px]:text-lg capitalize'>Combustible</span>  <br /> {car.fuel}</p>
                 </div>
               </div>
               <div className='w-[50%] h-full ml-2'>{/* Colmuna 2 */}
                 <div className='flex h-[20%] items-center border-b-2 border-blue-200 capitalize'>
                   <AiOutlineCar className='mr-2' size={24} />
-                  <p className='min-[2560px]:text-3xl min-[1920px]:text-xl'> <span className='text-blue-400 text-xs min-[1920px]:text-base min-[2560px]:text-lg capitalize'>Linea</span>  <br /> {car.line}</p>
-                </div>
+                  <p className='max-sm:text-sm min-[2560px]:text-3xl min-[1920px]:text-xl'> <span className='text-blue-400 max-sm:text-xs text-xs min-[1920px]:text-base min-[2560px]:text-lg capitalize'>Linea</span>  <br /> {car.line}</p>
+                </div>max
                 <div className='flex h-[20%] items-center border-b-2 border-blue-200 capitalize'>
                   <SlSpeedometer className='mr-2' size={24} />
-                  <p className='min-[2560px]:text-3xl min-[1920px]:text-xl'> <span className='text-blue-400 text-xs min-[1920px]:text-base min-[2560px]:text-lg capitalize'>Km</span>  <br /> {car.kilometers}</p>
+                  <p className='max-sm:text-sm min-[2560px]:text-3xl min-[1920px]:text-xl'> <span className='text-blue-400 max-sm:text-xs text-xs min-[1920px]:text-base min-[2560px]:text-lg capitalize'>Km</span>  <br /> {car.kilometers}</p>
                 </div>
                 <div className='flex h-[20%] items-center border-b-2 border-blue-200 capitalize'>
                   <GrConfigure className='mr-2' size={24} />
-                  <p className='min-[2560px]:text-3xl min-[1920px]:text-xl'> <span className='text-blue-400 text-xs min-[1920px]:text-base min-[2560px]:text-lg capitalize'>Año</span>  <br /> {car.model}</p>
+                  <p className='max-sm:text-sm min-[2560px]:text-3xl min-[1920px]:text-xl'> <span className='text-blue-400 max-sm:text-xs text-xs min-[1920px]:text-base min-[2560px]:text-lg capitalize'>Año</span>  <br /> {car.model}</p>
                 </div>
                 <div className='flex h-[20%] items-center border-b-2 border-blue-200 capitalize'>
                   <AiOutlineUserSwitch className='mr-2' size={24} />
-                  <p className='min-[2560px]:text-3xl min-[1920px]:text-xl'> <span className='text-blue-400 text-xs min-[1920px]:text-base min-[2560px]:text-lg capitalize'>Propietarios</span>  <br /> {car.owners}</p>
+                  <p className='max-sm:text-sm min-[2560px]:text-3xl min-[1920px]:text-xl'> <span className='text-blue-400 max-sm:text-xs text-xs min-[1920px]:text-base min-[2560px]:text-lg capitalize'>Propietarios</span>  <br /> {car.owners}</p>
                 </div>
                 <div className='flex h-[20%] items-center border-b-2 border-blue-200 capitalize'>
                   <BsCardText className='mr-2' size={24} />
-                  <p className='min-[2560px]:text-3xl min-[1920px]:text-xl'> <span className='text-blue-400 text-xs min-[1920px]:text-base min-[2560px]:text-lg capitalize'>Placa</span>  <br /> {car.plate}</p>
+                  <p className='max-sm:text-sm min-[2560px]:text-3xl min-[1920px]:text-xl'> <span className='text-blue-400 max-sm:text-xs text-xs min-[1920px]:text-base min-[2560px]:text-lg capitalize'>Placa</span>  <br /> {car.plate}</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </section>
-      {/* <section className='w-full flex justify-center'>
-        <div className='w-[80%] flex'>
-          <div className='w-[50%] bg-blue-300'>
-            <div>
-              <p>d</p>
-              <p>d</p>
-            </div>
-          </div>
-          <div className='w-[50%] bg-green-300'>
-            <h1>HolaPA</h1>
-          </div>
-        </div>
-      </section> */}
+      <section className='w-full flex flex-col sm:flex-row justify-center items-center mb-5 mt-3'>
+        <Link className='bg-green-400 hover:bg-green-500 transition-colors p-3 text-white mr-2 max-sm:mr-0 rounded-md flex items-center justify-center max-sm:my-1' href='https://wa.me/573123719021' target='_blank' rel='noreferrer'><BsWhatsapp className='mx-1' size={25} /> <p>Contactar</p></Link>
+        <Link className='bg-blue-400 hover:bg-blue-500 transition-colors p-3 text-white rounded-md flex items-center justify-center max-sm:my-1' href='/QuienesSomos/#maps'><FaMapLocationDot className='mx-1' size={25} /> <p>Ubicacion</p></Link>
+      </section>
     </>
   )
 }

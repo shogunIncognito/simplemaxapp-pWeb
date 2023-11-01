@@ -72,7 +72,7 @@ export default function page () {
             </div>
           </div>
         </div>
-        <iframe src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d497.4354539650095!2d-73.62022801996487!3d4.124806286974369!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3e2fc37b59d1df%3A0xebf7a3199e0db914!2sCompra%20Y%20Venta%20De%20Carros%20Max-Autos!5e0!3m2!1ses-419!2sco!4v1698363184868!5m2!1ses-419!2sco' className='flex-1 border-0 h-[300px] lg:h-auto w-full lg:w-[70%]' allowFullScreen='' loading='lazy' referrerPolicy='no-referrer-when-downgrade' />
+        <iframe src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d497.4354539650095!2d-73.62022801996487!3d4.124806286974369!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3e2fc37b59d1df%3A0xebf7a3199e0db914!2sCompra%20Y%20Venta%20De%20Carros%20Max-Autos!5e0!3m2!1ses-419!2sco!4v1698363184868!5m2!1ses-419!2sco' id='maps' className='flex-1 border-0 h-[300px] lg:h-auto w-full lg:w-[70%]' allowFullScreen='' loading='lazy' referrerPolicy='no-referrer-when-downgrade' />
       </section>
     </>
   )

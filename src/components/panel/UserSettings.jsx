@@ -74,7 +74,7 @@ export default function UserSettings () {
     <>
       <div className='relative flex justify-end'>
         <div>
-          <IoMdSettings size={25} className='hover:text-gray-400 transition-colors cursor-pointer' onClick={handleOpen} />
+          <IoMdSettings size={25} className='hover:text-gray-400 dark:text-white text-black transition-colors cursor-pointer' onClick={handleOpen} />
         </div>
       </div>
 

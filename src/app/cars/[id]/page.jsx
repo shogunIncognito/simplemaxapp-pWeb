@@ -96,7 +96,7 @@ export default function page ({ params }) {
                 <div className='flex h-[20%] items-center border-b-2 border-blue-200 capitalize'>
                   <AiOutlineCar className='mr-2' size={24} />
                   <p className='max-sm:text-sm min-[2560px]:text-3xl min-[1920px]:text-xl'> <span className='text-blue-400 max-sm:text-xs text-xs min-[1920px]:text-base min-[2560px]:text-lg capitalize'>Linea</span>  <br /> {car.line}</p>
-                </div>max
+                </div>
                 <div className='flex h-[20%] items-center border-b-2 border-blue-200 capitalize'>
                   <SlSpeedometer className='mr-2' size={24} />
                   <p className='max-sm:text-sm min-[2560px]:text-3xl min-[1920px]:text-xl'> <span className='text-blue-400 max-sm:text-xs text-xs min-[1920px]:text-base min-[2560px]:text-lg capitalize'>Km</span>  <br /> {car.kilometers}</p>

@@ -25,7 +25,7 @@ export default function CarsI ({ result }) {
               <p className='w-[50%] bg-gray-500 p-1 text-center text-blue-100'>{car.line}</p>
               <p className='w-[50%] bg-blue-400 p-1 text-center'>$ {Math.round(car.price).toLocaleString()}</p>
             </div>
-            <div className='flex w-full h-full'>
+            <div className='flex w-full h-auto sm:h-full'>
               <div className='flex flex-col items-center justify-center w-[50%] h-full'>
                 <h1 className='text-center'>{car.brand} {car.line} {car.model}</h1>
                 <h3>KLM: {car.kilometers}</h3>

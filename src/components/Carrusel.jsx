@@ -15,7 +15,7 @@ export default function Carrusel () {
               <motion.div
                 onClick={() => router.push(`/cars?filter=${item.name}#catalogo`)}
                 key={index}
-                className='relative min-w-[150px] h-[100px] sm:min-w-[200px] sm:h-[150px] p-3 hover:border-2 group hover:border-solid hover:border-black flex items-center justify-center hover:scale-110 transition-[1.5]'
+                className='relative min-w-[150px] h-[100px] sm:min-w-[200px] sm:h-[150px] p-3 hover:border-2 group hover:border-solid hover:rounded-md hover:overflow-hidden border-slate-200 flex items-center justify-center hover:scale-110 transition-[1.5]'
               >
                 <img className={`${item.width} ${item.height} pointer-events-none`} src={item.urlimg} />{/* item */}
                 <img className='-z-10 object-cover w-full h-full opacity-80 absolute invisible group-hover:visible' src={item.imgUrl} />
@@ -27,7 +27,7 @@ export default function Carrusel () {
               <motion.div
                 onClick={() => router.push(`/cars?filter=${item.name}#catalogo`)}
                 key={index}
-                className='relative min-w-[150px] h-[100px] sm:min-w-[200px] sm:h-[150px] p-3 hover:border-2 group hover:border-solid hover:border-black flex items-center justify-center hover:scale-110 transition-[1.5]'
+                className='relative min-w-[150px] h-[100px] sm:min-w-[200px] sm:h-[150px] p-3 hover:border-2 group hover:border-solid hover:rounded-md hover:overflow-hidden border-slate-200 flex items-center justify-center hover:scale-110 transition-[1.5]'
               >
                 <img className={`${item.width} ${item.height} pointer-events-none`} src={item.urlimg} />{/* item */}
                 <img className='-z-10 object-cover w-full h-full opacity-80 absolute invisible group-hover:visible' src={item.imgUrl} />

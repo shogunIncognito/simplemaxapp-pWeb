@@ -22,12 +22,12 @@ export default function CarsI ({ result }) {
           <hr />
           <div className='h-[140px] flex flex-col bg-blue-100'>
             <div className='flex'>
-              <p className='w-[50%] bg-gray-500 p-1 text-center text-blue-100'>{car.line}</p>
+              <p className='w-[50%] bg-gray-500 p-1 text-center text-blue-100'>{car.brand}</p>
               <p className='w-[50%] bg-blue-400 p-1 text-center'>$ {Math.round(car.price).toLocaleString()}</p>
             </div>
             <div className='flex w-full h-auto sm:h-full'>
               <div className='flex flex-col items-center justify-center w-[50%] h-full'>
-                <h1 className='text-center'>{car.brand} {car.line} {car.model}</h1>
+                <h1 className='text-center'>{car.line} {car.model}</h1>
                 <h3>KLM: {car.kilometers}</h3>
               </div>
               <div className='flex w-[50%] h-full items-center justify-center p-2'>

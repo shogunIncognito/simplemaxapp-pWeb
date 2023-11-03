@@ -48,7 +48,7 @@ export default function page ({ searchParams }) {
         </div>
       </section>
 
-      <section className='p-5' id='catalogo'>
+      <section id='catalogo'>
         {loading
           ? <Spinner color='text-blue-400' className='m-4 my-40' />
           : <CarsI result={filteredCars} />}

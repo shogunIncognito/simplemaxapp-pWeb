@@ -13,7 +13,7 @@ export default function CarsI ({ result }) {
   }
 
   return (
-    <div className='h-full my-14 grid-col-res gap-6 p-5'>
+    <div className='h-full mb-14 mt-[1.5rem] grid-col-res gap-6 p-5'>
       {result.map((car) => (
         <div key={car.id} className='m-auto mt-0 flex flex-col overflow-hidden border-2 border-blue-400 rounded-md'>
           <div className='w-full h-[260px] bg-white p-4 overflow-hidden border-2 rounded border-blue-100'>

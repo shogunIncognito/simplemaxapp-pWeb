@@ -40,8 +40,8 @@ export default function page () {
     const carsImages = carsSelected.reduce((acc, curr) => [...acc, ...curr.image], [])
 
     try {
-      await deleteCar(carsSelected)
       await deleteCarsImages(carsImages)
+      await deleteCar(carsSelected)
 
       toast.success('Autos eliminados')
       reFetch()
@@ -50,20 +50,6 @@ export default function page () {
     } finally {
       setCarsSelected([])
     }
-
-    deleteCar(carsSelected)
-      .then(async () => {
-        await deleteCarsImages(carsImages)
-        setCarsSelected([])
-        toast.success('Autos eliminados')
-        reFetch()
-      })
-      .catch(() => {
-        toast.error('Error al eliminar los autos')
-      })
-      .finally(() => {
-        setCarsSelected([])
-      })
   }
 
   return (
@@ -149,8 +135,8 @@ export default function page () {
                 </td>
                 <td className='px-6 py-4'>
                   <div className='cursor-pointer flex justify-center items-center relative group'>
-                    <Image src={car.preview || car.image[0]} priority alt='carro' width={170} height={170} className='rounded-lg object-cover cursor-pointer w-auto h-auto ring-2 max-w-[160px] max-h-[160px]' />
-                    <div onClick={() => setCarPreviewToChange(car)} className='absolute top-0 w-full h-full bg-black/50 rounded-lg flex items-center justify-center opacity-0 group-hover:opacity-100 max-w-[160px] max-h-[160px] transition-all duration-300'>
+                    <Image src={car.preview || car.image[0]} priority alt='carro' width={160} height={160} className='rounded-lg object-cover cursor-pointer w-auto h-auto ring-2 max-w-[160px] max-h-[160px] min-w-[160px] min-h-[160px]' />
+                    <div onClick={() => setCarPreviewToChange(car)} className='absolute top-0 w-full h-full bg-black/50 rounded-lg flex items-center justify-center opacity-0 group-hover:opacity-100 max-w-[160px] max-h-[160px] min-w-[160px] min-h-[160px] transition-all duration-300'>
                       <span className='text-white font-bold'>
                         Cambiar imagen
                       </span>

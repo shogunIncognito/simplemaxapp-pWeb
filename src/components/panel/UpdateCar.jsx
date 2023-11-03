@@ -2,10 +2,10 @@
 
 import ModalBackdrop from '../ModalBackdrop'
 import { useState } from 'react'
-import { updateCar } from '@/services/api'
+import { deleteCarImageFromApi, updateCar } from '@/services/api'
 import useCarsStore from '@/hooks/useCarsStore'
 import toast from 'react-hot-toast'
-import { objectHasEmptyValues } from '@/utils/functions'
+import { getObjectsDiff, objectHasEmptyValues } from '@/utils/functions'
 import { deleteCarImage, uploadCarsImages } from '@/services/firebase'
 import CarForm from './CarForm'
 import { updateCarCodes } from '@/utils/statusCodes'
@@ -30,11 +30,15 @@ export default function UpdateCar ({ selectedCar, setSelectedCar }) {
       return [...acc, curr.file]
     }, [])
 
+    const valuesToUpdate = getObjectsDiff(selectedCar, values)
+
+    if (Object.keys(valuesToUpdate).length === 0 && urlsToUpload.length === 0) return toast.error('No hay cambios')
+
     try {
       setLoading(true)
       const newImages = await uploadCarsImages(urlsToUpload, selectedCar.plate)
 
-      await updateCar(selectedCar.id, { ...restOfValues, description, image: [...selectedCar.image, newImages].join('&&&') })
+      await updateCar(selectedCar.id, { ...restOfValues, description, image: newImages.join('&&&') })
 
       reFetch()
       setSelectedCar(null)
@@ -68,7 +72,8 @@ export default function UpdateCar ({ selectedCar, setSelectedCar }) {
         return
       }
 
-      await updateCar(selectedCar.id, { image: images.filter(image => image !== img).join('&&&') })
+      console.log(img)
+      await deleteCarImageFromApi(selectedCar.id, img)
       await deleteCarImage(img)
 
       setImages(prev => prev.filter(image => image !== img))

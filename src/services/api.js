@@ -79,3 +79,8 @@ export const updatePreviewImage = async (id, preview) => {
   const response = await api.patch(`/cars/${id}`, { preview }, getToken())
   return response.data
 }
+
+export const deleteCarImageFromApi = async (id, url) => {
+  const response = await api.put(`/cars/${id}/images`, { url }, getToken())
+  return response.data
+}

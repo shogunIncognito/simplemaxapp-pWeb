@@ -44,7 +44,7 @@ export async function POST (request) {
   }
 }
 
-export async function DELETE (request, { params }) {
+export async function DELETE (request) {
   try {
     const token = headers().get('auth-token')
 

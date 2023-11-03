@@ -25,6 +25,12 @@ export async function PUT (request, { params }) {
     const { id } = params
     const body = await request.json()
 
+    const carToUpdate = await prisma.car.findUnique({ where: { id: Number(id) } })
+
+    if (body.image && carToUpdate.image) {
+      body.image = body.image + '&&&' + carToUpdate.image
+    }
+
     const car = await prisma.car.update({ where: { id: Number(id) }, data: body, include: { brand: true } })
 
     if (!car) return NextResponse.json({ message: 'Car not found' }, { status: 404 })

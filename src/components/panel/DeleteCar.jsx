@@ -22,7 +22,7 @@ export default function DeleteCar ({ carToDelete, setCarToDelete }) {
         toast.success('Auto eliminado')
         setCarToDelete(null)
       })
-      .catch(err => toast.error(deleteCarCodes[err.response.status] || 'Error al eliminar auto'))
+      .catch(err => toast.error(deleteCarCodes[err.response?.status] || 'Error al eliminar auto'))
       .finally(() => setLoading(false))
   }
 

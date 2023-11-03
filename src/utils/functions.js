@@ -19,3 +19,15 @@ export const filterCars = (cars, filters) => (
     return String(car[filters.option]).toLocaleLowerCase().includes(filters.value.toLowerCase())
   })
 )
+
+export const getObjectsDiff = (car, carToUpdate) => {
+  const diff = {}
+
+  for (const key in car) {
+    if (carToUpdate[key] !== car[key]) {
+      diff[key] = carToUpdate[key]
+    }
+  }
+
+  return diff
+}

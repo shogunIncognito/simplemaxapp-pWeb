@@ -16,7 +16,7 @@ export default function page ({ params }) {
   const { cars, loading } = useCarsStore()
   const [Translate, setTranslate] = useState(0)
 
-  if (loading) return <Spinner />
+  if (loading) return <Spinner color='text-blue-600' className='h-[80dvh]' />
 
   const car = cars.find((car) =>
     String(car.id) === params.id

@@ -5,7 +5,7 @@ import { useState } from 'react'
 import { deleteCarImageFromApi, updateCar } from '@/services/api'
 import useCarsStore from '@/hooks/useCarsStore'
 import toast from 'react-hot-toast'
-import { getObjectsDiff, objectHasEmptyValues } from '@/utils/functions'
+import { getObjectsDiff, objectHasEmptyValues, validateFormValues } from '@/utils/functions'
 import { deleteCarImage, uploadCarsImages } from '@/services/firebase'
 import CarForm from './CarForm'
 import { updateCarCodes } from '@/utils/statusCodes'
@@ -20,25 +20,32 @@ export default function UpdateCar ({ selectedCar, setSelectedCar }) {
     e.preventDefault()
 
     // el id no se actualiza
-    const { description, preview, id, brand, ...restOfValues } = values
+    const { description, preview, id, brand, ...restOfForm } = values
 
     if (!values.image) return toast.error('Debe agregar una imagen')
-    if (objectHasEmptyValues(restOfValues)) return toast.error('Todos los campos son obligatorios')
+    if (objectHasEmptyValues(restOfForm)) return toast.error('Todos los campos son obligatorios')
 
     const urlsToUpload = images.reduce((acc, curr) => {
       if (typeof curr === 'string') return acc
       return [...acc, curr.file]
     }, [])
 
-    const valuesToUpdate = getObjectsDiff(selectedCar, values)
+    const valuesToUpdate = getObjectsDiff(selectedCar, { ...values, description })
 
     if (Object.keys(valuesToUpdate).length === 0 && urlsToUpload.length === 0) return toast.error('No hay cambios')
+
+    const isValidForm = validateFormValues(restOfForm)
+    if (!isValidForm.valid) return toast.error(isValidForm.message)
 
     try {
       setLoading(true)
       const newImages = await uploadCarsImages(urlsToUpload, selectedCar.plate)
 
-      await updateCar(selectedCar.id, { ...restOfValues, description, image: newImages.join('&&&') })
+      if (newImages.length > 0) {
+        valuesToUpdate.image = newImages.join('&&&')
+      }
+
+      await updateCar(selectedCar.id, valuesToUpdate)
 
       reFetch()
       setSelectedCar(null)

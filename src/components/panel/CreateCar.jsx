@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { createCar, updateCar } from '@/services/api'
 import useCarsStore from '@/hooks/useCarsStore'
-import { objectHasEmptyValues } from '@/utils/functions'
+import { objectHasEmptyValues, validateFormValues } from '@/utils/functions'
 import toast from 'react-hot-toast'
 import { uploadCarsImages } from '@/services/firebase'
 import CarForm from './CarForm'
@@ -27,6 +27,23 @@ const carInitialValues = {
   color: '',
   cc: '1.0'
 }
+
+// testing values
+// const carInitialValues = {
+//   brandId: '4',
+//   fuel: 'corriente',
+//   transmission: 'manual',
+//   type: 'automovil',
+//   owners: '2',
+//   kilometers: '25000',
+//   price: '35000000',
+//   model: '2022',
+//   line: 'captiva sport',
+//   plate: 'xhg345',
+//   description: 'pelo',
+//   color: 'rojo',
+//   cc: '1.4'
+// }
 
 export default function CreateCar () {
   const { open, handleClose, handleOpen } = useDisclosure()
@@ -54,8 +71,11 @@ export default function CreateCar () {
 
     const { description, preview, ...restOfForm } = values
 
-    if (!images) return toast.error('Debe agregar una imagen')
+    if (images.length === 0) return toast.error('Debe agregar una imagen')
     if (objectHasEmptyValues(restOfForm)) return toast.error('Todos los campos son obligatorios')
+
+    const isValidForm = validateFormValues(restOfForm)
+    if (!isValidForm.valid) return toast.error(isValidForm.message)
 
     const urlsToUpload = images.map(image => image.file)
 

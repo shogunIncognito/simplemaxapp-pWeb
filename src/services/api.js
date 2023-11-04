@@ -80,7 +80,7 @@ export const updatePreviewImage = async (id, preview) => {
   return response.data
 }
 
-export const deleteCarImageFromApi = async (id, url) => {
-  const response = await api.put(`/cars/${id}/images`, { url }, getToken())
+export const deleteCarImageFromApi = async (id, image) => {
+  const response = await api.put(`/cars/${id}/images`, { image }, getToken())
   return response.data
 }

@@ -25,45 +25,45 @@ export default function CarForm ({
       <form onSubmit={handleSubmit} className='overflow-auto lg:max-h-90[dvh] max-h-[80dvh]'>
         <div className='grid grid-cols-2 md:grid-cols-3 gap-3'>
           <div className='flex flex-col gap-1 overflow-ellipsis'>
-            <label className='text-white whitespace-nowrap text-ellipsis overflow-hidden'>Marca</label>
+            <label className='dark:text-white text-black whitespace-nowrap text-ellipsis overflow-hidden'>Marca</label>
             <Select onChange={handleChange} value={values.brandId} name='brandId' id='brandId'>
-              <option className='bg-slate-600' value='' disabled>Seleccione una marca</option>
+              <option className='bg-slate-100 text-black dark:text-white dark:bg-slate-700' value='' disabled>Seleccione una marca</option>
               {brands.map(brand => (
-                <option className='bg-slate-600' key={brand.id} value={brand.id}>{brand.name}</option>
+                <option className='bg-slate-100 text-black dark:text-white dark:bg-slate-700' key={brand.id} value={brand.id}>{brand.name}</option>
               ))}
             </Select>
           </div>
 
           <div className='flex flex-col gap-1'>
-            <label className='text-white whitespace-nowrap text-ellipsis overflow-hidden'>Tipo combustible</label>
+            <label className='dark:text-white text-black whitespace-nowrap text-ellipsis overflow-hidden'>Tipo combustible</label>
             <Select onChange={handleChange} value={values.fuel} name='fuel' id='fuel'>
-              <option className='bg-slate-600' value='corriente'>Corriente</option>
-              <option className='bg-slate-600' value='diesel'>Diesel</option>
+              <option className='bg-slate-100 text-black dark:text-white dark:bg-slate-700' value='corriente'>Corriente</option>
+              <option className='bg-slate-100 text-black dark:text-white dark:bg-slate-700' value='diesel'>Diesel</option>
             </Select>
           </div>
 
           <div className='flex flex-col gap-1 overflow-ellipsis'>
-            <label className='text-white whitespace-nowrap text-ellipsis overflow-hidden'>Transmisión</label>
+            <label className='dark:text-white text-black whitespace-nowrap text-ellipsis overflow-hidden'>Transmisión</label>
             <Select onChange={handleChange} value={values.transmission} name='transmission' id='transmission'>
-              <option className='bg-slate-600' value='manual'>Manual</option>
-              <option className='bg-slate-600' value='automatica'>Automática</option>
+              <option className='bg-slate-100 text-black dark:text-white dark:bg-slate-700' value='manual'>Manual</option>
+              <option className='bg-slate-100 text-black dark:text-white dark:bg-slate-700' value='automatica'>Automática</option>
             </Select>
           </div>
 
           <div className='flex flex-col gap-1 overflow-ellipsis'>
-            <label className='text-white whitespace-nowrap text-ellipsis overflow-hidden'>Tipo de vehículo</label>
+            <label className='dark:text-white text-black whitespace-nowrap text-ellipsis overflow-hidden'>Tipo de vehículo</label>
             <Select onChange={handleChange} value={values.type} name='type' id='type'>
-              <option className='bg-slate-600' value='automovil'>Automóvil</option>
-              <option className='bg-slate-600' value='camioneta'>Camioneta</option>
+              <option className='bg-slate-100 text-black dark:text-white dark:bg-slate-700' value='automovil'>Automóvil</option>
+              <option className='bg-slate-100 text-black dark:text-white dark:bg-slate-700' value='camioneta'>Camioneta</option>
             </Select>
           </div>
 
           <div className='flex flex-col gap-1 overflow-ellipsis'>
-            <label className='text-white whitespace-nowrap text-ellipsis overflow-hidden'>CC</label>
+            <label className='dark:text-white text-black whitespace-nowrap text-ellipsis overflow-hidden'>CC</label>
             <Select onChange={handleChange} value={values.cc} name='cc' id='cc'>
 
               {selectOptionsCC.map((cc, index) => (
-                <option key={index} className='bg-slate-600' value={cc}>{cc}</option>
+                <option key={index} className='bg-slate-100 text-black dark:text-white dark:bg-slate-700' value={cc}>{cc}</option>
               ))}
 
             </Select>
@@ -71,7 +71,7 @@ export default function CarForm ({
           {
             carInputs.map((input, index) => (
               <div key={index} className='flex flex-col gap-1'>
-                <label className='text-white whitespace-nowrap text-ellipsis overflow-hidden'>{input.label}</label>
+                <label className='dark:text-white text-black whitespace-nowrap text-ellipsis overflow-hidden'>{input.label}</label>
                 <Input
                   onChange={handleChange}
                   value={values[input.name]}
@@ -86,7 +86,7 @@ export default function CarForm ({
           }
         </div>
         <div className='flex flex-col gap-3 items-center mt-5 justify-center'>
-          <label className='text-white bg-gray-600 transition-colors hover:bg-neutral-500 px-3 py-2 rounded'>
+          <label className='dark:text-white text-black bg-gray-300 dark:bg-gray-500 hover:bg-neutral-400 transition-colors dark:hover:bg-neutral-600 px-3 py-2 rounded'>
             Agregar imagen
             <input hidden type='file' multiple onChange={handleImage} accept='image/*' />
           </label>
@@ -103,7 +103,7 @@ export default function CarForm ({
                       height={100}
                       className='rounded-md object-cover block w-full h-full'
                     />
-                    <div onClick={() => handleDeleteImage(image)} className='cursor-pointer absolute top-1 right-1 bg-red-500 rounded-full p-1'>
+                    <div onClick={() => handleDeleteImage(image)} className='cursor-pointer absolute top-1 right-1 bg-red-500 hover:bg-red-700 transition-colors text-white rounded-full p-1'>
                       <AiFillDelete size={20} />
                     </div>
                   </div>

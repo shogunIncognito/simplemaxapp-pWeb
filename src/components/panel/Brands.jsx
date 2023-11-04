@@ -82,9 +82,9 @@ export default function Brands () {
               <Select className='w-full' name='brandToDelete' value={brand.brandToDelete} onChange={handleChange}>
                 {!brandsLoading
                   ? brands.map(brand => (
-                    <option className='bg-slate-500' key={brand.id} value={brand.id}>{brand.name}</option>
+                    <option className='bg-slate-100 text-black dark:text-white dark:bg-slate-700' key={brand.id} value={brand.id}>{brand.name}</option>
                   ))
-                  : <option className='bg-slate-500'>Cargando...</option>}
+                  : <option className='bg-slate-100 text-black dark:text-white dark:bg-slate-700'>Cargando...</option>}
               </Select>
 
             </div>

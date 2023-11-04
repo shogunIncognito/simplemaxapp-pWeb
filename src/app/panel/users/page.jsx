@@ -59,7 +59,7 @@ export default function Users () {
   return (
     <section className='flex-1'>
       <header className='flex p-4 w-full justify-start items-center flex-col'>
-        <h2 className='text-2xl self-center opacity-75 font-bold md:hidden my-5'>Usuarios</h2>
+        <h2 className='text-3xl self-center opacity-75 font-bold text-black dark:text-white font-mono md:hidden my-5'>Usuarios</h2>
         <Button onClick={handleOpen} className={`md:self-start self-center ${loading.getUsers && 'invisible'}`}>Agregar usuario</Button>
       </header>
 
@@ -93,8 +93,8 @@ export default function Users () {
         {loading.getUsers
           ? <Spinner className='mt-10' />
           : (
-            <table className='w-full max-w-full text-sm text-center text-gray-400'>
-              <thead className='text-xs sticky top-0 uppercase bg-gray-700 text-gray-400'>
+            <table className='w-full max-w-full text-sm text-center text-gray-800 dark:text-gray-400'>
+              <thead className='text-xs dark:bg-[#171923] bg-slate-300/70 sticky top-0 uppercase text-gray-800 dark:text-gray-400'>
                 <tr className='p-0.5'>
                   <th scope='col' className='px-6 py-3'>
                     ID
@@ -114,7 +114,7 @@ export default function Users () {
 
                 {filteredUsers.length === 0 && (
                   <tr className='border-b bg-gray-800 border-gray-700'>
-                    <td colSpan='11' className='px-6 py-4 font-medium whitespace-nowrap text-white'>
+                    <td colSpan='11' className='px-6 py-4 font-medium whitespace-nowrap dark:text-white'>
                       No hay usuarios
                     </td>
                   </tr>
@@ -125,10 +125,10 @@ export default function Users () {
                     <td className='capitalize px-6 py-4'>
                       {user.id}
                     </td>
-                    <th scope='row' className='px-6 py-4 font-medium whitespace-nowrap text-white'>
+                    <th scope='row' className='px-6 py-4 font-medium whitespace-nowrap dark:text-white'>
                       {user.name}
                     </th>
-                    <th scope='row' className='px-6 py-4 font-medium whitespace-nowrap text-white'>
+                    <th scope='row' className='px-6 py-4 font-medium whitespace-nowrap dark:text-white'>
                       {user.cedula}
                     </th>
                     <td className='px-6 py-4 h-full w-1/6 m-auto'>

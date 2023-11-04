@@ -56,7 +56,7 @@ export default function page () {
     <section className='w-full dark:bg-inherit bg-slate-200/60 flex-1 max-h-full'>
 
       <div className='gap-3 p-5 flex-col border-b-2 border-gray-300/40 md:flex-row flex items-start '>
-        <h2 className='dark:text-white text-black md:hidden font-bold opacity-75 text-3xl text-center'>Autos</h2>
+        <h2 className='text-3xl self-center opacity-75 font-bold text-black dark:text-white font-mono md:hidden mb-3 mt-1'>Autos</h2>
         <div className='gap-2 flex'>
           <CreateCar />
           <AddBrand />
@@ -71,7 +71,7 @@ export default function page () {
       </div>
       <div className='relative flex-1 w-full max-h-[70%] lg:max-h-[76%] xl:max-h-[80%] overflow-auto'>
         <table className='w-full overflow-auto text-sm text-center text-gray-400'>
-          <thead className='text-xs sticky dark:bg-[#171923] bg-slate-300/70 z-20 top-0 uppercase border-b border-green-800/90 text-gray-400'>
+          <thead className='text-xs sticky dark:bg-[#171923] bg-slate-300 z-10 top-0 uppercase border-b border-green-800/90 text-gray-800 dark:text-gray-400'>
             <tr>
               <th scope='col' className='px-6' />
 
@@ -147,7 +147,7 @@ export default function page () {
                   <Button onClick={() => setSelectedCar(car)} className='w-full mb-1 bg-[#59da86] font-semibold text-black/70 hover:bg-green-600'>
                     Editar
                   </Button>
-                  <Button onClick={() => setCarToDelete(car)} className='w-full mt-1 bg-[#FBD38D] hover:bg-yellow-400/70 font-semibold text-black/70 py-2 px-4'>
+                  <Button onClick={() => setCarToDelete(car)} className='w-full mt-1 bg-[#FBD38D] hover:bg-yellow-500 font-semibold text-black/70 py-2 px-4'>
                     Eliminar
                   </Button>
                 </td>

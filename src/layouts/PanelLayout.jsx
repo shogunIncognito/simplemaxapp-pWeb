@@ -63,12 +63,12 @@ export default function PanelLayout ({ children }) {
     <main className='flex-col max-w-full max-h-screen md:flex-row flex h-screen w-full dark:bg-[#171923]'>
       {/* Mobile Layout */}
       <section className='overflow-hidden md:hidden flex flex-col flex-1 text-white'>
-        <header className='relative min-h-[8%] h-[8%] text-white bg-[#171923] border-b justify-between items-center border-gray-600/60 flex w-full'>
+        <header className='relative min-h-[8%] h-[8%] dark:text-white dark:bg-[#171923] bg-slate-100 text-black border-b justify-between items-center border-gray-600/60 flex w-full'>
           <div onClick={handleOpen} className='ml-3 z-20'>
-            <MenuIcon className='w-8 border rounded-lg border-gray-700/70' />
+            <MenuIcon className='w-8 border rounded-lg invert dark:invert-0 border-gray-700/70' />
           </div>
           <h2 className='text-center absolute w-full m-auto mt-0 text-2xl -z-0 font-bold'>Max<span className='text-blue-500'>Autos</span></h2>
-          <div className='flex items-center gap-2 mr-3 shadow-md z-20'>
+          <div className='flex items-center gap-2 mr-3 z-20'>
             <UserIcon className='w-10 bg-white rounded-full' />
             <UserSettings />
           </div>
@@ -83,25 +83,25 @@ export default function PanelLayout ({ children }) {
           zIndex: '200'
         }}
         className='top-0 md:hidden transition-all duration-500 w-full flex flex-col absolute z-50
-        h-screen shadow-xl bg-[#171923] text-white'
+        h-screen shadow-xl dark:bg-[#171923] bg-slate-100 text-black dark:text-white'
       >
         <CloseIcon onClick={handleClose} className='w-12 m-2 self-end cursor-pointer' />
-        <Image src={sideImage} width={140} height='auto' priority alt='sideimage' className='pointer-events-none select-none m-auto my-0 mb-2 object-cover h-auto' />
+        <Image src={sideImage} width={140} height='auto' priority alt='sideimage' className='pointer-events-none invert dark:invert-0 select-none m-auto my-0 mb-2 object-cover h-auto' />
 
         <nav className='flex flex-col p-4'>
-          <Link className='p-4 px-6 rounded-md hover:bg-gray-900 text-white flex gap-2 items-center transition-color' href='/'>
+          <Link className='p-4 px-6 rounded-md hover:bg-gray-900 text-black dark:text-white flex gap-2 items-center transition-color' href='/'>
             <FiArrowLeft size={28} className='opacity-75 ' />
             <p className=''>Volver a pagina inicial</p>
           </Link>
-          <Link onClick={handleClose} className={`p-4 px-6 rounded-md hover:bg-gray-900 text-white flex gap-2 items-center transition-colors ${path === '/panel' ? 'bg-gray-700' : ''}`} href='/panel'>
+          <Link onClick={handleClose} className={`p-4 px-6 rounded-md hover:bg-gray-900 text-black dark:text-white flex gap-2 items-center transition-colors ${path === '/panel' ? 'bg-gray-700 text-white' : ''}`} href='/panel'>
             <AiFillHome size={28} className='opacity-75' />
             <p className=''>Inicio</p>
           </Link>
-          <Link onClick={handleClose} className={`p-4 px-6 rounded-md hover:bg-gray-900 text-white flex gap-2 items-center transition-colors ${path === '/panel/cars' ? 'bg-gray-700' : ''}`} href='/panel/cars'>
+          <Link onClick={handleClose} className={`p-4 px-6 rounded-md hover:bg-gray-900 text-black dark:text-white flex gap-2 items-center transition-colors ${path === '/panel/cars' ? 'bg-gray-700 text-white' : ''}`} href='/panel/cars'>
             <FaCarAlt size={28} className='opacity-75' />
             <p className=''>Autos</p>
           </Link>
-          <Link onClick={handleClose} className={`p-4 px-6 hover:bg-gray-900 text-white flex gap-2 items-center transition-colors ${path === '/panel/users' ? 'bg-gray-700' : ''}`} href='/panel/users'>
+          <Link onClick={handleClose} className={`p-4 px-6 hover:bg-gray-900 text-black dark:text-white flex gap-2 items-center transition-colors ${path === '/panel/users' ? 'bg-gray-700 text-white' : ''}`} href='/panel/users'>
             <BiSolidUser size={28} className='opacity-75' />
             <p className=''>Usuarios</p>
           </Link>

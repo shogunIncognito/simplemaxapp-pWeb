@@ -66,22 +66,26 @@ export default function UpdateCar ({ selectedCar, setSelectedCar }) {
 
   const handleDeleteImage = async (img) => {
     try {
+      setLoading(true)
       if (typeof img === 'object') {
         setImages(prev => prev.filter(image => image.url !== img.url))
         toast.success('Imagen eliminada')
         return
       }
 
-      console.log(img)
+      const realCarImages = images.filter(imag => typeof imag !== 'object')
+      if (realCarImages.length === 1) return toast.error('El carro debe tener al menos una imagen')
+
       await deleteCarImageFromApi(selectedCar.id, img)
       await deleteCarImage(img)
 
       setImages(prev => prev.filter(image => image !== img))
       toast.success('Imagen eliminada')
-      reFetch()
     } catch (error) {
       console.log(error)
       toast.error('Error al eliminar imagen')
+    } finally {
+      setLoading(false)
       reFetch()
     }
   }

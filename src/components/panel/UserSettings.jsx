@@ -74,7 +74,7 @@ export default function UserSettings () {
     <>
       <div className='relative flex justify-end'>
         <div>
-          <IoMdSettings size={25} className='hover:text-gray-400 dark:text-white text-black transition-colors cursor-pointer' onClick={handleOpen} />
+          <IoMdSettings size={25} className='hover:text-gray-400 dark:hover:text-gray-400 dark:text-white text-black transition-colors cursor-pointer' onClick={handleOpen} />
         </div>
       </div>
 
@@ -82,7 +82,7 @@ export default function UserSettings () {
         <div className='flex flex-col gap-6 p-3 shadow-md'>
           <header className='self-end p-1.5 group relative'>
             <FaExchangeAlt className='cursor-pointer hover:text-purple-600' size={25} onClick={handleToggleView} />
-            <span className='animate__animated animate__bounceIn absolute hidden whitespace-nowrap -right-12 z-20 group-hover:block -top-10 bg-neutral-600 shadow-2xl 00 rounded p-1.5'>
+            <span className='animate__animated animate__bounceIn absolute hidden whitespace-nowrap -right-12 z-20 group-hover:block -top-10 dark:bg-neutral-600 bg-slate-300 shadow-2xl 00 rounded p-1.5'>
               Cambiar {settingsView === 'username' ? 'contraseña' : 'nombre'}
             </span>
           </header>
@@ -111,10 +111,10 @@ export default function UserSettings () {
 
                   {showPassword
                     ? (
-                      <AiFillEyeInvisible onClick={() => setShowPassword(false)} size={33} className='cursor-pointer self-end p-1 bg-neutral-700 rounded hover:bg-neutral-800' />
+                      <AiFillEyeInvisible onClick={() => setShowPassword(false)} size={33} className='cursor-pointer self-end p-1 rounded bg-slate-300 dark:bg-neutral-700 dark:hover:bg-neutral-800' />
                       )
                     : (
-                      <AiFillEye onClick={() => setShowPassword(true)} size={33} className='cursor-pointer self-end p-1 bg-neutral-700 rounded hover:bg-neutral-800' />
+                      <AiFillEye onClick={() => setShowPassword(true)} size={33} className='cursor-pointer self-end p-1 rounded bg-slate-300 dark:bg-neutral-700 dark:hover:bg-neutral-800' />
                       )}
 
                   <div className='grid grid-cols-2'>

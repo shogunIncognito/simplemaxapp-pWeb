@@ -5,7 +5,7 @@ import { useState } from 'react'
 import toast from 'react-hot-toast'
 import useCarsStore from '@/hooks/useCarsStore'
 
-const selectedClass = 'border-2 border-green-500'
+const selectedClass = 'border-4 dark:border-green-500 border-purple-500 shadow-xl'
 
 export default function ChangePreviewCar ({ car, setCar }) {
   const { reFetch } = useCarsStore()

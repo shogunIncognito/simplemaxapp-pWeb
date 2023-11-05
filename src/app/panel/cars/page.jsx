@@ -56,6 +56,11 @@ export default function page () {
     }
   }
 
+  const sortByHeader = (header) => {
+    const sortedCars = [...filteredCars].sort((a, b) => String(b[header.value]).localeCompare(String(a[header.value]), 'es', { numeric: true }))
+    dispatchAction('SET_FILTERED_CARS', sortedCars)
+  }
+
   return (
     <section className='w-full dark:bg-inherit bg-slate-200/60 flex-1 max-h-full'>
 
@@ -81,7 +86,7 @@ export default function page () {
               <th scope='col' className='px-6' />
 
               {tableHeaders.map((header, index) => (
-                <th key={index} scope='col' className='px-6 py-3'>
+                <th key={index} scope='col' onClick={() => sortByHeader(header)} className='px-6 py-3 cursor-pointer hover:text-white transition-colors'>
                   {header.label}
                 </th>
               ))}
@@ -107,11 +112,11 @@ export default function page () {
             )}
 
             {filteredCars.map(car => (
-              <tr key={car.id} className='bg-transparent border-b border-green-800/90'>
-                <th scope='row' className='px-6 py-4 font-medium whitespace-nowrap text-white'>
+              <tr key={car.id} className='bg-transparent border-b border-green-800/90 text-neutral-600 dark:text-white'>
+                <th scope='row' className='px-6 py-4 font-medium whitespace-nowrap'>
                   <input onClick={() => addCarToList(car)} type='checkbox' className='form-checkbox h-4 w-4 text-gray-500' />
                 </th>
-                <th scope='row' className='px-6 py-4 font-medium whitespace-nowrap text-white'>
+                <th scope='row' className='px-6 py-4 font-medium whitespace-nowrap'>
                   {car.id}
                 </th>
                 <td className='capitalize px-6 py-4'>

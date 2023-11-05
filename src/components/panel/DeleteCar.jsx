@@ -20,11 +20,13 @@ export default function DeleteCar ({ carToDelete, setCarToDelete }) {
       .then(() => {
         deleteCar(carToDelete.id)
         toast.success('Auto eliminado')
-        setCarToDelete(null)
+        handleDispatch()
       })
       .catch(err => toast.error(deleteCarCodes[err.response?.status] || 'Error al eliminar auto'))
       .finally(() => setLoading(false))
   }
+
+  const handleDispatch = () => setCarToDelete('SET_CAR_TO_DELETE', null)
 
   return (
     <ModalBackdrop open>
@@ -39,7 +41,7 @@ export default function DeleteCar ({ carToDelete, setCarToDelete }) {
           Eliminar
         </Button>
         <Button
-          onClick={() => setCarToDelete(null)}
+          onClick={() => handleDispatch()}
           className='w-1/2 p-2 px-3'
         >
           Cancelar

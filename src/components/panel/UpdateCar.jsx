@@ -48,7 +48,7 @@ export default function UpdateCar ({ selectedCar, setSelectedCar }) {
       await updateCar(selectedCar.id, valuesToUpdate)
 
       reFetch()
-      setSelectedCar(null)
+      handleClose()
       toast.success('Auto actualizado')
     } catch (error) {
       toast.error(updateCarCodes[error.response.status] || 'Error al actualizar auto')
@@ -97,7 +97,7 @@ export default function UpdateCar ({ selectedCar, setSelectedCar }) {
     }
   }
 
-  const handleClose = () => setSelectedCar(null)
+  const handleClose = () => setSelectedCar('SET_SELECTED_CAR', null)
 
   return (
     <>

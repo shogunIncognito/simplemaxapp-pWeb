@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import CreateCar from '@/components/panel/CreateCar'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import UpdateCar from '@/components/panel/UpdateCar'
 import { tableHeaders } from '@/helpers/data'
 import DeleteCar from '@/components/panel/DeleteCar'
@@ -15,40 +15,44 @@ import { deleteCar } from '@/services/api'
 import toast from 'react-hot-toast'
 import ChangePreviewCar from '@/components/panel/ChangePreviewCar'
 import { deleteCarsImages } from '@/services/firebase'
+import usePanelCarsReducer from '@/reducers/panelCarsReducer'
 
 export default function page () {
   const { cars, reFetch, loading } = useCarsStore()
-  const [selectedCar, setSelectedCar] = useState(null)
-  const [carToDelete, setCarToDelete] = useState(null)
-  const [filteredCars, setFilteredCars] = useState([])
-  const [carsSelected, setCarsSelected] = useState([])
-  const [carPreviewToChange, setCarPreviewToChange] = useState(null)
+  const [{
+    selectedCar,
+    carToDelete,
+    filteredCars,
+    carsSelected,
+    carPreviewToChange
+  }, dispatch] = usePanelCarsReducer()
+
+  const dispatchAction = (type, payload) => dispatch({ type, payload })
 
   useEffect(() => {
-    setFilteredCars(cars)
+    dispatchAction('SET_FILTERED_CARS', cars)
   }, [cars])
 
   if (loading) return <Spinner />
 
   const addCarToList = (car) => {
     carsSelected.find(carSel => carSel.id === car.id)
-      ? setCarsSelected(prev => prev.filter(carSel => carSel.id !== car.id))
-      : setCarsSelected(prev => [...prev, car])
+      ? dispatchAction('SET_CARS_SELECTED', carsSelected.filter(carSel => carSel.id !== car.id))
+      : dispatchAction('SET_CARS_SELECTED', [...carsSelected, car])
   }
 
   const deleteSelectedCars = async () => {
     const carsImages = carsSelected.reduce((acc, curr) => [...acc, ...curr.image], [])
 
     try {
-      await deleteCarsImages(carsImages)
-      await deleteCar(carsSelected)
+      await Promise.all(deleteCarsImages(carsImages), deleteCar(carsSelected))
 
       toast.success('Autos eliminados')
       reFetch()
     } catch (error) {
       toast.error('Error al eliminar los autos')
     } finally {
-      setCarsSelected([])
+      dispatchAction('SET_CARS_SELECTED', [])
     }
   }
 
@@ -61,7 +65,8 @@ export default function page () {
           <CreateCar />
           <AddBrand />
         </div>
-        <CarFilter cars={cars} setCars={setFilteredCars} />
+
+        <CarFilter cars={cars} setCars={dispatchAction} />
 
         {carsSelected.length > 0 && (
           <Button disabled={carsSelected.length === 0} className='animate__animated animate__fadeIn animate__faster bg-red-500 hover:bg-red-700 font-bold py-2 px-4' onClick={deleteSelectedCars}>
@@ -136,7 +141,7 @@ export default function page () {
                 <td className='px-6 py-4'>
                   <div className='cursor-pointer flex justify-center items-center relative group'>
                     <Image src={car.preview || car.image[0]} priority alt='carro' width={160} height={160} className='rounded-lg object-cover cursor-pointer w-auto h-auto ring-2 max-w-[160px] max-h-[160px] min-w-[160px] min-h-[160px]' />
-                    <div onClick={() => setCarPreviewToChange(car)} className='absolute top-0 w-full h-full bg-black/50 rounded-lg flex items-center justify-center opacity-0 group-hover:opacity-100 max-w-[160px] max-h-[160px] min-w-[160px] min-h-[160px] transition-all duration-300'>
+                    <div onClick={() => dispatchAction('SET_CAR_PREVIEW_TO_CHANGE', car)} className='absolute top-0 w-full h-full bg-black/50 rounded-lg flex items-center justify-center opacity-0 group-hover:opacity-100 max-w-[160px] max-h-[160px] min-w-[160px] min-h-[160px] transition-all duration-300'>
                       <span className='text-white font-bold'>
                         Cambiar imagen
                       </span>
@@ -144,10 +149,10 @@ export default function page () {
                   </div>
                 </td>
                 <td className='px-6 py-4 h-full m-auto'>
-                  <Button onClick={() => setSelectedCar(car)} className='w-full mb-1 bg-[#59da86] font-semibold text-black/70 hover:bg-green-600'>
+                  <Button onClick={() => dispatchAction('SET_SELECTED_CAR', car)} className='w-full mb-1 bg-[#59da86] font-semibold text-black/70 hover:bg-green-600'>
                     Editar
                   </Button>
-                  <Button onClick={() => setCarToDelete(car)} className='w-full mt-1 bg-[#FBD38D] hover:bg-yellow-500 font-semibold text-black/70 py-2 px-4'>
+                  <Button onClick={() => dispatchAction('SET_CAR_TO_DELETE', car)} className='w-full mt-1 bg-[#FBD38D] hover:bg-yellow-500 font-semibold text-black/70 py-2 px-4'>
                     Eliminar
                   </Button>
                 </td>
@@ -158,9 +163,9 @@ export default function page () {
         </table>
       </div>
 
-      {selectedCar && <UpdateCar selectedCar={selectedCar} setSelectedCar={setSelectedCar} />}
-      {carToDelete && <DeleteCar carToDelete={carToDelete} setCarToDelete={setCarToDelete} />}
-      {carPreviewToChange && <ChangePreviewCar car={carPreviewToChange} setCar={setCarPreviewToChange} />}
+      {selectedCar && <UpdateCar selectedCar={selectedCar} setSelectedCar={dispatchAction} />}
+      {carToDelete && <DeleteCar carToDelete={carToDelete} setCarToDelete={dispatchAction} />}
+      {carPreviewToChange && <ChangePreviewCar car={carPreviewToChange} setCar={dispatchAction} />}
     </section>
   )
 }

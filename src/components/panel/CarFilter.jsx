@@ -14,7 +14,7 @@ export default function CarFilter ({ cars, setCars }) {
 
   const carDebounced = useDebouncedCallback(() => {
     const newCars = filterCars(cars, filters)
-    setCars(newCars)
+    setCars('SET_FILTERED_CARS', newCars)
   }, 500)
 
   const handleChange = (e) => {

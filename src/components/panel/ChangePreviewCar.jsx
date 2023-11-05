@@ -28,10 +28,12 @@ export default function ChangePreviewCar ({ car, setCar }) {
         toast.error('Error al cambiar la imagen de previsualización')
       })
       .finally(() => {
-        setCar(null)
+        handleDispatch()
         setLoading(false)
       })
   }
+
+  const handleDispatch = () => setCar('SET_CAR_PREVIEW_TO_CHANGE', null)
 
   return (
     <ModalBackdrop open>
@@ -45,7 +47,7 @@ export default function ChangePreviewCar ({ car, setCar }) {
         <Button loading={loading} type='submit' disabled={!isValidImage || loading} onClick={handleChangePreview} className='bg-purple-600 disabled:bg-purple-900 hover:bg-purple-800 text-white py-3 px-6 w-1/3 self-center'>
           Cambiar
         </Button>
-        <Button onClick={() => setCar(null)} className='bg-gray-600 hover:bg-neutral-500 font-bold w-1/3 py-3 px-6'>
+        <Button onClick={() => handleDispatch()} className='bg-gray-600 hover:bg-neutral-500 font-bold w-1/3 py-3 px-6'>
           Cerrar
         </Button>
       </div>

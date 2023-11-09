@@ -36,7 +36,7 @@ export default function Users () {
     const data = Object.fromEntries(new FormData(e.target))
     if (objectHasEmptyValues(data)) return toast.error('Todos los campos son obligatorios')
 
-    if (data.cedula.length !== 10) return toast.error('La cédula debe tener 10 dígitos')
+    if (data.cedula.length < 6 || data.cedula.length > 10) return toast.error('La cédula debe tener entre 7 dígitos y 10 dígitos')
 
     setLoading({ ...loading, create: true })
     createUser(data)
